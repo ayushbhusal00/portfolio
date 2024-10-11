@@ -4,11 +4,11 @@ import { motion } from "framer-motion";
 import { links } from "@/lib/data";
 import Link from "next/link";
 import clsx from "clsx";
-import { useActiveSectionContext } from "@/context/active-section";
+import { UseActiveSectionContext } from "@/context/active-section";
 
 const Header = () => {
   const { activeSection, setActiveSection, setTimeOfLastClick } =
-    useActiveSectionContext();
+    UseActiveSectionContext();
 
   return (
     <header className='z-[999] relative'>

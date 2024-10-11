@@ -9,12 +9,12 @@ import { HiDownload } from "react-icons/hi";
 import Link from "next/link";
 import Portrait from "@/public/Portrait.png";
 
-import { useSectionInView } from "@/lib/hooks";
-import { useActiveSectionContext } from "@/context/active-section";
+import { UseSectionInView } from "@/lib/hooks";
+import { UseActiveSectionContext } from "@/context/active-section";
 
 export default function intro() {
-  const { ref } = useSectionInView("Home", 0.5);
-  const { setActiveSection, setTimeOfLastClick } = useActiveSectionContext();
+  const { ref } = UseSectionInView("Home", 0.5);
+  const { setActiveSection, setTimeOfLastClick } = UseActiveSectionContext();
   return (
     <section
       ref={ref}

@@ -4,7 +4,7 @@ import React from "react";
 import SectionHeading from "./section-heading";
 import { motion } from "framer-motion";
 import { skillsData } from "@/lib/data";
-import { useSectionInView } from "@/lib/hooks";
+import { UseSectionInView } from "@/lib/hooks";
 
 const fadeInAnimationVariants = {
   initial: { opacity: 0, y: 100 },
@@ -16,7 +16,7 @@ const fadeInAnimationVariants = {
 };
 
 export default function Skills() {
-  const { ref } = useSectionInView("Skills");
+  const { ref } = UseSectionInView("Skills");
   return (
     <section
       ref={ref}
