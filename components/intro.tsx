@@ -54,10 +54,9 @@ export default function intro() {
           initial={{ opacity: 0, y: 100 }}
           animate={{ opacity: 1, y: 0 }}
         >
-          <span className='font-bold'>🤘Hello, I'm Ayush, </span>a Web /
-          <span className='font-bold'>Product Designer </span>I collaborate with{" "}
-          <span className='font-bold'>visionary founders</span> to transform{" "}
-          <span className='italic'>product ideas into reality </span>
+          <span className='font-bold'>🤘Hello, I'm Ayush, </span>a Web/{" "}
+          <span className='font-bold'>Product Designer </span>and, I work to to
+          transform <span className='italic'>product ideas to reality </span>
         </motion.h1>
         <motion.div
           className='flex flex-col sm:flex-row  w-full gap-4 items-center justify-center px-4 text-lg font-medium'

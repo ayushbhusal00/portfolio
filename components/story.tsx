@@ -3,7 +3,7 @@
 import React from "react";
 import { motion } from "framer-motion";
 import Friends1 from "@/public/friends1.png";
-import Friends2 from "@/public/friends2.png";
+import PassionToCook from "@/public/passion-to-cook.png";
 import { UseSectionInView } from "@/lib/hooks";
 import Image from "next/image";
 import SectionHeading from "./section-heading";
@@ -11,7 +11,7 @@ import SectionHeading from "./section-heading";
 //Logo Imports
 import Litaliano from "@/public/litaliano.png";
 import Antidote from "@/public/antidote.png";
-import WePlay from "@/public/WePlay.png";
+import WePlayLogo from "@/public/WePlayLogo.png";
 
 export default function Story() {
   const { ref } = UseSectionInView("Story");
@@ -34,8 +34,8 @@ export default function Story() {
             viewport={{ once: true }}
           >
             <Image
-              src={Friends2}
-              alt='Happy hour with my friends at work'
+              src={PassionToCook}
+              alt='Enjoying Cooking by myself'
               className='rounded-lg shadow-lg'
             />
           </motion.div>
@@ -73,6 +73,16 @@ export default function Story() {
             designs that captivate users, drive engagement, and attract
             investors.
           </motion.p>
+          <motion.p
+            className='mt-4'
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            transition={{ delay: 0.1, duration: 0.5 }}
+            viewport={{ once: true }}
+          >
+            Apart from work I enjoy hanging out with friends and cook or play
+            music on my own.
+          </motion.p>
         </div>
       </div>
       <div className='flex flex-col text-center items-center'>
@@ -93,7 +103,7 @@ export default function Story() {
             height={50}
           />
           <Image
-            src={WePlay}
+            src={WePlayLogo}
             alt={"WePlay: Online Sports Booking Platform"}
             width={120}
             height={50}
