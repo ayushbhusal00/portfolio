@@ -7,17 +7,17 @@ import VesperFineWines from "@/public/VesperFineWines.png";
 import WePlay from "@/public/WePlay.png";
 
 export const links = [
+  // {
+  //   name: "Home",
+  //   hash: "#home",
+  // },
   {
-    name: "Home",
-    hash: "#home",
+    name: "Story",
+    hash: "#story",
   },
   {
-    name: "About",
-    hash: "#about",
-  },
-  {
-    name: "Projects",
-    hash: "#projects",
+    name: "Works",
+    hash: "#works",
   },
   {
     name: "Skills",
@@ -26,10 +26,6 @@ export const links = [
   {
     name: "Experience",
     hash: "#experience",
-  },
-  {
-    name: "Contact",
-    hash: "#contact",
   },
 ] as const;
 
@@ -92,13 +88,15 @@ export const experiencesData = [
   },
 ] as const;
 
-export const projectsData = [
+export const worksData = [
   {
     title: "Niural Inc.",
     description:
       "Its a global payroll platform, that serves all aspects of hiring from hiring to payroll.",
     tags: ["Figma", "Design System", "Branding", "UX Research", "WebFlow"],
     imageUrl: NiuralWebsite,
+    colorFrom: "lime",
+    colorTo: "green",
   },
   {
     title: "WePlay",
@@ -113,6 +111,8 @@ export const projectsData = [
       "Web Design",
     ],
     imageUrl: WePlay,
+    colorFrom: "red",
+    colorTo: "ember",
   },
   {
     title: "Vesper Fine Wines",
@@ -120,6 +120,8 @@ export const projectsData = [
       "An ecommerce website to buy best and largest varietal of wines in Nepal. Responsive and user-frieldly application for both Web and Mobile users.",
     tags: ["React", "Next.js", "SQL", "Tailwind", "Prisma"],
     imageUrl: VesperFineWines,
+    colorFrom: "amber",
+    colorTo: "orange",
   },
 ] as const;
 
@@ -142,4 +144,37 @@ export const skillsData = [
   "React Native",
   "Three JS",
   "Framer Motion",
+] as const;
+
+// Group skills into categories
+export const skillsCategories = [
+  {
+    title: "Things I Create",
+    skills: [
+      "Websites",
+      "App Design",
+      "Visual Identity",
+      "Illustrations",
+      "Design Systems",
+      "UI Animation",
+    ],
+    color: "bg-lime-500",
+  },
+  {
+    title: "For Products In",
+    skills: ["SaaS", "FinTech", "Web 3.0", "AI", "MedTech"],
+    color: "bg-purple-200",
+  },
+  {
+    title: "Using Tools Like",
+    skills: [
+      "Figma",
+      "After Effects",
+      "Framer",
+      "Illustrator",
+      "Photoshop",
+      "Spline",
+    ],
+    color: "bg-blue-500",
+  },
 ] as const;

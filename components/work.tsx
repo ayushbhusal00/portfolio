@@ -1,17 +1,19 @@
-"use client";
-import { projectsData } from "@/lib/data";
+import { worksData } from "@/lib/data";
 import { useScroll, motion, useTransform } from "framer-motion";
 import Image from "next/image";
-
 import { useRef } from "react";
+import clsx from "clsx";
 
-type ProjectProps = (typeof projectsData)[number];
-export default function Project({
+type WorkProps = (typeof worksData)[number];
+
+export default function Work({
   title,
   description,
   tags,
   imageUrl,
-}: ProjectProps) {
+  colorFrom,
+  colorTo,
+}: WorkProps) {
   const ref = useRef<HTMLElement>(null);
   const { scrollYProgress } = useScroll({
     target: ref,
@@ -20,17 +22,22 @@ export default function Project({
   const scaleProgress = useTransform(scrollYProgress, [0, 1], [0.8, 1]);
   const opacityProgress = useTransform(scrollYProgress, [0, 1], [0.6, 1]);
 
+  // Dynamically generate hover classes based on colorFrom and colorTo
+  const hoverBgClass = `hover:bg-gradient-to-br from-${colorFrom}-200 to-${colorTo}-200`;
+
   return (
     <motion.section
       ref={ref}
-      className='group bg-gray-100 dark:bg-white/10 max-w-[42rem] border border-black/5 overflow-hidden sm:pr-8 relative sm:h-[20rem] mb-3 sm:mb-8 ven:pl-8 hover:bg-gray-200 dark:hover:bg-white/20 transition rounded-lg'
+      className={clsx(
+        `group bg-gray-100 dark:bg-white/10 max-w-[50rem] border border-black/5 overflow-hidden sm:pr-8 relative sm:h-[20rem] mb-3 sm:mb-8 sm:pl-8 dark:hover:bg-white/20 transition rounded-lg ${hoverBgClass}`
+      )}
       style={{
         scale: scaleProgress,
         opacity: opacityProgress,
       }}
     >
       <div className='pt-4 pb-7 px-5 sm:pl-10 sm:pr-2 sm:pt-10 sm:max-w-[50%] flex flex-col justify-between h-full last:mb-0 sm:group-even:ml-[18rem]'>
-        <div className=''>
+        <div>
           <h3 className='text-2xl font-semibold'>{title}</h3>
           <p className='mt-2 leading-relaxed text-gray-700 dark:text-white/70'>
             {description}

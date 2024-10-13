@@ -3,7 +3,7 @@
 import React from "react";
 import SectionHeading from "./section-heading";
 import { motion } from "framer-motion";
-import { skillsData } from "@/lib/data";
+import { skillsCategories } from "@/lib/data";
 import { UseSectionInView } from "@/lib/hooks";
 
 const fadeInAnimationVariants = {
@@ -17,30 +17,41 @@ const fadeInAnimationVariants = {
 
 export default function Skills() {
   const { ref } = UseSectionInView("Skills");
+
   return (
     <section
       ref={ref}
-      className='max-w-[45rem] mb-28 text-center leading-8 sm:mb-40 scroll-mt-28'
+      className='max-w-5xl mx-auto mb-28 text-center leading-8 sm:mb-40 scroll-mt-28'
       id='skills'
     >
       <SectionHeading>Skills</SectionHeading>
-      <ul className='flex flex-wrap justify-center text-lg text-gray-800 dark:text-white/80 gap-4'>
-        {skillsData.map((skill, index) => (
-          <motion.li
-            className='bg-white dark:bg-white/10 border  border-black/[0.1] rounded-xl py-3 px-5'
+
+      <div className='flex flex-wrap justify-center gap-8'>
+        {skillsCategories.map((category, index) => (
+          <motion.div
             key={index}
+            className={`w-[18rem] h-[16rem] p-4 rounded-lg shadow-lg relative overflow-hidden ${category.color} rotate-1`}
             variants={fadeInAnimationVariants}
             initial='initial'
-            whileInView='animate'
-            viewport={{
-              once: true,
-            }}
+            animate='animate'
             custom={index}
           >
-            {skill}
-          </motion.li>
+            <div className='absolute top-0 left-0 w-full h-8 bg-white/80 text-lg font-semibold flex items-center justify-center'>
+              {category.title}
+            </div>
+            <ul className='mt-10 space-y-3 text-left text-gray-900 dark:text-gray-100'>
+              {category.skills.map((skill, skillIndex) => (
+                <li key={skillIndex} className='text-lg'>
+                  {skill}
+                </li>
+              ))}
+            </ul>
+            <div className='absolute bottom-4 right-4 text-sm text-gray-500'>
+              and more
+            </div>
+          </motion.div>
         ))}
-      </ul>
+      </div>
     </section>
   );
 }

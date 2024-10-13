@@ -1,7 +1,7 @@
 import Intro from "@/components/intro";
 import SectionDivider from "@/components/section-divider";
-import About from "@/components/about";
-import Projects from "@/components/projects";
+import Story from "@/components/story";
+import Works from "@/components/works";
 import Skills from "@/components/skills";
 import Experience from "@/components/experience";
 import Contact from "@/components/contact";
@@ -10,10 +10,10 @@ export default function Home() {
     <main className='flex flex-col items-center px-4'>
       <Intro />
       <SectionDivider />
-      <About />
-      <Projects />
+      <Story />
+      <Works />
       <Skills />
-      <Experience />
+      {/* <Experience /> */}
       <Contact />
     </main>
   );
