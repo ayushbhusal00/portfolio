@@ -5,6 +5,7 @@ import SectionHeading from "./section-heading";
 import { motion } from "framer-motion";
 import { skillsCategories } from "@/lib/data";
 import { UseSectionInView } from "@/lib/hooks";
+import clsx from "clsx";
 
 const fadeInAnimationVariants = {
   initial: { opacity: 0, y: 100 },
@@ -21,7 +22,7 @@ export default function Skills() {
   return (
     <section
       ref={ref}
-      className='max-w-5xl mx-auto mb-28 text-center leading-8 sm:mb-40 scroll-mt-28'
+      className='max-w-[70rem] mx-auto mb-28 text-center leading-8 sm:mb-40 scroll-mt-28'
       id='skills'
     >
       <SectionHeading>Skills</SectionHeading>
@@ -30,25 +31,28 @@ export default function Skills() {
         {skillsCategories.map((category, index) => (
           <motion.div
             key={index}
-            className={`w-[18rem] h-[16rem] p-4 rounded-lg shadow-lg relative overflow-hidden ${category.color} rotate-1`}
+            className={clsx(
+              `w-[18rem] p-4 rounded-lg shadow-lg overflow-hidden relative border border-1 border-gray-100 dark:border-gray-700 `
+            )}
             variants={fadeInAnimationVariants}
             initial='initial'
             animate='animate'
             custom={index}
           >
-            <div className='absolute top-0 left-0 w-full h-8 bg-white/80 text-lg font-semibold flex items-center justify-center'>
+            <div
+              className={clsx(
+                `absolute top-0 left-0 w-full h-12 ${category.color} text-md font-semibold flex items-center justify-center`
+              )}
+            >
               {category.title}
             </div>
-            <ul className='mt-10 space-y-3 text-left text-gray-900 dark:text-gray-100'>
+            <ul className='space-y-3 text-left text-gray-900 dark:text-gray-100'>
               {category.skills.map((skill, skillIndex) => (
-                <li key={skillIndex} className='text-lg'>
+                <li key={skillIndex} className='text-md'>
                   {skill}
                 </li>
               ))}
             </ul>
-            <div className='absolute bottom-4 right-4 text-sm text-gray-500'>
-              and more
-            </div>
           </motion.div>
         ))}
       </div>

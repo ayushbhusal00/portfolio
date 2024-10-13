@@ -2,7 +2,7 @@ import { worksData } from "@/lib/data";
 import { useScroll, motion, useTransform } from "framer-motion";
 import Image from "next/image";
 import { useRef } from "react";
-import clsx from "clsx";
+// import clsx from "clsx";
 
 type WorkProps = (typeof worksData)[number];
 
@@ -21,16 +21,14 @@ export default function Work({
   });
   const scaleProgress = useTransform(scrollYProgress, [0, 1], [0.8, 1]);
   const opacityProgress = useTransform(scrollYProgress, [0, 1], [0.6, 1]);
-
+  // console.log(colorFrom, colorTo);
   // Dynamically generate hover classes based on colorFrom and colorTo
-  const hoverBgClass = `hover:bg-gradient-to-br from-${colorFrom}-200 to-${colorTo}-200`;
+  // const hoverBgClass = `hover:bg-gradient-to-br hover:from-${colorFrom} hover:to-${colorTo}`;
 
   return (
     <motion.section
       ref={ref}
-      className={clsx(
-        `group bg-gray-100 dark:bg-white/10 max-w-[50rem] border border-black/5 overflow-hidden sm:pr-8 relative sm:h-[20rem] mb-3 sm:mb-8 sm:pl-8 dark:hover:bg-white/20 transition rounded-lg ${hoverBgClass}`
-      )}
+      className={`group bg-gray-100 dark:bg-white/10 max-w-[50rem] border border-black/5 overflow-hidden sm:pr-8 relative sm:h-[20rem] mb-3 sm:mb-8 sm:pl-8 transition rounded-lg hover:bg-gradient-to-br hover:from-${colorFrom} hover:to-${colorTo}`}
       style={{
         scale: scaleProgress,
         opacity: opacityProgress,

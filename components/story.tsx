@@ -3,6 +3,7 @@
 import React from "react";
 import { motion } from "framer-motion";
 import Friends1 from "@/public/friends1.png";
+import Friends2 from "@/public/friends2.png";
 import PassionToCook from "@/public/passion-to-cook.png";
 import { UseSectionInView } from "@/lib/hooks";
 import Image from "next/image";
@@ -11,23 +12,28 @@ import SectionHeading from "./section-heading";
 //Logo Imports
 import Litaliano from "@/public/litaliano.png";
 import Antidote from "@/public/antidote.png";
+import AntidoteDark from "@/public/antidote-dark.png";
 import WePlayLogo from "@/public/WePlayLogo.png";
+import WePlayLogoDark from "@/public/weplay-dark.png";
+import Niural from "@/public/niural.png";
+import { useTheme } from "@/context/theme-context";
 
 export default function Story() {
   const { ref } = UseSectionInView("Story");
+  const { theme } = useTheme();
 
   return (
     <motion.section
-      className='max-w-[50rem] min-h-[50vh] mb-28 flex flex-col gap-5 items-center justify-center leading-8 sm:mb-40 scroll-mt-28'
+      className='max-w-[60rem] min-h-[50vh] mb-28 flex flex-col gap-2 sm:gap-5 items-center justify-center leading-8 sm:mb-40 scroll-mt-28]'
       id='story'
     >
       <SectionHeading>My Story</SectionHeading>
-      <div className='flex flex-col sm:flex-row items-center gap-[2rem] text-left mb-20'>
-        <div className='w-[20rem] sm:w-[60%] h-auto flex flex-row gap-2 sm:-gap-[1.25rem] items-center justify-center'>
+      <div className='flex flex-col sm:flex-row items-center text-left gap-[6rem] sm:gap-[2rem] mb-20'>
+        <div className='relative w-[30rem] min-h-[5rem] sm:w-[60%] h-auto flex flex-row gap-2 sm:gap-[2rem] items-center justify-center'>
           {/* First Image Card */}
           <motion.div
             ref={ref}
-            className='-rotate-2 right-[4rem] w-full'
+            className='absolute w-[16rem]'
             initial={{ opacity: 0, rotate: 0, scale: 0.8 }}
             animate={{ opacity: 1, rotate: -8, scale: 1 }}
             transition={{ duration: 0.4, type: "spring" }}
@@ -41,9 +47,10 @@ export default function Story() {
           </motion.div>
 
           {/* Second Image Card */}
+
           <motion.div
             ref={ref}
-            className='rotate-2 -right-[4rem] sm:bottom-1 w-full'
+            className='absolute right-0.5 w-[16rem]'
             initial={{ opacity: 0, rotate: 0, scale: 0.8 }}
             animate={{ opacity: 1, rotate: 8, scale: 1 }}
             transition={{ duration: 0.4, type: "spring" }}
@@ -73,40 +80,36 @@ export default function Story() {
             designs that captivate users, drive engagement, and attract
             investors.
           </motion.p>
-          <motion.p
-            className='mt-4'
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            transition={{ delay: 0.1, duration: 0.5 }}
-            viewport={{ once: true }}
-          >
-            Apart from work I enjoy hanging out with friends and cook or play
-            music on my own.
-          </motion.p>
         </div>
       </div>
-      <div className='flex flex-col text-center items-center'>
+      <div className='flex flex-col gap-4 text-center items-center'>
         <p className='text-xl text-gray-400 mb-4 tracking-wider'>
           So far I have helped 8+ companies ship their products to Prod
         </p>
-        <div className='flex gap-4'>
+        <div className='flex gap-8'>
           <Image
             src={Litaliano}
             alt={"Litaliano: Global Wine Ecommerce"}
-            width={120}
-            height={50}
+            width={160}
+            height={70}
           />
           <Image
-            src={Antidote}
+            src={theme === "light" ? Antidote : AntidoteDark}
             alt={"Antidote: Thrift Clothes Online"}
-            width={120}
-            height={50}
+            width={160}
+            height={70}
           />
           <Image
-            src={WePlayLogo}
+            src={theme === "light" ? WePlayLogo : WePlayLogoDark}
             alt={"WePlay: Online Sports Booking Platform"}
-            width={120}
-            height={50}
+            width={160}
+            height={70}
+          />
+          <Image
+            src={Niural}
+            alt={"Niural: Global payroll & payments platform"}
+            width={160}
+            height={70}
           />
         </div>
       </div>

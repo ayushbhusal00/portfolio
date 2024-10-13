@@ -6,7 +6,7 @@ import { links } from "@/lib/data";
 import Link from "next/link";
 import clsx from "clsx";
 import { UseActiveSectionContext } from "@/context/active-section";
-import Switch from "@/components/switch"; // Import the Switch component
+import Switch from "@/components/switch";
 import Lottie from "@lottielab/lottie-player/react";
 import AyushLogoDark from "@/public/Ayush-Logo-Dark.json";
 import AyushLogoLight from "@/public/Ayush-Logo-Light.json";
@@ -20,7 +20,7 @@ const Header = () => {
   return (
     <header className='sticky top-0 z-[999] w-full flex justify-center py-0 md:py-4 '>
       <motion.div
-        className='w-full max-w-[100%] md:max-w-[75%] flex items-center px-4 py-4 md:py-2 md:rounded-full border border-white dark:border-gray-800 bg-white dark:bg-gray-900 bg-opacity-80 dark:bg-opacity-75 shadow-lg shadow-black/[0.03] backdrop-blur-[0.5rem]'
+        className='w-full max-w-[100%] md:max-w-[90%] lg:max-w-[75%] flex items-center px-4 py-4 md:py-2 md:rounded-full border border-white dark:border-gray-700 bg-white dark:bg-gray-900 bg-opacity-80 dark:bg-opacity-75 shadow-lg shadow-black/[0.03] backdrop-blur-[0.5rem]'
         initial={{ y: -100, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
       >
@@ -28,8 +28,8 @@ const Header = () => {
         <nav className='flex flex-wrap w-full justify-between items-center gap-2 md:gap-5'>
           <Link
             className={clsx(
-              `flex items-center justify-center hover:text-gray-950 dark:hover:text-gray-300 transition 
-              text-gray-950 dark:text-white `
+              `flex items-center justify-center hover:text-gray-750 dark:hover:text-gray-300 transition 
+              text-gray-750 dark:text-white `
             )}
             href={"#home"}
             onClick={() => {
@@ -45,10 +45,10 @@ const Header = () => {
             )}
           </Link>
 
-          <ul className='flex flex-wrap w-auto justify-end items-center gap-y-1 text-[0.9rem] font-medium text-gray-500 dark:text-gray-500'>
+          <ul className='flex flex-wrap w-auto justify-end items-center gap-y-1 text-[0.9rem] font-medium text-gray-300 dark:text-gray-500'>
             {links.map((link) => (
               <motion.li
-                className='relative hidden sm:block'
+                className='relative hidden md:block'
                 key={link.hash}
                 initial={{ y: -100, opacity: 0 }}
                 animate={{ y: 0, opacity: 1 }}
@@ -71,7 +71,7 @@ const Header = () => {
                   {link.name}
                   {link.name === activeSection && (
                     <motion.span
-                      className='bg-gray-100 dark:bg-gray-700 rounded-full absolute inset-0 -z-10'
+                      className='bg-gray-200 dark:bg-gray-700 rounded-full absolute inset-0 -z-10'
                       layoutId='activeSection'
                       transition={{
                         type: "spring",

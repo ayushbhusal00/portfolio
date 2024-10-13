@@ -30,20 +30,20 @@ export const links = [
 ] as const;
 
 export const experiencesData = [
-  {
-    title: "Advanced Diploma in Animation and Visual Effects",
-    location: "Nepal, Maya Animation Academy",
-    description: "Professional Training: Passed with Grade A",
-    icon: React.createElement(LuGraduationCap),
-    date: "Aug 2016 - Sep 2017",
-  },
-  {
-    title: "B.Sc. with Honors in Computing (Software Engineering)",
-    location: "Nepal, NAAMI College affiliated with University of Northampton",
-    description: "Academic Honors: Passed with First Class Honors (A)",
-    icon: React.createElement(LuGraduationCap),
-    date: "Sep 2016 - Jul 2019",
-  },
+  // {
+  //   title: "Advanced Diploma in Animation and Visual Effects",
+  //   location: "Nepal, Maya Animation Academy",
+  //   description: "Professional Training: Passed with Grade A",
+  //   icon: React.createElement(LuGraduationCap),
+  //   date: "Aug 2016 - Sep 2017",
+  // },
+  // {
+  //   title: "B.Sc. with Honors in Computing (Software Engineering)",
+  //   location: "Nepal, NAAMI College affiliated with University of Northampton",
+  //   description: "Academic Honors: Passed with First Class Honors (A)",
+  //   icon: React.createElement(LuGraduationCap),
+  //   date: "Sep 2016 - Jul 2019",
+  // },
 
   {
     title: "Associate Web Designer",
@@ -95,8 +95,8 @@ export const worksData = [
       "Its a global payroll platform, that serves all aspects of hiring from hiring to payroll.",
     tags: ["Figma", "Design System", "Branding", "UX Research", "WebFlow"],
     imageUrl: NiuralWebsite,
-    colorFrom: "lime",
-    colorTo: "green",
+    colorFrom: "lime-200",
+    colorTo: "emerald-500",
   },
   {
     title: "WePlay",
@@ -111,8 +111,8 @@ export const worksData = [
       "Web Design",
     ],
     imageUrl: WePlay,
-    colorFrom: "red",
-    colorTo: "ember",
+    colorFrom: "red-200",
+    colorTo: "rose-500",
   },
   {
     title: "Vesper Fine Wines",
@@ -120,8 +120,8 @@ export const worksData = [
       "An ecommerce website to buy best and largest varietal of wines in Nepal. Responsive and user-frieldly application for both Web and Mobile users.",
     tags: ["React", "Next.js", "SQL", "Tailwind", "Prisma"],
     imageUrl: VesperFineWines,
-    colorFrom: "amber",
-    colorTo: "orange",
+    colorFrom: "amber-200",
+    colorTo: "red-500",
   },
 ] as const;
 
@@ -158,12 +158,12 @@ export const skillsCategories = [
       "Design Systems",
       "UI Animation",
     ],
-    color: "bg-lime-500",
+    color: "bg-lime-200 dark:bg-lime-900",
   },
   {
     title: "For Products In",
     skills: ["SaaS", "FinTech", "Web 3.0", "AI", "MedTech"],
-    color: "bg-purple-200",
+    color: "bg-purple-200 dark:bg-purple-900",
   },
   {
     title: "Using Tools Like",
@@ -175,6 +175,6 @@ export const skillsCategories = [
       "Photoshop",
       "Spline",
     ],
-    color: "bg-blue-500",
+    color: "bg-blue-200 dark:bg-blue-900",
   },
 ] as const;

@@ -8,12 +8,41 @@ const config: Config = {
     "./pages/**/*.{js,ts,jsx,tsx,mdx}",
     "./components/**/*.{js,ts,jsx,tsx,mdx}",
     "./app/**/*.{js,ts,jsx,tsx,mdx}",
+    "./lib/**/*.{js,ts,jsx,tsx,mdx}",
   ],
   theme: {
     extend: {
       colors: {
         background: "var(--background)",
         foreground: "var(--foreground)",
+        lime: {
+          200: "#d9f99d",
+          500: "#84cc16", // Example color
+        },
+        purple: {
+          200: "#e9d5ff",
+          500: "#a855f7",
+        },
+        blue: {
+          200: "#bfdbfe",
+          500: "#3b82f6",
+        },
+        rose: {
+          200: "#fecdd3",
+          500: "#f43f5e",
+        },
+        red: {
+          200: "#fecaca",
+          500: "#ef4444",
+        },
+        amber: {
+          200: "#fef3c7",
+          500: "#f59e0b",
+        },
+        emerald: {
+          200: "#10b981",
+          500: "#10b981",
+        },
       },
     },
   },
