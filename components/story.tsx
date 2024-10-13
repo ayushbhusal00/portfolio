@@ -3,7 +3,6 @@
 import React from "react";
 import { motion } from "framer-motion";
 import Friends1 from "@/public/friends1.png";
-import Friends2 from "@/public/friends2.png";
 import PassionToCook from "@/public/passion-to-cook.png";
 import { UseSectionInView } from "@/lib/hooks";
 import Image from "next/image";
