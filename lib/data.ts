@@ -7,10 +7,10 @@ import VesperFineWines from "@/public/VesperFineWines.png";
 import WePlay from "@/public/WePlay.png";
 
 export const links = [
-  // {
-  //   name: "Home",
-  //   hash: "#home",
-  // },
+  {
+    name: "Home",
+    hash: "#home",
+  },
   {
     name: "Story",
     hash: "#story",

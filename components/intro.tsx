@@ -10,11 +10,14 @@ import Link from "next/link";
 import Portrait from "@/public/Portrait.png";
 
 import { UseActiveSectionContext } from "@/context/active-section";
+import { UseSectionInView } from "@/lib/hooks";
 
 export default function intro() {
+  const { ref } = UseSectionInView("Home");
   const { setTimeOfLastClick } = UseActiveSectionContext();
   return (
     <section
+      ref={ref}
       id='home'
       className=' max-w-[50rem] scroll-mt-[100rem] my-28 sm:my-32 mb-20 sm:mb-0'
     >
@@ -55,8 +58,8 @@ export default function intro() {
           animate={{ opacity: 1, y: 0 }}
         >
           <span className='font-bold'>🤘Hello, I'm Ayush, </span>a Web/{" "}
-          <span className='font-bold'>Product Designer </span>and, I work to to
-          transform <span className='italic'>product ideas to reality </span>
+          <span className='font-bold'>Product Designer </span>and, I work to
+          create <span className='italic'>ideas to reality. </span>
         </motion.h1>
         <motion.div
           className='flex flex-col sm:flex-row  w-full gap-4 items-center justify-center px-4 text-lg font-medium'
