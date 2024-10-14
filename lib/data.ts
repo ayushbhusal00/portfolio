@@ -95,8 +95,8 @@ export const worksData = [
       "Its a global payroll platform, that serves all aspects of hiring from hiring to payroll.",
     tags: ["Figma", "Design System", "Branding", "UX Research", "WebFlow"],
     imageUrl: NiuralWebsite,
-    colorFrom: "lime-200",
-    colorTo: "emerald-500",
+    colorFrom: "#bef264", // lime-200 equivalent
+    colorTo: "#10b981", // emerald-500 equivalent
   },
   {
     title: "WePlay",
@@ -111,17 +111,17 @@ export const worksData = [
       "Web Design",
     ],
     imageUrl: WePlay,
-    colorFrom: "red-200",
-    colorTo: "rose-500",
+    colorFrom: "#fecaca", // red-200 equivalent
+    colorTo: "#f43f5e", // rose-500 equivalent
   },
   {
     title: "Vesper Fine Wines",
     description:
-      "An ecommerce website to buy best and largest varietal of wines in Nepal. Responsive and user-frieldly application for both Web and Mobile users.",
+      "An ecommerce website to buy best and largest varietal of wines in Nepal. Responsive and user-friendly application for both Web and Mobile users.",
     tags: ["React", "Next.js", "SQL", "Tailwind", "Prisma"],
     imageUrl: VesperFineWines,
-    colorFrom: "amber-200",
-    colorTo: "red-500",
+    colorFrom: "#fde68a", // amber-200 equivalent
+    colorTo: "#ef4444", // red-500 equivalent
   },
 ] as const;
 

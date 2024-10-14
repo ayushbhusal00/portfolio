@@ -12,6 +12,14 @@ const config: Config = {
   ],
   theme: {
     extend: {
+      backgroundImage: {
+        "from-lime-to-emerald":
+          "linear-gradient(to bottom right, #bef264, #10b981)",
+        "from-red-to-rose":
+          "linear-gradient(to bottom right, #fecaca, #f43f5e)",
+        "from-amber-to-red":
+          "linear-gradient(to bottom right, #fde68a, #ef4444)",
+      },
       colors: {
         background: "var(--background)",
         foreground: "var(--foreground)",

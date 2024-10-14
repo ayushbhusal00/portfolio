@@ -1,23 +1,22 @@
 import React from "react";
-
 import Image from "next/image";
 import Friends1 from "@/public/friends1.png";
-import Friends2 from "@/public/friends2.png";
+import Gym from "@/public/gym.png";
 import PassionToCook from "@/public/passion-to-cook.png";
 import NotWorking from "@/public/when-i-am-not-working.svg";
 
 export default function OutsideWork() {
   return (
-    <section className='max-w-[70rem] mx-auto text-center leading-8 scroll-mt-28'>
-      <div className='relative py-[10rem] flex flex-col sm:flex-row items-center text-left gap-[6rem] sm:gap-[2rem] mb-20'>
+    <section className='w-full sm:max-w-[50rem] mx-auto text-center leading-8 scroll-mt-28'>
+      <div className='relative py-[6rem] flex flex-col sm:flex-row items-center text-left gap-[6rem] sm:gap-[2rem] mb-20'>
         <Image
           className='absolute top-0 left-0'
           src={NotWorking}
           alt='Text Explaining When I am Not Working'
         />
-        <div className='relative w-[40rem] min-h-[5rem] sm:w-[60%] h-auto flex flex-row gap-4 sm:gap-[4rem] items-center justify-center'>
+        <div className='relative w-[40rem] min-h-[5rem] sm:w-[60%] h-auto flex flex-row items-center justify-center'>
           {/* First Image Card */}
-          <div className='absolute -rotate-2 left-2 w-[10rem]'>
+          <div className='absolute -rotate-2 left-[6rem] sm:-left-[1rem] w-[10rem] transform transition-transform duration-500 hover:scale-110 hover:-rotate-6 hover:translate-y-[-10px]'>
             <Image
               src={PassionToCook}
               alt='Enjoying Cooking by myself'
@@ -26,15 +25,16 @@ export default function OutsideWork() {
           </div>
 
           {/* Second Image Card */}
-          <div className='absolute w-[10rem]'>
+          <div className='absolute w-[10rem] transform transition-transform duration-500 hover:scale-110 hover:rotate-6 hover:translate-y-[-10px]'>
             <Image
-              src={Friends2}
-              alt='Image of my friends attending events'
+              src={Gym}
+              alt='Passion to gym'
               className='rounded-lg shadow-lg'
             />
           </div>
+
           {/* Third Image Card */}
-          <div className='absolute rotate-2 right-2 w-[10rem]'>
+          <div className='absolute rotate-2 right-[6rem] sm:-right-[0.5rem] w-[10rem] transform transition-transform duration-500 hover:scale-110 hover:rotate-6 hover:translate-y-[-10px]'>
             <Image
               src={Friends1}
               alt='Image of my friends attending events'
@@ -42,10 +42,12 @@ export default function OutsideWork() {
             />
           </div>
         </div>
-        <div className='w-70 sm:w-[60%]'>
+        <div className='sm:w-[50%]'>
           <p>
-            Apart from work I enjoy hanging out with friends and cook or play
-            music on my own.
+            As much as I enjoy my work, I also enjoy living life to the fullest.
+            I am currently learning music, cooking, art and ways to stay
+            healthy. I also enjoy spending my time with friends whenever I am
+            not learning to code or design.
           </p>
         </div>
       </div>
