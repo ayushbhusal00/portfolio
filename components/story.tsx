@@ -2,7 +2,7 @@
 
 import React from "react";
 import { motion } from "framer-motion";
-import Working from "@/public/working.png";
+import OhoDigital from "@/public/oho-digital.png";
 import NiuralGroup from "@/public/Niural-Group.png";
 import { UseSectionInView } from "@/lib/hooks";
 import Image from "next/image";
@@ -56,8 +56,8 @@ export default function Story() {
             viewport={{ once: true }}
           >
             <Image
-              src={Working}
-              alt='Image of my friends attending events'
+              src={OhoDigital}
+              alt='Group Picture With the M&S Team'
               className='rounded-lg shadow-lg'
             />
           </motion.div>
