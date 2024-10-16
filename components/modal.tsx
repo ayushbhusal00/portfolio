@@ -90,10 +90,28 @@ const caseStudies: CaseStudy[] = [
 type ModalProps = {
   id: number;
 };
+
 export default function Modal({ id = 1 }: ModalProps) {
   const { modalState, toggleModalState } = useModal();
 
-  if (!modalState) return null;
+  // Refs for each section
+  const sectionRefs = useRef<(HTMLDivElement | null)[]>([]);
+  const [activeSectionIndex, setActiveSectionIndex] = useState(0);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const sectionOffsets = sectionRefs.current.map(
+        (ref) => ref?.getBoundingClientRect().top || 0
+      );
+      const visibleIndex = sectionOffsets.findIndex((offset) => offset >= 0);
+      if (visibleIndex !== -1) setActiveSectionIndex(visibleIndex);
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
 
   const caseStudy = caseStudies[id - 1];
 
@@ -111,23 +129,7 @@ export default function Modal({ id = 1 }: ModalProps) {
     },
   };
 
-  useEffect(() => {
-    const handleScroll = () => {
-      const sectionOffsets = sectionRefs.current.map(
-        (ref) => ref?.getBoundingClientRect().top || 0
-      );
-      const visibleIndex = sectionOffsets.findIndex((offset) => offset >= 0);
-      if (visibleIndex !== -1) setActiveSectionIndex(visibleIndex);
-    };
-
-    window.addEventListener("scroll", handleScroll);
-    return () => {
-      window.removeEventListener("scroll", handleScroll);
-    };
-  }, []);
-  // Refs for each section
-  const sectionRefs = useRef<(HTMLDivElement | null)[]>([]);
-  const [activeSectionIndex, setActiveSectionIndex] = useState(0);
+  if (!modalState) return null;
 
   return (
     <div
