@@ -1,3 +1,4 @@
+import { useModal } from "@/context/modal-context";
 import { worksData } from "@/lib/data";
 import clsx from "clsx";
 import { motion } from "framer-motion";
@@ -12,11 +13,13 @@ export default function Work({
   tags,
   imageUrl,
 }: WorkProps) {
+  const { toggleModalState } = useModal();
   const ref = useRef<HTMLElement>(null);
 
   return (
     <motion.section
       ref={ref}
+      onClick={toggleModalState}
       className={clsx(
         `group max-w-[50rem] border border-black/5 overflow-hidden sm:pr-8 relative sm:h-[20rem] mb-3 sm:mb-8 sm:pl-8 transition rounded-lg bg-gray-50 dark:bg-gray-800 hover:bg-gradient-to-br hover:from-orange-100 hover:to-orange-300 dark:hover:from-purple-600/20 dark:hover:to-purple-900/40 cursor-pointer `
       )}

@@ -23,12 +23,12 @@ export default function Story() {
 
   return (
     <motion.section
-      className='max-w-[60rem] min-h-[50vh] mb-28 flex flex-col gap-2 sm:gap-5 items-center justify-center leading-8 sm:mb-40 scroll-mt-28]'
+      className='w-full sm:max-w-[60rem] min-h-[50vh] mb-28 flex flex-col gap-2 sm:gap-5 items-center justify-center leading-8 sm:mb-40 scroll-mt-28]'
       id='story'
     >
       <SectionHeading>My Story</SectionHeading>
-      <div className='flex flex-col sm:flex-row items-center text-left gap-[6rem] sm:gap-[2rem] mb-20 mt-20'>
-        <div className='relative w-[30rem] min-h-[5rem] sm:w-[60%] h-auto flex flex-row gap-2 sm:gap-[2rem] items-center justify-center'>
+      <div className='w-full flex flex-col sm:flex-row items-center text-left gap-[6rem] sm:gap-[2rem] mb-20 mt-10'>
+        <div className=' relative w-full min-h-[5rem] sm:w-[60%] h-auto flex flex-row gap-2 sm:gap-[2rem] items-center justify-center'>
           {/* First Image Card */}
           <motion.div
             ref={ref}
@@ -62,7 +62,7 @@ export default function Story() {
             />
           </motion.div>
         </div>
-        <div className='w-70 sm:w-[60%] gap-4 text-gray-700 dark:text-gray-400'>
+        <div className='w-70 sm:w-[60%] gap-4 text-gray-700 dark:text-gray-400 text-center sm:text-left'>
           <motion.p
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
@@ -84,7 +84,7 @@ export default function Story() {
         <p className='text-xl text-gray-400 mb-4 tracking-wider'>
           So far I have helped 8+ companies ship their products to Prod
         </p>
-        <div className='flex gap-8'>
+        <div className='grid grid-cols-2 sm:grid-cols-4 gap-8'>
           <Image
             src={Litaliano}
             alt={"Litaliano: Global Wine Ecommerce"}

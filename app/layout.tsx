@@ -7,6 +7,7 @@ import { Toaster } from "react-hot-toast";
 import Footer from "@/components/footer";
 import ThemeContextProvider from "@/context/theme-context";
 import { Analytics } from "@vercel/analytics/react";
+import ModalContextProvider from "@/context/modal-context";
 
 const manropeGX = localFont({
   src: "./fonts/ManropeGX.woff2",
@@ -35,12 +36,14 @@ export default function RootLayout({
 
         <ThemeContextProvider>
           <ActiveSectionContextProvider>
-            {/* <GridComponent /> */}
-            <Header />
-            {children}
-            <Toaster position='top-right' />
-            <Footer />
-            {/* <ThemeSwitch /> */}
+            <ModalContextProvider>
+              {/* <GridComponent /> */}
+              <Header />
+              {children}
+              <Toaster position='top-right' />
+              <Footer />
+              {/* <ThemeSwitch /> */}
+            </ModalContextProvider>
           </ActiveSectionContextProvider>
         </ThemeContextProvider>
 

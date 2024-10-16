@@ -14,9 +14,9 @@ export default function OutsideWork() {
           src={NotWorking}
           alt='Text Explaining When I am Not Working'
         />
-        <div className='relative w-[40rem] min-h-[5rem] sm:w-[60%] h-auto flex flex-row items-center justify-center'>
+        <div className='relative w-full min-h-[5rem] sm:w-[60%] h-auto flex flex-row items-center justify-center'>
           {/* First Image Card */}
-          <div className='absolute -rotate-2 left-[6rem] sm:-left-[1rem] w-[10rem] transform transition-transform duration-500 hover:scale-110 hover:-rotate-6 hover:translate-y-[-10px]'>
+          <div className='absolute -rotate-2 left-0 sm:-left-[1rem] w-[10rem] transform transition-transform duration-500 hover:scale-110 hover:-rotate-6 hover:translate-y-[-10px]'>
             <Image
               src={PassionToCook}
               alt='Enjoying Cooking by myself'
@@ -34,7 +34,7 @@ export default function OutsideWork() {
           </div>
 
           {/* Third Image Card */}
-          <div className='absolute rotate-2 right-[6rem] sm:-right-[0.5rem] w-[10rem] transform transition-transform duration-500 hover:scale-110 hover:rotate-6 hover:translate-y-[-10px]'>
+          <div className='absolute rotate-2 right-0 sm:-right-[0.5rem] w-[10rem] transform transition-transform duration-500 hover:scale-110 hover:rotate-6 hover:translate-y-[-10px]'>
             <Image
               src={Friends1}
               alt='Image of my friends attending events'
