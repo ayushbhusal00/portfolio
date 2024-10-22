@@ -5,6 +5,20 @@ import { LuGraduationCap } from "react-icons/lu";
 import NiuralWebsite from "@/public/NiuralWebsite.png";
 import VesperFineWines from "@/public/VesperFineWines.png";
 import WePlay from "@/public/WePlay.png";
+import WeplayHeroSection from "@/public/hero-section.png";
+import Section1 from "@/public/section1-weplay.png";
+import Section2 from "@/public/section2-weplay.png";
+import Section3 from "@/public/section3-weplay.png";
+import Section4 from "@/public/section4-weplay.png";
+import Section5 from "@/public/section6-weplay.png";
+import Section6 from "@/public/section7-weplay.png";
+
+import NiuralHeroSection from "@/public/Hero Section.png";
+import DesignSystem from "@/public/Design System.png";
+import TimeSheet from "@/public/Time Sheet.png";
+import Payroll from "@/public/Payroll.png";
+import PaymentMethod from "@/public/Payment Method.png";
+import { StaticImageData } from "next/image";
 
 export const links = [
   {
@@ -162,7 +176,7 @@ export const skillsCategories = [
   },
   {
     title: "For Products In",
-    skills: ["SaaS", "FinTech", "Web 3.0", "AI", "MedTech"],
+    skills: ["SaaS", "FinTech", "Web 3.0", "AI", "VR", "3D Visualization"],
     color: "bg-purple-200 dark:bg-purple-900",
   },
   {
@@ -170,11 +184,174 @@ export const skillsCategories = [
     skills: [
       "Figma",
       "After Effects",
-      "Framer",
+      "Webflow",
       "Illustrator",
       "Photoshop",
-      "Spline",
+      "Lottie",
     ],
     color: "bg-blue-200 dark:bg-blue-900",
   },
 ] as const;
+
+type CaseStudy = {
+  companyName: string;
+  heroSection: {
+    image: StaticImageData;
+    title: string;
+    tagsOfWork: string[];
+    description: string;
+    collaborators: string[];
+    duration: string;
+    tools: string[];
+    roles: string[];
+  };
+  sections: {
+    title: string;
+    description: string;
+    image: StaticImageData;
+  }[];
+};
+
+// Case study array with updated content
+export const caseStudies: CaseStudy[] = [
+  {
+    companyName: "Niural Inc.",
+    heroSection: {
+      image: NiuralHeroSection,
+      title: "Complete Product Design for a Payroll Application",
+      tagsOfWork: ["UX Research", "UI Design", "Prototyping"],
+      description:
+        "I was involved in Niural for over 2 years, my contributions include creating the MVP designs to current full fledged industry level application.",
+      collaborators: ["Ayush Bhusal"],
+      duration: "2 years",
+      tools: ["Figma", "After Effects", "Illustrator"],
+      roles: ["UI/UX Designer", "Product Manager", "Prototyper"],
+    },
+    sections: [
+      {
+        title: "A robust and modern Design System",
+        description:
+          "Niural's design system has been through 3 iterations, currently redesigned to solve the issues for complex navigations, modern UI, customizable theming capabilities and new brand style to reach the global customers.",
+        image: DesignSystem,
+      },
+      {
+        title: "Payroll",
+        description:
+          "US Payroll is complicated for Employees as well as Employers as taxation is a critical aspect for any job holders & Companies. US has a complex taxation system that changes based on federal, state, county, and sometimes city codes as well. Our team researched the most to make this process seamless and have boiled down the process for payroll that takes 20-30days to 5 mins of operations. This is the most revenue generating and demanded product Niural offers.",
+        image: Payroll,
+      },
+      {
+        title: "Expense & Time Tools",
+        description:
+          "A supporting feature for any payroll is expense management. Niural offers an easy interface for employees to submit their timely expenses as reports and provides an easy way for employers to approve or reject items to current pay cycle. It also considers types like allowance so that they are taxed properly without employers having to manually enter or record any additional items.<br>Few states manadate certail time offs, Niural offers a complete suite of settings to configure time offs for their employees. Same as Expense management, time tools are also handled with an intuitive UI manage, approve of reject employees time off requests.",
+        image: TimeSheet,
+      },
+
+      {
+        title: "Wallet Support",
+        description:
+          "Niural supports both crypto, and fiat payment system. Supporting over 160+ countries and all local currencies for any employers to be able to execute global payrolls in Niural. I worked to simplify and connect the flow where crypto are very different from fiat payments and have worked to create a consistent user experience and a seamless one.",
+        image: PaymentMethod,
+      },
+    ],
+  },
+  {
+    companyName: "WePlay",
+    heroSection: {
+      image: WeplayHeroSection,
+      title: "New Feature Research & App Redesign",
+      tagsOfWork: ["UX Research", "UI Design", "Prototyping"],
+      description:
+        "A 3-month redesign project to enhance the user experience and drive engagement.",
+      collaborators: ["Ayush Bhusal"],
+      duration: "3 months",
+      tools: ["Figma", "Animate CC", "Illustrator"],
+      roles: ["UI/UX Designer", "Prototyper"],
+    },
+    sections: [
+      {
+        title: "Problem",
+        description:
+          "WePlay's user satisfaction stayed consistent, but growth stagnated. The app lacked necessary features, leading to lower user engagement.",
+        image: Section1,
+      },
+      {
+        title: "Solution",
+        description:
+          "Through research and user interviews, we redefined the app to solve real user problems by improving the booking flow and adding new features.",
+        image: Section2,
+      },
+      {
+        title: "Design Process",
+        description:
+          "We adopted a user-centered approach using 'Design Thinking,' which involved users throughout the design process to ensure usability and accessibility.",
+        image: Section3,
+      },
+      {
+        title: "Research",
+        description:
+          "Conducted user interviews and probe studies to understand attitudes toward booking spaces. Insights were gathered to define key pain points.",
+        image: Section4,
+      },
+      {
+        title: "Ideation",
+        description:
+          "Using journey mapping and competitor analysis, we brainstormed and created storyboards to visualize solutions that addressed user needs.",
+        image: Section5,
+      },
+      {
+        title: "Design",
+        description:
+          "Wireframes, rebranding, and high-fidelity mockups were created to implement the solution, focusing on user-centered design principles.",
+        image: Section6,
+      },
+    ],
+  },
+  {
+    companyName: "Vesper Fine Wines",
+    heroSection: {
+      image: WeplayHeroSection,
+      title: "Ecommerce Application for Wine Shopping",
+      tagsOfWork: ["UX Research", "UI Design", "Development"],
+      description:
+        "Designed and Developed an Ecommerce Application for Mobile and Web for Nepal",
+      collaborators: ["Ayush Bhusal"],
+      duration: "11 months",
+      tools: ["Figma", "React", "Next JS"],
+      roles: ["UI/UX Designer", "Developer"],
+    },
+    sections: [
+      {
+        title: "Problem",
+        description:
+          "Vesper a leading Wine supplier in Nepal always had a web portal to buy wines but due to the lack of features like updating products, organizing events and promotions and a good payment integration, never had been used and had 0 sales.",
+        image: Section1,
+      },
+      {
+        title: "Solution",
+        description:
+          "I was hired to work with the sales and the existing development team to redesign and develop current existing application and integrate new features so its easy to be used.",
+        image: Section2,
+      },
+      {
+        title: "New Layout and Redesign of all components",
+        description:
+          "Users could now view promotions, easily preview products and add them to cart for shopping. The product page component was fully redesigned and redeveloped to include the complex features needed for filtering.",
+        image: Section3,
+      },
+      {
+        title: "Payments API Integrations",
+        description:
+          "Vesper has a client base of foreigners and locals who enjoy wines. We integrated a payment API to support card payments, local bank payments and Fonepay QR payments.",
+        image: Section4,
+      },
+      {
+        title: "Outcome",
+        description:
+          "The sales through the new ecommerce application went up by 1500+ orders and revenue of +1million.",
+        image: Section5,
+      },
+    ],
+  },
+  // Additional case studies if necessary...
+];

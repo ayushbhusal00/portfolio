@@ -3,90 +3,9 @@ import React, { useRef, useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import { useModal } from "@/context/modal-context";
 import { FaArrowLeft, FaArrowRight } from "react-icons/fa";
-import Image, { StaticImageData } from "next/image";
-import HeroSection from "@/public/hero-section.png";
-import Section1 from "@/public/section1-weplay.png";
-import Section2 from "@/public/section2-weplay.png";
-import Section3 from "@/public/section3-weplay.png";
-import Section4 from "@/public/section4-weplay.png";
-import Section5 from "@/public/section6-weplay.png";
-import Section6 from "@/public/section7-weplay.png";
+import Image from "next/image";
+import { caseStudies } from "@/lib/data";
 
-type CaseStudy = {
-  companyName: string;
-  heroSection: {
-    image: StaticImageData;
-    title: string;
-    tagsOfWork: string[];
-    description: string;
-    collaborators: string[];
-    duration: string;
-    tools: string[];
-    roles: string[];
-  };
-  sections: {
-    title: string;
-    description: string;
-    image: StaticImageData;
-  }[];
-};
-
-// Case study array with updated content
-const caseStudies: CaseStudy[] = [
-  {
-    companyName: "WePlay",
-    heroSection: {
-      image: HeroSection,
-      title: "New Feature Research & App Redesign",
-      tagsOfWork: ["UX Research", "UI Design", "Prototyping"],
-      description:
-        "A 3-month redesign project to enhance the user experience and drive engagement.",
-      collaborators: ["Ayush Bhusal"],
-      duration: "3 months",
-      tools: ["Figma", "Animate CC", "Illustrator"],
-      roles: ["UI/UX Designer", "Prototyper"],
-    },
-    sections: [
-      {
-        title: "Problem",
-        description:
-          "WePlay's user satisfaction stayed consistent, but growth stagnated. The app lacked necessary features, leading to lower user engagement.",
-        image: Section1,
-      },
-      {
-        title: "Solution",
-        description:
-          "Through research and user interviews, we redefined the app to solve real user problems by improving the booking flow and adding new features.",
-        image: Section2,
-      },
-      {
-        title: "Design Process",
-        description:
-          "We adopted a user-centered approach using 'Design Thinking,' which involved users throughout the design process to ensure usability and accessibility.",
-        image: Section3,
-      },
-      {
-        title: "Research",
-        description:
-          "Conducted user interviews and probe studies to understand attitudes toward booking spaces. Insights were gathered to define key pain points.",
-        image: Section4,
-      },
-      {
-        title: "Ideation",
-        description:
-          "Using journey mapping and competitor analysis, we brainstormed and created storyboards to visualize solutions that addressed user needs.",
-        image: Section5,
-      },
-      {
-        title: "Design",
-        description:
-          "Wireframes, rebranding, and high-fidelity mockups were created to implement the solution, focusing on user-centered design principles.",
-        image: Section6,
-      },
-    ],
-  },
-  // Additional case studies if necessary...
-];
 type ModalProps = {
   id: number;
 };
