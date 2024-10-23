@@ -1,18 +1,14 @@
 "use client";
 
 import React from "react";
-import SectionHeading from "./section-heading";
 import { caseStudies } from "@/lib/data";
-import Work from "./work";
-import { UseSectionInView } from "@/lib/hooks";
+import Work from "@/components/work";
 
-export default function Works() {
-  const { ref } = UseSectionInView("Works", 0.5);
-
+export default function ProjectsPage() {
   return (
-    <section ref={ref} id='works' className='scroll-mt-28 mb-28'>
-      <SectionHeading>Works Selected from 2019</SectionHeading>
-      <div>
+    <section className='max-w-[50rem] mx-auto justify-center'>
+      <div className='flex flex-col items-center justify-center '>
+        <h1 className='text-2xl font-bold mb-4'>Projects</h1>
         {caseStudies.map((work, index) => (
           <React.Fragment key={index}>
             <Work

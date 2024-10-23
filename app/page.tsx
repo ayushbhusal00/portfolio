@@ -5,12 +5,12 @@ import Works from "@/components/works";
 import Skills from "@/components/skills";
 import Contact from "@/components/contact";
 import OutsideWork from "@/components/outside-work";
-import Modal from "@/components/modal";
+import Header from "@/components/header";
 
 export default function Home() {
   return (
     <main className='flex flex-col items-center px-4'>
-      <Modal id={1} />
+      <Header />
       <Intro />
       <SectionDivider />
       <Story />

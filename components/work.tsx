@@ -1,25 +1,32 @@
-import { useModal } from "@/context/modal-context";
-import { worksData } from "@/lib/data";
+"use client";
 import clsx from "clsx";
 import { motion } from "framer-motion";
-import Image from "next/image";
+import Image, { StaticImageData } from "next/image";
 import { useRef } from "react";
+import { useRouter } from "next/navigation";
 
-type WorkProps = (typeof worksData)[number];
+type WorkProps = {
+  index: number;
+  title: string;
+  description: string;
+  tags: string[];
+  imageUrl: StaticImageData;
+};
 
 export default function Work({
+  index,
   title,
   description,
   tags,
   imageUrl,
 }: WorkProps) {
-  const { toggleModalState } = useModal();
   const ref = useRef<HTMLElement>(null);
+  const router = useRouter();
 
   return (
     <motion.section
       ref={ref}
-      onClick={toggleModalState}
+      onClick={() => router.push(`/projects/${index}`)}
       className={clsx(
         `group max-w-[50rem] border border-black/5 overflow-hidden sm:pr-8 relative sm:h-[20rem] mb-3 sm:mb-8 sm:pl-8 transition rounded-lg bg-gray-50 dark:bg-gray-800 hover:bg-gradient-to-br hover:from-orange-100 hover:to-orange-300 dark:hover:from-purple-600/20 dark:hover:to-purple-900/40 cursor-pointer `
       )}

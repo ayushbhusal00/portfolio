@@ -1,13 +1,11 @@
 import type { Metadata } from "next";
 import localFont from "next/font/local";
 import "./globals.css";
-import Header from "@/components/header";
 import ActiveSectionContextProvider from "@/context/active-section";
 import { Toaster } from "react-hot-toast";
 import Footer from "@/components/footer";
 import ThemeContextProvider from "@/context/theme-context";
 import { Analytics } from "@vercel/analytics/react";
-import ModalContextProvider from "@/context/modal-context";
 
 const manropeGX = localFont({
   src: "./fonts/ManropeGX.woff2",
@@ -36,14 +34,9 @@ export default function RootLayout({
 
         <ThemeContextProvider>
           <ActiveSectionContextProvider>
-            <ModalContextProvider>
-              {/* <GridComponent /> */}
-              <Header />
-              {children}
-              <Toaster position='top-right' />
-              <Footer />
-              {/* <ThemeSwitch /> */}
-            </ModalContextProvider>
+            {children}
+            <Toaster position='top-right' />
+            <Footer />
           </ActiveSectionContextProvider>
         </ThemeContextProvider>
 
