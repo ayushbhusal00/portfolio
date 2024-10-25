@@ -7,10 +7,8 @@ import Image from "next/image";
 
 export default function ProjectDetail() {
   const { id } = useParams(); // Retrieve the project ID from the URL
-  // Ensure the id is a number by using parseInt
   const projectId = Array.isArray(id) ? parseInt(id[0]) : parseInt(id);
 
-  // Refs for each section
   const sectionRefs = useRef<(HTMLDivElement | null)[]>([]);
   const [activeSectionIndex, setActiveSectionIndex] = useState(0);
 
@@ -35,15 +33,16 @@ export default function ProjectDetail() {
     <section className='mx-auto w-full max-w-[100%] md:max-w-[90%] lg:max-w-[75%] px-4'>
       <div className='relative flex w-full h-full'>
         {/* Sticky Sidebar for Navigation */}
-        <div className='hidden sm:block sticky top-0 w-1/4 p-5 h-full'>
-          <ul className='space-y-4 text-gray-700 overflow-y-auto'>
+        <div className='hidden sm:block sticky top-[10%] w-1/4 p-5 h-[100vh]'>
+          {/* top-[20%] ensures it starts 20% down, adjusting for the header */}
+          <ul className='space-y-4 text-gray-700 dark:text-gray-300 overflow-y-auto'>
             <li className='font-bold'>{caseStudy.companyName}</li>
             {caseStudy.sections.map((section, index) => (
               <li
                 key={index}
-                className={`cursor-pointer hover:text-orange-600 ${
+                className={`cursor-pointer hover:text-orange-600 dark:hover:text-purple-400 ${
                   activeSectionIndex === index
-                    ? "text-orange-600 font-semibold"
+                    ? "text-orange-600 dark:text-purple-400 font-semibold"
                     : ""
                 }`}
                 onClick={() =>
@@ -70,18 +69,18 @@ export default function ProjectDetail() {
             <h2 className='text-xl font-semibold mb-4'>
               {caseStudy.heroSection.title}
             </h2>
-            <p className='text-gray-600 mb-4'>
+            <p className='text-gray-600 dark:text-gray-300 mb-4'>
               {caseStudy.heroSection.description}
             </p>
             <div className='grid grid-cols-2 sm:grid-cols-4'>
               <div>
-                <p className=' text-gray-500'>Collaborators:</p>
+                <p className='text-gray-500'>Collaborators:</p>
                 <p className='font-bold'>
                   {caseStudy.heroSection.collaborators.join(", ")}
                 </p>
               </div>
               <div>
-                <p className=' text-gray-500'>Duration:</p>
+                <p className='text-gray-500'>Duration:</p>
                 <p className='font-bold'>{caseStudy.heroSection.duration}</p>
               </div>
               <div>
@@ -108,7 +107,9 @@ export default function ProjectDetail() {
                   <h2 className='text-xl font-semibold mb-4'>
                     {section.title}
                   </h2>
-                  <p className='text-gray-600 mb-4'>{section.description}</p>
+                  <p className='text-gray-600 dark:text-gray-300 mb-4'>
+                    {section.description}
+                  </p>
                   <Image
                     src={section.image}
                     alt={section.title}

@@ -1,7 +1,7 @@
 import Intro from "@/components/intro";
 import SectionDivider from "@/components/section-divider";
 import Story from "@/components/story";
-import Works from "@/components/works";
+import Projects from "@/components/projects";
 import Skills from "@/components/skills";
 import Contact from "@/components/contact";
 import OutsideWork from "@/components/outside-work";
@@ -14,7 +14,7 @@ export default function Home() {
       <Intro />
       <SectionDivider />
       <Story />
-      <Works />
+      <Projects />
       <Skills />
       <OutsideWork />
       <Contact />
