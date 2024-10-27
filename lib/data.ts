@@ -20,7 +20,7 @@ import Payroll from "@/public/Payroll.png";
 import PaymentMethod from "@/public/Payment Method.png";
 import { StaticImageData } from "next/image";
 
-import Home from "@/public/Shop.png";
+import Shop from "@/public/Shop.png";
 import Club from "@/public/Club.png";
 export const links = [
   {
@@ -333,7 +333,7 @@ export const caseStudies: CaseStudy[] = [
         title: "Solution",
         description:
           "I was hired to work with the sales and the existing development team to redesign and develop current existing application and integrate new features so its easy to be used.",
-        image: Section2,
+        image: Shop,
       },
       {
         title: "New Layout and Redesign of all components",
