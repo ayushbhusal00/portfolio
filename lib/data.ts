@@ -20,6 +20,8 @@ import Payroll from "@/public/Payroll.png";
 import PaymentMethod from "@/public/Payment Method.png";
 import { StaticImageData } from "next/image";
 
+import Home from "@/public/Shop.png";
+import Club from "@/public/Club.png";
 export const links = [
   {
     name: "Home",
@@ -310,7 +312,7 @@ export const caseStudies: CaseStudy[] = [
   {
     companyName: "Vesper Fine Wines",
     heroSection: {
-      image: WeplayHeroSection,
+      image: VesperFineWines,
       title: "Ecommerce Application for Wine Shopping",
       tagsOfWork: ["UX Research", "UI Design", "Development"],
       description:
@@ -325,7 +327,7 @@ export const caseStudies: CaseStudy[] = [
         title: "Problem",
         description:
           "Vesper a leading Wine supplier in Nepal always had a web portal to buy wines but due to the lack of features like updating products, organizing events and promotions and a good payment integration, never had been used and had 0 sales.",
-        image: Section1,
+        image: Club,
       },
       {
         title: "Solution",

@@ -83,11 +83,11 @@ const Header = () => {
                 </Link>
               </motion.li>
             ))}
-            <div className='vertical-divide' />
+            <div className='vertical-divide hidden sm:block' />
             {/* Dark/Light Mode Toggle Switch */}
             <div className='ml-4 flex gap-4'>
               <Link
-                className='group w-full sm:w-auto justify-center bg-gradient-to-tr dark:from-purple-500 dark:to-violet-500 dark:bg-gradient-to-tr from-orange-500 to-amber-500 text-white px-7 py-3 rounded-full outline-none focus:scale-110 hover:bg-gray-950 active:scale-105 transition'
+                className='group hidden sm:block sm:w-auto justify-center bg-gradient-to-tr dark:from-purple-500 dark:to-violet-500 dark:bg-gradient-to-tr from-orange-500 to-amber-500 text-white px-7 py-3 rounded-full outline-none focus:scale-110 hover:bg-gray-950 active:scale-105 transition'
                 href='#contact'
                 onClick={() => {
                   setTimeOfLastClick(Date.now());

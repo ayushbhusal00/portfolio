@@ -14,13 +14,13 @@ export default function Projects() {
     <section
       ref={ref}
       id='projects'
-      className='scroll-mt-28 mb-28 flex flex-col justify-center'
+      className='scroll-mt-28 w-full mx-auto mb-28 flex flex-col justify-center px-4'
     >
       <SectionHeading className='mb-0'>
         Projects Selected from 2019
       </SectionHeading>
 
-      <div>
+      <div className='w-full mx-auto flex flex-col items-center justify-center'>
         {caseStudies.map((work, index) => (
           <React.Fragment key={index}>
             <Project
