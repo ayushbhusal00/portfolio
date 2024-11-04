@@ -2,8 +2,9 @@ import React from "react";
 import { CgWorkAlt } from "react-icons/cg";
 import { FaReact } from "react-icons/fa";
 import { LuGraduationCap } from "react-icons/lu";
-import NiuralWebsite from "@/public/NiuralWebsite.png";
+// import NiuralWebsite from "@/public/NiuralWebsite.png";
 import VesperFineWines from "@/public/VesperFineWines.png";
+
 import WePlay from "@/public/WePlay.png";
 import WeplayHeroSection from "@/public/hero-section.png";
 import Section1 from "@/public/section1-weplay.png";
@@ -13,11 +14,11 @@ import Section4 from "@/public/section4-weplay.png";
 import Section5 from "@/public/section6-weplay.png";
 import Section6 from "@/public/section7-weplay.png";
 
-import NiuralHeroSection from "@/public/Hero Section.png";
-import DesignSystem from "@/public/Design System.png";
-import TimeSheet from "@/public/Time Sheet.png";
-import Payroll from "@/public/Payroll.png";
-import PaymentMethod from "@/public/Payment Method.png";
+// import NiuralHeroSection from "@/public/Hero Section.png";
+// import DesignSystem from "@/public/Design System.png";
+// import TimeSheet from "@/public/Time Sheet.png";
+// import Payroll from "@/public/Payroll.png";
+// import PaymentMethod from "@/public/Payment Method.png";
 import { StaticImageData } from "next/image";
 
 import Shop from "@/public/Shop.png";
@@ -94,26 +95,26 @@ export const experiencesData = [
     icon: React.createElement(FaReact),
     date: "Oct 2021 – Mar 2022 | 6 months",
   },
-  {
-    title: "Senior Web Designer",
-    location: "Niural Inc.",
-    description:
-      "Designed and launched user-centric web interfaces for Niural App and Landing Page, integrated Web3 and fiat payments, maintained a design system, optimized performance, integrated Zendesk, and conducted user testing to improve UX and engagement.",
-    icon: React.createElement(FaReact),
-    date: "Nov 2022 - present | +2 years",
-  },
+  // {
+  //   title: "Senior Web Designer",
+  //   location: "Niural Inc.",
+  //   description:
+  //     "Designed and launched user-centric web interfaces for Niural App and Landing Page, integrated Web3 and fiat payments, maintained a design system, optimized performance, integrated Zendesk, and conducted user testing to improve UX and engagement.",
+  //   icon: React.createElement(FaReact),
+  //   date: "Nov 2022 - present | +2 years",
+  // },
 ] as const;
 
 export const projectsData = [
-  {
-    title: "Niural Inc.",
-    description:
-      "Its a global payroll platform, that serves all aspects of hiring from hiring to payroll.",
-    tags: ["Figma", "Design System", "Branding", "UX Research", "WebFlow"],
-    imageUrl: NiuralWebsite,
-    colorFrom: "#bef264", // lime-200 equivalent
-    colorTo: "#10b981", // emerald-500 equivalent
-  },
+  // {
+  //   title: "Niural Inc.",
+  //   description:
+  //     "Its a global payroll platform, that serves all aspects of hiring from hiring to payroll.",
+  //   tags: ["Figma", "Design System", "Branding", "UX Research", "WebFlow"],
+  //   imageUrl: NiuralWebsite,
+  //   colorFrom: "#bef264", // lime-200 equivalent
+  //   colorTo: "#10b981", // emerald-500 equivalent
+  // },
   {
     title: "WePlay",
     description:
@@ -216,47 +217,47 @@ type CaseStudy = {
 
 // Case study array with updated content
 export const caseStudies: CaseStudy[] = [
-  {
-    companyName: "Niural Inc.",
-    heroSection: {
-      image: NiuralHeroSection,
-      title: "Complete Product Design for a Payroll Application",
-      tagsOfWork: ["UX Research", "UI Design", "Prototyping"],
-      description:
-        "I was involved in Niural for over 2 years, my contributions include creating the MVP designs to current full fledged industry level application.",
-      collaborators: ["Ayush Bhusal"],
-      duration: "2 years",
-      tools: ["Figma", "After Effects", "Illustrator"],
-      roles: ["UI/UX Designer", "Product Manager", "Prototyper"],
-    },
-    sections: [
-      {
-        title: "A robust and modern Design System",
-        description:
-          "Niural's design system has been through 3 iterations, currently redesigned to solve the issues for complex navigations, modern UI, customizable theming capabilities and new brand style to reach the global customers.",
-        image: DesignSystem,
-      },
-      {
-        title: "Payroll",
-        description:
-          "US Payroll is complicated for Employees as well as Employers as taxation is a critical aspect for any job holders & Companies. US has a complex taxation system that changes based on federal, state, county, and sometimes city codes as well. Our team researched the most to make this process seamless and have boiled down the process for payroll that takes 20-30days to 5 mins of operations. This is the most revenue generating and demanded product Niural offers.",
-        image: Payroll,
-      },
-      {
-        title: "Expense & Time Tools",
-        description:
-          "A supporting feature for any payroll is expense management. Niural offers an easy interface for employees to submit their timely expenses as reports and provides an easy way for employers to approve or reject items to current pay cycle. It also considers types like allowance so that they are taxed properly without employers having to manually enter or record any additional items.<br>Few states manadate certail time offs, Niural offers a complete suite of settings to configure time offs for their employees. Same as Expense management, time tools are also handled with an intuitive UI manage, approve of reject employees time off requests.",
-        image: TimeSheet,
-      },
+  // {
+  //   companyName: "Niural Inc.",
+  //   heroSection: {
+  //     image: NiuralHeroSection,
+  //     title: "Complete Product Design for a Payroll Application",
+  //     tagsOfWork: ["UX Research", "UI Design", "Prototyping"],
+  //     description:
+  //       "I was involved in Niural for over 2 years, my contributions include creating the MVP designs to current full fledged industry level application.",
+  //     collaborators: ["Ayush Bhusal"],
+  //     duration: "2 years",
+  //     tools: ["Figma", "After Effects", "Illustrator"],
+  //     roles: ["UI/UX Designer", "Product Manager", "Prototyper"],
+  //   },
+  //   sections: [
+  //     {
+  //       title: "A robust and modern Design System",
+  //       description:
+  //         "Niural's design system has been through 3 iterations, currently redesigned to solve the issues for complex navigations, modern UI, customizable theming capabilities and new brand style to reach the global customers.",
+  //       image: DesignSystem,
+  //     },
+  //     {
+  //       title: "Payroll",
+  //       description:
+  //         "US Payroll is complicated for Employees as well as Employers as taxation is a critical aspect for any job holders & Companies. US has a complex taxation system that changes based on federal, state, county, and sometimes city codes as well. Our team researched the most to make this process seamless and have boiled down the process for payroll that takes 20-30days to 5 mins of operations. This is the most revenue generating and demanded product Niural offers.",
+  //       image: Payroll,
+  //     },
+  //     {
+  //       title: "Expense & Time Tools",
+  //       description:
+  //         "A supporting feature for any payroll is expense management. Niural offers an easy interface for employees to submit their timely expenses as reports and provides an easy way for employers to approve or reject items to current pay cycle. It also considers types like allowance so that they are taxed properly without employers having to manually enter or record any additional items.<br>Few states manadate certail time offs, Niural offers a complete suite of settings to configure time offs for their employees. Same as Expense management, time tools are also handled with an intuitive UI manage, approve of reject employees time off requests.",
+  //       image: TimeSheet,
+  //     },
 
-      {
-        title: "Wallet Support",
-        description:
-          "Niural supports both crypto, and fiat payment system. Supporting over 160+ countries and all local currencies for any employers to be able to execute global payrolls in Niural. I worked to simplify and connect the flow where crypto are very different from fiat payments and have worked to create a consistent user experience and a seamless one.",
-        image: PaymentMethod,
-      },
-    ],
-  },
+  //     {
+  //       title: "Wallet Support",
+  //       description:
+  //         "Niural supports both crypto, and fiat payment system. Supporting over 160+ countries and all local currencies for any employers to be able to execute global payrolls in Niural. I worked to simplify and connect the flow where crypto are very different from fiat payments and have worked to create a consistent user experience and a seamless one.",
+  //       image: PaymentMethod,
+  //     },
+  //   ],
+  // },
   {
     companyName: "WePlay",
     heroSection: {

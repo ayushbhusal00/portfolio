@@ -79,6 +79,7 @@ export default function intro() {
             Contact me here
             <BsArrowRight className='opacity-70 group-hover:translate-x-1 transition' />
           </Link>
+
           <a
             className='bg-gray-50 w-full sm:w-auto justify-center dark:bg-white/10 px-7 py-3 flex items-center gap-2 rounded-full outline-none focus:scale-110 hover:bg-gray-100 dark:hover:bg-white/20 active:scale-105 transition borderBlack cursor-pointer'
             href='/CV.pdf'
