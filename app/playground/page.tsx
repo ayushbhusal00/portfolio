@@ -25,7 +25,6 @@ import { useControls } from "leva";
 function DirectionalLightWithHelper() {
   const lightRef = useRef(new DirectionalLight());
   useHelper(lightRef, DirectionalLightHelper, 1, "cyan");
-
   return (
     <directionalLight
       ref={lightRef}
@@ -35,6 +34,9 @@ function DirectionalLightWithHelper() {
     />
   );
 }
+
+DirectionalLightWithHelper.displayName = "DirectionalLightWithHelper";
+
 const Shadows = memo(() => (
   <AccumulativeShadows
     temporal
@@ -47,6 +49,8 @@ const Shadows = memo(() => (
     <RandomizedLight amount={8} radius={4} position={[5, 5, -10]} />
   </AccumulativeShadows>
 ));
+Shadows.displayName = "Shadows";
+
 export default function Playground() {
   const { gridSize, ...gridConfig } = useControls({
     gridSize: [10.5, 10.5],

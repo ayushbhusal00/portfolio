@@ -19,6 +19,7 @@ export default function Player() {
 
   const GRAVITY = -9.8; // Gravity constant to apply to weapon's y velocity
 
+  console.log("SubscribeKeys: ", subscribeKeys);
   const jumpPlayer = () => {
     if (canJump && body.current) {
       body.current.wakeUp();
