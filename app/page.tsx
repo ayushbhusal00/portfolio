@@ -7,9 +7,7 @@ import Skills from "@/components/skills";
 import Contact from "@/components/contact";
 import OutsideWork from "@/components/outside-work";
 import Header from "@/components/header";
-import Font from "@/components/Font";
 export default function Home() {
-  const letters = "HELLO".split("");
   return (
     <main className='flex flex-col items-center p-0 md:px-4 relative'>
       <Header />
@@ -20,7 +18,6 @@ export default function Home() {
       <Skills />
       <OutsideWork />
       <Contact />
-      {/* <Font /> */}
     </main>
   );
 }
