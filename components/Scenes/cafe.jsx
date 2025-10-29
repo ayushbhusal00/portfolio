@@ -29,7 +29,7 @@ const BlockStart = ({ position = [0, 0, 0] }) => {
           <meshStandardMaterial color={"limegreen"} />
         </mesh>
       </RigidBody>
-      <RigidBody type='fixed'>
+      {/* <RigidBody type='fixed'>
         <mesh
           geometry={boxGeometry}
           position-z={4}
@@ -40,7 +40,7 @@ const BlockStart = ({ position = [0, 0, 0] }) => {
         >
           <meshStandardMaterial color={"limegreen"} />
         </mesh>
-      </RigidBody>
+      </RigidBody> */}
       <RigidBody type='fixed'>
         <mesh
           geometry={boxGeometry}

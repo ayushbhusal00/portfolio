@@ -51,7 +51,7 @@ export default function ProjectDetail() {
                   })
                 }
               >
-                {section.title}
+                {section.content[0].title}
               </li>
             ))}
           </ul>
@@ -97,26 +97,39 @@ export default function ProjectDetail() {
               </div>
             </div>
             <div className='space-y-6 mt-4'>
-              {caseStudy.sections.map((section, index) => (
-                <div
-                  key={index}
-                  ref={(el) => {
-                    sectionRefs.current[index] = el;
-                  }}
-                >
-                  <h2 className='text-xl font-semibold mb-4'>
-                    {section.title}
-                  </h2>
-                  <p className='text-gray-600 dark:text-gray-300 mb-4'>
-                    {section.description}
-                  </p>
-                  <Image
-                    src={section.image}
-                    alt={section.title}
-                    className='w-full h-auto object-cover'
-                  />
-                </div>
-              ))}
+              {caseStudy.sections.map((section, index) =>
+                section.content.map((content, idx) => (
+                  <div
+                    key={index}
+                    ref={(el) => {
+                      sectionRefs.current[index] = el;
+                    }}
+                  >
+                    <h2 className='text-xl font-semibold mb-4'>
+                      {content.title}
+                    </h2>
+                    <p className='text-gray-600 dark:text-gray-300 mb-4'>
+                      {content.description}
+                    </p>
+                    {content.image &&
+                      content.image.map((img, idx) => (
+                        <Image
+                          key={idx}
+                          src={img}
+                          alt={`${content.title} - ${idx + 1}`}
+                          className='w-full h-auto object-cover mb-4'
+                        />
+                      ))}
+                    {!Array.isArray(content.image) && content.image && (
+                      <Image
+                        src={content.image}
+                        alt={content.title}
+                        className='w-full h-auto object-cover'
+                      />
+                    )}
+                  </div>
+                ))
+              )}
             </div>
           </div>
         </div>

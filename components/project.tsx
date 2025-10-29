@@ -28,10 +28,16 @@ export default function Project({
       ref={ref}
       onClick={() => router.push(`/projects/${index}`)}
       className={clsx(
-        `group w-[100%] md:w-[50rem] border border-black/5 overflow-hidden sm:pr-8 relative sm:h-[20rem] mb-3 sm:mb-8 sm:pl-8 transition rounded-lg bg-gray-50 dark:bg-gray-800 dark:bg-opacity-60 hover:bg-gradient-to-br hover:from-orange-100 hover:to-orange-300 dark:hover:from-purple-600/20 dark:hover:to-purple-900/40 cursor-pointer `
+        `group w-[100%] md:w-[50rem] flex-col  sm:pr-8 mb-3 sm:mb-8 sm:pl-8 rounded-3xl bg-gray-50 dark:bg-gray-800 dark:bg-opacity-60 hover:bg-gradient-to-br cursor-pointer `
       )}
     >
-      <div className='pt-4 pb-7 px-5 sm:pl-0 sm:pr-2 sm:pt-10 sm:max-w-[50%] flex flex-col justify-between h-full last:mb-0 sm:group-even:ml-[18rem]'>
+      <Image
+        src={imageUrl}
+        alt={title}
+        quality={90}
+        className='sm:block border border-black/8 overflow-hidden rounded-3xl w-full h-[320px] object-cover'
+      />
+      <div className='mx-8   pt-4 pb-7 px-5 sm:pl-0 sm:pr-2 sm:pt-10 sm:max-w-[50%] flex flex-col justify-between h-full last:mb-0'>
         <div>
           <h3 className='text-2xl font-semibold '>{title}</h3>
           <p className='mt-2 leading-relaxed text-gray-500 dark:text-white/60 hover:text-black/60'>
@@ -50,12 +56,6 @@ export default function Project({
           ))}
         </ul>
       </div>
-      <Image
-        src={imageUrl}
-        alt={title}
-        quality={90}
-        className='absolute hidden sm:block top-8 -right-40 w-[28.25rem] rounded-t-lg shadow-2xl transition group-hover:scale-[1.04] group-hover:-translate-x-3 group-hover:translate-y-3 group-hover:-rotate-2 sm:group-even:-left-40 group-even:group-hover:rotate-2'
-      />
     </motion.section>
   );
 }

@@ -76,6 +76,7 @@ export default function Playground() {
           { name: "rightward", keys: ["ArrowRight", "KeyD"] },
           { name: "jump", keys: ["Space"] },
           { name: "fireWeapon", keys: ["KeyK"] }, // Add small jump key mapping
+          { name: "shift", keys: ["Shift"] }, // Add small jump key mapping
         ]}
       >
         <Canvas camera={{ position: [-8, 8, 0] }} shadows frameloop='always'>

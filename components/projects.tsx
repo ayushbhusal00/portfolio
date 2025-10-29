@@ -16,9 +16,7 @@ export default function Projects() {
       id='projects'
       className='scroll-mt-28 w-full mx-auto mb-28 flex flex-col justify-center px-4'
     >
-      <SectionHeading className='mb-0'>
-        Projects Selected from 2019
-      </SectionHeading>
+      <SectionHeading className='mb-0'>Projects</SectionHeading>
 
       <div className='w-full mx-auto flex flex-col items-center justify-center'>
         {caseStudies.map((work, index) => (
@@ -33,12 +31,12 @@ export default function Projects() {
           </React.Fragment>
         ))}
       </div>
-      <Link
+      {/* <Link
         className='bg-gradient-to-tr mx-auto dark:from-purple-500 dark:to-violet-500 dark:bg-gradient-to-tr from-orange-500 to-amber-500 text-white px-7 py-3 rounded-full outline-none focus:scale-110 hover:bg-gray-950 active:scale-105 transition'
         href='projects/'
       >
         View Em All
-      </Link>
+      </Link> */}
     </section>
   );
 }
