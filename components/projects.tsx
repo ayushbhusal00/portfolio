@@ -5,7 +5,6 @@ import SectionHeading from "./section-heading";
 import { caseStudies } from "@/lib/data";
 import Project from "./project";
 import { UseSectionInView } from "@/lib/hooks";
-import Link from "next/link";
 
 export default function Projects() {
   const { ref } = UseSectionInView("Projects", 0.5);

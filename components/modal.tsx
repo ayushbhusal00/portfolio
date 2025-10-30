@@ -123,7 +123,7 @@ export default function Modal({ id = 1 }: ModalProps) {
                     })
                   }
                 >
-                  {section.title}
+                  {section.content[index].title}
                 </li>
               ))}
             </ul>
@@ -177,14 +177,19 @@ export default function Modal({ id = 1 }: ModalProps) {
                     }}
                   >
                     <h2 className='text-xl font-semibold mb-4'>
-                      {section.title}
+                      {section.content[index].title}
                     </h2>
-                    <p className='text-gray-600 mb-4'>{section.description}</p>
-                    <Image
-                      src={section.image}
-                      alt={section.title}
-                      className='w-full h-auto object-cover'
-                    />
+                    <p className='text-gray-600 mb-4'>
+                      {section.content[index].description}
+                    </p>
+                    {section.content[index].image &&
+                      !Array.isArray(section.content[index].image) && (
+                        <Image
+                          src={section.content[index].image}
+                          alt={section.content[index].title}
+                          className='w-full h-auto object-cover'
+                        />
+                      )}
                   </div>
                 ))}
               </div>

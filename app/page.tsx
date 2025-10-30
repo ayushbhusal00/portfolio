@@ -7,6 +7,7 @@ import Skills from "@/components/skills";
 import Contact from "@/components/contact";
 import OutsideWork from "@/components/outside-work";
 import Header from "@/components/header";
+export const dynamic = "force-dynamic";
 export default function Home() {
   return (
     <main className='flex flex-col items-center p-0 md:px-4 relative'>

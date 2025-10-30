@@ -13,6 +13,8 @@ export default function ProjectDetail() {
   const [activeSectionIndex, setActiveSectionIndex] = useState(0);
 
   useEffect(() => {
+    if (typeof window === "undefined") return; // Prevent running on server
+
     const handleScroll = () => {
       const sectionOffsets = sectionRefs.current.map(
         (ref) => ref?.getBoundingClientRect().top || 0
@@ -22,9 +24,7 @@ export default function ProjectDetail() {
     };
 
     window.addEventListener("scroll", handleScroll);
-    return () => {
-      window.removeEventListener("scroll", handleScroll);
-    };
+    return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
   const caseStudy = caseStudies[projectId];
@@ -98,7 +98,7 @@ export default function ProjectDetail() {
             </div>
             <div className='space-y-6 mt-4'>
               {caseStudy.sections.map((section, index) =>
-                section.content.map((content, idx) => (
+                section.content.map((content) => (
                   <div
                     key={index}
                     ref={(el) => {

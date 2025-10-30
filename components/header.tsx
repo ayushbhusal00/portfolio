@@ -7,12 +7,15 @@ import Link from "next/link";
 import clsx from "clsx";
 import { UseActiveSectionContext } from "@/context/active-section";
 import Switch from "@/components/switch";
-import Lottie from "@lottielab/lottie-player/react";
+import dynamic from "next/dynamic";
 import AyushLogoDark from "@/public/Ayush-Logo-Dark.json";
 import AyushLogoLight from "@/public/Ayush-Logo-Light.json";
 import { useTheme } from "@/context/theme-context";
 
 const Header = () => {
+  const Lottie = dynamic(() => import("@lottielab/lottie-player/react"), {
+    ssr: false,
+  });
   const { activeSection, setActiveSection, setTimeOfLastClick } =
     UseActiveSectionContext();
   const { theme } = useTheme();

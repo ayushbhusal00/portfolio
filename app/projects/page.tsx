@@ -3,7 +3,7 @@
 import React from "react";
 import { caseStudies } from "@/lib/data";
 import Work from "@/components/project";
-
+export const dynamic = "force-dynamic";
 export default function ProjectsPage() {
   return (
     <section className='max-w-[50rem] mx-auto justify-center'>

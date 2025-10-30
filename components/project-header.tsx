@@ -10,11 +10,14 @@ import { FaArrowLeft, FaArrowRight } from "react-icons/fa";
 import { PiX } from "react-icons/pi";
 import clsx from "clsx";
 import { useTheme } from "@/context/theme-context";
-import Lottie from "@lottielab/lottie-player/react";
+import dynamic from "next/dynamic";
 import AyushLogoDark from "@/public/Ayush-Logo-Dark.json";
 import AyushLogoLight from "@/public/Ayush-Logo-Light.json";
 
 const ProjectHeader = () => {
+  const Lottie = dynamic(() => import("@lottielab/lottie-player/react"), {
+    ssr: false,
+  });
   const { theme } = useTheme();
   const totalDataCount = caseStudies.length;
   const { id } = useParams();
