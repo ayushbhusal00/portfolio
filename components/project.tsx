@@ -9,7 +9,7 @@ type ProjectProps = {
   index: number;
   title: string;
   description: string;
-  tags: string[];
+  // tags: string[];
   imageUrl: StaticImageData;
 };
 
@@ -17,7 +17,7 @@ export default function Project({
   index,
   title,
   description,
-  tags,
+  // tags,
   imageUrl,
 }: ProjectProps) {
   const ref = useRef<HTMLElement>(null);
@@ -28,7 +28,7 @@ export default function Project({
       ref={ref}
       onClick={() => router.push(`/projects/${index}`)}
       className={clsx(
-        `group w-[100%] md:w-[50rem] flex-col  sm:pr-8 mb-3 sm:mb-8 sm:pl-8 rounded-3xl bg-gray-50 dark:bg-gray-800 dark:bg-opacity-60 hover:bg-gradient-to-br cursor-pointer `
+        `group w-[100%] md:w-[50rem] flex-col  sm:pr-8 mb-3 sm:mb-8 sm:pl-8 rounded-3xl bg-gray-50 dark:bg-gray-800 dark:bg-opacity-60 hover:bg-gradient-to-br cursor-pointer sticky top-[140px] sm:flex-row sm:h-[320px] shadow-md hover:shadow-xl transition-all duration-300`
       )}
     >
       <Image
@@ -45,7 +45,7 @@ export default function Project({
           </p>
         </div>
         {/* Tags */}
-        <ul className='flex flex-wrap mt-4 gap-2'>
+        {/* <ul className='flex flex-wrap mt-4 gap-2'>
           {tags.map((tag, index) => (
             <li
               className='bg-black/[0.7] px-3 py-1 text-[0.7rem] uppercase tracking-wider text-white dark:text-white/70 rounded-full'
@@ -54,7 +54,7 @@ export default function Project({
               {tag}
             </li>
           ))}
-        </ul>
+        </ul> */}
       </div>
     </motion.section>
   );

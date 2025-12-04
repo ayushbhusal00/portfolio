@@ -13,10 +13,10 @@ export default function ProjectsPage() {
           <React.Fragment key={index}>
             <Work
               index={index}
-              title={work.companyName}
-              description={work.heroSection.description}
-              tags={work.heroSection.tools}
-              imageUrl={work.heroSection.image}
+              title={work.title}
+              description={work.tagline}
+              // tags={work.tagline}
+              imageUrl={work.thumbnail}
             />
           </React.Fragment>
         ))}

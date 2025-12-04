@@ -17,25 +17,18 @@ export default function Projects() {
     >
       <SectionHeading className='mb-0'>Projects</SectionHeading>
 
-      <div className='w-full mx-auto flex flex-col items-center justify-center'>
+      <div className='w-full mx-auto flex flex-col items-center justify-center '>
         {caseStudies.map((work, index) => (
-          <React.Fragment key={index}>
-            <Project
-              index={index}
-              title={work.companyName}
-              description={work.heroSection.description}
-              tags={work.heroSection.tools}
-              imageUrl={work.heroSection.image}
-            />
-          </React.Fragment>
+          <Project
+            key={work.id}
+            index={index}
+            title={work.title}
+            description={work.overview}
+            // tags={work.role.split(" — ")}
+            imageUrl={work.thumbnail} // ⬅️ FIXED
+          />
         ))}
       </div>
-      {/* <Link
-        className='bg-gradient-to-tr mx-auto dark:from-purple-500 dark:to-violet-500 dark:bg-gradient-to-tr from-orange-500 to-amber-500 text-white px-7 py-3 rounded-full outline-none focus:scale-110 hover:bg-gray-950 active:scale-105 transition'
-        href='projects/'
-      >
-        View Em All
-      </Link> */}
     </section>
   );
 }
