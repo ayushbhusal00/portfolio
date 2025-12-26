@@ -1,15 +1,14 @@
 import React from "react";
 
 export default function Footer() {
+  const now = new Date();
+  const currentYear = now.getFullYear();
   return (
-    <footer className='mb-10 px-4 text-center text-gray-500 mt-28'>
-      <small className='mb-2 block text-xs'>
-        &copy; 2030 Ayush. All rights reserved.
-      </small>
+    <footer className='px-4 text-center text-white py-4 bg-[#2a2a2a]'>
       <p className='mb-2 text-xs'>
-        <span className='font-semibold'>About this website:</span> built with
-        React & Next.js (App Router & Server Actions), TypeScript, Tailwind CSS,
-        Framer Motion, React Email & Resend, Vercel for Hosting
+        Made with React & Next.js (App Router & Server Actions), TypeScript,
+        Tailwind CSS, Framer Motion, React Email & Resend, Vercel for Hosting.
+        &copy; {currentYear}, All rights reserved.
       </p>
     </footer>
   );

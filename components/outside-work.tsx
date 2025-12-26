@@ -7,8 +7,8 @@ import NotWorking from "@/public/when-i-am-not-working.svg";
 
 export default function OutsideWork() {
   return (
-    <section className='w-full sm:max-w-[50rem] px-4 mx-auto text-center leading-8 scroll-mt-28'>
-      <div className='relative py-[6rem] flex flex-col sm:flex-row items-center text-left gap-[6rem] sm:gap-[2rem] mb-20'>
+    <section className='flex  justify-center items-center px-10 text-center leading-8 scroll-mt-28 border-y border-[#e6e8eb]'>
+      <div className='relative py-[6rem] flex flex-col sm:flex-row items-center text-left gap-[6rem] sm:gap-[2rem] my-20'>
         <Image
           className='absolute top-0 left-0'
           src={NotWorking}

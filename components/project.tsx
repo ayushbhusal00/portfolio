@@ -9,7 +9,6 @@ type ProjectProps = {
   index: number;
   title: string;
   description: string;
-  // tags: string[];
   imageUrl: StaticImageData;
 };
 
@@ -17,7 +16,6 @@ export default function Project({
   index,
   title,
   description,
-  // tags,
   imageUrl,
 }: ProjectProps) {
   const ref = useRef<HTMLElement>(null);
@@ -27,34 +25,61 @@ export default function Project({
     <motion.section
       ref={ref}
       onClick={() => router.push(`/projects/${index}`)}
+      whileHover={{ y: -4 }}
+      transition={{ duration: 0.3, ease: "easeOut" }}
       className={clsx(
-        `group w-[100%] md:w-[50rem] flex-col  sm:pr-8 mb-3 sm:mb-8 sm:pl-8 rounded-3xl bg-gray-50 dark:bg-gray-800 dark:bg-opacity-60 hover:bg-gradient-to-br cursor-pointer sticky top-[140px] sm:flex-row sm:h-[320px] shadow-md hover:shadow-xl transition-all duration-300`
+        "w-full group cursor-pointer",
+        "sticky top-[140px]",
+        "border-t border-black/10 dark:border-white/10",
+        "bg-white dark:bg-gray-900",
+        "overflow-hidden",
+        "transition-all duration-300"
       )}
     >
-      <Image
-        src={imageUrl}
-        alt={title}
-        quality={90}
-        className='sm:block border border-black/8 overflow-hidden rounded-3xl w-full h-[320px] object-cover'
-      />
-      <div className='mx-8   pt-4 pb-7 px-5 sm:pl-0 sm:pr-2 sm:pt-10 sm:max-w-[50%] flex flex-col justify-between h-full last:mb-0'>
-        <div>
-          <h3 className='text-2xl font-semibold '>{title}</h3>
-          <p className='mt-2 leading-relaxed text-gray-500 dark:text-white/60 hover:text-black/60'>
+      <div className='flex flex-col md:flex-row md:gap-10 p-4 md:p-6  '>
+        {/* Image */}
+        <div className='relative hidden md:block shrink-0 origin-right bg-[repeating-linear-gradient(135deg,rgba(0,0,0,0.08)_0,rgba(0,0,0,0.08)_1px,transparent_1px,transparent_6px)]'>
+          <div className='absolute inset-0 z-10 hidden md:block rounded-xl shadow-2xl  ' />
+          <Image
+            src={imageUrl}
+            alt={title}
+            quality={90}
+            className='
+                        w-[430px]
+                        h-[260px]
+                        md:h-[320px]
+                        rounded-xl
+                        object-cover
+                        object-center
+                        transition-transform duration-500
+                            group-hover:scale-[1.04]
+                      '
+          />
+        </div>
+
+        {/* Content */}
+        <div className='flex flex-col justify-center md:w-[45%] px-2 md:px-0  p-4 md:p-6 '>
+          {/* Optional tag */}
+          <span className='mb-3 inline-block w-fit rounded-full bg-black/5 dark:bg-white/10 px-3 py-1 text-xs font-medium text-gray-600 dark:text-white/70'>
+            Case Study
+          </span>
+
+          <h3 className='text-2xl md:text-3xl font-semibold tracking-tight'>
+            {title}
+          </h3>
+
+          <p className='mt-3 text-sm md:text-base leading-relaxed text-gray-600 dark:text-white/60'>
             {description}
           </p>
+
+          {/* CTA */}
+          <div className='mt-6 flex items-center gap-2 text-sm font-medium'>
+            <span className='text-black dark:text-white'>View project</span>
+            <span className='transition-transform duration-300 group-hover:translate-x-1'>
+              →
+            </span>
+          </div>
         </div>
-        {/* Tags */}
-        {/* <ul className='flex flex-wrap mt-4 gap-2'>
-          {tags.map((tag, index) => (
-            <li
-              className='bg-black/[0.7] px-3 py-1 text-[0.7rem] uppercase tracking-wider text-white dark:text-white/70 rounded-full'
-              key={index}
-            >
-              {tag}
-            </li>
-          ))}
-        </ul> */}
       </div>
     </motion.section>
   );

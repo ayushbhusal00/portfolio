@@ -11,13 +11,22 @@ import Design1 from "@/public/weplay-designs-01.png";
 import Design2 from "@/public/weplay-design-02.png";
 import Design3 from "@/public/weplay-designs-03.png";
 
+/* ---------------- WEPLAY IMPORTS ---------------- */
+import LifeCorpusThumbnail from "@/public/Lifecorpus-thumbnail.jpg";
+import LifeCorpusHeroSection from "@/public/Lifecorpus-Hero.jpg";
+import LifeCorpusCareer from "@/public/Lifecorpus-Career.png";
+import LifeCorpusColors from "@/public/Lifecorpus-colors.png";
+// import LifeCorpusDesign1 from "@/public/Lifecorpus-Hero.jpg";
+import LifeCorpusOthers from "@/public/Lifecorpus-Others.png";
+import LifeCorpusMarketing from "@/public/Lifecorpus-marketing.png";
+
 /* ---------------- NIURAL IMPORTS ---------------- */
-// import NiuralWebsite from "@/public/NiuralWebsite.png";
-// import NiuralHeroSection from "@/public/Hero Section.png";
-// import DesignSystem from "@/public/Design System.png";
-// import TimeSheet from "@/public/Time Sheet.png";
-// import Payroll from "@/public/Payroll.png";
-// import PaymentMethod from "@/public/Payment Method.png";
+import NiuralWebsite from "@/public/NiuralWebsite.png";
+import NiuralHeroSection from "@/public/Hero Section.png";
+import DesignSystem from "@/public/Design System.png";
+import TimeSheet from "@/public/Time Sheet.png";
+import Payroll from "@/public/Payroll.png";
+import PaymentMethod from "@/public/Payment Method.png";
 
 /* ---------------- VESPER IMPORTS ---------------- */
 import VesperFineWines from "@/public/VesperFineWines.png";
@@ -42,6 +51,7 @@ export const links = [
     name: "Skills",
     hash: "#skills",
   },
+  { name: "Playground", hash: "#playground" },
   // {
   //   name: "Experience",
   //   hash: "#experience",
@@ -108,15 +118,15 @@ export const experiencesData = [
 ] as const;
 
 export const projectsData = [
-  // {
-  //   title: "Niural Inc.",
-  //   description:
-  //     "Its a global payroll platform, that serves all aspects of hiring from hiring to payroll.",
-  //   tags: ["Figma", "Design System", "Branding", "UX Research", "WebFlow"],
-  //   imageUrl: NiuralHeroSection,
-  //   colorFrom: "#bef264", // lime-200 equivalent
-  //   colorTo: "#10b981", // emerald-500 equivalent
-  // },
+  {
+    title: "Niural Inc.",
+    description:
+      "Its a global payroll platform, that serves all aspects of hiring from hiring to payroll.",
+    tags: ["Figma", "Design System", "Branding", "UX Research", "WebFlow"],
+    imageUrl: NiuralHeroSection,
+    colorFrom: "#bef264", // lime-200 equivalent
+    colorTo: "#10b981", // emerald-500 equivalent
+  },
   {
     title: "WePlay",
     description:
@@ -202,6 +212,8 @@ export interface CaseStudy {
   id: number;
   url: string;
   title: string;
+  color: string;
+  videoUrl: string;
   thumbnail: StaticImageData;
   heroImage: StaticImageData;
   gallery: StaticImageData[];
@@ -220,7 +232,9 @@ export const caseStudies: CaseStudy[] = [
   {
     id: 0,
     url: "/projects/0",
+    color: "#AF2E4F",
     title: "WePlay — Sports, Made Simple",
+    videoUrl: "https://vimeo.com/1149309393?share=copy&fl=sv&fe=ci",
     thumbnail: WePlay,
     heroImage: WeplayHeroSection,
     gallery: [Section1, Section2, Design1, Design2, Design3],
@@ -248,47 +262,61 @@ export const caseStudies: CaseStudy[] = [
       },
     ],
   },
-
-  // {
-  //   id: 1,
-  //   url: "/projects/1",
-  //   title: "Niural — Payroll, Reimagined",
-  //   thumbnail: NiuralWebsite,
-  //   heroImage: NiuralHeroSection,
-  //   gallery: [DesignSystem, TimeSheet, Payroll, PaymentMethod],
-  //   tagline:
-  //     "Designing a seamless global payroll platform for modern companies.",
-  //   overview:
-  //     "Niural modernizes payroll by supporting fiat & crypto payouts across borders.",
-  //   role: "Product Designer — UX, UI, Interaction",
-  //   duration: "Ongoing",
-  //   sections: [
-  //     {
-  //       heading: "Challenge",
-  //       content:
-  //         "Global payroll is fragmented, slow, and full of compliance friction.",
-  //     },
-  //     {
-  //       heading: "Experience Strategy",
-  //       bullets: [
-  //         "💸 One-Click Payroll",
-  //         "🌍 Multi-Currency",
-  //         "🛡 Compliance Layer",
-  //         "📊 Control Center",
-  //       ],
-  //     },
-  //     {
-  //       heading: "Outcome",
-  //       content:
-  //         "Reduced setup friction and positioned Niural as a modern payroll alternative.",
-  //     },
-  //   ],
-  // },
-
   {
     id: 1,
+    url: "/projects/1",
+    title: "LifeCorpus",
+    color: "#088236",
+    videoUrl: "https://vimeo.com/1149309422?share=copy&fl=sv&fe=ci",
+    thumbnail: LifeCorpusThumbnail,
+    heroImage: LifeCorpusHeroSection,
+    gallery: [
+      LifeCorpusCareer,
+      LifeCorpusColors,
+      LifeCorpusCareer,
+      LifeCorpusOthers,
+      LifeCorpusMarketing,
+    ],
+    tagline: "Website redesign for a leader in Customer Care",
+    overview:
+      "LifeCorpus SA is a South-Australia-based customer care service provider. I worked with them to create a unique web experience by facilating mindful service exploration based on design trend.",
+    role: "Product Designer — Web Design, Motion Design, Design System",
+    duration: "LifeCorpussa.au (Offline for some time)",
+    sections: [
+      {
+        heading: "Capturing the Brand Emotion",
+        content:
+          "The homepage welcomes users with an infomative selections of services they mmay want to use, images properly highlighting the services and experience and subtle animations to introduce users to the page.",
+      },
+      {
+        heading: "It’s All in the Details",
+        content:
+          "We introduced an immersive scrollable feed of various products. Users can seamlessly preview, backtrack, and explore, all without leaving their current point.",
+      },
+      {
+        heading: "An Overhauled Careers Portal",
+        content:
+          "To meet the workforce need Life Corpus desperately needed a careers experience highlighting their team, benefits and showcasing their industry experience to bring in the best individuals.",
+      },
+      {
+        heading: "Appealing new Customer by Sharing Experiences",
+        content:
+          "Introducing the blogs pages to share case studies, helpful feeds users in the aged and disability community require for why LifeCorpus services are needed.",
+      },
+      {
+        heading: "Incorporating Marketing Tools",
+        content:
+          "Promotional blocks, banners, and forms are all essential elements for getting funnels online. We arranged each element systemically to allow for a consistent visual style as updates are made to the site.",
+      },
+    ],
+  },
+
+  {
+    id: 2,
     url: "/projects/2",
     title: "Vesper Fine Wines",
+    color: "#C77F1F",
+    videoUrl: "https://www.youtube.com/watch?v=LXb3EKWsInQ",
     thumbnail: VesperFineWines,
     heroImage: Shop,
     gallery: [Club],
@@ -314,6 +342,43 @@ export const caseStudies: CaseStudy[] = [
       {
         heading: "Outcome",
         content: "The redesign increased trust and elevated brand perception.",
+      },
+    ],
+  },
+  {
+    id: 3,
+    url: "/projects/3",
+    title: "Niural — Payroll, Reimagined",
+    color: "#088236",
+    videoUrl: "",
+    thumbnail: NiuralWebsite,
+    heroImage: NiuralHeroSection,
+    gallery: [DesignSystem, TimeSheet, Payroll, PaymentMethod],
+    tagline:
+      "Designing a seamless global payroll platform for modern companies.",
+    overview:
+      "Niural modernizes payroll by supporting fiat & crypto payouts across borders.",
+    role: "Product Designer — UX, UI, Interaction",
+    duration: "Ongoing",
+    sections: [
+      {
+        heading: "Challenge",
+        content:
+          "Global payroll is fragmented, slow, and full of compliance friction.",
+      },
+      {
+        heading: "Experience Strategy",
+        bullets: [
+          "💸 One-Click Payroll",
+          "🌍 Multi-Currency",
+          "🛡 Compliance Layer",
+          "📊 Control Center",
+        ],
+      },
+      {
+        heading: "Outcome",
+        content:
+          "Reduced setup friction and positioned Niural as a modern payroll alternative.",
       },
     ],
   },

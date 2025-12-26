@@ -2,7 +2,6 @@
 import ThemeContextProvider from "@/context/theme-context";
 import ActiveSectionContextProvider from "@/context/active-section";
 import { Toaster } from "react-hot-toast";
-import Footer from "@/components/footer";
 
 export default function ClientProviders({
   children,
@@ -14,7 +13,6 @@ export default function ClientProviders({
       <ActiveSectionContextProvider>
         {children}
         <Toaster position='top-right' />
-        <Footer />
       </ActiveSectionContextProvider>
     </ThemeContextProvider>
   );

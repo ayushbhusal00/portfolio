@@ -8,31 +8,20 @@ import { UseSectionInView } from "@/lib/hooks";
 import Image from "next/image";
 import SectionHeading from "./section-heading";
 
-//Logo Imports
-import Litaliano from "@/public/litaliano.png";
-import Antidote from "@/public/antidote.png";
-import AntidoteDark from "@/public/antidote-dark.png";
-import WePlayLogo from "@/public/WePlayLogo.png";
-import WePlayLogoDark from "@/public/weplay-dark.png";
-import Niural from "@/public/niural.png";
-import { useTheme } from "@/context/theme-context";
-
 export default function Story() {
   const { ref } = UseSectionInView("Story");
-  const { theme } = useTheme();
 
   return (
     <motion.section
-      className='w-full sm:max-w-[60rem] min-h-[50vh] mb-28 flex flex-col gap-2 sm:gap-5 items-center justify-center leading-8 sm:mb-40 scroll-mt-28]'
+      className='w-full min-h-[50vh] flex flex-col items-center justify-center leading-8  scroll-mt-[28] border-b border-[#e6e8eb]'
       id='story'
     >
-      <SectionHeading>My Story</SectionHeading>
-      <div className='w-full flex flex-col sm:flex-row items-center text-left gap-[6rem] sm:gap-[2rem] mb-20 mt-10'>
-        <div className=' relative w-full min-h-[5rem] sm:w-[60%] h-auto flex flex-row gap-2 sm:gap-[2rem] items-center justify-center'>
+      <div className='w-full   flex flex-col sm:flex-row items-center text-left'>
+        <div className='relative h-[-webkit-fill-available] w-full min-h-[50vh] py-28 sm:py-32 sm:w-[50%] flex flex-row gap-2 items-center justify-center bg-[repeating-linear-gradient(135deg,rgba(0,0,0,0.08)_0,rgba(0,0,0,0.08)_1px,transparent_1px,transparent_6px)]'>
           {/* First Image Card */}
           <motion.div
             ref={ref}
-            className='absolute left-[5rem] sm:-left-3 w-[10rem] sm:w-[16rem]'
+            className='absolute left-[3rem] sm:-left-2 w-[10rem] sm:w-[16rem]'
             initial={{ opacity: 0, rotate: 0, scale: 0.8 }}
             animate={{ opacity: 1, rotate: -8, scale: 1 }}
             transition={{ duration: 0.4, type: "spring" }}
@@ -49,7 +38,7 @@ export default function Story() {
 
           <motion.div
             ref={ref}
-            className='absolute right-[5rem] sm:right-0.5 w-[10rem] sm:w-[16rem]'
+            className='absolute right-[2rem] sm:right-0.5 w-[10rem] sm:w-[16rem]'
             initial={{ opacity: 0, rotate: 0, scale: 0.8 }}
             animate={{ opacity: 1, rotate: 8, scale: 1 }}
             transition={{ duration: 0.4, type: "spring" }}
@@ -62,7 +51,8 @@ export default function Story() {
             />
           </motion.div>
         </div>
-        <div className='w-70 sm:w-[60%] gap-4 text-gray-700 dark:text-gray-400 text-center sm:text-left'>
+        <div className='w-70 sm:w-[60%] gap-4 p-12 py-28 sm:py-32  text-gray-700 dark:text-gray-400'>
+          <SectionHeading>My Story</SectionHeading>
           <motion.p
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
@@ -78,37 +68,6 @@ export default function Story() {
             continuous improvement, I’m committed to delivering designs that
             captivate users, drive engagement, and attract investors.
           </motion.p>
-        </div>
-      </div>
-      <div className='flex flex-col gap-4 text-center items-center'>
-        <p className='text-xl text-gray-400 mb-4 tracking-wider'>
-          So far I have helped 8+ companies ship their products to Prod
-        </p>
-        <div className='grid grid-cols-2 sm:grid-cols-4 gap-8'>
-          <Image
-            src={Litaliano}
-            alt={"Litaliano: Global Wine Ecommerce"}
-            width={160}
-            height={70}
-          />
-          <Image
-            src={theme === "light" ? Antidote : AntidoteDark}
-            alt={"Antidote: Thrift Clothes Online"}
-            width={160}
-            height={70}
-          />
-          <Image
-            src={theme === "light" ? WePlayLogo : WePlayLogoDark}
-            alt={"WePlay: Online Sports Booking Platform"}
-            width={160}
-            height={70}
-          />
-          <Image
-            src={Niural}
-            alt={"Niural: Global payroll & payments platform"}
-            width={160}
-            height={70}
-          />
         </div>
       </div>
     </motion.section>

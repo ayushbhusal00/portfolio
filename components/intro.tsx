@@ -3,23 +3,23 @@
 import Image from "next/image";
 import React from "react";
 import { motion } from "framer-motion";
-import { BsArrowRight, BsLinkedin } from "react-icons/bs";
+import { BsLinkedin } from "react-icons/bs";
 import { FaGithubSquare } from "react-icons/fa";
 import { HiDownload } from "react-icons/hi";
-import Link from "next/link";
+
 import Portrait from "@/public/Portrait.png";
 
-import { UseActiveSectionContext } from "@/context/active-section";
+// import { UseActiveSectionContext } from "@/context/active-section";
 import { UseSectionInView } from "@/lib/hooks";
 
 export default function intro() {
   const { ref } = UseSectionInView("Home");
-  const { setTimeOfLastClick } = UseActiveSectionContext();
+  // const { setTimeOfLastClick } = UseActiveSectionContext();
   return (
     <section
       ref={ref}
       id='home'
-      className='w-full sm:max-w-[50rem] scroll-mt-[100rem] my-28 sm:my-32 mb-20 sm:mb-0'
+      className='w-full scroll-mt-[100rem] py-28 sm:py-32 border-b border-[#e6e8eb]'
     >
       <div className='flex flex-col items-center justify-center'>
         <div className='relative'>
@@ -52,51 +52,62 @@ export default function intro() {
             👋
           </motion.span>
         </div>
-        <motion.h1
-          className='mb-10 mt-4 px-4 text-xl font-medium text-center !leading-[1.5] sm:text-3xl'
-          initial={{ opacity: 0, y: 100 }}
-          animate={{ opacity: 1, y: 0 }}
-        >
-          <span className='font-bold'>🤘Hello, I'm Ayush, </span>a Web/{" "}
-          <span className='font-bold'>Product Designer </span>and, I work to
-          create <span className='italic'>ideas to reality. </span>
-        </motion.h1>
         <motion.div
-          className='flex flex-col sm:flex-row  w-full gap-4 items-center justify-center px-4 text-lg font-medium'
+          className='max-w-[38.75rem] mb-5'
           initial={{ opacity: 0, y: 100 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{
             delay: 0.1,
           }}
         >
-          <Link
-            className='group w-full sm:w-auto justify-center bg-gray-900 text-white px-7 py-3 flex items-center gap-2 rounded-full outline-none focus:scale-110 hover:bg-gray-950 active:scale-105 transition'
-            href='#contact'
-            onClick={() => {
-              setTimeOfLastClick(Date.now());
-            }}
+          <motion.h1
+            className='mb-5 mt-4 px-4 text-[2rem] font-bold text-center !leading-[1.5] text-[#18181b]'
+            initial={{ opacity: 0, y: 100 }}
+            animate={{ opacity: 1, y: 0 }}
           >
-            Contact me here
-            <BsArrowRight className='opacity-70 group-hover:translate-x-1 transition' />
-          </Link>
-
+            Web/Product Designer Working to Create Iteas To Reality
+          </motion.h1>
+          <motion.p
+            className='mb-5 mt-4 px-4 text-[0.9rem] font-medium text-center text-[#52525b]'
+            initial={{ opacity: 0, y: 100 }}
+            animate={{ opacity: 1, y: 0 }}
+          >
+            The most popular open-source platform for commerce. Use Medusa as
+            your foundation and focus on building the customizations that move
+            the needle.
+          </motion.p>
+        </motion.div>
+        <motion.div
+          className='flex flex-col sm:flex-row w-full gap-4 items-center justify-center px-4 text-sm font-medium'
+          initial={{ opacity: 0, y: 100 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{
+            delay: 0.1,
+          }}
+        >
           <a
-            className='bg-gray-50 w-full sm:w-auto justify-center dark:bg-white/10 px-7 py-3 flex items-center gap-2 rounded-full outline-none focus:scale-110 hover:bg-gray-100 dark:hover:bg-white/20 active:scale-105 transition borderBlack cursor-pointer'
+            className='group w-full sm:w-auto justify-center text-white px-7 py-3 flex items-center gap-2 outline-none focus:scale-110 hover:bg-gray-950 active:scale-105 transition rounded-[6px]
+  bg-[#27272A] shadow-[0_0.75px_0_0_rgba(255,255,255,0.20)_inset,0_1px_2px_0_rgba(0,0,0,0.40),0_0_0_1px_#18181B]'
             href='/CV.pdf'
             download={true}
           >
             Download CV{" "}
             <HiDownload className='opacity-70 group-hover:translate-x-1 transition' />
           </a>
+
           <a
-            className='bg-gray-50 hidden sm:flex dark:bg-white/10 p-4 items-center gap-2 rounded-full cursor-pointer borderBlack outline-none focus:scale-[1.15] hover:bg-gray-100 dark:hover:bg-white/20 active:scale-105 transition dark:text-white/50'
+            className=' hidden sm:flex dark:bg-white/10 p-4 items-center gap-2 cursor-pointer borderBlack outline-none focus:scale-[1.15] hover:bg-gray-100 dark:hover:bg-white/20 active:scale-105 transition dark:text-white/50 rounded-[6px]
+  bg-white
+  shadow-[0_1px_2px_0_rgba(0,0,0,0.12),0_0_0_1px_rgba(0,0,0,0.08)]'
             href='https://www.linkedin.com/in/ayush-bhusal-331143119/'
             target='blank'
           >
             <BsLinkedin />
           </a>
           <a
-            className='bg-gray-50 dark:bg-white/10 p-4 hidden sm:flex items-center gap-2 rounded-full cursor-pointer borderBlack outline-none focus:scale-[1.15] hover:bg-gray-100 dark:hover:bg-white/20 active:scale-105 transition dark:text-white/50'
+            className=' dark:bg-white/10 p-4 hidden sm:flex items-center gap-2 cursor-pointer borderBlack outline-none focus:scale-[1.15] hover:bg-gray-100 dark:hover:bg-white/20 active:scale-105 transition dark:text-white/50 rounded-[6px]
+  bg-white
+  shadow-[0_1px_2px_0_rgba(0,0,0,0.12),0_0_0_1px_rgba(0,0,0,0.08)]'
             href='https://github.com/ayushbhusal00'
             target='blank'
           >
