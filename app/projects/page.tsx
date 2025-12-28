@@ -1,25 +1,73 @@
 "use client";
 
-import React from "react";
+import { useState } from "react";
 import { caseStudies } from "@/lib/data";
-import Work from "@/components/project";
-export const dynamic = "force-dynamic";
+import WorkItem from "@/components/work-item";
+
 export default function ProjectsPage() {
+  const categories = [
+    "All",
+    ...Array.from(new Set(caseStudies.map((p) => p.category))),
+  ];
+
+  const [activeCategory, setActiveCategory] = useState("All");
+
+  const filteredProjects =
+    activeCategory === "All"
+      ? caseStudies
+      : caseStudies.filter((p) => p.category === activeCategory);
+
   return (
-    <section className='max-w-[50rem] mx-auto justify-center'>
-      <div className='flex flex-col items-center justify-center '>
-        <h1 className='text-2xl font-bold my-10'>All Projects</h1>
-        {caseStudies.map((work, index) => (
-          <React.Fragment key={index}>
-            <Work
-              index={index}
-              title={work.title}
-              description={work.tagline}
-              // tags={work.tagline}
-              imageUrl={work.thumbnail}
+    <section className='mx-auto max-w-[72rem] border-x border-[#e6e8eb]'>
+      {/* Header */}
+      <header className='px-16 py-8 w-full flex justify-between'>
+        <h1 className='text-[28px] font-semibold tracking-tight text-zinc-900'>
+          Projects
+        </h1>
+        {/* Filter pills */}
+        <div className='flex gap-2 items-center overflow-x-auto hide-scrollbars py-[1px] w-screen md:w-auto px-0 md:py-0 md:overflow-visible'>
+          {categories.map((category) => {
+            const isActive = activeCategory === category;
+
+            return (
+              <button
+                key={category}
+                onClick={() => setActiveCategory(category)}
+                className={`
+                rounded-full flex items-center justify-center py-1 border font-medium text-sm border-transparent transition-all text-ui-fg-muted whitespace-nowrap px-3 h-[32px] md:hover:bg-[#]
+                ${
+                  isActive
+                    ? "bg-white text-black shadow-elevation-card-rest "
+                    : " text-zinc-500 hover:bg-white "
+                }
+              `}
+              >
+                {category}
+              </button>
+            );
+          })}
+        </div>
+      </header>
+
+      {/* Grid */}
+      <div className='divide-y divide-[#e6e8eb]'>
+        <div className='grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 border-y border-[#e6e8eb]'>
+          {filteredProjects.map((project) => (
+            <WorkItem
+              key={project.id}
+              index={project.id}
+              title={project.title}
+              description={project.tagline}
+              category={project.category}
+              imageUrl={
+                typeof project.thumbnail === "string"
+                  ? project.thumbnail
+                  : project.thumbnail.src
+              }
+              isPasswordProtected={project.isPasswordProtected}
             />
-          </React.Fragment>
-        ))}
+          ))}
+        </div>
       </div>
     </section>
   );

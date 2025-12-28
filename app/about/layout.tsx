@@ -3,7 +3,7 @@
 import Header from "@/components/header";
 import { motion } from "framer-motion";
 
-export default function ProjectLayout({
+export default function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;

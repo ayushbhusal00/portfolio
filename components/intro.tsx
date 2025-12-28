@@ -9,7 +9,6 @@ import { HiDownload } from "react-icons/hi";
 
 import Portrait from "@/public/Portrait.png";
 
-// import { UseActiveSectionContext } from "@/context/active-section";
 import { UseSectionInView } from "@/lib/hooks";
 
 export default function intro() {
@@ -19,7 +18,7 @@ export default function intro() {
     <section
       ref={ref}
       id='home'
-      className='w-full scroll-mt-[100rem] py-28 sm:py-32 border-b border-[#e6e8eb]'
+      className='w-full scroll-mt-[100rem] p-16 sm:p-6 md:py-28 border-b border-[#e6e8eb]'
     >
       <div className='flex flex-col items-center justify-center'>
         <div className='relative'>
@@ -53,7 +52,7 @@ export default function intro() {
           </motion.span>
         </div>
         <motion.div
-          className='max-w-[38.75rem] mb-5'
+          className='max-w-[38.75rem] md:mx-6 mb-5'
           initial={{ opacity: 0, y: 100 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{
@@ -61,7 +60,7 @@ export default function intro() {
           }}
         >
           <motion.h1
-            className='mb-5 mt-4 px-4 text-[2rem] font-bold text-center !leading-[1.5] text-[#18181b]'
+            className='mb-5 mt-4 px-4 text-[2rem] md:mx-6  font-bold text-center !leading-[1.5] text-[#18181b]'
             initial={{ opacity: 0, y: 100 }}
             animate={{ opacity: 1, y: 0 }}
           >
@@ -78,7 +77,7 @@ export default function intro() {
           </motion.p>
         </motion.div>
         <motion.div
-          className='flex flex-col sm:flex-row w-full gap-4 items-center justify-center px-4 text-sm font-medium'
+          className='flex flex-col max-w-[38.75rem] sm:flex-row sm:w-full  gap-4 items-center justify-center px-4 text-sm font-medium'
           initial={{ opacity: 0, y: 100 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{
@@ -86,7 +85,7 @@ export default function intro() {
           }}
         >
           <a
-            className='group w-full sm:w-auto justify-center text-white px-7 py-3 flex items-center gap-2 outline-none focus:scale-110 hover:bg-gray-950 active:scale-105 transition rounded-[6px]
+            className='group md:w-full sm:w-auto justify-center text-white px-7 py-3 flex items-center gap-2 outline-none focus:scale-110 hover:bg-gray-950 active:scale-105 transition rounded-[6px]
   bg-[#27272A] shadow-[0_0.75px_0_0_rgba(255,255,255,0.20)_inset,0_1px_2px_0_rgba(0,0,0,0.40),0_0_0_1px_#18181B]'
             href='/CV.pdf'
             download={true}

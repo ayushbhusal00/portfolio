@@ -14,7 +14,7 @@ export default function Home() {
   return (
     <main className='flex flex-col items-center relative'>
       <Header />
-      <div className='md:mx-16 border-x border-[#e6e8eb]'>
+      <div className='md:mx-16 border-x border-[#e6e8eb] bg-[#fafafa]'>
         <Intro />
         <Companies />
         <Story />

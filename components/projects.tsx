@@ -18,14 +18,14 @@ export default function Projects() {
       <SectionHeading className='my-10 px-6'>Projects</SectionHeading>
 
       <div className='w-full mx-auto flex flex-col items-center justify-center '>
-        {caseStudies.map((work, index) => (
+        {caseStudies.map((work) => (
           <Project
             key={work.id}
-            index={index}
+            index={work.id}
             title={work.title}
             description={work.overview}
-            // tags={work.role.split(" — ")}
-            imageUrl={work.thumbnail} // ⬅️ FIXED
+            imageUrl={work.thumbnail}
+            isPasswordProtected={work.isPasswordProtected}
           />
         ))}
       </div>

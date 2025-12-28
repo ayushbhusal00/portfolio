@@ -6,7 +6,6 @@ import { links } from "@/lib/data";
 import Link from "next/link";
 import clsx from "clsx";
 import { UseActiveSectionContext } from "@/context/active-section";
-import Switch from "@/components/switch";
 import dynamic from "next/dynamic";
 import AyushLogoDark from "@/public/Ayush-Logo-Dark.json";
 import AyushLogoLight from "@/public/Ayush-Logo-Light.json";
@@ -23,7 +22,7 @@ const Header = () => {
   return (
     <header className='sticky top-0 z-[999] w-full flex justify-center '>
       <motion.div
-        className='w-full  px-4 md:px-24 flex items-center py-4 md:py-2 border-b border-[#e4e4e7] dark:border-gray-700 bg-white dark:bg-gray-900 bg-opacity-80 dark:bg-opacity-75 shadow-lg shadow-black/[0.03] backdrop-blur-[0.5rem]'
+        className='w-full  px-4 md:px-24 flex items-center py-4 md:py-2 border-b  border-[#e4e4e7] dark:border-gray-700 bg-[#fafafa] dark:bg-gray-900 bg-opacity-80 dark:bg-opacity-75 shadow-lg shadow-black/[0.03] backdrop-blur-[0.5rem]'
         initial={{ y: -100, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
       >
@@ -34,7 +33,7 @@ const Header = () => {
               `flex items-center justify-center hover:text-gray-750 dark:hover:text-gray-300 transition 
               text-gray-750 dark:text-white `
             )}
-            href={"#home"}
+            href={"/"}
             onClick={() => {
               setTimeOfLastClick(Date.now());
             }}
@@ -74,7 +73,7 @@ const Header = () => {
                   {link.name}
                   {link.name === activeSection && (
                     <motion.span
-                      className='bg-gray-200 dark:bg-gray-700 rounded-md absolute inset-0 -z-10'
+                      className=' dark:bg-gray-700 rounded-md absolute inset-0 -z-10'
                       layoutId='activeSection'
                       transition={{
                         type: "spring",
@@ -98,7 +97,7 @@ const Header = () => {
               >
                 Say "Hello"
               </Link>
-              <Switch />
+              {/* <Switch /> */}
             </div>
           </ul>
         </nav>

@@ -4,24 +4,21 @@ import React from "react";
 import { motion } from "framer-motion";
 import OhoDigital from "@/public/oho-digital.png";
 import NiuralGroup from "@/public/Niural-Group.png";
-import { UseSectionInView } from "@/lib/hooks";
+
 import Image from "next/image";
 import SectionHeading from "./section-heading";
 
 export default function Story() {
-  const { ref } = UseSectionInView("Story");
-
   return (
     <motion.section
       className='w-full min-h-[50vh] flex flex-col items-center justify-center leading-8  scroll-mt-[28] border-b border-[#e6e8eb]'
       id='story'
     >
       <div className='w-full   flex flex-col sm:flex-row items-center text-left'>
-        <div className='relative h-[-webkit-fill-available] w-full min-h-[50vh] py-28 sm:py-32 sm:w-[50%] flex flex-row gap-2 items-center justify-center bg-[repeating-linear-gradient(135deg,rgba(0,0,0,0.08)_0,rgba(0,0,0,0.08)_1px,transparent_1px,transparent_6px)]'>
+        <div className='relative h-[-webkit-fill-available] w-full min-h-[50vh] py-28 sm:py-16 sm:w-[50%] flex flex-row gap-2 items-center justify-center bg-[repeating-linear-gradient(135deg,rgba(0,0,0,0.08)_0,rgba(0,0,0,0.08)_1px,transparent_1px,transparent_6px)]'>
           {/* First Image Card */}
           <motion.div
-            ref={ref}
-            className='absolute left-[3rem] sm:-left-2 w-[10rem] sm:w-[16rem]'
+            className='absolute left-[3rem] sm:left-0 w-[10rem] sm:w-[20rem]'
             initial={{ opacity: 0, rotate: 0, scale: 0.8 }}
             animate={{ opacity: 1, rotate: -8, scale: 1 }}
             transition={{ duration: 0.4, type: "spring" }}
@@ -37,8 +34,7 @@ export default function Story() {
           {/* Second Image Card */}
 
           <motion.div
-            ref={ref}
-            className='absolute right-[2rem] sm:right-0.5 w-[10rem] sm:w-[16rem]'
+            className='absolute right-[2rem] sm:right-0 w-[10rem] sm:w-[20rem]'
             initial={{ opacity: 0, rotate: 0, scale: 0.8 }}
             animate={{ opacity: 1, rotate: 8, scale: 1 }}
             transition={{ duration: 0.4, type: "spring" }}

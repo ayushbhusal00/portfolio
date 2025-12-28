@@ -44,7 +44,7 @@ const ProjectHeader = () => {
               `text-[0.8rem] font-medium flex items-center justify-center hover:text-gray-750 dark:hover:text-gray-300 transition 
               text-gray-750 dark:text-white `
             )}
-            href={"#home"}
+            href={"/"}
           >
             {theme === "dark" ? (
               <Lottie lottie={AyushLogoDark} />

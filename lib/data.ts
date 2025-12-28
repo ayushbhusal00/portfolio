@@ -1,27 +1,31 @@
 import React from "react";
+import { StaticImageData } from "next/image";
 import { CgWorkAlt } from "react-icons/cg";
 import { FaReact } from "react-icons/fa";
 import { LuGraduationCap } from "react-icons/lu";
 /* ---------------- WEPLAY IMPORTS ---------------- */
-import WePlay from "@/public/weplay-thubnail.png";
+import WePlay from "@/public/weplay-thumbnail.png";
 import WeplayHeroSection from "@/public/weplay-herosection.png";
-import Section1 from "@/public/section1-weplay.png";
-import Section2 from "@/public/section2-weplay.png";
-import Design1 from "@/public/weplay-designs-01.png";
-import Design2 from "@/public/weplay-design-02.png";
-import Design3 from "@/public/weplay-designs-03.png";
+import WePlayDesignRequirement from "@/public/weplay-designrequirement.png";
+import WePlayBranding from "@/public/weplay-branding.png";
+import WeplayUserResearch from "@/public/section1-weplay.png";
+
+import WePlayDesign1 from "@/public/weplay-design-1.png";
+import WePlayDesign2 from "@/public/weplay-design-2.png";
+import WePlayDesign3 from "@/public/weplay-design-3.png";
+import WePlayDesign4 from "@/public/weplay-design-4.png";
+import WePlayDesign5 from "@/public/weplay-design-5.png";
 
 /* ---------------- WEPLAY IMPORTS ---------------- */
-import LifeCorpusThumbnail from "@/public/Lifecorpus-thumbnail.jpg";
-import LifeCorpusHeroSection from "@/public/Lifecorpus-Hero.jpg";
+import LifeCorpusThumbnail from "@/public/Lifecorpus-thumbnail.png";
 import LifeCorpusCareer from "@/public/Lifecorpus-Career.png";
 import LifeCorpusColors from "@/public/Lifecorpus-colors.png";
-// import LifeCorpusDesign1 from "@/public/Lifecorpus-Hero.jpg";
-import LifeCorpusOthers from "@/public/Lifecorpus-Others.png";
+import LifeCorpusDesignReq from "@/public/lifecorpus-designreq.png";
 import LifeCorpusMarketing from "@/public/Lifecorpus-marketing.png";
 
 /* ---------------- NIURAL IMPORTS ---------------- */
-import NiuralWebsite from "@/public/NiuralWebsite.png";
+
+import NiuralThumbnail from "@/public/niural-thumbnail.png";
 import NiuralHeroSection from "@/public/Hero Section.png";
 import DesignSystem from "@/public/Design System.png";
 import TimeSheet from "@/public/Time Sheet.png";
@@ -30,28 +34,25 @@ import PaymentMethod from "@/public/Payment Method.png";
 
 /* ---------------- VESPER IMPORTS ---------------- */
 import VesperFineWines from "@/public/VesperFineWines.png";
-import Shop from "@/public/Shop.png";
-import Club from "@/public/Club.png";
+import VesperThumbnail from "@/public/vesper-thumbnail.png";
 
-import { StaticImageData } from "next/image";
 export const links = [
   {
     name: "Home",
-    hash: "#home",
+    hash: "/",
   },
   {
-    name: "Story",
-    hash: "#story",
+    name: "About",
+    hash: "/about",
   },
+
   {
     name: "Projects",
-    hash: "#projects",
+    hash: "/projects",
   },
-  {
-    name: "Skills",
-    hash: "#skills",
-  },
-  { name: "Playground", hash: "#playground" },
+
+  { name: "Playground", hash: "/playground" },
+  { name: "Skills", hash: "#skills" },
   // {
   //   name: "Experience",
   //   hash: "#experience",
@@ -208,460 +209,269 @@ export const skillsCategories = [
   },
 ] as const;
 
-export interface CaseStudy {
+export type CaseStudy = {
   id: number;
-  url: string;
+  slug: string;
   title: string;
-  color: string;
-  videoUrl: string;
-  thumbnail: StaticImageData;
-  heroImage: StaticImageData;
-  gallery: StaticImageData[];
   tagline: string;
   overview: string;
+
+  date: string;
+  readTime: string;
+  category: "Case study" | "Product" | "Ecosystem" | "User story";
+
+  url: string;
+  color?: string;
+
+  thumbnail: StaticImageData | string;
+  heroImage: StaticImageData | string;
+  gallery: (StaticImageData | string)[];
+
   role: string;
   duration: string;
+  videoUrl?: string;
+  isPasswordProtected?: boolean;
+
   sections: {
-    heading: string;
+    heading?: string;
     content?: string;
     bullets?: string[];
   }[];
-}
+};
 
 export const caseStudies: CaseStudy[] = [
   {
     id: 0,
-    url: "/projects/0",
-    color: "#AF2E4F",
-    title: "WePlay — Sports, Made Simple",
-    videoUrl: "https://vimeo.com/1149309393?share=copy&fl=sv&fe=ci",
-    thumbnail: WePlay,
-    heroImage: WeplayHeroSection,
-    gallery: [Section1, Section2, Design1, Design2, Design3],
-    tagline:
-      "A redesigned booking experience that turns one-time players into repeat customers.",
+    slug: "niural-global-payroll",
+    title: "Niural — Designing payroll for modern teams",
+    tagline: "Reducing operational complexity in global payroll management.",
     overview:
-      "A complete UX overhaul transforming WePlay from a transactional booking tool into a community-driven sports platform.",
-    role: "Product Designer — Research, UX, UI, Prototype",
-    duration: "3 months",
+      "Niural is a global payroll platform supporting fiat and crypto payouts.",
+
+    date: "Dec 10, 2025",
+    readTime: "5 min read",
+    category: "Product",
+
+    url: "/projects/0",
+    color: "#088236",
+    isPasswordProtected: true,
+
+    thumbnail: NiuralThumbnail,
+    heroImage: NiuralThumbnail,
+    gallery: [DesignSystem, TimeSheet, Payroll, PaymentMethod],
+
+    role: "Product Designer — UX, UI, Interaction Design",
+    duration: "Ongoing",
+
     sections: [
       {
-        heading: "Challenge",
+        heading: "Context",
         content:
-          "WePlay had users, but no return behavior. Booking was slow, discovery was limited, and there was no reason to come back.",
+          "Global payroll introduces complexity around compliance, currencies, and approvals.",
       },
       {
-        heading: "Approach",
-        content:
-          "We focused on three core problems: speed, discovery, and motivation.",
+        heading: "Design Strategy",
+        bullets: [
+          "Clear workflow separation",
+          "Predictable interaction patterns",
+          "Scalable design system",
+        ],
       },
       {
-        heading: "Outcome",
+        heading: "Impact",
         content:
-          "The redesign shifted WePlay into a scalable sports ecosystem.",
+          "Positioned Niural as a modern alternative to legacy payroll tools.",
       },
     ],
   },
   {
     id: 1,
+    slug: "lifecorpus-healthcare-trust",
+    title: "LifeCorpus SA: A Modern UI Revamp for Healthcare Support",
+    videoUrl: "https://vimeo.com/1149309422?controls=0&background=1",
+
+    tagline:
+      "Designing clarity, confidence, and scalability in a sensitive healthcare ecosystem.",
+
+    overview:
+      "LifeCorpus SA is a healthcare support platform focused on providing accessible services, education, and NDIS-related assistance to people across Southern Australia.",
+
+    date: "Dec 10, 2025",
+    readTime: "3 min read",
+    category: "Ecosystem",
+
     url: "/projects/1",
-    title: "LifeCorpus",
-    color: "#088236",
-    videoUrl: "https://vimeo.com/1149309422?share=copy&fl=sv&fe=ci",
+    color: "#0F766E",
+
     thumbnail: LifeCorpusThumbnail,
-    heroImage: LifeCorpusHeroSection,
+    heroImage: LifeCorpusThumbnail,
+
     gallery: [
       LifeCorpusCareer,
+      LifeCorpusDesignReq,
       LifeCorpusColors,
-      LifeCorpusCareer,
-      LifeCorpusOthers,
+      LifeCorpusColors,
       LifeCorpusMarketing,
     ],
-    tagline: "Website redesign for a leader in Customer Care",
-    overview:
-      "LifeCorpus SA is a South-Australia-based customer care service provider. I worked with them to create a unique web experience by facilating mindful service exploration based on design trend.",
-    role: "Product Designer — Web Design, Motion Design, Design System",
-    duration: "LifeCorpussa.au (Offline for some time)",
+
+    role: "Product Designer — UX, UI, Information Architecture",
+    duration: "4 months",
+
     sections: [
       {
-        heading: "Capturing the Brand Emotion",
+        // No heading
         content:
-          "The homepage welcomes users with an infomative selections of services they mmay want to use, images properly highlighting the services and experience and subtle animations to introduce users to the page.",
+          "This project takes a new approach to healthcare support in Southern Australia. Healthcare has long been a field with limited design inspiration, often relying on outdated patterns that fail to engage or guide users effectively. LifeCorpus set out to modernise their website experience—moving away from legacy layouts toward a contemporary system that could support marketing campaigns, educational blogs around NDIS services, and direct user assistance. The platform also needed to enable users to create support tickets, submit digital forms, and book services seamlessly.",
       },
       {
-        heading: "It’s All in the Details",
+        heading: "Building for Scale & Content Growth",
         content:
-          "We introduced an immersive scrollable feed of various products. Users can seamlessly preview, backtrack, and explore, all without leaving their current point.",
+          "To create a platform that could scale with the LifeCorpus team, content management was a key consideration. The team needed the flexibility to publish blogs, manage careers, and launch marketing pages without increasing development overhead. Payload CMS was selected due to its open-source nature and developer-friendly architecture. By leveraging Payload’s pre-designed admin interface, we significantly reduced the need to design complex backend experiences. This allowed the design process to focus on front-facing patterns, layouts, and components—keeping the CMS structure intentionally constrained while still offering enough variation for content creators to experiment and build visually engaging pages.",
       },
       {
-        heading: "An Overhauled Careers Portal",
+        heading: "Design System & Component Strategy",
         content:
-          "To meet the workforce need Life Corpus desperately needed a careers experience highlighting their team, benefits and showcasing their industry experience to bring in the best individuals.",
+          "A structured design system was established early in the process. Typography, color palettes, components, spacing tokens, and layout rules were defined during the design phase. Wireframes were first translated into reusable patterns, which later evolved into a full suite of production-ready pages. This systematic approach ensured visual consistency, faster handoff to development, and a scalable foundation that could grow with future features and content needs.",
       },
+      {},
       {
-        heading: "Appealing new Customer by Sharing Experiences",
-        content:
-          "Introducing the blogs pages to share case studies, helpful feeds users in the aged and disability community require for why LifeCorpus services are needed.",
-      },
-      {
-        heading: "Incorporating Marketing Tools",
-        content:
-          "Promotional blocks, banners, and forms are all essential elements for getting funnels online. We arranged each element systemically to allow for a consistent visual style as updates are made to the site.",
+        heading: "Design Strategy",
+        bullets: [
+          "Clear information hierarchy to support diverse user needs",
+          "Accessible interaction patterns aligned with healthcare usability standards",
+          "Visual cues that reinforce trust, security, and professionalism",
+          "Flexible layouts designed for CMS-driven content",
+          "Consistent components to maintain brand integrity across pages",
+        ],
       },
     ],
   },
-
   {
     id: 2,
-    url: "/projects/2",
-    title: "Vesper Fine Wines",
-    color: "#C77F1F",
-    videoUrl: "https://www.youtube.com/watch?v=LXb3EKWsInQ",
-    thumbnail: VesperFineWines,
-    heroImage: Shop,
-    gallery: [Club],
-    tagline: "A luxury wine shopping experience crafted for refined buyers.",
+    slug: "weplay-community-sports",
+    title: "WePlay: Redesigning Community Sports Booking at Scale",
+
+    tagline:
+      "Redesigning the booking experience to support discovery, engagement, and repeat play.",
+
     overview:
-      "A premium-commerce redesign blending rich visuals with effortless purchasing.",
-    role: "Product Designer — UX, UI, Visual Design",
-    duration: "4 months",
+      "WePlay is a community sports booking platform that helps players discover venues, organise games, and connect with other players. While the product showed early traction as a booking tool, it struggled to retain users beyond their first session due to limited discovery, social interaction, and engagement loops.",
+
+    date: "Dec 10, 2025",
+    readTime: "3 min read",
+    category: "Case study",
+
+    url: "/projects/2",
+    color: "#AF2E4F",
+
+    thumbnail: WePlay,
+    heroImage: WeplayHeroSection,
+
+    gallery: [
+      WePlay,
+      WePlayDesignRequirement,
+      WeplayUserResearch,
+      WePlayBranding,
+      WePlayDesign1,
+      WePlayDesign2,
+      WePlayDesign3,
+      WePlayDesign4,
+      WePlayDesign5,
+    ],
+
+    role: "Product Designer — UX Research, Web Design, UI Design, Prototyping",
+    duration: "3 months",
+    videoUrl: "https://vimeo.com/1149309393",
+
     sections: [
       {
-        heading: "Challenge",
+        heading: "Project Background",
         content:
-          "Fine wine customers expect trust, premium aesthetics, and a smooth buying experience.",
+          "WePlay launched as a functional sports venue booking platform focused on helping users reserve courts and facilities. While the core booking functionality worked, the experience felt transactional and isolated. Users completed a single booking and rarely returned, as the platform lacked mechanisms for discovery, social interaction, and long-term engagement.",
       },
       {
-        heading: "Experience Strategy",
+        heading: "Problem Statement",
+        content:
+          "As WePlay began addressing multiple product challenges, it became clear that the existing system was not built to scale. The platform had evolved without a defined design or technical framework, leading to slow progress and fragmented decision-making across design, frontend, and backend. The product was originally architected solely for bookings, with little consideration for future needs such as messaging, notifications, chat, single sign-on, or community features. To enable sustainable growth, WePlay needed a clear architectural foundation—one that aligned design, engineering, and product strategy. This required defining a scalable process, documenting requirements, and establishing a system of tokens, components, patterns, and shared assets to support both current and future features. Ultimately, the core challenge was transforming WePlay from a single-purpose booking tool into a flexible, community-driven platform that supports discovery, engagement, and repeat play.",
+      },
+      {
+        heading: "Design Goals",
+        content:
+          "The primary goal was to reposition WePlay from a utility-driven booking tool into a community-centric sports platform. This required simplifying the booking flow, surfacing relevant venues and sports, and introducing features that encouraged users to connect, organise games, and return regularly.",
+      },
+      {
+        heading: "Design & Implementation",
         bullets: [
-          "🍷 Full-bleed product storytelling",
-          "✨ Luxury UI System",
-          "🛒 Guided Checkout",
+          "Streamlining the booking workflow to reduce friction and drop-offs",
+          "Enhancing venue and sport discovery through structured browsing and filtering",
+          "Introducing social mechanics such as open games and player invitations",
+          "Designing engagement loops that encourage repeat bookings",
+          "Establishing a scalable UI system for future features and sports",
         ],
+        content:
+          "The redesigned experience focused on clarity, speed, and social context. Map-based discovery improved venue visibility, while open game listings allowed players to join existing matches instead of booking alone. Invitations and shared game details made it easier for users to organise games with friends, transforming the platform into a shared experience rather than a solo task.",
       },
+      {},
+      {},
+      {},
+      {},
+      {},
+      {},
+      {},
       {
-        heading: "Outcome",
-        content: "The redesign increased trust and elevated brand perception.",
+        heading: "Outcome & Impact",
+        content:
+          "The redesign repositioned WePlay as a scalable community sports ecosystem. Users could discover venues more easily, organise games faster, and engage with the platform beyond a single booking. The product foundation now supports future growth into leagues, events, and broader community-driven features.",
       },
     ],
   },
   {
     id: 3,
-    url: "/projects/3",
-    title: "Niural — Payroll, Reimagined",
-    color: "#088236",
-    videoUrl: "",
-    thumbnail: NiuralWebsite,
-    heroImage: NiuralHeroSection,
-    gallery: [DesignSystem, TimeSheet, Payroll, PaymentMethod],
+    slug: "vesper-design-system",
+    title: "Vesper — Scaling a hospitality brand through design systems",
     tagline:
-      "Designing a seamless global payroll platform for modern companies.",
+      "Establishing a unified digital system for a growing hospitality business.",
     overview:
-      "Niural modernizes payroll by supporting fiat & crypto payouts across borders.",
-    role: "Product Designer — UX, UI, Interaction",
-    duration: "Ongoing",
+      "Vesper is a hospitality company operating across dining, retail, and events. As the business expanded, maintaining consistency across digital touchpoints became increasingly difficult.",
+
+    date: "Dec 10, 2025",
+    readTime: "4 min read",
+    category: "Product",
+
+    url: "/projects/3",
+    color: "#1E1E1E",
+
+    thumbnail: VesperThumbnail,
+    heroImage: VesperFineWines,
+    gallery: [VesperFineWines, VesperFineWines, VesperFineWines],
+
+    role: "Web Designer — UI Design, Design Systems, Frontend Collaboration",
+    duration: "10 months",
+
     sections: [
       {
-        heading: "Challenge",
+        heading: "Background",
         content:
-          "Global payroll is fragmented, slow, and full of compliance friction.",
+          "Multiple teams managed Vesper’s marketing pages, e-commerce flows, and internal tools independently.",
       },
       {
-        heading: "Experience Strategy",
+        heading: "The Challenge",
+        content:
+          "The goal was to create a unified design system that supported marketing, e-commerce, and operational tools.",
+      },
+      {
+        heading: "Design Approach",
         bullets: [
-          "💸 One-Click Payroll",
-          "🌍 Multi-Currency",
-          "🛡 Compliance Layer",
-          "📊 Control Center",
+          "Defining a shared visual language",
+          "Building reusable UI components",
+          "Supporting responsive and scalable layouts",
         ],
       },
       {
         heading: "Outcome",
         content:
-          "Reduced setup friction and positioned Niural as a modern payroll alternative.",
+          "The system reduced inconsistencies and accelerated development across teams.",
       },
     ],
   },
 ];
-
-// // Case study array with updated content
-// export const caseStudies: CaseStudy[] = [
-//   {
-//     companyName: "Niural Inc.",
-//     heroSection: {
-//       image: NiuralHeroSection,
-//       title: "Complete Product Design for a Payroll Application",
-//       tagsOfWork: ["UX Research", "UI Design", "Prototyping"],
-//       description:
-//         "I was involved in Niural for over 2 years, my contributions include creating the MVP designs to current full fledged industry level application.",
-//       collaborators: ["Ayush Bhusal"],
-//       duration: "2 years",
-//       tools: ["Figma", "After Effects", "Illustrator"],
-//       roles: ["UI/UX Designer", "Product Manager", "Prototyper"],
-//     },
-//     sections: [
-//       {
-//         content: [
-//           {
-//             title: "A robust and modern Design System",
-//             description:
-//               "Niural's design system has been through 3 iterations, currently redesigned to solve the issues for complex navigations, modern UI, customizable theming capabilities and new brand style to reach the global customers.",
-//             image: [DesignSystem],
-//           },
-//         ],
-//       },
-//       {
-//         content: [
-//           {
-//             title: "Payroll",
-//             description:
-//               "US Payroll is complicated for Employees as well as Employers as taxation is a critical aspect for any job holders & Companies. US has a complex taxation system that changes based on federal, state, county, and sometimes city codes as well. Our team researched the most to make this process seamless and have boiled down the process for payroll that takes 20-30days to 5 mins of operations. This is the most revenue generating and demanded product Niural offers.",
-//             image: [Payroll],
-//           },
-//         ],
-//       },
-//       {
-//         content: [
-//           {
-//             title: "Expense & Time Tools",
-//             description:
-//               "A supporting feature for any payroll is expense management. Niural offers an easy interface for employees to submit their timely expenses as reports and provides an easy way for employers to approve or reject items to current pay cycle. It also considers types like allowance so that they are taxed properly without employers having to manually enter or record any additional items. Few states mandate certain time offs, Niural offers a complete suite of settings to configure time offs for their employees. Same as Expense management, time tools are also handled with an intuitive UI manage, approve or reject employees time off requests.",
-//             image: [TimeSheet],
-//           },
-//         ],
-//       },
-//       {
-//         content: [
-//           {
-//             title: "Wallet Support",
-//             description:
-//               "Niural supports both crypto and fiat payment systems. Supporting over 160+ countries and all local currencies for any employers to be able to execute global payrolls in Niural. I worked to simplify and connect the flow where crypto are very different from fiat payments and have worked to create a consistent and seamless user experience.",
-//             image: [PaymentMethod],
-//           },
-//         ],
-//       },
-//     ],
-//   },
-//   //Project background
-//   {
-//     companyName: "WePlay",
-//     heroSection: {
-//       image: WeplayHeroSection,
-//       title: "WePlay — Sports Booking App Redesign",
-//       tagsOfWork: ["UX Research", "UI Design", "Prototyping"],
-//       description: "Redesigning for Engagement & Simplicity",
-//       collaborators: ["Ayush Bhusal"],
-//       duration: "3 months",
-//       tools: ["Figma", "Animate CC", "Illustrator"],
-//       roles: ["UI/UX Designer", "Prototyper"],
-//     },
-//     sections: [
-//       // Problem Statement
-//       {
-//         content: [
-//           {
-//             title: "Challenge",
-//             description:
-//               "WePlay had stable users but no growth. Booking was slow, discovery was hard, and there was no reason to come back.",
-//           },
-//           {
-//             title: "What I Did",
-//             listItems: [
-//               "Ran user interviews & journey mapping",
-
-//               "Identified 4 core friction points (slow booking, poor discovery, no incentives, team coordination issues)",
-
-//               "Redesigned the entire booking flow",
-//             ],
-//           },
-//           {
-//             title: "Key UX Improvements",
-//             listItems: [
-//               "Faster Booking — Fewer steps, clearer choices",
-
-//               "Map-Based Venue Discovery",
-
-//               "Rewards System for repeat play",
-
-//               "Team Invites & Open Spots",
-
-//               "Filters + Help Center",
-//             ],
-//             image: [DesignProcess],
-//           },
-//         ],
-//       },
-//       // // Define Section
-//       // {
-//       //   content: [
-//       //     {
-//       //       title: "Define",
-//       //       description:
-//       //         "I used methods like creating User Personas and Empathy Maps. These are later implemented to conceptualize a problem statement. We later work with a “How might we?” which helps us take our problems and transition to an ideation process.",
-//       //       image: [EmpathyMapping],
-//       //     },
-//       //     {
-//       //       title: "User Persona",
-//       //       image: [PersonaMapping],
-//       //     },
-//       //     {
-//       //       title: "Initial Insights",
-//       //       description:
-//       //         "Players find it hard to view venue listings from a nearby locations, available timings, and prices. Players are motivated to play games when presented with discounts and vouchers which are currently only available on consecutive bookings. Players find organizing a team to be a hassle, requires planning before weeks, and players cancel at the last minute.Players are stuck to a game of their choice as they don't have knowledge on how to find other sports options and playing spaces.",
-//       //     },
-//       //   ],
-//       // },
-//       // // Research Section
-//       // {
-//       //   content: [
-//       //     {
-//       //       title: "Research",
-//       //       description:
-//       //         "My first task was to empathize with the users’ to understand their needs and motivation. For this, I conducted user interviews and probe studies to understand the user.",
-//       //       image: [Section1],
-//       //     },
-//       //     {
-//       //       title: "User Interviews",
-//       //       description:
-//       //         "The participants were selected based on their interest in playing sports, here some were very active while others were not. Employment was also a criteria as these varied user personas.The objective of the Interview- Understand general attitudes towards booking playing spaces.- Understand general attitudes towards a mobile or web application for court booking apps.- Discover which apps people are currently using to book their playing spaces.- Find our pain points of the users in booking a playing space, and organizing a match.- Find out what motivates the user to play at certain venues.<a>https://drive.google.com/drive/folders/1eYeS5brDRmoPPcrfVHdNKbyvaY_GuaSD?usp=sharing</a><a>https://drive.google.com/file/d/124YxPtAAZ-KEHmP338n5L7ejCBLRZe96/view?usp=sharing</a>",
-//       //     },
-//       //     {
-//       //       title: "Initial Insights",
-//       //       description:
-//       //         "Players find it hard to view venue listings from a nearby locations, available timings, and prices. Players are motivated to play games when presented with discounts and vouchers which are currently only available on consecutive bookings. Players find organizing a team to be a hassle, requires planning before weeks, and players cancel at the last minute.Players are stuck to a game of their choice as they don't have knowledge on how to find other sports options and playing spaces.",
-//       //     },
-//       //   ],
-//       // },
-//       // // Ideation Section
-//       // {
-//       //   content: [
-//       //     {
-//       //       title: "Ideation",
-//       //       description:
-//       //         "Once I understood the domain and whom I was designing for, I gathered ideas using Journey Mapping and Competitors Analysis. This resulted in large chunks of ideas and a new vision for the current platform.",
-//       //     },
-//       //     {
-//       //       title: "Journey Mapping",
-//       //       description:
-//       //         "The product was tested with each participant and all the questions the participants had during each stage has been categorized as their thoughts, pain points, and opportunities we can find,",
-//       //       image: [JourneyMapping],
-//       //     },
-//       //     {
-//       //       title: "Competitors Analysis",
-//       //       description:
-//       //         "Using competitive analysis helped me find the strengths and weaknesses of the competitor's app. I found 4 major competitors to WePlay: Anybuddy, Racketpal, Spin & Strongbee.<a>https://drive.google.com/drive/folders/1J6rvLhCO9_Tb6bm0fiFHi5jHXQJUP7P4</a>",
-//       //     },
-//       //     {
-//       //       title: "Ideas Gathered during the Ideation Stage",
-//       //       description:
-//       //         "Redesign the booking process to require minimum steps. The booking process should be made fast. Let users find venues nearby their location. Having a visible Map showing venues nearby could be handy.Make a reward system to offer players incentives to complete more bookings.Allow filters to make selective selections. Let users invite players to their games and join games where players are empty. List Help and FAQ section accessible, so that help is always offered when needed.",
-//       //     },
-//       //   ],
-//       // },
-//       // // Design Section
-//       // {
-//       //   content: [
-//       //     {
-//       //       title: "Design",
-//       //       description:
-//       //         "The process started of with sketching the wireframe and determining the possible flows and screens.",
-//       //     },
-//       //     {
-//       //       title: "Wireframe",
-//       //       image: [Wireframe],
-//       //     },
-//       //     {
-//       //       title: "Brand Design",
-//       //       image: [BrandDesign],
-//       //     },
-//       //     {
-//       //       title: "High Fidelity Mockups",
-//       //       image: [Design1, Design2, Design3],
-//       //     },
-//       //   ],
-//       // },
-//       // //Learnings and What's Next
-//       // {
-//       //   content: [
-//       //     {
-//       //       title: "My Learnings",
-//       //       description:
-//       //         "Having done the User-Centered design approach brought out a lot of opportunities the company could work on. Previously WePlay was considered to solve booking. Now the scope has increased to many more and the responsibility and enthusiasm in the team has increased, as WePlay now is aimed to solve a much bigger problem.",
-//       //     },
-//       //     {
-//       //       title: "What’s Next ?",
-//       //       description:
-//       //         "With all the UX strategy and research complete the project has moved on to development phase. The final solution is expected to solve all the POV Statement problems and users are being tested with small features and task to check and improve on UI usability and usefulness.",
-//       //     },
-//       //   ],
-//       // },
-//     ],
-//   },
-//   {
-//     companyName: "Vesper Fine Wines",
-//     heroSection: {
-//       image: VesperFineWines,
-//       title: "Ecommerce Application for Wine Shopping",
-//       tagsOfWork: ["UX Research", "UI Design", "Development"],
-//       description:
-//         "Designed and Developed an Ecommerce Application for Mobile and Web for Nepal",
-//       collaborators: ["Ayush Bhusal"],
-//       duration: "11 months",
-//       tools: ["Figma", "React", "Next JS"],
-//       roles: ["UI/UX Designer", "Developer"],
-//     },
-//     sections: [
-//       {
-//         content: [
-//           {
-//             title: "Problem",
-//             description:
-//               "Vesper, a leading wine supplier in Nepal, had a web portal to buy wines but lacked features like product updates, event promotions, and good payment integrations — resulting in zero sales.",
-//             image: [Club],
-//           },
-//         ],
-//       },
-//       {
-//         content: [
-//           {
-//             title: "Solution",
-//             description:
-//               "I was hired to work with the sales and existing development team to redesign and rebuild the current application, integrating new features to make it easier to use.",
-//             image: [Shop],
-//           },
-//         ],
-//       },
-//       {
-//         content: [
-//           {
-//             title: "New Layout and Redesign of All Components",
-//             description:
-//               "Users could now view promotions, easily preview products, and add them to cart for shopping. The product page was fully redesigned and redeveloped to include advanced filtering and sorting options.",
-//             image: [Section1],
-//           },
-//         ],
-//       },
-//       {
-//         content: [
-//           {
-//             title: "Payments API Integrations",
-//             description:
-//               "Vesper serves both foreign and local customers who enjoy wines. We integrated multiple payment APIs to support card payments, local bank transfers, and Fonepay QR payments.",
-//             image: [Section2],
-//           },
-//         ],
-//       },
-//       {
-//         content: [
-//           {
-//             title: "Outcome",
-//             description:
-//               "The redesigned e-commerce platform led to over 1,500 new orders and generated more than $1M in revenue.",
-//             image: [Design3],
-//           },
-//         ],
-//       },
-//     ],
-//   },
-//   // Additional case studies if necessary...
-// ];
