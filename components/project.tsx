@@ -83,7 +83,7 @@ export default function Project({
         </div>
 
         {/* Content */}
-        <div className='flex flex-col justify-center md:w-[45%]  p-6 md:p-6 '>
+        <div className='flex flex-col text-start justify-center md:w-[45%]  p-6 md:p-6 '>
           {/* Optional tag */}
           <span className='mb-3 inline-block w-fit rounded-full bg-black/5 dark:bg-white/10 px-3 py-1 text-xs font-medium text-gray-600 dark:text-white/70'>
             Case Study

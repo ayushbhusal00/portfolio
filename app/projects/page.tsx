@@ -3,6 +3,8 @@
 import { useState } from "react";
 import { caseStudies } from "@/lib/data";
 import WorkItem from "@/components/work-item";
+import HeroSection from "@/components/hero-section";
+import ProjectsInProd from "@/public/projects-in-prod.png";
 
 export default function ProjectsPage() {
   const categories = [
@@ -19,6 +21,15 @@ export default function ProjectsPage() {
 
   return (
     <section className='mx-auto max-w-[72rem] border-x border-[#e6e8eb]'>
+      <HeroSection
+        image={ProjectsInProd}
+        tag={"Projects"}
+        title={"Featured and Selected works"}
+        subtitle={
+          "Selected work from my journey designing and building thoughtful, scalable, and user-driven digital experiences."
+        }
+        category={"UX · UI Systems · Motion · Frontend · Brand Identity"}
+      />
       {/* Header */}
       <header className='px-16 py-8 w-full flex justify-between'>
         <h1 className='text-[28px] font-semibold tracking-tight text-zinc-900'>
@@ -50,7 +61,7 @@ export default function ProjectsPage() {
       </header>
 
       {/* Grid */}
-      <div className='divide-y divide-[#e6e8eb]'>
+      <div className='w-full  divide-y divide-[#e6e8eb]'>
         <div className='grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 border-y border-[#e6e8eb]'>
           {filteredProjects.map((project) => (
             <WorkItem

@@ -13,9 +13,11 @@ export default function Projects() {
     <section
       ref={ref}
       id='projects'
-      className='scroll-mt-28 w-full mx-auto flex flex-col justify-center'
+      className='scroll-mt-28 w-full text-center mx-auto flex flex-col justify-center'
     >
-      <SectionHeading className='my-10 px-6'>Projects</SectionHeading>
+      <SectionHeading className='my-10 px-6 text-center'>
+        Featured Projects
+      </SectionHeading>
 
       <div className='w-full mx-auto flex flex-col items-center justify-center '>
         {caseStudies.map((work) => (

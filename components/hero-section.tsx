@@ -1,10 +1,22 @@
 "use client";
 
 import { motion } from "framer-motion";
-import Image from "next/image";
-import Playground from "@/public/playground.png";
+import Image, { StaticImageData } from "next/image";
 
-export default function HeroSection() {
+export interface HeroSectionProps {
+  image: StaticImageData;
+  tag: string;
+  title: string;
+  subtitle: string;
+  category: string;
+}
+export default function HeroSection({
+  image,
+  tag,
+  title,
+  subtitle,
+  category,
+}: HeroSectionProps) {
   return (
     <motion.section
       id='playground-hero'
@@ -22,7 +34,7 @@ export default function HeroSection() {
         viewport={{ once: true }}
       >
         <Image
-          src={Playground}
+          src={image}
           alt='Enjoying Cooking by myself'
           className='rounded-lg shadow-lg '
         />
@@ -36,7 +48,7 @@ export default function HeroSection() {
           animate={{ y: 0, opacity: 1 }}
           transition={{ delay: 0.05 }}
         >
-          Playground
+          {tag}
         </motion.span>
 
         {/* Main heading */}
@@ -46,7 +58,7 @@ export default function HeroSection() {
           animate={{ y: 0, opacity: 1 }}
           transition={{ delay: 0.1 }}
         >
-          Exploring ideas beyond production work
+          {title}
         </motion.h1>
 
         {/* Description */}
@@ -56,9 +68,7 @@ export default function HeroSection() {
           animate={{ y: 0, opacity: 1 }}
           transition={{ delay: 0.15 }}
         >
-          A space to experiment with concepts, motion, and emerging tech. Unlike
-          my projects, this is where I learn, iterate, and push ideas forward
-          without constraints.
+          {subtitle}
         </motion.p>
 
         {/* Optional meta line */}
@@ -68,7 +78,7 @@ export default function HeroSection() {
           animate={{ opacity: 1 }}
           transition={{ delay: 0.2 }}
         >
-          Concepts · Motion · UI Systems · Frontend Experiments · Learning
+          {category}
         </motion.p>
       </div>
     </motion.section>

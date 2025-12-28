@@ -12,6 +12,7 @@ interface Props {
   imageUrl: string;
   category?: string;
   isPasswordProtected?: boolean;
+  href?: string;
 }
 
 export default function WorkItem({
@@ -20,6 +21,7 @@ export default function WorkItem({
   imageUrl,
   category,
   isPasswordProtected,
+  href,
 }: Props) {
   const [hasAccess, setHasAccess] = useState(true);
 
@@ -44,7 +46,7 @@ export default function WorkItem({
 
   return (
     <Link
-      href={`/projects/${index}`}
+      href={href || `/projects/${index}`}
       className='
         group relative flex flex-col gap-4
         px-6 py-8 lg:px-16 lg:py-16

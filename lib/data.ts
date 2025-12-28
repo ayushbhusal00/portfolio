@@ -26,7 +26,6 @@ import LifeCorpusMarketing from "@/public/Lifecorpus-marketing.png";
 /* ---------------- NIURAL IMPORTS ---------------- */
 
 import NiuralThumbnail from "@/public/niural-thumbnail.png";
-import NiuralHeroSection from "@/public/Hero Section.png";
 import DesignSystem from "@/public/Design System.png";
 import TimeSheet from "@/public/Time Sheet.png";
 import Payroll from "@/public/Payroll.png";
@@ -35,6 +34,14 @@ import PaymentMethod from "@/public/Payment Method.png";
 /* ---------------- VESPER IMPORTS ---------------- */
 import VesperFineWines from "@/public/VesperFineWines.png";
 import VesperThumbnail from "@/public/vesper-thumbnail.png";
+
+/* ---------------- PLAYGROUND IMPORTS ---------------- */
+import PlayroomkitThumbnail from "@/public/playroomkit-thumbnail.png";
+import PlayroomkitDesignSpec from "@/public/playroomkit-designspec.png";
+import PlayroomkitAsset from "@/public/shooter-kit.jpg";
+
+import GalaxyModifierThumbnail from "@/public/galaxymodifier-thumbnail.png";
+import FashionCommerceThumbnail from "@/public/ecommerce-thumbnail.png";
 
 export const links = [
   {
@@ -52,7 +59,7 @@ export const links = [
   },
 
   { name: "Playground", hash: "/playground" },
-  { name: "Skills", hash: "#skills" },
+
   // {
   //   name: "Experience",
   //   hash: "#experience",
@@ -118,96 +125,96 @@ export const experiencesData = [
   // },
 ] as const;
 
-export const projectsData = [
-  {
-    title: "Niural Inc.",
-    description:
-      "Its a global payroll platform, that serves all aspects of hiring from hiring to payroll.",
-    tags: ["Figma", "Design System", "Branding", "UX Research", "WebFlow"],
-    imageUrl: NiuralHeroSection,
-    colorFrom: "#bef264", // lime-200 equivalent
-    colorTo: "#10b981", // emerald-500 equivalent
-  },
-  {
-    title: "WePlay",
-    description:
-      "Platform for sports booking and learning. Help users find players to play with, book venues and interact with the community",
-    tags: [
-      "Figma",
-      "Animate CC",
-      "Illustrator",
-      "UI Design",
-      "Mobile Design",
-      "Web Design",
-    ],
-    imageUrl: WePlay,
-    colorFrom: "#fecaca",
-    colorTo: "#f43f5e",
-  },
-  {
-    title: "Vesper Fine Wines",
-    description:
-      "An ecommerce website to buy best and largest varietal of wines in Nepal. Responsive and user-friendly application for both Web and Mobile users.",
-    tags: ["React", "Next.js", "SQL", "Tailwind", "Prisma"],
-    imageUrl: VesperFineWines,
-    //   colorFrom: "#bef264", // lime-200 equivalent
-    //   colorTo: "#10b981", // emerald-500 equivalent
-  },
-] as const;
+// export const projectsData = [
+//   {
+//     title: "Niural Inc.",
+//     description:
+//       "Its a global payroll platform, that serves all aspects of hiring from hiring to payroll.",
+//     tags: ["Figma", "Design System", "Branding", "UX Research", "WebFlow"],
+//     imageUrl: NiuralHeroSection,
+//     colorFrom: "#bef264", // lime-200 equivalent
+//     colorTo: "#10b981", // emerald-500 equivalent
+//   },
+//   {
+//     title: "WePlay",
+//     description:
+//       "Platform for sports booking and learning. Help users find players to play with, book venues and interact with the community",
+//     tags: [
+//       "Figma",
+//       "Animate CC",
+//       "Illustrator",
+//       "UI Design",
+//       "Mobile Design",
+//       "Web Design",
+//     ],
+//     imageUrl: WePlay,
+//     colorFrom: "#fecaca",
+//     colorTo: "#f43f5e",
+//   },
+//   {
+//     title: "Vesper Fine Wines",
+//     description:
+//       "An ecommerce website to buy best and largest varietal of wines in Nepal. Responsive and user-friendly application for both Web and Mobile users.",
+//     tags: ["React", "Next.js", "SQL", "Tailwind", "Prisma"],
+//     imageUrl: VesperFineWines,
+//     //   colorFrom: "#bef264", // lime-200 equivalent
+//     //   colorTo: "#10b981", // emerald-500 equivalent
+//   },
+// ] as const;
 
-export const skillsData = [
-  "Figma",
-  "Adobe XD",
-  "Illustrator",
-  "Photoshop",
-  "After Effects",
-  "LottiLab",
-  "Miro",
-  "HTML5",
-  "Tailwind CSS",
-  "JavaScript (ES6+)",
-  "TypeScript",
-  "React",
-  "Next.js",
-  "Node.js",
-  "Git",
-  "React Native",
-  "Three JS",
-  "Framer Motion",
-] as const;
+// export const skillsData = [
+//   "Figma",
+//   "Adobe XD",
+//   "Illustrator",
+//   "Photoshop",
+//   "After Effects",
+//   "LottiLab",
+//   "Miro",
+//   "HTML5",
+//   "Tailwind CSS",
+//   "JavaScript (ES6+)",
+//   "TypeScript",
+//   "React",
+//   "Next.js",
+//   "Node.js",
+//   "Git",
+//   "React Native",
+//   "Three JS",
+//   "Framer Motion",
+// ] as const;
 
-// Group skills into categories
-export const skillsCategories = [
-  {
-    title: "Things I Create",
-    skills: [
-      "Websites",
-      "App Design",
-      "Visual Identity",
-      "Illustrations",
-      "Design Systems",
-      "UI Animation",
-    ],
-    color: "bg-lime-200 dark:bg-lime-900",
-  },
-  {
-    title: "For Products In",
-    skills: ["SaaS", "FinTech", "Web 3.0", "AI", "VR", "3D Visualization"],
-    color: "bg-purple-200 dark:bg-purple-900",
-  },
-  {
-    title: "Using Tools Like",
-    skills: [
-      "Figma",
-      "After Effects",
-      "Webflow",
-      "Illustrator",
-      "Photoshop",
-      "Lottie",
-    ],
-    color: "bg-blue-200 dark:bg-blue-900",
-  },
-] as const;
+// // Group skills into categories
+// export const skillsCategories = [
+//   {
+//     title: "Things I Create",
+//     skills: [
+//       "Websites",
+//       "App Design",
+//       "Visual Identity",
+//       "Illustrations",
+//       "Design Systems",
+//       "UI Animation",
+//     ],
+//     color: "bg-lime-200 dark:bg-lime-900",
+//   },
+//   {
+//     title: "For Products In",
+//     skills: ["SaaS", "FinTech", "Web 3.0", "AI", "VR", "3D Visualization"],
+//     color: "bg-purple-200 dark:bg-purple-900",
+//   },
+//   {
+//     title: "Using Tools Like",
+//     skills: [
+//       "Figma",
+//       "After Effects",
+//       "Webflow",
+//       "Illustrator",
+//       "Photoshop",
+//       "Lottie",
+//     ],
+//     color: "bg-blue-200 dark:bg-blue-900",
+//   },
+// ] as const;
 
 export type CaseStudy = {
   id: number;
@@ -473,5 +480,179 @@ export const caseStudies: CaseStudy[] = [
           "The system reduced inconsistencies and accelerated development across teams.",
       },
     ],
+  },
+];
+
+export type PlaygroundProject = {
+  id: number;
+  slug: string;
+  title: string;
+  tagline: string;
+  overview: string;
+
+  date: string;
+  category: "Game" | "Motion" | "3d Animation";
+
+  url: string;
+  color?: string;
+
+  thumbnail: StaticImageData | string;
+  heroImage: StaticImageData | string;
+  gallery: (StaticImageData | string)[];
+
+  videoUrl?: string;
+
+  sections: {
+    heading?: string;
+    content?: string;
+    bullets?: string[];
+  }[];
+
+  websiteLink?: string;
+  role?: string;
+  duration?: string;
+  readTime?: string;
+  isPasswordProtected?: boolean;
+};
+
+export const playgroundProjects: PlaygroundProject[] = [
+  {
+    id: 0,
+    slug: "gunfight",
+    title: "Gun Fight — Brawl-Style Multiplayer Game",
+    tagline:
+      "A real-time multiplayer shooter built with PlayroomKit and Three.js.",
+    overview:
+      "Gun Fight is an experimental brawl-style multiplayer game exploring real-time interactions on the web. I used PlayroomKit to handle multiplayer networking, while Three.js, Rapier Physics, and Zustand power the visuals, physics, and state management on the frontend. The project focuses on understanding multiplayer game architecture, physics-based interactions, and synchronized player states.",
+
+    date: "Sep 01, 2025",
+    category: "Game",
+
+    url: "/playground/0",
+    color: "#088236",
+
+    thumbnail: PlayroomkitThumbnail,
+    heroImage: PlayroomkitThumbnail,
+    gallery: [PlayroomkitDesignSpec, PlayroomkitAsset],
+
+    videoUrl: "",
+
+    sections: [
+      {
+        heading: "What Was Built",
+        content:
+          "I built a multiplayer lobby where players can create or join rooms and instantly play together. Player movement, shooting, and health states are synchronized in real time using WebSockets. When a player’s health reaches zero, they respawn, keeping gameplay fast and continuous.",
+      },
+      {
+        heading: "Frontend",
+        bullets: [
+          "Custom characters and environments modeled in Blender",
+          "Physics-based player movement, bullets, and environment interactions using Rapier",
+          "Health system, damage handling, and respawn logic",
+          "Global game state managed with Zustand",
+        ],
+      },
+    ],
+
+    websiteLink: "gunfight-8uul3c9wl-ayushbhusal00s-projects.vercel.app",
+    role: "Developer, Asset Designer",
+    duration: "2 months",
+    readTime: "3 min read",
+  },
+
+  {
+    id: 1,
+    slug: "galaxy-modifier",
+    title: "Galaxy Modifier — Procedural Galaxy Generator",
+    tagline:
+      "A real-time galaxy visualization tool built with vanilla Three.js.",
+    overview:
+      "Galaxy Modifier is a visual experimentation project focused on procedural generation and particle-based rendering in 3D. Built using vanilla Three.js, the tool allows users to tweak parameters from the UI and instantly generate unique galaxy formations, exploring how data-driven inputs affect spatial patterns and motion.",
+
+    date: "July 10, 2025",
+    category: "Game",
+
+    url: "/playground/1",
+    color: "#088236",
+
+    thumbnail: GalaxyModifierThumbnail,
+    heroImage: GalaxyModifierThumbnail,
+    gallery: [],
+
+    videoUrl: "",
+
+    sections: [
+      {
+        heading: "Context",
+        content:
+          "This project was created to explore how complex visual systems—like galaxies—can be represented using simple mathematical models and real-time rendering on the web.",
+      },
+      {
+        heading: "What Was Explored",
+        bullets: [
+          "Procedural galaxy generation using particle systems",
+          "Real-time parameter controls (density, spread, rotation, color)",
+          "UI-driven updates reflected instantly in the 3D viewport",
+          "Hands-on learning of Three.js, shaders, and render loops",
+        ],
+      },
+      {
+        heading: "Outcome",
+        content:
+          "Galaxy Modifier strengthened my understanding of procedural visuals and interactive 3D systems, serving as a foundation for more advanced experiments in WebGL-based data visualization.",
+      },
+    ],
+
+    websiteLink: "galaxy-modifyer-9agsqkfh3-ayush-bhusals-projects.vercel.app",
+    role: "Developer — Three.js, Visualization",
+    duration: "1 month",
+    readTime: "2 min read",
+  },
+  {
+    id: 2,
+    slug: "ecommerce",
+    title: "Clothing Commerce — Vanilla JavaScript",
+    tagline:
+      "An experimental e-commerce concept built to learn core JavaScript.",
+    overview:
+      "Clothing Commerce is a learning-focused project where I explored building a functional e-commerce experience using Vanilla JavaScript—without frameworks. The experiment centers around allowing UI-driven customization while strengthening my understanding of DOM manipulation, state handling, and interaction logic.",
+
+    date: "July 10, 2025",
+    category: "Game",
+
+    url: "/playground/2",
+    color: "#088236",
+
+    thumbnail: FashionCommerceThumbnail,
+    heroImage: FashionCommerceThumbnail,
+    gallery: [],
+
+    videoUrl: "",
+
+    sections: [
+      {
+        heading: "Context",
+        content:
+          "This project was created as a hands-on exercise to understand how modern e-commerce experiences work at a foundational level—handling UI updates, product data changes, and visual feedback directly through JavaScript.",
+      },
+      {
+        heading: "What Was Explored",
+        bullets: [
+          "UI-based customization that updates product data in real time",
+          "Core e-commerce interactions built without libraries or frameworks",
+          "Deeper understanding of JavaScript fundamentals, events, and state flow",
+        ],
+      },
+      {
+        heading: "Outcome",
+        content:
+          "The project helped solidify my grasp of Vanilla JavaScript while experimenting with visual storytelling and interaction patterns commonly used in modern fashion commerce.",
+      },
+    ],
+
+    websiteLink: "luxury-tarsier-d95917.netlify.app,",
+    role: "Developer",
+    duration: "1 month",
+    readTime: "2 min read",
   },
 ];
