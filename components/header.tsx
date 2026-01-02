@@ -10,6 +10,7 @@ import dynamic from "next/dynamic";
 import AyushLogoDark from "@/public/Ayush-Logo-Dark.json";
 import AyushLogoLight from "@/public/Ayush-Logo-Light.json";
 import { useTheme } from "@/context/theme-context";
+import StaggeredMenu from "@/components/StaggeredMenu";
 
 const Header = () => {
   const Lottie = dynamic(() => import("@lottielab/lottie-player/react"), {
@@ -18,6 +19,39 @@ const Header = () => {
   const { activeSection, setActiveSection, setTimeOfLastClick } =
     UseActiveSectionContext();
   const { theme } = useTheme();
+
+  // Prepare menu items from links
+  const menuItems = links.map((link) => ({
+    label: link.name,
+    link: link.hash,
+    ariaLabel: `Navigate to ${link.name} page`,
+  }));
+
+  // Add "Say Hello" to menu items
+  const allMenuItems = [
+    ...menuItems,
+    {
+      label: "Say Hello",
+      link: "#contact",
+      ariaLabel: "Navigate to contact section",
+    },
+  ];
+
+  // Social links
+  const socialItems = [
+    {
+      label: "LinkedIn",
+      link: "https://www.linkedin.com/in/ayush-bhusal-331143119/",
+    },
+    {
+      label: "GitHub",
+      link: "https://github.com/ayushbhusal00",
+    },
+  ];
+
+  // Get logo URL based on theme
+  const logoUrl =
+    theme === "dark" ? "/Ayush-Logo-Dark.json" : "/Ayush-Logo-Light.json";
 
   return (
     <header className='sticky top-0 z-[999] w-full flex justify-center '>
@@ -38,8 +72,6 @@ const Header = () => {
               setTimeOfLastClick(Date.now());
             }}
           >
-            {/* <Image src={Logo} alt='Website Logo' width={60} height={16} /> */}
-
             {theme === "dark" ? (
               <Lottie lottie={AyushLogoDark} />
             ) : (
@@ -47,6 +79,7 @@ const Header = () => {
             )}
           </Link>
 
+          {/* Desktop Navigation Links */}
           <ul className='flex flex-wrap w-auto justify-end items-center gap-y-1 text-[0.8rem] font-medium text-gray-300 dark:text-gray-500'>
             {links.map((link) => (
               <motion.li
@@ -97,9 +130,33 @@ const Header = () => {
               >
                 Say "Hello"
               </Link>
-              {/* <Switch /> */}
             </div>
           </ul>
+
+          {/* Mobile Menu - StaggeredMenu (shows when navlinks are hidden) */}
+          <div className='md:hidden relative z-50'>
+            <StaggeredMenu
+              position='right'
+              colors={["#fafafa", "#e4e4e7"]}
+              items={allMenuItems}
+              socialItems={socialItems}
+              displaySocials={true}
+              displayItemNumbering={true}
+              logoUrl={logoUrl}
+              menuButtonColor={theme === "dark" ? "#fff" : "#000"}
+              openMenuButtonColor={theme === "dark" ? "#fff" : "#000"}
+              accentColor={theme === "dark" ? "#5227FF" : "#5227FF"}
+              changeMenuColorOnOpen={true}
+              isFixed={false}
+              closeOnClickAway={true}
+              onMenuOpen={() => {
+                // Optional: Add any side effects when menu opens
+              }}
+              onMenuClose={() => {
+                // Optional: Add any side effects when menu closes
+              }}
+            />
+          </div>
         </nav>
       </motion.div>
     </header>

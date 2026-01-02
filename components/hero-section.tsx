@@ -1,5 +1,6 @@
 "use client";
 
+import clsx from "clsx";
 import { motion } from "framer-motion";
 import Image, { StaticImageData } from "next/image";
 
@@ -20,7 +21,9 @@ export default function HeroSection({
   return (
     <motion.section
       id='playground-hero'
-      className='w-full border-b border-[#e6e8eb] flex flex-col md:flex-row px-16 gap-10 py-32'
+      className={clsx(
+        "w-full border-b border-[#e6e8eb] flex flex-col md:flex-row px-16 gap-10 py-32"
+      )}
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       transition={{ duration: 0.4 }}

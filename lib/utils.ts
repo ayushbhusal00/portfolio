@@ -1,15 +1,21 @@
-export const validateString = (
+import { clsx, type ClassValue } from "clsx";
+import { twMerge } from "tailwind-merge";
+
+export function cn(...inputs: ClassValue[]) {
+  return twMerge(clsx(inputs));
+}
+
+export function validateString(
   value: unknown,
   maxLength: number
-): value is string => {
+): value is string {
   if (!value || typeof value !== "string" || value.length > maxLength) {
     return false;
   }
-
   return true;
-};
+}
 
-export const getErrorMessage = (error: unknown): string => {
+export function getErrorMessage(error: unknown): string {
   let message: string;
 
   if (error instanceof Error) {
@@ -23,4 +29,4 @@ export const getErrorMessage = (error: unknown): string => {
   }
 
   return message;
-};
+}

@@ -21,36 +21,79 @@ const config: Config = {
           "linear-gradient(to bottom right, #fde68a, #ef4444)",
       },
       colors: {
-        background: "var(--background)",
-        foreground: "var(--foreground)",
+        background: "hsl(var(--background))",
+        foreground: "hsl(var(--foreground))",
         lime: {
-          200: "#d9f99d",
-          500: "#84cc16", // Example color
+          "200": "#d9f99d",
+          "500": "#84cc16",
         },
         purple: {
-          200: "#e9d5ff",
-          500: "#a855f7",
+          "200": "#e9d5ff",
+          "500": "#a855f7",
         },
         blue: {
-          200: "#bfdbfe",
-          500: "#3b82f6",
+          "200": "#bfdbfe",
+          "500": "#3b82f6",
         },
         rose: {
-          200: "#fecdd3",
-          500: "#f43f5e",
+          "200": "#fecdd3",
+          "500": "#f43f5e",
         },
         red: {
-          200: "#fecaca",
-          500: "#ef4444",
+          "200": "#fecaca",
+          "500": "#ef4444",
         },
         amber: {
-          200: "#fef3c7",
-          500: "#f59e0b",
+          "200": "#fef3c7",
+          "500": "#f59e0b",
         },
         emerald: {
-          200: "#10b981",
-          500: "#10b981",
+          "200": "#10b981",
+          "500": "#10b981",
         },
+        card: {
+          DEFAULT: "hsl(var(--card))",
+          foreground: "hsl(var(--card-foreground))",
+        },
+        popover: {
+          DEFAULT: "hsl(var(--popover))",
+          foreground: "hsl(var(--popover-foreground))",
+        },
+        primary: {
+          DEFAULT: "hsl(var(--primary))",
+          foreground: "hsl(var(--primary-foreground))",
+        },
+        secondary: {
+          DEFAULT: "hsl(var(--secondary))",
+          foreground: "hsl(var(--secondary-foreground))",
+        },
+        muted: {
+          DEFAULT: "hsl(var(--muted))",
+          foreground: "hsl(var(--muted-foreground))",
+        },
+        accent: {
+          DEFAULT: "hsl(var(--accent))",
+          foreground: "hsl(var(--accent-foreground))",
+        },
+        destructive: {
+          DEFAULT: "hsl(var(--destructive))",
+          foreground: "hsl(var(--destructive-foreground))",
+        },
+        border: "hsl(var(--border))",
+        input: "hsl(var(--input))",
+        ring: "hsl(var(--ring))",
+        chart: {
+          "1": "hsl(var(--chart-1))",
+          "2": "hsl(var(--chart-2))",
+          "3": "hsl(var(--chart-3))",
+          "4": "hsl(var(--chart-4))",
+          "5": "hsl(var(--chart-5))",
+        },
+      },
+      borderRadius: {
+        lg: "var(--radius)",
+        md: "calc(var(--radius) - 2px)",
+        sm: "calc(var(--radius) - 4px)",
       },
     },
     boxShadow: {
@@ -60,7 +103,7 @@ const config: Config = {
         "0 4px 12px rgba(0,0,0,0.12), 0 0 0 1px rgba(0,0,0,0.06)",
     },
   },
-  plugins: [],
-  darkMode: "class",
+  plugins: [require("tailwindcss-animate")],
+  darkMode: ["class", "class"],
 };
 export default config;

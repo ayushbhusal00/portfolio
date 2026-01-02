@@ -299,7 +299,9 @@ export default function PlaygroundPage({ params }: { params: { id: string } }) {
                         <Image
                           src={item.thumbnail}
                           alt={item.title}
-                          className='h-[200px] w-full object-cover transition-transform duration-500 group-hover:scale-[1.04]'
+                          className={clsx(
+                            "h-[200px] w-full object-cover transition-transform duration-500 group-hover:scale-[1.04]"
+                          )}
                         />
                       </div>
 

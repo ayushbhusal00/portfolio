@@ -8,17 +8,33 @@ import { FaGithubSquare } from "react-icons/fa";
 import { HiDownload } from "react-icons/hi";
 
 import Portrait from "@/public/Portrait.png";
+import ImageTrail from "@/components/ImageTrail";
 
 import { UseSectionInView } from "@/lib/hooks";
 
+import Thumbnail1 from "@/public/ecommerce-thumbnail.png";
+import Thumbnail2 from "@/public/Lifecorpus-thumbnail.png";
+import Thumbnail3 from "@/public/niural-thumbnail.png";
+import Thumbnail4 from "@/public/vesper-thumbnail.png";
+import Thumbnail5 from "@/public/weplay-thumbnail.png";
+
 export default function intro() {
   const { ref } = UseSectionInView("Home");
-  // const { setTimeOfLastClick } = UseActiveSectionContext();
+
+  // Convert StaticImageData to URL strings
+  const imageUrls = [
+    typeof Thumbnail1 === "string" ? Thumbnail1 : Thumbnail1.src,
+    typeof Thumbnail2 === "string" ? Thumbnail2 : Thumbnail2.src,
+    typeof Thumbnail3 === "string" ? Thumbnail3 : Thumbnail3.src,
+    typeof Thumbnail4 === "string" ? Thumbnail4 : Thumbnail4.src,
+    typeof Thumbnail5 === "string" ? Thumbnail5 : Thumbnail5.src,
+  ];
+
   return (
     <section
       ref={ref}
       id='home'
-      className='w-full scroll-mt-[100rem] p-16 sm:p-6 md:py-28 border-b border-[#e6e8eb]'
+      className='w-full scroll-mt-[100rem] p-16 sm:p-6 md:py-28 border-b border-[#e6e8eb] relative'
     >
       <div className='flex flex-col items-center justify-center'>
         <div className='relative'>
@@ -77,7 +93,7 @@ export default function intro() {
           </motion.p>
         </motion.div>
         <motion.div
-          className='flex flex-col max-w-[38.75rem] sm:flex-row sm:w-full  gap-4 items-center justify-center px-4 text-sm font-medium'
+          className='flex flex-col max-w-[38.75rem] sm:flex-row sm:w-full  gap-4 items-center justify-center px-4 text-sm font-medium relative z-10 pointer-events-auto'
           initial={{ opacity: 0, y: 100 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{
@@ -85,7 +101,7 @@ export default function intro() {
           }}
         >
           <a
-            className='group md:w-full sm:w-auto justify-center text-white px-7 py-3 flex items-center gap-2 outline-none focus:scale-110 hover:bg-gray-950 active:scale-105 transition rounded-[6px]
+            className='group md:w-full sm:w-auto justify-center text-white px-7 py-3 flex items-center gap-2 outline-none focus:scale-110 hover:bg-gray-950 active:scale-105 transition rounded-[6px] pointer-events-auto relative z-20
   bg-[#27272A] shadow-[0_0.75px_0_0_rgba(255,255,255,0.20)_inset,0_1px_2px_0_rgba(0,0,0,0.40),0_0_0_1px_#18181B]'
             href='/CV.pdf'
             download={true}
@@ -95,7 +111,7 @@ export default function intro() {
           </a>
 
           <a
-            className=' hidden sm:flex dark:bg-white/10 p-4 items-center gap-2 cursor-pointer borderBlack outline-none focus:scale-[1.15] hover:bg-gray-100 dark:hover:bg-white/20 active:scale-105 transition dark:text-white/50 rounded-[6px]
+            className=' hidden sm:flex dark:bg-white/10 p-4 items-center gap-2 cursor-pointer borderBlack outline-none focus:scale-[1.15] hover:bg-gray-100 dark:hover:bg-white/20 active:scale-105 transition dark:text-white/50 rounded-[6px] pointer-events-auto relative z-20
   bg-white
   shadow-[0_1px_2px_0_rgba(0,0,0,0.12),0_0_0_1px_rgba(0,0,0,0.08)]'
             href='https://www.linkedin.com/in/ayush-bhusal-331143119/'
@@ -104,7 +120,7 @@ export default function intro() {
             <BsLinkedin />
           </a>
           <a
-            className=' dark:bg-white/10 p-4 hidden sm:flex items-center gap-2 cursor-pointer borderBlack outline-none focus:scale-[1.15] hover:bg-gray-100 dark:hover:bg-white/20 active:scale-105 transition dark:text-white/50 rounded-[6px]
+            className=' dark:bg-white/10 p-4 hidden sm:flex items-center gap-2 cursor-pointer borderBlack outline-none focus:scale-[1.15] hover:bg-gray-100 dark:hover:bg-white/20 active:scale-105 transition dark:text-white/50 rounded-[6px] pointer-events-auto relative z-20
   bg-white
   shadow-[0_1px_2px_0_rgba(0,0,0,0.12),0_0_0_1px_rgba(0,0,0,0.08)]'
             href='https://github.com/ayushbhusal00'
@@ -113,6 +129,9 @@ export default function intro() {
             <FaGithubSquare />
           </a>
         </motion.div>
+      </div>
+      <div className='absolute inset-0 -z-5 w-full h-svh'>
+        <ImageTrail variant={9} items={imageUrls as string[]} />
       </div>
     </section>
   );
