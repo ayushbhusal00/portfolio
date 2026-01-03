@@ -264,6 +264,27 @@ export default function PlaygroundPage({ params }: { params: { id: string } }) {
                       />
                     )
                   )}
+                  {project.sections[i].videoUrl && (
+                    <div className='mt-10 rounded-xl overflow-hidden shadow-elevation-card-rest'>
+                      <ReactPlayer
+                        width='100%'
+                        height='480px'
+                        muted
+                        controls
+                        src={project.sections[i].videoUrl}
+                        config={{
+                          vimeo: {
+                            title: false,
+                            byline: false,
+                            portrait: false,
+                            vimeo_logo: false,
+                            controls: true,
+                            dnt: true,
+                          },
+                        }}
+                      />
+                    </div>
+                  )}
                 </motion.section>
               ))}
               {project.url && (
@@ -273,7 +294,7 @@ export default function PlaygroundPage({ params }: { params: { id: string } }) {
                     Link:{" "}
                     <a
                       className='text-[#3B82F6] group-hover:text-ui-fg-interactive-hover hover:text-ui-fg-interactive-hover'
-                      href={project.url}
+                      href={project.websiteLink}
                     >
                       {project.title}
                     </a>

@@ -42,6 +42,7 @@ import PlayroomkitAsset from "@/public/shooter-kit.jpg";
 
 import GalaxyModifierThumbnail from "@/public/galaxymodifier-thumbnail.png";
 import FashionCommerceThumbnail from "@/public/ecommerce-thumbnail.png";
+import WarppThumbnail from "@/public/Warrp-thumbnail.png";
 
 export const links = [
   {
@@ -264,7 +265,7 @@ export const caseStudies: CaseStudy[] = [
     isPasswordProtected: true,
 
     thumbnail: NiuralThumbnail,
-    heroImage: NiuralThumbnail,
+    heroImage: "NiuralThumbnail",
     gallery: [DesignSystem, TimeSheet, Payroll, PaymentMethod],
 
     role: "Product Designer — UX, UI, Interaction Design",
@@ -506,6 +507,7 @@ export type PlaygroundProject = {
     heading?: string;
     content?: string;
     bullets?: string[];
+    videoUrl?: string;
   }[];
 
   websiteLink?: string;
@@ -518,6 +520,54 @@ export type PlaygroundProject = {
 export const playgroundProjects: PlaygroundProject[] = [
   {
     id: 0,
+    slug: "ad-design",
+    title: "Ad Campaign & TVC Animation — Warrp Australia",
+    tagline: "A TVC and marketing campaign for Warrp Australia.",
+    overview:
+      "Warrp was an Australian peer-to-peer marketplace focused on making second-hand buying and selling safer through secure payments, verified users, and trusted meetups. The challenge was to build awareness quickly and drive app sign-ups in a competitive market.",
+
+    date: "June 07, 2021",
+    category: "Motion",
+
+    url: "/playground/0",
+    color: "#088236",
+
+    thumbnail: WarppThumbnail,
+    heroImage: WarppThumbnail,
+    gallery: [],
+
+    sections: [
+      {
+        heading: "Context",
+        content:
+          "I led the creative direction and execution of Warrp’s TVC ad campaign, shaping the video narrative, visual language, sound design, and distribution approach across TV and social platforms. The primary goal was clear: increase app sign-ups through a memorable, trust-driven message.",
+      },
+      {
+        heading: "What I Did",
+        bullets: [
+          "Planned the video content strategy, messaging, and storytelling approach for the TVC",
+          "Designed and animated the TVC visuals and motion language using After Effects",
+          "Developed the jingle timing and sound integration to reinforce brand recall",
+          "Created supporting brand and visual assets in Adobe Illustrator",
+          "Adapted the TVC into short-form social ads optimized for digital reach and performance",
+        ],
+      },
+      {
+        heading: "Outcome & Impact",
+        content:
+          "The campaign delivered strong audience recall and engagement, resulting in a significant spike in Warrp app sign-ups shortly after launch. The TVC helped position Warrp as a safe, trustworthy alternative in the resale marketplace and played a key role in accelerating early user adoption. Press coverage highlighted the surge in sign-ups following the campaign.",
+        videoUrl: "https://vimeo.com/1151126337?fl=ip&fe=ec",
+      },
+    ],
+    videoUrl: "https://vimeo.com/1151116837?fl=ip&fe=ec",
+
+    websiteLink: "https://www.channelnews.com.au/warrp-sign-ups-spike/,",
+    role: "Animator",
+    duration: "1 month",
+    readTime: "2 min read",
+  },
+  {
+    id: 1,
     slug: "gunfight",
     title: "Gun Fight — Brawl-Style Multiplayer Game",
     tagline:
@@ -528,7 +578,7 @@ export const playgroundProjects: PlaygroundProject[] = [
     date: "Sep 01, 2025",
     category: "Game",
 
-    url: "/playground/0",
+    url: "/playground/1",
     color: "#088236",
 
     thumbnail: PlayroomkitThumbnail,
@@ -561,7 +611,7 @@ export const playgroundProjects: PlaygroundProject[] = [
   },
 
   {
-    id: 1,
+    id: 2,
     slug: "galaxy-modifier",
     title: "Galaxy Modifier — Procedural Galaxy Generator",
     tagline:
@@ -572,7 +622,7 @@ export const playgroundProjects: PlaygroundProject[] = [
     date: "July 10, 2025",
     category: "Game",
 
-    url: "/playground/1",
+    url: "/playground/2",
     color: "#088236",
 
     thumbnail: GalaxyModifierThumbnail,
@@ -609,7 +659,7 @@ export const playgroundProjects: PlaygroundProject[] = [
     readTime: "2 min read",
   },
   {
-    id: 2,
+    id: 3,
     slug: "ecommerce",
     title: "Clothing Commerce — Vanilla JavaScript",
     tagline:
@@ -620,7 +670,7 @@ export const playgroundProjects: PlaygroundProject[] = [
     date: "July 10, 2025",
     category: "Game",
 
-    url: "/playground/2",
+    url: "/playground/3",
     color: "#088236",
 
     thumbnail: FashionCommerceThumbnail,

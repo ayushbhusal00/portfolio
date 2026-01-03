@@ -16,7 +16,11 @@ import Thumbnail1 from "@/public/ecommerce-thumbnail.png";
 import Thumbnail2 from "@/public/Lifecorpus-thumbnail.png";
 import Thumbnail3 from "@/public/niural-thumbnail.png";
 import Thumbnail4 from "@/public/vesper-thumbnail.png";
-import Thumbnail5 from "@/public/weplay-thumbnail.png";
+// import Thumbnail5 from "@/public/bottle-simulation.png";
+// import Thumbnail6 from "@/public/bottle-simulation-2.png";
+// import Thumbnail7 from "@/public/bottle-simulation-3.gif";
+import Thumbnail8 from "@/public/antidote-preview.png";
+import Thumbnail9 from "@/public/hydrolink preview.png";
 
 export default function intro() {
   const { ref } = UseSectionInView("Home");
@@ -27,7 +31,11 @@ export default function intro() {
     typeof Thumbnail2 === "string" ? Thumbnail2 : Thumbnail2.src,
     typeof Thumbnail3 === "string" ? Thumbnail3 : Thumbnail3.src,
     typeof Thumbnail4 === "string" ? Thumbnail4 : Thumbnail4.src,
-    typeof Thumbnail5 === "string" ? Thumbnail5 : Thumbnail5.src,
+    // typeof Thumbnail5 === "string" ? Thumbnail5 : Thumbnail5.src,
+    // typeof Thumbnail6 === "string" ? Thumbnail6 : Thumbnail6.src,
+    // typeof Thumbnail7 === "string" ? Thumbnail7 : Thumbnail7.src,
+    typeof Thumbnail8 === "string" ? Thumbnail8 : Thumbnail8.src,
+    typeof Thumbnail9 === "string" ? Thumbnail9 : Thumbnail9.src,
   ];
 
   return (
@@ -80,16 +88,16 @@ export default function intro() {
             initial={{ opacity: 0, y: 100 }}
             animate={{ opacity: 1, y: 0 }}
           >
-            Web/Product Designer Working to Create Iteas To Reality
+            Web/Product Designer based in Kathmandu, Nepal
           </motion.h1>
           <motion.p
             className='mb-5 mt-4 px-4 text-[0.9rem] font-medium text-center text-[#52525b]'
             initial={{ opacity: 0, y: 100 }}
             animate={{ opacity: 1, y: 0 }}
           >
-            The most popular open-source platform for commerce. Use Medusa as
-            your foundation and focus on building the customizations that move
-            the needle.
+            Crafting designs and building products that should be able to solve
+            some of your problems and help make your life uncomplicated +
+            aesthetically pleasing.
           </motion.p>
         </motion.div>
         <motion.div
