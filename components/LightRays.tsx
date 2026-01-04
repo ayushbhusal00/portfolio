@@ -253,7 +253,22 @@ export default function LightRays({
       window.removeEventListener("resize", resize);
       gl.getExtension("WEBGL_lose_context")?.loseContext();
     };
-  }, [isVisible, followMouse, raysOrigin]);
+  }, [
+    followMouse,
+    distortion,
+    fadeDistance,
+    lightSpread,
+    mouseInfluence,
+    noiseAmount,
+    pulsating,
+    rayLength,
+    raysSpeed,
+    saturation,
+    isVisible,
+
+    raysOrigin,
+    raysColor,
+  ]);
 
   /* ------------------------------ Mouse Track -------------------------------- */
 
