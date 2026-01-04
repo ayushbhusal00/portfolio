@@ -5,6 +5,10 @@
 html{
     --line-color:#e5e7eb;
     scroll-behavior: smooth;
+    
+}
+body{
+  background: #fafafa
 }
 
 html.dark{

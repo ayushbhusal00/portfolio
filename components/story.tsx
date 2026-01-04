@@ -15,7 +15,7 @@ export default function Story() {
       id='story'
     >
       <div className='w-full   flex flex-col sm:flex-row items-center text-left'>
-        <div className='relative h-[-webkit-fill-available] w-full min-h-[50vh] py-28 sm:py-16 sm:w-[50%] flex flex-row gap-2 items-center justify-center bg-[repeating-linear-gradient(135deg,rgba(0,0,0,0.08)_0,rgba(0,0,0,0.08)_1px,transparent_1px,transparent_6px)]'>
+        <div className='relative h-[-webkit-fill-available] w-full min-h-[50vh] px-4 py-16 sm:w-[50%] flex flex-row gap-2 items-center justify-center bg-[repeating-linear-gradient(135deg,rgba(0,0,0,0.08)_0,rgba(0,0,0,0.08)_1px,transparent_1px,transparent_6px)]'>
           {/* First Image Card */}
           <motion.div
             className='absolute left-[3rem] sm:left-0 w-[10rem] sm:w-[20rem]'

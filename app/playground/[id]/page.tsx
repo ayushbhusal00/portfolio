@@ -287,7 +287,7 @@ export default function PlaygroundPage({ params }: { params: { id: string } }) {
                   )}
                 </motion.section>
               ))}
-              {project.url && (
+              {project.websiteLink && (
                 <div className='flex gap-6 my-8 md:my-14 last:mb-0'>
                   <div className='w-1 bg-ui-border-strong rounded-full shrink-0 bg-[#3B82F6]' />
                   <p>

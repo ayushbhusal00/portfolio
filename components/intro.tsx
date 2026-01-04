@@ -12,15 +12,16 @@ import ImageTrail from "@/components/ImageTrail";
 
 import { UseSectionInView } from "@/lib/hooks";
 
-import Thumbnail1 from "@/public/ecommerce-thumbnail.png";
-import Thumbnail2 from "@/public/Lifecorpus-thumbnail.png";
-import Thumbnail3 from "@/public/niural-thumbnail.png";
-import Thumbnail4 from "@/public/vesper-thumbnail.png";
-// import Thumbnail5 from "@/public/bottle-simulation.png";
-// import Thumbnail6 from "@/public/bottle-simulation-2.png";
-// import Thumbnail7 from "@/public/bottle-simulation-3.gif";
-import Thumbnail8 from "@/public/antidote-preview.png";
-import Thumbnail9 from "@/public/hydrolink preview.png";
+import Thumbnail1 from "@/public/ecommerce-trail.png";
+import Thumbnail2 from "@/public/Lifecorpus-trail.png";
+import Thumbnail3 from "@/public/niuralai-trail.png";
+import Thumbnail4 from "@/public/simulation-trail.png";
+import Thumbnail5 from "@/public/falfull-trail.png";
+import Thumbnail6 from "@/public/warpp-trail.png";
+
+import Thumbnail8 from "@/public/antidote-trail.png";
+import Thumbnail9 from "@/public/hydrolink trail.png";
+// import LightRays from "./LightRays";
 
 export default function intro() {
   const { ref } = UseSectionInView("Home");
@@ -30,9 +31,10 @@ export default function intro() {
     typeof Thumbnail1 === "string" ? Thumbnail1 : Thumbnail1.src,
     typeof Thumbnail2 === "string" ? Thumbnail2 : Thumbnail2.src,
     typeof Thumbnail3 === "string" ? Thumbnail3 : Thumbnail3.src,
+
     typeof Thumbnail4 === "string" ? Thumbnail4 : Thumbnail4.src,
-    // typeof Thumbnail5 === "string" ? Thumbnail5 : Thumbnail5.src,
-    // typeof Thumbnail6 === "string" ? Thumbnail6 : Thumbnail6.src,
+    typeof Thumbnail5 === "string" ? Thumbnail5 : Thumbnail5.src,
+    typeof Thumbnail6 === "string" ? Thumbnail6 : Thumbnail6.src,
     // typeof Thumbnail7 === "string" ? Thumbnail7 : Thumbnail7.src,
     typeof Thumbnail8 === "string" ? Thumbnail8 : Thumbnail8.src,
     typeof Thumbnail9 === "string" ? Thumbnail9 : Thumbnail9.src,
@@ -42,7 +44,7 @@ export default function intro() {
     <section
       ref={ref}
       id='home'
-      className='w-full scroll-mt-[100rem] p-16 sm:p-6 md:py-28 border-b border-[#e6e8eb] relative'
+      className='w-full scroll-mt-[100rem]  sm:py-4 sm:px-2 md:py-28  px-4 py-16 border-b border-[#e6e8eb] relative'
     >
       <div className='flex flex-col items-center justify-center'>
         <div className='relative'>
@@ -101,7 +103,7 @@ export default function intro() {
           </motion.p>
         </motion.div>
         <motion.div
-          className='flex flex-col max-w-[38.75rem] sm:flex-row sm:w-full  gap-4 items-center justify-center px-4 text-sm font-medium relative z-10 pointer-events-auto'
+          className='flex max-w-[38.75rem] sm:flex-row sm:w-full  gap-4 items-center justify-center px-4 text-sm font-medium relative z-10 pointer-events-auto'
           initial={{ opacity: 0, y: 100 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{
@@ -119,7 +121,7 @@ export default function intro() {
           </a>
 
           <a
-            className=' hidden sm:flex dark:bg-white/10 p-4 items-center gap-2 cursor-pointer borderBlack outline-none focus:scale-[1.15] hover:bg-gray-100 dark:hover:bg-white/20 active:scale-105 transition dark:text-white/50 rounded-[6px] pointer-events-auto relative z-20
+            className=' sm:flex dark:bg-white/10 p-4 items-center gap-2 cursor-pointer borderBlack outline-none focus:scale-[1.15] hover:bg-gray-100 dark:hover:bg-white/20 active:scale-105 transition dark:text-white/50 rounded-[6px] pointer-events-auto relative z-20
   bg-white
   shadow-[0_1px_2px_0_rgba(0,0,0,0.12),0_0_0_1px_rgba(0,0,0,0.08)]'
             href='https://www.linkedin.com/in/ayush-bhusal-331143119/'
@@ -128,7 +130,7 @@ export default function intro() {
             <BsLinkedin />
           </a>
           <a
-            className=' dark:bg-white/10 p-4 hidden sm:flex items-center gap-2 cursor-pointer borderBlack outline-none focus:scale-[1.15] hover:bg-gray-100 dark:hover:bg-white/20 active:scale-105 transition dark:text-white/50 rounded-[6px] pointer-events-auto relative z-20
+            className=' dark:bg-white/10 p-4 sm:flex items-center gap-2 cursor-pointer borderBlack outline-none focus:scale-[1.15] hover:bg-gray-100 dark:hover:bg-white/20 active:scale-105 transition dark:text-white/50 rounded-[6px] pointer-events-auto relative z-20
   bg-white
   shadow-[0_1px_2px_0_rgba(0,0,0,0.12),0_0_0_1px_rgba(0,0,0,0.08)]'
             href='https://github.com/ayushbhusal00'
@@ -138,8 +140,26 @@ export default function intro() {
           </a>
         </motion.div>
       </div>
-      <div className='absolute inset-0 -z-5 w-full h-svh'>
+      <div className='absolute inset-0  w-full h-svh pointer-events-none'>
         <ImageTrail variant={9} items={imageUrls as string[]} />
+        {/* <div
+          style={{ width: "1080px", height: "1080px", position: "relative" }}
+        >
+          {/* <LightRays
+            raysOrigin='top-center'
+            raysColor='#ffffff'
+            raysSpeed={1}
+            lightSpread={1}
+            rayLength={2}
+            pulsating={false}
+            fadeDistance={1}
+            saturation={1}
+            followMouse
+            mouseInfluence={0.1}
+            noiseAmount={0}
+            distortion={0}
+          /> */}
+        {/* </div> */}
       </div>
     </section>
   );

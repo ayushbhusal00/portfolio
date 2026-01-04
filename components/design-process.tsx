@@ -8,7 +8,7 @@ export default function DesignProcess() {
   return (
     <motion.section
       id='playground-hero'
-      className='w-full border-b text-center border-[#e6e8eb] flex flex-col px-16 gap-10 py-32'
+      className='w-full border-b text-center border-[#e6e8eb] flex flex-col px-4 py-16 gap-10 '
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       transition={{ duration: 0.4 }}

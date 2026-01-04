@@ -10,9 +10,9 @@ import DesignProcess from "@/components/design-process";
 export const dynamic = "force-dynamic";
 export default function Home() {
   return (
-    <main className='flex flex-col items-center relative'>
+    <main className='flex flex-col items-center relative  bg-[#fafafa]'>
       <Header />
-      <div className='md:mx-16 border-x border-[#e6e8eb] bg-[#fafafa]'>
+      <div className='md:mx-16 border-x border-[#e6e8eb]'>
         <Intro />
         <Companies />
 

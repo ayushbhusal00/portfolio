@@ -20,7 +20,7 @@ export default function PlaygroundPage() {
       : playgroundProjects.filter((p) => p.category === activeCategory);
 
   return (
-    <main className='flex flex-col items-center relative mx-auto max-w-[72rem] border-x border-[#e6e8eb]'>
+    <main className='flex flex-col items-center relative mx-auto max-w-[72rem] border-x border-[#e6e8eb]  bg-[#fafafa]'>
       <HeroSection
         image={PlaygroundImage}
         tag='Playground'

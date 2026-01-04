@@ -54,14 +54,14 @@ export default function Project({
         "w-full group cursor-pointer",
         "sticky top-[140px]",
         "border-t border-black/10 dark:border-white/10",
-        "bg-white dark:bg-gray-900",
+        "bg-[#fafafa] dark:bg-gray-900",
         "overflow-hidden",
         "transition-all duration-300"
       )}
     >
       <div className='flex flex-col md:flex-row '>
         {/* Image */}
-        <div className='relative hidden md:block shrink-0 p-4 md:p-6 origin-right'>
+        <div className='relative md:block shrink-0 p-4 md:p-6 origin-right'>
           <div className='absolute inset-0 z-10 hidden md:block ' />
           <Image
             src={imageUrl}

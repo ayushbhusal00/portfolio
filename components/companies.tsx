@@ -9,14 +9,14 @@ import OhoDigital from "@/public/oho-digital.svg";
 
 export default function Companies() {
   return (
-    <div className='flex sm:flex-row flex-col gap-4 w-full px-16 py-16 text-start items-center border-b border-[#e6e8eb]'>
+    <div className='flex flex-col lg:flex-row gap-4 w-full px-8 py-16 text-start items-center border-b border-[#e6e8eb]'>
       {/* Add class for effect
       bg-[repeating-linear-gradient(135deg,rgba(0,0,0,0.08)_0,rgba(0,0,0,0.08)_1px,transparent_1px,transparent_6px)] */}
-      <p className='text-sm w-[16rem] text-[#18181b] font-bold mb-2 tracking-wider'>
+      <p className='text-sm w-full text-center lg:text-left lg:w-[16rem] text-[#18181b] font-bold mb-2 tracking-wider'>
         5+ years of Experience designing products
       </p>
-      <div className='relative  w-[100%] md:h-14 rounded-xl overflow-hidden'>
-        <div className='grid grid-cols-2 md:grid-cols-5 gap-8'>
+      <div className='relative w-[100%] md:h-14 rounded-xl overflow-hidden'>
+        <div className='grid grid-cols-2 md:grid-cols-5 gap-8 justify-center align-middle'>
           <Image
             src={Niural}
             alt={"Niural: Global payroll & payments platform"}

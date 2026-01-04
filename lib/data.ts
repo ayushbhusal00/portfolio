@@ -32,8 +32,8 @@ import Payroll from "@/public/Payroll.png";
 import PaymentMethod from "@/public/Payment Method.png";
 
 /* ---------------- VESPER IMPORTS ---------------- */
-import VesperFineWines from "@/public/VesperFineWines.png";
-import VesperThumbnail from "@/public/vesper-thumbnail.png";
+// import VesperFineWines from "@/public/VesperFineWines.png";
+// import VesperThumbnail from "@/public/vesper-thumbnail.png";
 
 /* ---------------- PLAYGROUND IMPORTS ---------------- */
 import PlayroomkitThumbnail from "@/public/playroomkit-thumbnail.png";
@@ -43,6 +43,12 @@ import PlayroomkitAsset from "@/public/shooter-kit.jpg";
 import GalaxyModifierThumbnail from "@/public/galaxymodifier-thumbnail.png";
 import FashionCommerceThumbnail from "@/public/ecommerce-thumbnail.png";
 import WarppThumbnail from "@/public/Warrp-thumbnail.png";
+
+import VirginGoldThumbnail from "@/public/Virgin-gold-thumbnail.png";
+import VirginGoldRender from "@/public/virgin-gold-animation-render.png";
+import Emperor24CaratRender from "@/public/emperor-24-carat-animation-render.png";
+import HighlanderRender from "@/public/highlander-animation-render.png";
+import CrationFrame from "@/public/creation-frame.png";
 
 export const links = [
   {
@@ -433,55 +439,55 @@ export const caseStudies: CaseStudy[] = [
       },
     ],
   },
-  {
-    id: 3,
-    slug: "vesper-design-system",
-    title: "Vesper — Scaling a hospitality brand through design systems",
-    tagline:
-      "Establishing a unified digital system for a growing hospitality business.",
-    overview:
-      "Vesper is a hospitality company operating across dining, retail, and events. As the business expanded, maintaining consistency across digital touchpoints became increasingly difficult.",
+  // {
+  //   id: 3,
+  //   slug: "vesper-design-system",
+  //   title: "Vesper — Scaling a hospitality brand through design systems",
+  //   tagline:
+  //     "Establishing a unified digital system for a growing hospitality business.",
+  //   overview:
+  //     "Vesper is a hospitality company operating across dining, retail, and events. As the business expanded, maintaining consistency across digital touchpoints became increasingly difficult.",
 
-    date: "Dec 10, 2025",
-    readTime: "4 min read",
-    category: "Product",
+  //   date: "Dec 10, 2025",
+  //   readTime: "4 min read",
+  //   category: "Product",
 
-    url: "/projects/3",
-    color: "#1E1E1E",
+  //   url: "/projects/3",
+  //   color: "#1E1E1E",
 
-    thumbnail: VesperThumbnail,
-    heroImage: VesperFineWines,
-    gallery: [VesperFineWines, VesperFineWines, VesperFineWines],
+  //   thumbnail: VesperThumbnail,
+  //   heroImage: VesperFineWines,
+  //   gallery: [VesperFineWines, VesperFineWines, VesperFineWines],
 
-    role: "Web Designer — UI Design, Design Systems, Frontend Collaboration",
-    duration: "10 months",
+  //   role: "Web Designer — UI Design, Design Systems, Frontend Collaboration",
+  //   duration: "10 months",
 
-    sections: [
-      {
-        heading: "Background",
-        content:
-          "Multiple teams managed Vesper’s marketing pages, e-commerce flows, and internal tools independently.",
-      },
-      {
-        heading: "The Challenge",
-        content:
-          "The goal was to create a unified design system that supported marketing, e-commerce, and operational tools.",
-      },
-      {
-        heading: "Design Approach",
-        bullets: [
-          "Defining a shared visual language",
-          "Building reusable UI components",
-          "Supporting responsive and scalable layouts",
-        ],
-      },
-      {
-        heading: "Outcome",
-        content:
-          "The system reduced inconsistencies and accelerated development across teams.",
-      },
-    ],
-  },
+  //   sections: [
+  //     {
+  //       heading: "Background",
+  //       content:
+  //         "Multiple teams managed Vesper’s marketing pages, e-commerce flows, and internal tools independently.",
+  //     },
+  //     {
+  //       heading: "The Challenge",
+  //       content:
+  //         "The goal was to create a unified design system that supported marketing, e-commerce, and operational tools.",
+  //     },
+  //     {
+  //       heading: "Design Approach",
+  //       bullets: [
+  //         "Defining a shared visual language",
+  //         "Building reusable UI components",
+  //         "Supporting responsive and scalable layouts",
+  //       ],
+  //     },
+  //     {
+  //       heading: "Outcome",
+  //       content:
+  //         "The system reduced inconsistencies and accelerated development across teams.",
+  //     },
+  //   ],
+  // },
 ];
 
 export type PlaygroundProject = {
@@ -568,6 +574,54 @@ export const playgroundProjects: PlaygroundProject[] = [
   },
   {
     id: 1,
+    slug: "ecommerce",
+    title: "Product Design & Marketing",
+    tagline: "Production Workflow & Experimentation",
+    overview:
+      "For this project, I collaborated closely with the production team to standardize a new workflow for product mockups and advertising. By leveraging Three.js and simulation-based physics, we explored how realistic product visuals and motion could be generated digitally—reducing reliance on expensive traditional shoots and fragmented agency processes. This experiment focused on redefining how in-house design teams can create scalable, reusable product visuals, enabling faster iterations, consistent branding, and more flexible marketing outputs without the overhead of conventional production pipelines.",
+
+    date: "July 10, 2022",
+    category: "3d Animation",
+
+    url: "/playground/1",
+    color: "#088236",
+
+    thumbnail: VirginGoldThumbnail,
+    heroImage: VirginGoldThumbnail,
+    gallery: [
+      CrationFrame,
+      VirginGoldRender,
+      Emperor24CaratRender,
+      HighlanderRender,
+    ],
+
+    videoUrl: "https://vimeo.com/1151275803?fl=ip&fe=ec",
+
+    sections: [
+      {
+        heading: "Workflow Innovation",
+        content:
+          "Worked with the production team to prototype a standardized mockup and advertising workflow using Three.js and physics simulations, exploring how in-house teams can replace costly agency-led production with faster, scalable, and reusable digital product visuals.",
+      },
+      {
+        heading: "What Was Explored",
+        bullets: [
+          "UI-based customization that updates product data in real time",
+          "Core e-commerce interactions built without libraries or frameworks",
+          "Deeper understanding of JavaScript fundamentals, events, and state flow",
+        ],
+      },
+      {},
+      {},
+      {},
+    ],
+
+    role: "Developer & Designer",
+    duration: "1 month",
+    readTime: "2 min read",
+  },
+  {
+    id: 2,
     slug: "gunfight",
     title: "Gun Fight — Brawl-Style Multiplayer Game",
     tagline:
@@ -578,7 +632,7 @@ export const playgroundProjects: PlaygroundProject[] = [
     date: "Sep 01, 2025",
     category: "Game",
 
-    url: "/playground/1",
+    url: "/playground/2",
     color: "#088236",
 
     thumbnail: PlayroomkitThumbnail,
@@ -611,7 +665,7 @@ export const playgroundProjects: PlaygroundProject[] = [
   },
 
   {
-    id: 2,
+    id: 3,
     slug: "galaxy-modifier",
     title: "Galaxy Modifier — Procedural Galaxy Generator",
     tagline:
@@ -622,7 +676,7 @@ export const playgroundProjects: PlaygroundProject[] = [
     date: "July 10, 2025",
     category: "Game",
 
-    url: "/playground/2",
+    url: "/playground/3",
     color: "#088236",
 
     thumbnail: GalaxyModifierThumbnail,
@@ -659,7 +713,7 @@ export const playgroundProjects: PlaygroundProject[] = [
     readTime: "2 min read",
   },
   {
-    id: 3,
+    id: 4,
     slug: "ecommerce",
     title: "Clothing Commerce — Vanilla JavaScript",
     tagline:
@@ -670,7 +724,7 @@ export const playgroundProjects: PlaygroundProject[] = [
     date: "July 10, 2025",
     category: "Game",
 
-    url: "/playground/3",
+    url: "/playground/4",
     color: "#088236",
 
     thumbnail: FashionCommerceThumbnail,
