@@ -15,7 +15,7 @@ import { UseSectionInView } from "@/lib/hooks";
 import Thumbnail1 from "@/public/ecommerce-trail.png";
 import Thumbnail2 from "@/public/Lifecorpus-trail.png";
 import Thumbnail3 from "@/public/niuralai-trail.png";
-import Thumbnail4 from "@/public/simulation-trail.png";
+import Thumbnail4 from "@/public/Simulation-trail.png";
 import Thumbnail5 from "@/public/falfull-trail.png";
 import Thumbnail6 from "@/public/warpp-trail.png";
 
