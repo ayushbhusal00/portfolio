@@ -21,7 +21,6 @@ import Thumbnail6 from "@/public/warpp-trail.png";
 
 import Thumbnail8 from "@/public/antidote-trail.png";
 import Thumbnail9 from "@/public/hydrolink trail.png";
-// import LightRays from "./LightRays";
 
 export default function intro() {
   const { ref } = UseSectionInView("Home");
@@ -140,26 +139,8 @@ export default function intro() {
           </a>
         </motion.div>
       </div>
-      <div className='absolute inset-0  w-full h-svh pointer-events-none'>
+      <div className='absolute inset-0  w-svw h-full pointer-events-none'>
         <ImageTrail variant={9} items={imageUrls as string[]} />
-        {/* <div
-          style={{ width: "1080px", height: "1080px", position: "relative" }}
-        >
-          {/* <LightRays
-            raysOrigin='top-center'
-            raysColor='#ffffff'
-            raysSpeed={1}
-            lightSpread={1}
-            rayLength={2}
-            pulsating={false}
-            fadeDistance={1}
-            saturation={1}
-            followMouse
-            mouseInfluence={0.1}
-            noiseAmount={0}
-            distortion={0}
-          /> */}
-        {/* </div> */}
       </div>
     </section>
   );

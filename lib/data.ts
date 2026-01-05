@@ -122,14 +122,14 @@ export const experiencesData = [
     icon: React.createElement(FaReact),
     date: "Oct 2021 – Mar 2022 | 6 months",
   },
-  // {
-  //   title: "Senior Web Designer",
-  //   location: "Niural Inc.",
-  //   description:
-  //     "Designed and launched user-centric web interfaces for Niural App and Landing Page, integrated Web3 and fiat payments, maintained a design system, optimized performance, integrated Zendesk, and conducted user testing to improve UX and engagement.",
-  //   icon: React.createElement(FaReact),
-  //   date: "Nov 2022 - present | +2 years",
-  // },
+  {
+    title: "Senior Product Designer",
+    location: "Niural Inc.",
+    description:
+      "Designed and launched user-centric web interfaces for Niural App and Landing Page, integrated Web3 and fiat payments, maintained a design system, optimized performance, integrated Zendesk, and conducted user testing to improve UX and engagement.",
+    icon: React.createElement(FaReact),
+    date: "Nov 2022 - present | +3 years",
+  },
 ] as const;
 
 // export const projectsData = [

@@ -11,7 +11,7 @@ import SectionHeading from "./section-heading";
 export default function Story() {
   return (
     <motion.section
-      className='w-full min-h-[50vh] flex flex-col items-center justify-center leading-8  scroll-mt-[28] border-b border-[#e6e8eb]'
+      className='w-full min-h-[10vh] md:min-h-[50vh] flex flex-col items-center justify-center leading-8 scroll-mt-[28] border-b border-[#e6e8eb]'
       id='story'
     >
       <div className='w-full   flex flex-col sm:flex-row items-center text-left'>
