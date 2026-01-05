@@ -5,7 +5,7 @@ import { motion } from "framer-motion";
 import { links } from "@/lib/data";
 import Link from "next/link";
 import clsx from "clsx";
-import { UseActiveSectionContext } from "@/context/active-section";
+
 import dynamic from "next/dynamic";
 import AyushLogoDark from "@/public/Ayush-Logo-Dark.json";
 import AyushLogoLight from "@/public/Ayush-Logo-Light.json";
@@ -16,8 +16,7 @@ const Header = () => {
   const Lottie = dynamic(() => import("@lottielab/lottie-player/react"), {
     ssr: false,
   });
-  const { activeSection, setActiveSection, setTimeOfLastClick } =
-    UseActiveSectionContext();
+
   const { theme } = useTheme();
 
   // Prepare menu items from links
@@ -68,9 +67,6 @@ const Header = () => {
               text-gray-750 dark:text-white `
             )}
             href={"/"}
-            onClick={() => {
-              setTimeOfLastClick(Date.now());
-            }}
           >
             {theme === "dark" ? (
               <Lottie lottie={AyushLogoDark} />
@@ -90,31 +86,14 @@ const Header = () => {
               >
                 <Link
                   className={clsx(
-                    `flex items-center justify-center px-3 py-2 hover:text-gray-950 dark:hover:text-gray-300 transition ${
-                      activeSection === link.name
-                        ? "text-gray-950 dark:text-white"
-                        : "text-gray-500"
-                    }
+                    `flex items-center justify-center px-3 py-2 text-gray-500 hover:text-gray-950 dark:hover:text-gray-300 transition
+                     
+                    
                     `
                   )}
                   href={link.hash}
-                  onClick={() => {
-                    setActiveSection(link.name);
-                    setTimeOfLastClick(Date.now());
-                  }}
                 >
                   {link.name}
-                  {link.name === activeSection && (
-                    <motion.span
-                      className=' dark:bg-gray-700 rounded-md absolute inset-0 -z-10'
-                      layoutId='activeSection'
-                      transition={{
-                        type: "spring",
-                        stiffness: 380,
-                        damping: 30,
-                      }}
-                    ></motion.span>
-                  )}
                 </Link>
               </motion.li>
             ))}
@@ -124,9 +103,6 @@ const Header = () => {
               <Link
                 className='group hidden sm:block sm:w-auto justify-center bg-gradient-to-tr dark:from-purple-500 dark:to-violet-500 dark:bg-gradient-to-tr from-orange-500 to-amber-500 text-white px-3 py-2 rounded-[6px] outline-none focus:scale-110 hover:bg-gray-950 active:scale-105 transition shadow-[0_1px_2px_0_rgba(0,0,0,0.12),0_0_0_1px_rgba(0,0,0,0.08)]'
                 href='#contact'
-                onClick={() => {
-                  setTimeOfLastClick(Date.now());
-                }}
               >
                 Say "Hello"
               </Link>

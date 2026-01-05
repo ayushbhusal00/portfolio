@@ -1,5 +1,6 @@
 "use client";
 
+import Contact from "@/components/contact";
 import Header from "@/components/header";
 import { motion } from "framer-motion";
 
@@ -20,6 +21,7 @@ export default function ProjectLayout({
     >
       <Header />
       {children}
+      <Contact />
     </motion.main>
   );
 }

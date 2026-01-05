@@ -15,7 +15,6 @@ export default function Home() {
       <div className='md:mx-16 border-x border-[#e6e8eb]'>
         <Intro />
         <Companies />
-
         <DesignProcess />
         <Projects />
         <OutsideWork />

@@ -4,14 +4,10 @@ import React from "react";
 import SectionHeading from "./section-heading";
 import { caseStudies } from "@/lib/data";
 import Project from "./project";
-import { UseSectionInView } from "@/lib/hooks";
 
 export default function Projects() {
-  const { ref } = UseSectionInView("Projects", 0.5);
-
   return (
     <section
-      ref={ref}
       id='projects'
       className='scroll-mt-28 w-full text-center mx-auto flex flex-col justify-center'
     >

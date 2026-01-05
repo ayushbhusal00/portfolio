@@ -10,8 +10,6 @@ import { HiDownload } from "react-icons/hi";
 import Portrait from "@/public/Portrait.png";
 import ImageTrail from "@/components/ImageTrail";
 
-import { UseSectionInView } from "@/lib/hooks";
-
 import Thumbnail1 from "@/public/ecommerce-trail.png";
 import Thumbnail2 from "@/public/Lifecorpus-trail.png";
 import Thumbnail3 from "@/public/niuralai-trail.png";
@@ -23,8 +21,6 @@ import Thumbnail8 from "@/public/antidote-trail.png";
 import Thumbnail9 from "@/public/hydrolink trail.png";
 
 export default function intro() {
-  const { ref } = UseSectionInView("Home");
-
   // Convert StaticImageData to URL strings
   const imageUrls = [
     typeof Thumbnail1 === "string" ? Thumbnail1 : Thumbnail1.src,
@@ -41,7 +37,6 @@ export default function intro() {
 
   return (
     <section
-      ref={ref}
       id='home'
       className='w-full scroll-mt-[100rem]  sm:py-4 sm:px-2 md:py-28  px-4 py-16 border-b border-[#e6e8eb] relative'
     >

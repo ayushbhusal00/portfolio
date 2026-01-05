@@ -90,29 +90,12 @@ export const experiencesData = [
   // },
 
   {
-    title: "Associate Web Designer",
-    location: "OHO Digital Ventures Pvt. Ltd.",
+    title: "Senior Product Designer",
+    location: "Niural Inc.",
     description:
-      "Designed web assets, illustrations, UX flows, frontend code, led 2 web design projects, contributed to user research, and created branding/video assets for promotions.",
-    icon: React.createElement(CgWorkAlt),
-    date: "Apr 2018 – Jan 2019 | 10 months",
-  },
-  {
-    title: "Multimedia Designer",
-    location: "Prime International Pvt. Ltd.",
-    description:
-      "Developed a responsive portfolio website using PHP, HTML, CSS, created detailed product mockups with 3DS MAX, contributed to key design decisions, and designed multimedia assets to enhance product design and brand identity.",
+      "Designed and launched user-centric web interfaces for Niural App and Landing Page, integrated Web3 and fiat payments, maintained a design system, optimized performance, integrated Zendesk, and conducted user testing to improve UX and engagement.",
     icon: React.createElement(FaReact),
-    date: "Apr 2019 – Jan 2020 | 10 months",
-  },
-
-  {
-    title: "Web Designer",
-    location: "The Vesper House Pvt. Ltd.",
-    description:
-      "Designed a WordPress e-commerce platform for Vesper Fine Wine, integrated payment APIs, optimized with analytics tools, improved database queries, and boosted sales by 70% and engagement by 25%.",
-    icon: React.createElement(LuGraduationCap),
-    date: "Jul 2020 - Apr 2021 | 10 months",
+    date: "Nov 2022 - present | +3 years",
   },
   {
     title: "Web Designer",
@@ -123,12 +106,28 @@ export const experiencesData = [
     date: "Oct 2021 – Mar 2022 | 6 months",
   },
   {
-    title: "Senior Product Designer",
-    location: "Niural Inc.",
+    title: "Web Designer",
+    location: "The Vesper House Pvt. Ltd.",
     description:
-      "Designed and launched user-centric web interfaces for Niural App and Landing Page, integrated Web3 and fiat payments, maintained a design system, optimized performance, integrated Zendesk, and conducted user testing to improve UX and engagement.",
+      "Designed a WordPress e-commerce platform for Vesper Fine Wine, integrated payment APIs, optimized with analytics tools, improved database queries, and boosted sales by 70% and engagement by 25%.",
+    icon: React.createElement(LuGraduationCap),
+    date: "Jul 2020 - Apr 2021 | 10 months",
+  },
+  {
+    title: "Multimedia Designer",
+    location: "Prime International Pvt. Ltd.",
+    description:
+      "Developed a responsive portfolio website using PHP, HTML, CSS, created detailed product mockups with 3DS MAX, contributed to key design decisions, and designed multimedia assets to enhance product design and brand identity.",
     icon: React.createElement(FaReact),
-    date: "Nov 2022 - present | +3 years",
+    date: "Apr 2019 – Jan 2020 | 10 months",
+  },
+  {
+    title: "Associate Web Designer",
+    location: "OHO Digital Ventures Pvt. Ltd.",
+    description:
+      "Designed web assets, illustrations, UX flows, frontend code, led 2 web design projects, contributed to user research, and created branding/video assets for promotions.",
+    icon: React.createElement(CgWorkAlt),
+    date: "Apr 2018 – Jan 2019 | 10 months",
   },
 ] as const;
 
