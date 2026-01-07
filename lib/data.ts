@@ -3,6 +3,9 @@ import { StaticImageData } from "next/image";
 import { CgWorkAlt } from "react-icons/cg";
 import { FaReact } from "react-icons/fa";
 import { LuGraduationCap } from "react-icons/lu";
+import type { IconProps } from "@phosphor-icons/react";
+import type { ComponentType } from "react";
+
 /* ---------------- WEPLAY IMPORTS ---------------- */
 import WePlay from "@/public/weplay-thumbnail.png";
 import WeplayHeroSection from "@/public/weplay-herosection.png";
@@ -26,10 +29,12 @@ import LifeCorpusMarketing from "@/public/Lifecorpus-marketing.png";
 /* ---------------- NIURAL IMPORTS ---------------- */
 
 import NiuralThumbnail from "@/public/niural-thumbnail.png";
-import DesignSystem from "@/public/Design System.png";
-import TimeSheet from "@/public/Time Sheet.png";
+import DesignSystem from "@/public/design-system.png";
+import Integrations from "@/public/QuickbooksIntegration.png";
+import Benefits from "@/public/Benefits.png";
+import Dashboard from "@/public/EmployeeDashboard.png";
 import Payroll from "@/public/Payroll.png";
-import PaymentMethod from "@/public/Payment Method.png";
+import PaymentMethod from "@/public/BankAccount.png";
 
 /* ---------------- VESPER IMPORTS ---------------- */
 // import VesperFineWines from "@/public/VesperFineWines.png";
@@ -49,6 +54,123 @@ import VirginGoldRender from "@/public/virgin-gold-animation-render.png";
 import Emperor24CaratRender from "@/public/emperor-24-carat-animation-render.png";
 import HighlanderRender from "@/public/highlander-animation-render.png";
 import CrationFrame from "@/public/creation-frame.png";
+
+import NiuralPage from "@/components/Niural";
+
+// Work sections configuration (without icons - icons loaded dynamically in render)
+const workSectionsConfig = [
+  { label: "Payroll", iconName: "CreditCard", featured: true },
+  { label: "Global Payments", iconName: "CurrencyDollar", featured: true },
+  { label: "Projects", iconName: "ChartLineUp", featured: true },
+  { label: "AI", iconName: "Brain", featured: true },
+  { label: "Timesheets", iconName: "Clock" },
+  { label: "Time Tracking", iconName: "Clock" },
+  { label: "Expense Management", iconName: "Receipt" },
+  { label: "Accounts Payable", iconName: "Receipt" },
+  { label: "Accounts Receivable", iconName: "Receipt" },
+  { label: "Invoices & Bills", iconName: "Receipt" },
+  { label: "Contractor Management", iconName: "Users" },
+  { label: "EOR", iconName: "Buildings" },
+  { label: "US Benefits", iconName: "ShieldCheck" },
+  { label: "Global Benefits", iconName: "ShieldCheck" },
+  { label: "Approval Policies", iconName: "ShieldCheck" },
+  { label: "Reporting", iconName: "ChartLineUp" },
+  { label: "Organization", iconName: "Buildings" },
+  { label: "Integrations", iconName: "ArrowsClockwise" },
+];
+
+export type PhosphorIcon = ComponentType<IconProps>;
+export type PhosphorIconModule = Record<string, PhosphorIcon>;
+
+export type WorkSectionConfig = {
+  label: string;
+  iconName: string;
+  featured?: boolean;
+};
+
+export type WorkSection = {
+  label: string;
+  icon: PhosphorIcon;
+  featured?: boolean;
+};
+
+// Create workSections with icons - only called in render function (client-side)
+// Uses dynamic import with constructed path to prevent webpack static analysis
+const createWorkSections = (() => {
+  let iconCache: PhosphorIconModule | null = null;
+  let loading: Promise<void> | null = null;
+
+  return () => {
+    if (typeof window !== "undefined") {
+      if (!iconCache && !loading) {
+        loading = import("@phosphor-icons/react")
+          .then((mod) => {
+            iconCache = mod as unknown as PhosphorIconModule;
+          })
+          .catch(() => {
+            iconCache = null;
+          });
+      }
+    }
+
+    const PlaceholderIcon: PhosphorIcon = () => null;
+
+    return workSectionsConfig.map((item) => ({
+      label: item.label,
+      featured: item.featured,
+      icon: iconCache?.[item.iconName] ?? PlaceholderIcon,
+    }));
+  };
+})();
+
+// Get phosphor icons — only called in render function (client-side)
+const getPhosphorIcons = (() => {
+  let iconCache: PhosphorIconModule | null = null;
+  let loading: Promise<void> | null = null;
+
+  return () => {
+    if (typeof window !== "undefined") {
+      if (!iconCache && !loading) {
+        loading = import("@phosphor-icons/react")
+          .then((mod) => {
+            iconCache = mod as unknown as PhosphorIconModule;
+          })
+          .catch(() => {
+            iconCache = null;
+          });
+      }
+    }
+
+    return iconCache;
+  };
+})();
+
+const achievements = [
+  {
+    label: "ROI",
+    value: "384%",
+    description:
+      "Design-led product improvements helped Niural unlock significant operational efficiency at scale.",
+  },
+  {
+    label: "Series A Valuation",
+    value: "$31M+",
+    description:
+      "Contributed as a founding designer during Niural’s growth to Series A funding.",
+  },
+  {
+    label: "Hours Saved",
+    value: "92,000+",
+    description:
+      "Reduced operational overhead through streamlined payroll, approvals, and automation.",
+  },
+  {
+    label: "Team Impact",
+    value: "< 6 mo",
+    description:
+      "Built and led a design team that shipped multiple zero-to-one initiatives rapidly.",
+  },
+];
 
 export const links = [
   {
@@ -131,97 +253,6 @@ export const experiencesData = [
   },
 ] as const;
 
-// export const projectsData = [
-//   {
-//     title: "Niural Inc.",
-//     description:
-//       "Its a global payroll platform, that serves all aspects of hiring from hiring to payroll.",
-//     tags: ["Figma", "Design System", "Branding", "UX Research", "WebFlow"],
-//     imageUrl: NiuralHeroSection,
-//     colorFrom: "#bef264", // lime-200 equivalent
-//     colorTo: "#10b981", // emerald-500 equivalent
-//   },
-//   {
-//     title: "WePlay",
-//     description:
-//       "Platform for sports booking and learning. Help users find players to play with, book venues and interact with the community",
-//     tags: [
-//       "Figma",
-//       "Animate CC",
-//       "Illustrator",
-//       "UI Design",
-//       "Mobile Design",
-//       "Web Design",
-//     ],
-//     imageUrl: WePlay,
-//     colorFrom: "#fecaca",
-//     colorTo: "#f43f5e",
-//   },
-//   {
-//     title: "Vesper Fine Wines",
-//     description:
-//       "An ecommerce website to buy best and largest varietal of wines in Nepal. Responsive and user-friendly application for both Web and Mobile users.",
-//     tags: ["React", "Next.js", "SQL", "Tailwind", "Prisma"],
-//     imageUrl: VesperFineWines,
-//     //   colorFrom: "#bef264", // lime-200 equivalent
-//     //   colorTo: "#10b981", // emerald-500 equivalent
-//   },
-// ] as const;
-
-// export const skillsData = [
-//   "Figma",
-//   "Adobe XD",
-//   "Illustrator",
-//   "Photoshop",
-//   "After Effects",
-//   "LottiLab",
-//   "Miro",
-//   "HTML5",
-//   "Tailwind CSS",
-//   "JavaScript (ES6+)",
-//   "TypeScript",
-//   "React",
-//   "Next.js",
-//   "Node.js",
-//   "Git",
-//   "React Native",
-//   "Three JS",
-//   "Framer Motion",
-// ] as const;
-
-// // Group skills into categories
-// export const skillsCategories = [
-//   {
-//     title: "Things I Create",
-//     skills: [
-//       "Websites",
-//       "App Design",
-//       "Visual Identity",
-//       "Illustrations",
-//       "Design Systems",
-//       "UI Animation",
-//     ],
-//     color: "bg-lime-200 dark:bg-lime-900",
-//   },
-//   {
-//     title: "For Products In",
-//     skills: ["SaaS", "FinTech", "Web 3.0", "AI", "VR", "3D Visualization"],
-//     color: "bg-purple-200 dark:bg-purple-900",
-//   },
-//   {
-//     title: "Using Tools Like",
-//     skills: [
-//       "Figma",
-//       "After Effects",
-//       "Webflow",
-//       "Illustrator",
-//       "Photoshop",
-//       "Lottie",
-//     ],
-//     color: "bg-blue-200 dark:bg-blue-900",
-//   },
-// ] as const;
-
 export type CaseStudy = {
   id: number;
   slug: string;
@@ -245,6 +276,9 @@ export type CaseStudy = {
   videoUrl?: string;
   isPasswordProtected?: boolean;
 
+  /** 🔥 NEW */
+  render?: () => React.ReactNode;
+
   sections: {
     heading?: string;
     content?: string;
@@ -256,10 +290,11 @@ export const caseStudies: CaseStudy[] = [
   {
     id: 0,
     slug: "niural-global-payroll",
-    title: "Niural — Designing payroll for modern teams",
-    tagline: "Reducing operational complexity in global payroll management.",
+    title: "Niural — Designing a Power Platform",
+    tagline:
+      "Raising bars for what an application can be. Skyrocketed Niural to 31+ Million Valuation within 3 years.",
     overview:
-      "Niural is a global payroll platform supporting fiat and crypto payouts.",
+      "Niural is a global workforce management tool, that carets Enterprise level businesses to manage their large workforce, run huge payrolls, and also manage vendor payments. I have worked in Niural as a founding designer, and have contributed to the growth on the design aspect to truly make it a global product that competes with global leading companies like deel, remote and rippling.",
 
     date: "Dec 10, 2025",
     readTime: "5 min read",
@@ -270,10 +305,52 @@ export const caseStudies: CaseStudy[] = [
     isPasswordProtected: true,
 
     thumbnail: NiuralThumbnail,
-    heroImage: "NiuralThumbnail",
-    gallery: [DesignSystem, TimeSheet, Payroll, PaymentMethod],
-
-    role: "Product Designer — UX, UI, Interaction Design",
+    heroImage: NiuralThumbnail,
+    gallery: [DesignSystem, Dashboard, Payroll, PaymentMethod],
+    render: () => {
+      const icons = getPhosphorIcons();
+      if (!icons) {
+        // Fallback for server-side rendering
+        return React.createElement("div", null, "Loading...");
+      }
+      return React.createElement(NiuralPage, {
+        heroTabs: [
+          {
+            id: "design-system",
+            label: "Design System",
+            image: DesignSystem,
+            icon: icons.CreditCard,
+          },
+          {
+            id: "payroll",
+            label: "Payroll",
+            image: Payroll,
+            icon: icons.Clock,
+          },
+          {
+            id: "payment-method",
+            label: "Payment Method",
+            image: PaymentMethod,
+            icon: icons.CurrencyDollar,
+          },
+          {
+            id: "integrations",
+            label: "Integrations",
+            image: Integrations,
+            icon: icons.PlugChargingIcon,
+          },
+          {
+            id: "benefits",
+            label: "Benefits",
+            image: Benefits,
+            icon: icons.HeartIcon,
+          },
+        ],
+        workSections: createWorkSections(),
+        achievements,
+      } as React.ComponentProps<typeof NiuralPage>);
+    },
+    role: "Product Designer",
     duration: "Ongoing",
 
     sections: [
@@ -657,7 +734,8 @@ export const playgroundProjects: PlaygroundProject[] = [
       },
     ],
 
-    websiteLink: "gunfight-8uul3c9wl-ayushbhusal00s-projects.vercel.app",
+    websiteLink:
+      "https://gunfight-8uul3c9wl-ayushbhusal00s-projects.vercel.app",
     role: "Developer, Asset Designer",
     duration: "2 months",
     readTime: "3 min read",
@@ -706,7 +784,8 @@ export const playgroundProjects: PlaygroundProject[] = [
       },
     ],
 
-    websiteLink: "galaxy-modifyer-9agsqkfh3-ayush-bhusals-projects.vercel.app",
+    websiteLink:
+      "https://galaxy-modifyer-9agsqkfh3-ayush-bhusals-projects.vercel.app",
     role: "Developer — Three.js, Visualization",
     duration: "1 month",
     readTime: "2 min read",

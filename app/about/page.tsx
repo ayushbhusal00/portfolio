@@ -1,4 +1,3 @@
-import Contact from "@/components/contact";
 import SectionHeading from "@/components/section-heading";
 import Story from "@/components/story";
 import TimelineComponent from "@/components/Timeline";
@@ -13,7 +12,6 @@ export default function About() {
         Job History
       </SectionHeading>
       <TimelineComponent data={experiencesData} />
-      <Contact />
     </main>
   );
 }
