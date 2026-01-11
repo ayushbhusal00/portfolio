@@ -26,14 +26,7 @@ const Header = () => {
   }));
 
   // Add "Say Hello" to menu items
-  const allMenuItems = [
-    ...menuItems,
-    {
-      label: "Say Hello",
-      link: "#contact",
-      ariaLabel: "Navigate to contact section",
-    },
-  ];
+  const allMenuItems = [...menuItems];
 
   // Social links
   const socialItems = [
@@ -96,16 +89,6 @@ const Header = () => {
                 </Link>
               </motion.li>
             ))}
-            <div className='vertical-divide hidden sm:block' />
-            {/* Dark/Light Mode Toggle Switch */}
-            <div className='ml-4 flex gap-4'>
-              <Link
-                className='group hidden sm:block sm:w-auto justify-center bg-gradient-to-tr dark:from-purple-500 dark:to-violet-500 dark:bg-gradient-to-tr from-orange-500 to-amber-500 text-white px-3 py-2 rounded-[6px] outline-none focus:scale-110 hover:bg-gray-950 active:scale-105 transition shadow-[0_1px_2px_0_rgba(0,0,0,0.12),0_0_0_1px_rgba(0,0,0,0.08)]'
-                href='#contact'
-              >
-                Say "Hello"
-              </Link>
-            </div>
           </ul>
 
           {/* Mobile Menu - StaggeredMenu (shows when navlinks are hidden) */}

@@ -22,7 +22,7 @@ export default function HeroSection({
     <motion.section
       id='playground-hero'
       className={clsx(
-        "w-full border-b border-[#e6e8eb] flex flex-col md:flex-row px-16 gap-10 py-32"
+        "w-full border-b border-[#e6e8eb] flex flex-col md:flex-row px-8 md:px-16 gap-10 py-32"
       )}
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}

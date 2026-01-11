@@ -5,7 +5,6 @@ import React from "react";
 import { motion } from "framer-motion";
 import { BsLinkedin } from "react-icons/bs";
 import { FaGithubSquare } from "react-icons/fa";
-import { HiDownload } from "react-icons/hi";
 
 import Portrait from "@/public/Portrait.png";
 import ImageTrail from "@/components/ImageTrail";
@@ -104,13 +103,10 @@ export default function intro() {
           }}
         >
           <a
-            className='group md:w-full sm:w-auto justify-center text-white px-7 py-3 flex items-center gap-2 outline-none focus:scale-110 hover:bg-gray-950 active:scale-105 transition rounded-[6px] pointer-events-auto relative z-20
-  bg-[#27272A] shadow-[0_0.75px_0_0_rgba(255,255,255,0.20)_inset,0_1px_2px_0_rgba(0,0,0,0.40),0_0_0_1px_#18181B]'
-            href='/CV.pdf'
-            download={true}
+            className='md:w-full sm:w-auto justify-center group hidden sm:block text-center bg-gradient-to-tr dark:from-purple-500 dark:to-violet-500 dark:bg-gradient-to-tr from-orange-500 to-amber-500 text-white px-3 py-4 rounded-[6px] outline-none focus:scale-110 hover:bg-gray-950 active:scale-105 transition shadow-[0_1px_2px_0_rgba(0,0,0,0.12),0_0_0_1px_rgba(0,0,0,0.08)]'
+            href='/#contact'
           >
-            Download CV{" "}
-            <HiDownload className='opacity-70 group-hover:translate-x-1 transition' />
+            Say Hello{" "}
           </a>
 
           <a

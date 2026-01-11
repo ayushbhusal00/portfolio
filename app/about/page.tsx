@@ -9,7 +9,7 @@ export default function About() {
     <main className='flex flex-col items-center relative mx-auto max-w-[72rem] border-x border-[#e6e8eb]  bg-[#fafafa]'>
       <Story />
       <SectionHeading className='w-full border-b border-[#e6e8eb] p-12 text-center'>
-        Job History
+        My Work History
       </SectionHeading>
       <TimelineComponent data={experiencesData} />
     </main>

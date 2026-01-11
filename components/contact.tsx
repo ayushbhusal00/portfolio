@@ -11,7 +11,7 @@ export default function Contact() {
   return (
     <motion.section
       id='contact'
-      className='text-center scroll-mt-28 rounded-lg w-full items-center align-middle bg-[repeating-linear-gradient(135deg,rgba(0,0,0,0.08)_0,rgba(0,0,0,0.08)_1px,transparent_1px,transparent_6px)] py-16 border-t border-gray-200'
+      className='text-center scroll-mt-28 rounded-lg w-full items-center align-middle bg-[repeating-linear-gradient(135deg,rgba(0,0,0,0.08)_0,rgba(0,0,0,0.08)_1px,transparent_1px,transparent_6px)] py-12 border-t border-[#e6e8eb]'
       initial={{ opacity: 0 }}
       whileInView={{ opacity: 1 }}
       transition={{ duration: 1 }}
