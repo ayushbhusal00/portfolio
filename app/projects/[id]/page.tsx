@@ -123,23 +123,31 @@ export default function NiuralPage({ params }: { params: { id: string } }) {
         />
       </div>
 
-      {/* Back Link */}
-      <div className='mx-auto max-w-7xl px-16 pt-8'>
-        <Link
-          href='/'
-          className='text-sm text-zinc-500 hover:text-zinc-900 transition inline-block mb-8'
-        >
-          ← Back
-        </Link>
-      </div>
-
       {/* Custom Render OR Generic Case Study */}
       {project.render ? (
-        <main className='mx-auto max-w-7xl px-16 gap-10 pb-32 border-x border-[#00000010]'>
+        <main className=''>
+          {/* Back Link */}
+          <div className='mx-auto max-w-7xl px-5 sm:px-8 lg:px-12 pt-8'>
+            <Link
+              href='/'
+              className='text-sm text-zinc-500 hover:text-zinc-900 transition inline-block mb-8 mx-auto max-w-7xl px-5 sm:px-8 lg:px-12'
+            >
+              ← Back
+            </Link>
+          </div>
           {project.render()}
         </main>
       ) : (
-        <main className='mx-auto max-w-7xl px-16 gap-10 pb-32'>
+        <main className='mx-auto max-w-7xl px-5 sm:px-8 lg:px-12'>
+          {/* Back Link */}
+          <div className='mx-auto max-w-7xl pt-8 '>
+            <Link
+              href='/'
+              className='text-sm text-zinc-500 hover:text-zinc-900 transition inline-block mb-8'
+            >
+              ← Back
+            </Link>
+          </div>
           <article className='space-y-16'>
             {/* Header */}
             <motion.header
@@ -232,7 +240,7 @@ export default function NiuralPage({ params }: { params: { id: string } }) {
 
       {/* Related Projects (always shown) */}
       {relatedProjects.length > 0 && (
-        <section className='  border-t border-zinc-200 mx-auto max-w-7xl px-16 pb-32'>
+        <section className='border-b border-neutral-200 w-full py-24 px-5 sm:px-8 lg:px-12'>
           <h2 className='text-[24px] font-medium'>You may also like</h2>
 
           <div className='mt-8 grid grid-cols-1 md:grid-cols-3 gap-8 '>

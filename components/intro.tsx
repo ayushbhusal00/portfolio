@@ -91,9 +91,8 @@ export default function intro() {
             initial={{ opacity: 0, y: 100 }}
             animate={{ opacity: 1, y: 0 }}
           >
-            Crafting designs and building products that should be able to solve
-            some of your problems and help make your life uncomplicated +
-            aesthetically pleasing.
+            I design interfaces, experiences, and brand identities that make a
+            difference.
           </motion.p>
         </motion.div>
         <motion.div
