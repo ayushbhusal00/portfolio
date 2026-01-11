@@ -1,6 +1,5 @@
 "use client";
 
-import { useState } from "react";
 import Image from "next/image";
 import {
   CreditCard,
@@ -13,36 +12,49 @@ import {
   ChartLineUp,
   CurrencyDollar,
   ArrowsClockwise,
-  ChatCircleText,
+  PlugChargingIcon,
+  HeartIcon,
 } from "@phosphor-icons/react";
 
+import DesignSystem from "@/public/design-system.png";
+import Integrations from "@/public/QuickbooksIntegration.png";
+import Benefits from "@/public/Benefits.png";
+import Payroll from "@/public/Payroll.png";
+import PaymentMethod from "@/public/BankAccount.png";
+
 /* ---------------------------------------
-   HERO TABS
+   HERO TABS (STATIC DATA)
 --------------------------------------- */
 const heroTabs = [
   {
-    id: "payroll",
-    label: "Payroll",
-    image: "/niural/niural-hero-payroll.png",
+    id: "design-system",
+    label: "Design System",
+    image: DesignSystem,
     icon: CreditCard,
   },
   {
-    id: "payments",
-    label: "Global Payments",
-    image: "/niural/niural-hero-payments.png",
+    id: "payroll",
+    label: "Payroll",
+    image: Payroll,
+    icon: Clock,
+  },
+  {
+    id: "payment-method",
+    label: "Payment Method",
+    image: PaymentMethod,
     icon: CurrencyDollar,
   },
   {
-    id: "ai",
-    label: "AI",
-    image: "/niural/niural-hero-ai.png",
-    icon: Brain,
+    id: "integrations",
+    label: "Integrations",
+    image: Integrations,
+    icon: PlugChargingIcon,
   },
   {
-    id: "collaboration",
-    label: "Collaboration",
-    image: "/niural/niural-hero-chat.png",
-    icon: ChatCircleText,
+    id: "benefits",
+    label: "Benefits",
+    image: Benefits,
+    icon: HeartIcon,
   },
 ];
 
@@ -103,8 +115,11 @@ const achievements = [
   },
 ];
 
+/* ---------------------------------------
+   PAGE
+--------------------------------------- */
 export default function NiuralProjectPage() {
-  const [activeTab, setActiveTab] = useState(heroTabs[0]);
+  const heroImage = heroTabs[0]; // default hero visual
 
   return (
     <main className='bg-[#fafafa] text-neutral-900'>
@@ -130,37 +145,13 @@ export default function NiuralProjectPage() {
                 </strong>
                 .
               </p>
-
-              {/* Pills */}
-              <div className='mt-10 flex flex-wrap gap-2'>
-                {heroTabs.map((tab) => {
-                  const Icon = tab.icon;
-                  const isActive = tab.id === activeTab.id;
-
-                  return (
-                    <button
-                      key={tab.id}
-                      onClick={() => setActiveTab(tab)}
-                      className={`flex items-center gap-2 rounded-full px-4 py-2 text-sm border transition
-                        ${
-                          isActive
-                            ? "border-neutral-900 bg-neutral-900 text-white"
-                            : "border-neutral-300 text-neutral-600 hover:border-neutral-500"
-                        }`}
-                    >
-                      <Icon size={16} />
-                      {tab.label}
-                    </button>
-                  );
-                })}
-              </div>
             </div>
 
             {/* Image */}
             <div className='relative aspect-[16/10] rounded-xl border border-neutral-200 bg-white'>
               <Image
-                src={activeTab.image}
-                alt={activeTab.label}
+                src={heroImage.image}
+                alt={heroImage.label}
                 fill
                 className='object-contain p-6'
                 priority
@@ -183,12 +174,11 @@ export default function NiuralProjectPage() {
               return (
                 <div
                   key={item.label}
-                  className={`flex flex-col items-center justify-center gap-3 border border-neutral-200 p-6 text-center text-sm
-                    ${
-                      item.featured
-                        ? "bg-white text-neutral-900"
-                        : "text-neutral-500"
-                    }`}
+                  className={`flex flex-col items-center justify-center gap-3 border border-neutral-200 p-6 text-center text-sm ${
+                    item.featured
+                      ? "bg-white text-neutral-900"
+                      : "text-neutral-500"
+                  }`}
                 >
                   <Icon
                     size={22}
@@ -220,11 +210,9 @@ export default function NiuralProjectPage() {
                 <p className='text-xs uppercase tracking-wide text-neutral-500'>
                   {item.label}
                 </p>
-
                 <p className='mt-4 text-4xl font-medium tracking-tight'>
                   {item.value}
                 </p>
-
                 <p className='mt-4 text-sm text-neutral-600'>
                   {item.description}
                 </p>

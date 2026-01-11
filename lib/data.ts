@@ -5,6 +5,7 @@ import { FaReact } from "react-icons/fa";
 import { LuGraduationCap } from "react-icons/lu";
 import type { IconProps } from "@phosphor-icons/react";
 import type { ComponentType } from "react";
+import NiuralProjectPage from "@/app/niural/page";
 
 /* ---------------- WEPLAY IMPORTS ---------------- */
 import WePlay from "@/public/weplay-thumbnail.png";
@@ -30,8 +31,8 @@ import LifeCorpusMarketing from "@/public/Lifecorpus-marketing.png";
 
 import NiuralThumbnail from "@/public/niural-thumbnail.png";
 import DesignSystem from "@/public/design-system.png";
-import Integrations from "@/public/QuickbooksIntegration.png";
-import Benefits from "@/public/Benefits.png";
+// import Integrations from "@/public/QuickbooksIntegration.png";
+// import Benefits from "@/public/Benefits.png";
 import Dashboard from "@/public/EmployeeDashboard.png";
 import Payroll from "@/public/Payroll.png";
 import PaymentMethod from "@/public/BankAccount.png";
@@ -55,29 +56,29 @@ import Emperor24CaratRender from "@/public/emperor-24-carat-animation-render.png
 import HighlanderRender from "@/public/highlander-animation-render.png";
 import CrationFrame from "@/public/creation-frame.png";
 
-import NiuralPage from "@/components/Niural";
+// import NiuralPage from "@/components/Niural";
 
 // Work sections configuration (without icons - icons loaded dynamically in render)
-const workSectionsConfig = [
-  { label: "Payroll", iconName: "CreditCard", featured: true },
-  { label: "Global Payments", iconName: "CurrencyDollar", featured: true },
-  { label: "Projects", iconName: "ChartLineUp", featured: true },
-  { label: "AI", iconName: "Brain", featured: true },
-  { label: "Timesheets", iconName: "Clock" },
-  { label: "Time Tracking", iconName: "Clock" },
-  { label: "Expense Management", iconName: "Receipt" },
-  { label: "Accounts Payable", iconName: "Receipt" },
-  { label: "Accounts Receivable", iconName: "Receipt" },
-  { label: "Invoices & Bills", iconName: "Receipt" },
-  { label: "Contractor Management", iconName: "Users" },
-  { label: "EOR", iconName: "Buildings" },
-  { label: "US Benefits", iconName: "ShieldCheck" },
-  { label: "Global Benefits", iconName: "ShieldCheck" },
-  { label: "Approval Policies", iconName: "ShieldCheck" },
-  { label: "Reporting", iconName: "ChartLineUp" },
-  { label: "Organization", iconName: "Buildings" },
-  { label: "Integrations", iconName: "ArrowsClockwise" },
-];
+// const workSectionsConfig = [
+//   { label: "Payroll", iconName: "CreditCard", featured: true },
+//   { label: "Global Payments", iconName: "CurrencyDollar", featured: true },
+//   { label: "Projects", iconName: "ChartLineUp", featured: true },
+//   { label: "AI", iconName: "Brain", featured: true },
+//   { label: "Timesheets", iconName: "Clock" },
+//   { label: "Time Tracking", iconName: "Clock" },
+//   { label: "Expense Management", iconName: "Receipt" },
+//   { label: "Accounts Payable", iconName: "Receipt" },
+//   { label: "Accounts Receivable", iconName: "Receipt" },
+//   { label: "Invoices & Bills", iconName: "Receipt" },
+//   { label: "Contractor Management", iconName: "Users" },
+//   { label: "EOR", iconName: "Buildings" },
+//   { label: "US Benefits", iconName: "ShieldCheck" },
+//   { label: "Global Benefits", iconName: "ShieldCheck" },
+//   { label: "Approval Policies", iconName: "ShieldCheck" },
+//   { label: "Reporting", iconName: "ChartLineUp" },
+//   { label: "Organization", iconName: "Buildings" },
+//   { label: "Integrations", iconName: "ArrowsClockwise" },
+// ];
 
 export type PhosphorIcon = ComponentType<IconProps>;
 export type PhosphorIconModule = Record<string, PhosphorIcon>;
@@ -93,84 +94,6 @@ export type WorkSection = {
   icon: PhosphorIcon;
   featured?: boolean;
 };
-
-// Create workSections with icons - only called in render function (client-side)
-// Uses dynamic import with constructed path to prevent webpack static analysis
-const createWorkSections = (() => {
-  let iconCache: PhosphorIconModule | null = null;
-  let loading: Promise<void> | null = null;
-
-  return () => {
-    if (typeof window !== "undefined") {
-      if (!iconCache && !loading) {
-        loading = import("@phosphor-icons/react")
-          .then((mod) => {
-            iconCache = mod as unknown as PhosphorIconModule;
-          })
-          .catch(() => {
-            iconCache = null;
-          });
-      }
-    }
-
-    const PlaceholderIcon: PhosphorIcon = () => null;
-
-    return workSectionsConfig.map((item) => ({
-      label: item.label,
-      featured: item.featured,
-      icon: iconCache?.[item.iconName] ?? PlaceholderIcon,
-    }));
-  };
-})();
-
-// Get phosphor icons — only called in render function (client-side)
-const getPhosphorIcons = (() => {
-  let iconCache: PhosphorIconModule | null = null;
-  let loading: Promise<void> | null = null;
-
-  return () => {
-    if (typeof window !== "undefined") {
-      if (!iconCache && !loading) {
-        loading = import("@phosphor-icons/react")
-          .then((mod) => {
-            iconCache = mod as unknown as PhosphorIconModule;
-          })
-          .catch(() => {
-            iconCache = null;
-          });
-      }
-    }
-
-    return iconCache;
-  };
-})();
-
-const achievements = [
-  {
-    label: "ROI",
-    value: "384%",
-    description:
-      "Design-led product improvements helped Niural unlock significant operational efficiency at scale.",
-  },
-  {
-    label: "Series A Valuation",
-    value: "$31M+",
-    description:
-      "Contributed as a founding designer during Niural’s growth to Series A funding.",
-  },
-  {
-    label: "Hours Saved",
-    value: "92,000+",
-    description:
-      "Reduced operational overhead through streamlined payroll, approvals, and automation.",
-  },
-  {
-    label: "Team Impact",
-    value: "< 6 mo",
-    description:
-      "Built and led a design team that shipped multiple zero-to-one initiatives rapidly.",
-  },
-];
 
 export const links = [
   {
@@ -188,29 +111,9 @@ export const links = [
   },
 
   { name: "Playground", hash: "/playground" },
-
-  // {
-  //   name: "Experience",
-  //   hash: "#experience",
-  // },
 ] as const;
 
 export const experiencesData = [
-  // {
-  //   title: "Advanced Diploma in Animation and Visual Effects",
-  //   location: "Nepal, Maya Animation Academy",
-  //   description: "Professional Training: Passed with Grade A",
-  //   icon: React.createElement(LuGraduationCap),
-  //   date: "Aug 2016 - Sep 2017",
-  // },
-  // {
-  //   title: "B.Sc. with Honors in Computing (Software Engineering)",
-  //   location: "Nepal, NAAMI College affiliated with University of Northampton",
-  //   description: "Academic Honors: Passed with First Class Honors (A)",
-  //   icon: React.createElement(LuGraduationCap),
-  //   date: "Sep 2016 - Jul 2019",
-  // },
-
   {
     title: "Senior Product Designer",
     location: "Niural Inc.",
@@ -307,49 +210,7 @@ export const caseStudies: CaseStudy[] = [
     thumbnail: NiuralThumbnail,
     heroImage: NiuralThumbnail,
     gallery: [DesignSystem, Dashboard, Payroll, PaymentMethod],
-    render: () => {
-      const icons = getPhosphorIcons();
-      if (!icons) {
-        // Fallback for server-side rendering
-        return React.createElement("div", null, "Loading...");
-      }
-      return React.createElement(NiuralPage, {
-        heroTabs: [
-          {
-            id: "design-system",
-            label: "Design System",
-            image: DesignSystem,
-            icon: icons.CreditCard,
-          },
-          {
-            id: "payroll",
-            label: "Payroll",
-            image: Payroll,
-            icon: icons.Clock,
-          },
-          {
-            id: "payment-method",
-            label: "Payment Method",
-            image: PaymentMethod,
-            icon: icons.CurrencyDollar,
-          },
-          {
-            id: "integrations",
-            label: "Integrations",
-            image: Integrations,
-            icon: icons.PlugChargingIcon,
-          },
-          {
-            id: "benefits",
-            label: "Benefits",
-            image: Benefits,
-            icon: icons.HeartIcon,
-          },
-        ],
-        workSections: createWorkSections(),
-        achievements,
-      } as React.ComponentProps<typeof NiuralPage>);
-    },
+    render: () => NiuralProjectPage(),
     role: "Product Designer",
     duration: "Ongoing",
 
