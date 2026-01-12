@@ -25,7 +25,7 @@ import Benefits from "@/public/Benefits.png";
 import Timesheets from "@/public/EmployeeDashboard.png";
 import AccountPayable from "@/public/InvoiceDetail.png";
 import LogIn from "@/public/LogIn.png";
-import Payroll from "@/public/payroll.png";
+import Payroll from "@/public/Payroll.png";
 
 const capabilities = [
   {
