@@ -4,12 +4,12 @@ import { FaReact } from "react-icons/fa";
 import { LuGraduationCap } from "react-icons/lu";
 import { CgWorkAlt } from "react-icons/cg";
 import Image from "next/image";
-import GradientBlue from "@/public/gradient-background.jpg";
 
-//Experience
+// Images
+import GradientBlue from "@/public/gradient-background.jpg";
 import NiuralExperience from "@/public/niural-experience.png";
-import IdaExoerience from "@/public/ida-experience.png";
-import VesoerExoerience from "@/public/vesper-experiences.png";
+import IdaExperience from "@/public/ida-experience.png";
+import VesperExperience from "@/public/vesper-experiences.png";
 import PrimeExperience from "@/public/prime-experience.png";
 import OhoExperience from "@/public/oho-experience.png";
 
@@ -18,42 +18,42 @@ export const experiencesData = [
     title: "Senior Product Designer",
     location: "Niural Inc.",
     description:
-      "Designed and launched user-centric web interfaces for Niural App and Landing Page, integrated Web3 and fiat payments, maintained a design system, optimized performance, integrated Zendesk, and conducted user testing.",
+      "Designed and launched user-centric payroll & payments experiences, built scalable systems, and led design foundations through Series A.",
     icon: FaReact,
-    date: "Nov 2022 - Present",
+    date: "Nov 2022 – Present",
     rightImage: NiuralExperience,
   },
   {
     title: "Web Designer",
     location: "Infinity Digital Agency",
     description:
-      "Developed user-centered web interfaces, delivered feature plans, and implemented a scalable design system.",
+      "Designed conversion-focused web interfaces and scalable design systems.",
     icon: FaReact,
     date: "Oct 2021 – Mar 2022",
-    rightImage: IdaExoerience,
+    rightImage: IdaExperience,
   },
   {
     title: "Web Designer",
-    location: "The Vesper House Pvt. Ltd.",
+    location: "The Vesper House",
     description:
-      "Designed a WordPress e-commerce platform, integrated payment APIs, and boosted sales by 70%.",
+      "Built a WordPress e-commerce platform and boosted sales by 70%.",
     icon: LuGraduationCap,
-    date: "Jul 2020 - Apr 2021",
-    rightImage: VesoerExoerience,
+    date: "Jul 2020 – Apr 2021",
+    rightImage: VesperExperience,
   },
   {
     title: "Multimedia Designer",
-    location: "Prime International Pvt. Ltd.",
+    location: "Prime International",
     description:
-      "Built responsive websites, created 3D product mockups, and multimedia assets.",
+      "Created responsive websites, 3D mockups, and multimedia assets.",
     icon: FaReact,
     date: "Apr 2019 – Jan 2020",
     rightImage: PrimeExperience,
   },
   {
     title: "Associate Web Designer",
-    location: "OHO Digital Ventures Pvt. Ltd.",
-    description: "Designed UX flows, frontend code, and branding materials.",
+    location: "OHO Digital Ventures",
+    description: "Designed UX flows, frontend UI, and branding materials.",
     icon: CgWorkAlt,
     date: "Apr 2018 – Jan 2019",
     rightImage: OhoExperience,
@@ -61,11 +61,11 @@ export const experiencesData = [
 ] as const;
 
 const rotations = [
-  "rotate-[4deg]",
-  "rotate-[2deg]",
+  "rotate-[3deg]",
+  "rotate-[1deg]",
   "rotate-[-2deg]",
   "rotate-[-4deg]",
-  "rotate-[1deg]",
+  "rotate-[2deg]",
 ];
 
 export default function WorkPage() {
@@ -87,56 +87,60 @@ export default function WorkPage() {
               {/* CARD */}
               <div
                 className={`
-                  relative h-[420px] w-full rounded-lg
+                  relative h-[420px] w-full
                   bg-white
-                  shadow-[0_0_16px_8px_rgba(120,120,120,0.28)]
-                  ${rotations[index % rotations.length]}
+                  rounded-lg
+                  ring-1 ring-neutral-300
+                  shadow-[0_12px_40px_rgba(0,0,0,0.18)]
+                  overflow-hidden
                   stamp-edge
+                  ${rotations[index % rotations.length]}
                   mb-32
                 `}
               >
                 {/* CONTENT */}
-                <div className='relative h-full w-full overflow-hidden'>
-                  <div className='flex h-full'>
-                    {/* LEFT */}
-                    <div className='w-[40%] p-8 flex flex-col justify-between'>
-                      <span className='text-xs font-mono opacity-60'>
-                        {String(index + 1).padStart(2, "0")} / {exp.location} /{" "}
+                <div className='relative z-10 flex h-full'>
+                  {/* LEFT */}
+                  <div className='w-[40%] p-8 flex flex-col justify-between'>
+                    <span className='text-xs font-mono opacity-60'>
+                      {String(index + 1).padStart(2, "0")} / {exp.location}
+                    </span>
+
+                    <div className='space-y-3'>
+                      <h2 className='font-serif text-[30px] leading-[1.3]'>
                         {exp.title}
+                      </h2>
+                      <p className='text-xs opacity-80 leading-snug'>
+                        {exp.description}
+                      </p>
+                      <span className='text-[11px] uppercase tracking-wide opacity-50'>
+                        {exp.date}
                       </span>
-
-                      <div className='space-y-3'>
-                        <h2 className='font-serif text-[30px] leading-[130%]'>
-                          {exp.title}
-                        </h2>
-                        <p className='text-xs opacity-80 leading-snug'>
-                          {exp.description}
-                        </p>
-                        <span className='text-[11px] uppercase tracking-wide opacity-50'>
-                          {exp.date}
-                        </span>
-                      </div>
-
-                      {Icon && <Icon className='text-xl opacity-30 self-end' />}
                     </div>
 
-                    {/* RIGHT */}
-                    <div className='relative w-[60%] bg-gradient-to-br from-neutral-100 to-neutral-200'>
-                      {exp.rightImage ? (
-                        <Image src={exp.rightImage} alt={exp.title} fill />
-                      ) : (
-                        <Image src={GradientBlue} alt={"gradient"} fill />
-                      )}
-                    </div>
+                    {Icon && <Icon className='text-xl opacity-30 self-end' />}
+                  </div>
+
+                  {/* RIGHT */}
+                  <div className='relative w-[60%] bg-gradient-to-br from-neutral-100 to-neutral-200'>
+                    <Image
+                      src={exp.rightImage ?? GradientBlue}
+                      alt={exp.title}
+                      fill
+                      className='object-cover'
+                    />
                   </div>
                 </div>
 
-                {/* Grain */}
+                {/* PAPER EDGE HIGHLIGHT */}
+                <div className='pointer-events-none absolute inset-0 rounded-lg ring-1 ring-white/40' />
+
+                {/* GRAIN */}
                 <div
-                  className='pointer-events-none absolute inset-0 opacity-[0.1] mix-blend-multiply'
+                  className='pointer-events-none absolute inset-[1px] rounded-lg opacity-[0.12] mix-blend-multiply'
                   style={{
                     backgroundImage:
-                      "url(\"data:image/svg+xml,%3Csvg viewBox='0 0 125 125' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E\")",
+                      "url(\"data:image/svg+xml,%3Csvg viewBox='0 0 125 125' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E\")",
                     backgroundSize: "125px 125px",
                   }}
                 />

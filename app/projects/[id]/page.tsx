@@ -122,12 +122,15 @@ export default function NiuralPage({ params }: { params: { id: string } }) {
           style={{ width: `${progress}%` }}
         />
       </div>
-
-      {/* Custom Render OR Generic Case Study */}
+      {/* {--currently used for Niural} */}
+      {/* Custom Render OR Generic Case Study  */}
       {project.render ? (
         <main className=''>
           {/* Back Link */}
           <div className='mx-auto max-w-7xl px-5 sm:px-8 lg:px-12 pt-8'>
+            <div className='mx-auto w-fit px-6 py-3 bg-zinc-200 rounded-full text-center mb-8 text-xsm'>
+              Page currently in early development
+            </div>
             <Link
               href='/'
               className='text-right text-sm text-zinc-500 hover:text-zinc-900 transition inline-block max-w-7xl'
