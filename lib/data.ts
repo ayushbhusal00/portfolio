@@ -55,6 +55,7 @@ import VirginGoldRender from "@/public/virgin-gold-animation-render.png";
 import Emperor24CaratRender from "@/public/emperor-24-carat-animation-render.png";
 import HighlanderRender from "@/public/highlander-animation-render.png";
 import CrationFrame from "@/public/creation-frame.png";
+import NiuralExperience from "@/public/niural-experience.png";
 
 // import NiuralPage from "@/components/Niural";
 
@@ -121,6 +122,7 @@ export const experiencesData = [
       "Designed and launched user-centric web interfaces for Niural App and Landing Page, integrated Web3 and fiat payments, maintained a design system, optimized performance, integrated Zendesk, and conducted user testing to improve UX and engagement.",
     icon: React.createElement(FaReact),
     date: "Nov 2022 - present | +3 years",
+    rightImage: NiuralExperience,
   },
   {
     title: "Web Designer",

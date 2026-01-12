@@ -130,7 +130,7 @@ export default function NiuralPage({ params }: { params: { id: string } }) {
           <div className='mx-auto max-w-7xl px-5 sm:px-8 lg:px-12 pt-8'>
             <Link
               href='/'
-              className='text-sm text-zinc-500 hover:text-zinc-900 transition inline-block mb-8 mx-auto max-w-7xl px-5 sm:px-8 lg:px-12'
+              className='text-right text-sm text-zinc-500 hover:text-zinc-900 transition inline-block max-w-7xl'
             >
               ← Back
             </Link>

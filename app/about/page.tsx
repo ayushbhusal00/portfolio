@@ -1,8 +1,7 @@
 import SectionHeading from "@/components/section-heading";
 import Story from "@/components/story";
-import TimelineComponent from "@/components/Timeline";
 
-import { experiencesData } from "@/lib/data";
+import WorkPage from "@/components/WorkPage";
 
 export default function About() {
   return (
@@ -11,7 +10,10 @@ export default function About() {
       <SectionHeading className='w-full border-b border-[#e6e8eb] p-12 text-center'>
         My Work History
       </SectionHeading>
-      <TimelineComponent data={experiencesData} />
+
+      <section className='relative h-[300vh] w-full bg-gradient-to-t from-[#FAF6ED] to-[#fafafa]'>
+        <WorkPage />
+      </section>
     </main>
   );
 }

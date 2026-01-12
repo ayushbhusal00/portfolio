@@ -212,3 +212,53 @@ header .staggered-menu-wrapper .sm-icon-line-v {
   }
 }
 
+/* ============================= */
+/* Border-only Stamp Punch Holes */
+/* ============================= */
+.stamp-edge {
+  position: relative;
+
+  /* COMBINED MASK */
+  -webkit-mask-image:
+    /* left holes */
+    radial-gradient(circle at 0 11px, transparent 6px, black 7px),
+    /* right holes */
+    radial-gradient(circle at 100% 11px, transparent 6px, black 7px),
+    /* base fill */
+    linear-gradient(black, black);
+
+  -webkit-mask-size:
+    14px 22px,
+    14px 22px,
+    100% 100%;
+
+  -webkit-mask-position:
+    left top,
+    right top,
+    center;
+
+  -webkit-mask-repeat:
+    repeat-y,
+    repeat-y,
+    no-repeat;
+
+  mask-image:
+    radial-gradient(circle at 0 11px, transparent 6px, black 7px),
+    radial-gradient(circle at 100% 11px, transparent 6px, black 7px),
+    linear-gradient(black, black);
+
+  mask-size:
+    14px 22px,
+    14px 22px,
+    100% 100%;
+
+  mask-position:
+    left top,
+    right top,
+    center;
+
+  mask-repeat:
+    repeat-y,
+    repeat-y,
+    no-repeat;
+}

@@ -18,6 +18,78 @@ import DesignPattern from "@/public/patterns.png";
 import DesignComponent from "@/public/components.png";
 import ImageGif from "@/public/ImageGif.gif";
 
+//niural designs
+import Integrations from "@/public/QuickbooksIntegration.png";
+import BankAccount from "@/public/BankAccount.png";
+import Benefits from "@/public/Benefits.png";
+import Timesheets from "@/public/EmployeeDashboard.png";
+import AccountPayable from "@/public/InvoiceDetail.png";
+import LogIn from "@/public/LogIn.png";
+import Payroll from "@/public/payroll.png";
+
+const capabilities = [
+  {
+    title: "SaaS Platforms",
+    description: "Scalable SaaS products with complex user flows.",
+    icon: SaaSIcon,
+  },
+  {
+    title: "Design Systems",
+    description: "Reusable components and tokens for fast-moving teams.",
+    icon: DesignSystemIcon,
+  },
+  {
+    title: "B2B Products",
+    description: "Enterprise-focused workflows and dashboards.",
+    icon: B2BIcon,
+  },
+  {
+    title: "Fintech & Payments",
+    description: "Financial tools, payroll, invoicing, and compliance UX.",
+    icon: PaymentsIcon,
+  },
+  {
+    title: "Web Applications",
+    description: "High-performance web apps built for scale.",
+    icon: WebAppIcon,
+  },
+  {
+    title: "Mobile Products",
+    description: "iOS & Android experiences with native patterns.",
+    icon: MobileIcon,
+  },
+  {
+    title: "Ecommerce",
+    description: "Conversion-optimized commerce experiences.",
+    icon: EcommerceIcon,
+  },
+  {
+    title: "Analytics Dashboards",
+    description: "Data-heavy interfaces with clarity and hierarchy.",
+    icon: AnalyticsIcon,
+  },
+  {
+    title: "Prototyping",
+    description: "High-fidelity prototypes for validation and sales.",
+    icon: PrototypeIcon,
+  },
+  {
+    title: "Brand & Identity",
+    description: "Visual systems that scale with the product.",
+    icon: BrandIcon,
+  },
+  {
+    title: "Developer Handoff",
+    description: "Specs, tokens, and assets engineers love.",
+    icon: HandoffIcon,
+  },
+  {
+    title: "Motion & Interaction",
+    description: "Delightful micro-interactions and transitions.",
+    icon: MotionIcon,
+  },
+];
+
 /* ---------------------------------- DATA --------------------------------- */
 
 const achievements = [
@@ -81,7 +153,7 @@ export default function NiuralProjectPage() {
             </p>
 
             {/* Role Snapshot */}
-            <div className='grid grid-cols-1 sm:grid-cols-3 gap-6 mt-10'>
+            <div className='grid grid-cols-1 sm:grid-cols-3 gap-6 mt-1 pt-16'>
               <div>
                 <p className='text-sm text-neutral-500'>Role</p>
                 <p className='font-medium'>Founding Product Designer</p>
@@ -181,6 +253,198 @@ export default function NiuralProjectPage() {
           </div>
         </div>
       </section>
+      <section className='relative mx-auto max-w-7xl px-6 py-24'>
+        {/* Header */}
+        <div className='mb-16 max-w-2xl'>
+          <p className='mb-3 text-sm font-medium uppercase tracking-wider text-[#313131]'>
+            What I Build
+          </p>
+          <h2 className='text-4xl font-semibold text-[#52525B]'>
+            Digital products across industries
+          </h2>
+          <p className='mt-4 text-neutral-400'>
+            From early-stage startups to Series A companies, I designed systems
+            and products that scale with users and businesses.
+          </p>
+        </div>
+
+        {/* Grid */}
+        <div className='grid grid-cols-1 gap-2 pt-8 sm:grid-cols-3 lg:grid-cols-4 mb-18'>
+          {capabilities.map((item, index) => (
+            <div
+              key={index}
+              className='group p-1 rounded-sm transition hover:border-neutral-100 hover:bg-neutral-100'
+            >
+              <div className='mb-4 flex h-10 w-10 items-center justify-center '>
+                <item.icon />
+              </div>
+              <h3 className='text-sm font-medium text-[#313131]'>
+                {item.title}
+              </h3>
+              <p className='mt-1 text-xs text-[#52525B]'>{item.description}</p>
+            </div>
+          ))}
+        </div>
+      </section>
+      <section className='relative mx-auto max-w-7xl px-10 py-24'>
+        {/* Carousel */}
+        <Carousel>
+          <CarouselContent>
+            {[
+              LogIn,
+              Timesheets,
+              Payroll,
+              BankAccount,
+              Benefits,
+              AccountPayable,
+              Integrations,
+            ].map((img, i) => (
+              <CarouselItem key={i}>
+                <div className=' relative w-full aspect-[16/9] overflow-hidden rounded-2xl border border-neutral-200 bg-white'>
+                  <Image
+                    src={img}
+                    alt={`Niural interface ${i + 1}`}
+                    fill
+                    className='object-cover'
+                    priority={i === 0}
+                  />
+                </div>
+              </CarouselItem>
+            ))}
+          </CarouselContent>
+          <div className='flex justify-center gap-4 mt-6'>
+            <CarouselPrevious />
+            <CarouselNext />
+          </div>
+        </Carousel>
+      </section>
     </main>
+  );
+}
+
+/* -------------------------------------------------------------------------- */
+/*                             Medusa-style Icons                             */
+/* -------------------------------------------------------------------------- */
+
+function IconWrapper({ children }: { children: React.ReactNode }) {
+  return (
+    <svg
+      width='16'
+      height='16'
+      viewBox='0 0 20 20'
+      fill='none'
+      stroke='currentColor'
+      strokeWidth='1.5'
+      className='text-[#52525B] group-hover:text-[#313131] transition'
+    >
+      {children}
+    </svg>
+  );
+}
+
+function SaaSIcon() {
+  return (
+    <IconWrapper>
+      <rect x='0' y='2' width='14' height='10' rx='2' />
+      <path d='M7 8h10M7 12h6' />
+    </IconWrapper>
+  );
+}
+
+function DesignSystemIcon() {
+  return (
+    <IconWrapper>
+      <rect x='4' y='4' width='6' height='6' rx='1' />
+      <rect x='14' y='4' width='6' height='6' rx='1' />
+      <rect x='4' y='14' width='6' height='6' rx='1' />
+      <rect x='14' y='14' width='6' height='6' rx='1' />
+    </IconWrapper>
+  );
+}
+
+function B2BIcon() {
+  return (
+    <IconWrapper>
+      <path d='M4 7h16M4 12h16M4 17h16' />
+    </IconWrapper>
+  );
+}
+
+function PaymentsIcon() {
+  return (
+    <IconWrapper>
+      <rect x='0' y='2' width='14' height='10' rx='2' />
+      <path d='M3 10h18' />
+    </IconWrapper>
+  );
+}
+
+function WebAppIcon() {
+  return (
+    <IconWrapper>
+      <circle cx='12' cy='12' r='9' />
+      <path d='M3 12h18' />
+    </IconWrapper>
+  );
+}
+
+function MobileIcon() {
+  return (
+    <IconWrapper>
+      <rect x='7' y='3' width='10' height='18' rx='2' />
+      <path d='M11 17h2' />
+    </IconWrapper>
+  );
+}
+
+function EcommerceIcon() {
+  return (
+    <IconWrapper>
+      <path d='M6 6h15l-1.5 9h-12z' />
+      <circle cx='9' cy='20' r='1' />
+      <circle cx='18' cy='20' r='1' />
+    </IconWrapper>
+  );
+}
+
+function AnalyticsIcon() {
+  return (
+    <IconWrapper>
+      <path d='M4 18V10M10 18V6M16 18v-4' />
+    </IconWrapper>
+  );
+}
+
+function PrototypeIcon() {
+  return (
+    <IconWrapper>
+      <rect x='3' y='3' width='18' height='18' rx='2' />
+      <path d='M9 9h6v6H9z' />
+    </IconWrapper>
+  );
+}
+
+function BrandIcon() {
+  return (
+    <IconWrapper>
+      <path d='M12 3l7 4v10l-7 4-7-4V7z' />
+    </IconWrapper>
+  );
+}
+
+function HandoffIcon() {
+  return (
+    <IconWrapper>
+      <path d='M4 12h8l-2-2M12 12l-2 2' />
+      <path d='M20 12h-4' />
+    </IconWrapper>
+  );
+}
+
+function MotionIcon() {
+  return (
+    <IconWrapper>
+      <path d='M3 12c3-6 6 6 9 0s6 6 9 0' />
+    </IconWrapper>
   );
 }

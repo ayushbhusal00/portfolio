@@ -3,6 +3,8 @@
 import { useState, useEffect } from "react";
 import { generateToken, saveToken, verifyToken, getToken } from "@/lib/jwt";
 import { motion } from "framer-motion";
+import { BsLinkedin } from "react-icons/bs";
+import Link from "next/link";
 
 interface PasswordProtectionProps {
   onAuthenticated: () => void;
@@ -133,6 +135,30 @@ export default function PasswordProtection({
             {isLoading ? "Verifying..." : "Access Project"}
           </button>
         </form>
+
+        <div className='flex items-center gap-3 m-6'>
+          <div className='flex-1 h-px bg-gray-200' />
+          <span className='text-sm text-gray-500'>OR</span>
+          <div className='flex-1 h-px bg-gray-200' />
+        </div>
+
+        <a
+          className=' sm:flex dark:bg-white/10 p-4 items-center gap-2 cursor-pointer borderBlack outline-none focus:scale-[1.15] hover:bg-gray-100 dark:hover:bg-white/20 active:scale-105 transition dark:text-white/50 rounded-[6px] pointer-events-auto relative z-20
+  bg-white
+  shadow-[0_1px_2px_0_rgba(0,0,0,0.12),0_0_0_1px_rgba(0,0,0,0.08)] justify-center font-medium'
+          href='https://www.linkedin.com/in/ayush-bhusal-331143119/'
+          target='blank'
+        >
+          <BsLinkedin />
+          Message me on LinkedIn
+        </a>
+
+        <Link
+          href='/'
+          className='text-sm text-zinc-500 hover:text-zinc-900 transition py-2 inline-block'
+        >
+          ← Back to home
+        </Link>
       </motion.div>
     </div>
   );
