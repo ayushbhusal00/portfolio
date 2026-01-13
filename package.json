@@ -10,6 +10,7 @@
   },
   "dependencies": {
     "@lottielab/lottie-player": "^1.1.2",
+    "@microsoft/clarity": "^1.0.2",
     "@phosphor-icons/react": "^2.1.10",
     "@radix-ui/react-slot": "^1.2.4",
     "@radix-ui/react-tabs": "^1.1.13",
