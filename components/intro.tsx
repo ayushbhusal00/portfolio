@@ -18,6 +18,7 @@ import Thumbnail6 from "@/public/warpp-trail.png";
 
 import Thumbnail8 from "@/public/antidote-trail.png";
 import Thumbnail9 from "@/public/hydrolink trail.png";
+import Link from "next/link";
 
 export default function intro() {
   // Convert StaticImageData to URL strings
@@ -102,14 +103,14 @@ export default function intro() {
             delay: 0.1,
           }}
         >
-          <a
+          <Link
             className='w-[50%] justify-center group hidden sm:block text-center bg-gradient-to-tr dark:from-purple-500 dark:to-violet-500 dark:bg-gradient-to-tr from-orange-500 to-amber-500 text-white px-3 py-4 rounded-[6px] outline-none focus:scale-110 hover:bg-gray-950 active:scale-105 transition shadow-[0_1px_2px_0_rgba(0,0,0,0.12),0_0_0_1px_rgba(0,0,0,0.08)]'
             href='/#contact'
           >
             Say Hello{" "}
-          </a>
+          </Link>
 
-          <a
+          <Link
             className=' sm:flex dark:bg-white/10 p-4 items-center gap-2 cursor-pointer borderBlack outline-none focus:scale-[1.15] hover:bg-gray-100 dark:hover:bg-white/20 active:scale-105 transition dark:text-white/50 rounded-[6px] pointer-events-auto relative z-20
   bg-white
   shadow-[0_1px_2px_0_rgba(0,0,0,0.12),0_0_0_1px_rgba(0,0,0,0.08)]'
@@ -117,8 +118,8 @@ export default function intro() {
             target='blank'
           >
             <BsLinkedin />
-          </a>
-          <a
+          </Link>
+          <Link
             className=' dark:bg-white/10 p-4 sm:flex items-center gap-2 cursor-pointer borderBlack outline-none focus:scale-[1.15] hover:bg-gray-100 dark:hover:bg-white/20 active:scale-105 transition dark:text-white/50 rounded-[6px] pointer-events-auto relative z-20
   bg-white
   shadow-[0_1px_2px_0_rgba(0,0,0,0.12),0_0_0_1px_rgba(0,0,0,0.08)]'
@@ -126,7 +127,7 @@ export default function intro() {
             target='blank'
           >
             <FaGithubSquare />
-          </a>
+          </Link>
         </motion.div>
       </div>
       <div className='absolute inset-0  w-svw h-full pointer-events-none'>

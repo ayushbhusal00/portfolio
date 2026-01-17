@@ -22,8 +22,8 @@ export default function Home() {
           </div>
           <h1 className='text-3xl font-semibold'>Page not found — 404</h1>
           <p className='mt-4 text-neutral-600'>
-            The page you're trying to access does not exist. We probably just
-            forgot to add a redirect.
+            The page you&apos;re trying to access does not exist. We probably
+            just forgot to add a redirect.
           </p>
         </div>
       </div>

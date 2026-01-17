@@ -21,7 +21,9 @@ const ProjectHeader = () => {
   const { theme } = useTheme();
   const totalDataCount = caseStudies.length;
   const { id } = useParams();
-  const projectId = Array.isArray(id) ? parseInt(id[0]) : parseInt(id);
+  const projectId = Array.isArray(id)
+    ? parseInt(id?.[0] ?? "0")
+    : parseInt(id ?? "0");
   const router = useRouter();
   return (
     <header className='absolute top-0 z-[999] w-full flex justify-center '>

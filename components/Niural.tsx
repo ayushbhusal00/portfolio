@@ -1,9 +1,13 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useMemo } from "react";
 import Image, { StaticImageData } from "next/image";
 import ReactPlayer from "react-player";
 import { Icon } from "@phosphor-icons/react";
+
+/* -------------------------------------------------------------------------- */
+/*                                   Types                                    */
+/* -------------------------------------------------------------------------- */
 
 type HeroTab = {
   id: string;
@@ -26,6 +30,10 @@ type Props = {
     description: string;
   }[];
 };
+
+/* -------------------------------------------------------------------------- */
+/*                              Capabilities                                  */
+/* -------------------------------------------------------------------------- */
 
 const capabilities = [
   {
@@ -90,29 +98,29 @@ const capabilities = [
   },
 ];
 
-export default function Niural(props: Props) {
-  const { heroTabs = [], workSections, achievements } = props;
+/* -------------------------------------------------------------------------- */
+/*                                 Component                                  */
+/* -------------------------------------------------------------------------- */
 
-  console.log("workSections", workSections);
-
-  // Always call hooks unconditionally at the top level
-  const hasHeroTabs = Array.isArray(heroTabs) && heroTabs.length > 0;
+export default function Niural({
+  heroTabs = [],
+  workSections,
+  achievements,
+}: Props) {
   const [activeTab, setActiveTab] = useState<HeroTab | null>(
-    hasHeroTabs ? heroTabs[0] : null
+    heroTabs[0] ?? null
   );
 
-  // Update active tab when heroTabs change
-  useEffect(() => {
-    if (hasHeroTabs) {
-      const currentTabExists =
-        activeTab && heroTabs.find((tab) => tab.id === activeTab.id);
-      if (!currentTabExists) {
-        setActiveTab(heroTabs[0]);
-      }
-    }
-  }, [heroTabs, hasHeroTabs, activeTab]);
+  // Derived state (no effects, no cascading renders)
+  const safeActiveTab = useMemo(() => {
+    if (!heroTabs.length) return null;
 
-  if (!hasHeroTabs) {
+    const exists = activeTab && heroTabs.some((tab) => tab.id === activeTab.id);
+
+    return exists ? activeTab : heroTabs[0];
+  }, [activeTab, heroTabs]);
+
+  if (!heroTabs.length) {
     return (
       <div className='p-8 text-center text-red-500'>
         No hero tabs available for this case study.
@@ -125,13 +133,12 @@ export default function Niural(props: Props) {
       {/* ---------------- HERO ---------------- */}
       <section>
         <div className='mx-auto max-w-7xl pb-16'>
-          <div className='flex flex-col gap-12 items-left'>
-            {/* Text */}
+          <div className='flex flex-col gap-12'>
             <div>
               <span className='text-sm text-neutral-500'>Case Study</span>
 
               <h1 className='mt-4 text-5xl font-medium tracking-tight'>
-                Designing Niural's <br /> Global Payroll Platform
+                {"Designing Niural's"} <br /> Global Payroll Platform
               </h1>
 
               <p className='mt-6 text-lg text-neutral-600 max-w-xl'>
@@ -143,18 +150,18 @@ export default function Niural(props: Props) {
                 .
               </p>
 
-              {/* Pills */}
-              {activeTab && (
+              {/* Tabs */}
+              {safeActiveTab && (
                 <div className='mt-10 flex flex-wrap gap-2'>
                   {heroTabs.map((tab) => {
                     const Icon = tab.icon;
-                    const isActive = tab.id === activeTab.id;
+                    const isActive = tab.id === safeActiveTab.id;
 
                     return (
                       <button
                         key={tab.id}
                         onClick={() => setActiveTab(tab)}
-                        className={`flex items-center gap-2 rounded-full py-2 px-2 text-sm border transition
+                        className={`flex items-center gap-2 rounded-full border px-3 py-2 text-sm transition
                           ${
                             isActive
                               ? "border-neutral-900 bg-neutral-900 text-white"
@@ -171,12 +178,12 @@ export default function Niural(props: Props) {
             </div>
 
             {/* Image */}
-            {activeTab && (
-              <div className='relative aspect-[16/10] w-full max-w-7xl rounded-xl border bg-white'>
+            {safeActiveTab && (
+              <div className='relative aspect-[16/10] w-full rounded-xl border bg-white'>
                 <Image
-                  src={activeTab.image}
-                  alt={activeTab.label}
-                  className='object-contain overflow-clip rounded-xl'
+                  src={safeActiveTab.image}
+                  alt={safeActiveTab.label}
+                  className='rounded-xl object-contain'
                   priority
                 />
               </div>
@@ -199,7 +206,7 @@ export default function Niural(props: Props) {
               return (
                 <div
                   key={item.label}
-                  className={`group flex flex-col items-center justify-center gap-3 border px-2 p-6 text-sm transition
+                  className={`group flex flex-col items-center gap-3 border p-6 text-sm transition
                     ${
                       item.featured
                         ? "bg-white"
@@ -219,27 +226,28 @@ export default function Niural(props: Props) {
       </section>
 
       {/* ---------------- VIDEO ---------------- */}
-      <section></section>
+      <section>
+        <div className='mx-auto max-w-7xl py-16'>
+          <ReactPlayer
+            src='https://www.youtube.com/watch?v=DA04eSOce1s'
+            width='100%'
+            height='480px'
+            controls
+            className='rounded-xl overflow-hidden'
+          />
+        </div>
+      </section>
 
       {/* ---------------- ACHIEVEMENTS ---------------- */}
       <section>
         <div className='mx-auto max-w-7xl py-16'>
           <h2 className='text-3xl font-medium tracking-tight'>Achievements</h2>
-          <div className='mx-auto max-w-7xl py-16'>
-            <ReactPlayer
-              src='https://www.youtube.com/watch?v=DA04eSOce1s'
-              width='100%'
-              height='480px'
-              controls
-              className='rounded-xl overflow-hidden'
-            />
-          </div>
 
-          <div className='mt-5 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 my-2 bg-neutral-200 rounded-lg'>
+          <div className='mt-10 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4'>
             {achievements.map((item) => (
               <div
                 key={item.label}
-                className='rounded-lg border border-neutral-200 p-6 bg-[#fafafa]'
+                className='rounded-lg border p-6 bg-[#fafafa]'
               >
                 <p className='text-xs uppercase tracking-wide text-neutral-500'>
                   {item.label}
@@ -255,10 +263,11 @@ export default function Niural(props: Props) {
           </div>
         </div>
       </section>
-      <section className='relative mx-auto max-w-7xl px-6 py-24'>
-        {/* Header */}
+
+      {/* ---------------- CAPABILITIES ---------------- */}
+      <section className='mx-auto max-w-7xl px-6 py-24'>
         <div className='mb-16 max-w-2xl'>
-          <p className='mb-3 text-sm font-medium uppercase tracking-wider text-neutral-400'>
+          <p className='mb-3 text-sm uppercase tracking-wider text-neutral-400'>
             What I Build
           </p>
           <h2 className='text-4xl font-semibold text-white'>
@@ -270,7 +279,6 @@ export default function Niural(props: Props) {
           </p>
         </div>
 
-        {/* Grid */}
         <div className='grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4'>
           {capabilities.map((item, index) => (
             <div
@@ -293,7 +301,7 @@ export default function Niural(props: Props) {
 }
 
 /* -------------------------------------------------------------------------- */
-/*                             Medusa-style Icons                             */
+/*                                    Icons                                   */
 /* -------------------------------------------------------------------------- */
 
 function IconWrapper({ children }: { children: React.ReactNode }) {
@@ -305,7 +313,7 @@ function IconWrapper({ children }: { children: React.ReactNode }) {
       fill='none'
       stroke='currentColor'
       strokeWidth='1.5'
-      className='text-neutral-300 group-hover:text-white transition'
+      className='text-neutral-300 transition group-hover:text-white'
     >
       {children}
     </svg>
