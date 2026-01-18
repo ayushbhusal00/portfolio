@@ -1,5 +1,6 @@
 {
   "compilerOptions": {
+    
     "lib": [
       "dom",
       "dom.iterable",
@@ -24,7 +25,8 @@
     "paths": {
       "@/*": [
         "./*"
-      ]
+      ],
+      "@payload-config": ["./payload.config.ts"]
     },
     "target": "ES2017"
   },

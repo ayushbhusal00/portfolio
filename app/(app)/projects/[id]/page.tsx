@@ -6,6 +6,7 @@ export default async function ProjectPage({
 }: {
   params: Promise<{ id: string }>;
 }) {
+  // ✅ REQUIRED
   const { id } = await params;
 
   const project = caseStudies[Number(id)];
@@ -18,5 +19,15 @@ export default async function ProjectPage({
     );
   }
 
-  return <NiuralClient project={project} />;
+  const CustomComponent = project.RenderComponent;
+
+  return (
+    <NiuralClient
+      project={{
+        ...project,
+      }}
+    >
+      {CustomComponent ? <CustomComponent /> : null}
+    </NiuralClient>
+  );
 }

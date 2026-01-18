@@ -5,7 +5,7 @@ import { FaReact } from "react-icons/fa";
 import { LuGraduationCap } from "react-icons/lu";
 import type { IconProps } from "@phosphor-icons/react";
 import type { ComponentType } from "react";
-import NiuralProjectPage from "@/app/niural/page";
+import NiuralProjectPage from "@/app/(app)/niural/page";
 
 /* ---------------- WEPLAY IMPORTS ---------------- */
 import WePlay from "@/public/weplay-thumbnail.png";
@@ -157,7 +157,11 @@ export const experiencesData = [
     date: "Apr 2018 – Jan 2019 | 10 months",
   },
 ] as const;
-
+export type CaseStudySection = {
+  heading?: string;
+  content?: string;
+  bullets?: string[];
+};
 export type CaseStudy = {
   id: number;
   slug: string;
@@ -181,16 +185,11 @@ export type CaseStudy = {
   videoUrl?: string;
   isPasswordProtected?: boolean;
 
-  /** 🔥 NEW */
-  render?: () => React.ReactNode;
+  /** ✅ SERVER-ONLY component reference */
+  RenderComponent?: ComponentType;
 
-  sections: {
-    heading?: string;
-    content?: string;
-    bullets?: string[];
-  }[];
+  sections: CaseStudySection[];
 };
-
 export const caseStudies: CaseStudy[] = [
   {
     id: 0,
@@ -199,7 +198,7 @@ export const caseStudies: CaseStudy[] = [
     tagline:
       "Raising bars for what an application can be. Skyrocketed Niural to 31+ Million Valuation within 3 years.",
     overview:
-      "Niural is a global workforce management tool, that carets Enterprise level businesses to manage their large workforce, run huge payrolls, and also manage vendor payments. I have worked in Niural as a founding designer, and have contributed to the growth on the design aspect to truly make it a global product that competes with global leading companies like deel, remote and rippling.",
+      "Niural is a global workforce management tool for enterprise payroll, compliance, and vendor payments.",
 
     date: "Dec 10, 2025",
     readTime: "5 min read",
@@ -212,9 +211,11 @@ export const caseStudies: CaseStudy[] = [
     thumbnail: NiuralThumbnail,
     heroImage: NiuralThumbnail,
     gallery: [DesignSystem, Dashboard, Payroll, PaymentMethod],
-    render: () => NiuralProjectPage(),
+
     role: "Product Designer",
     duration: "Ongoing",
+
+    RenderComponent: NiuralProjectPage,
 
     sections: [
       {
