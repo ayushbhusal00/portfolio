@@ -70,7 +70,7 @@ const rotations = [
 
 export default function WorkPage() {
   return (
-    <section className='relative min-h-[300vh] w-full bg-linear-to-t from-[#FAF6ED] to-[#fafafa]'>
+    <section className='relative min-h-[350vh] w-full bg-linear-to-t from-[#FAF6ED] to-[#fafafa]'>
       <div className='px-6 pt-32'>
         {experiencesData.map((exp, index) => {
           const Icon = exp.icon;
@@ -100,9 +100,9 @@ export default function WorkPage() {
                 `}
               >
                 {/* CONTENT */}
-                <div className='relative z-10 flex h-full'>
+                <div className='relative z-10 flex flex-col md:flex-row h-full'>
                   {/* LEFT */}
-                  <div className='w-[40%] p-8 flex flex-col justify-between'>
+                  <div className='w-full md:w-[40%] p-8 flex flex-col justify-between'>
                     <span className='text-xs font-mono opacity-60'>
                       {String(index + 1).padStart(2, "0")} / {exp.location}
                     </span>
@@ -123,7 +123,7 @@ export default function WorkPage() {
                   </div>
 
                   {/* RIGHT */}
-                  <div className='relative w-[60%] bg-gradient-to-br from-neutral-100 to-neutral-200'>
+                  <div className='relative w-full md:w-[60%] sm:min-h-[320px] md:h-auto bg-gradient-to-br from-neutral-100 to-neutral-200'>
                     <Image
                       src={exp.rightImage ?? GradientBlue}
                       alt={exp.title}
@@ -132,19 +132,6 @@ export default function WorkPage() {
                     />
                   </div>
                 </div>
-
-                {/* PAPER EDGE HIGHLIGHT */}
-                <div className='pointer-events-none absolute inset-0 rounded-lg ring-1 ring-white/40' />
-
-                {/* GRAIN */}
-                <div
-                  className='pointer-events-none absolute inset-[1px] rounded-lg opacity-[0.12] mix-blend-multiply'
-                  style={{
-                    backgroundImage:
-                      "url(\"data:image/svg+xml,%3Csvg viewBox='0 0 125 125' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E\")",
-                    backgroundSize: "125px 125px",
-                  }}
-                />
               </div>
             </div>
           );
