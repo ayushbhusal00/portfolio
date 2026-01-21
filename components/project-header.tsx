@@ -44,7 +44,7 @@ const ProjectHeader = () => {
           <Link
             className={clsx(
               `text-[0.8rem] font-medium flex items-center justify-center hover:text-gray-750 dark:hover:text-gray-300 transition 
-              text-gray-750 dark:text-white `
+              text-gray-750 dark:text-white `,
             )}
             href={"/"}
           >

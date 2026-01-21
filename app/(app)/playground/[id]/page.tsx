@@ -19,12 +19,16 @@ export default async function PlaygroundPage({
   }
 
   return (
-    <PlaygroundClient
-      project={{
-        ...project,
-        readTime:
-          project.readTime !== undefined ? Number(project.readTime) : undefined,
-      }}
-    />
+    <main className='md:mx-16 border-x border-[#e6e8eb]'>
+      <PlaygroundClient
+        project={{
+          ...project,
+          readTime:
+            project.readTime !== undefined
+              ? Number(project.readTime)
+              : undefined,
+        }}
+      />
+    </main>
   );
 }

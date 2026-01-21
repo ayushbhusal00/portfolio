@@ -96,7 +96,7 @@ export default function intro() {
           </motion.p>
         </motion.div>
         <motion.div
-          className='flex max-w-[38.75rem] sm:flex-row sm:w-full  gap-4 items-center justify-center px-4 text-sm font-medium relative z-10 pointer-events-auto'
+          className='flex w-full md:max-w-[38.75rem] sm:flex-row sm:w-full  gap-4 items-center justify-center px-4 text-sm font-medium relative z-10 pointer-events-auto'
           initial={{ opacity: 0, y: 100 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{
@@ -104,7 +104,7 @@ export default function intro() {
           }}
         >
           <Link
-            className='w-[50%] justify-center group hidden sm:block text-center bg-gradient-to-tr dark:from-purple-500 dark:to-violet-500 dark:bg-gradient-to-tr from-orange-500 to-amber-500 text-white px-3 py-4 rounded-[6px] outline-none focus:scale-110 hover:bg-gray-950 active:scale-105 transition shadow-[0_1px_2px_0_rgba(0,0,0,0.12),0_0_0_1px_rgba(0,0,0,0.08)]'
+            className='w-full md:w-[50%] justify-center group text-center bg-gradient-to-tr dark:from-purple-500 dark:to-violet-500 dark:bg-gradient-to-tr from-orange-500 to-amber-500 text-white px-3 py-4 rounded-[6px] outline-none focus:scale-110 hover:bg-gray-950 active:scale-105 transition shadow-[0_1px_2px_0_rgba(0,0,0,0.12),0_0_0_1px_rgba(0,0,0,0.08)]'
             href='/#contact'
           >
             Say Hello{" "}
@@ -130,7 +130,7 @@ export default function intro() {
           </Link>
         </motion.div>
       </div>
-      <div className='absolute inset-0  w-svw h-full pointer-events-none'>
+      <div className='hidden md:block absolute inset-0  w-svw h-full pointer-events-none'>
         <ImageTrail variant={9} items={imageUrls as string[]} />
       </div>
     </section>

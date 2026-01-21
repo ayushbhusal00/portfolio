@@ -69,6 +69,7 @@ export interface Config {
   collections: {
     pages: Page;
     media: Media;
+    playground: Playground;
     'payload-kv': PayloadKv;
     users: User;
     'payload-locked-documents': PayloadLockedDocument;
@@ -79,6 +80,7 @@ export interface Config {
   collectionsSelect: {
     pages: PagesSelect<false> | PagesSelect<true>;
     media: MediaSelect<false> | MediaSelect<true>;
+    playground: PlaygroundSelect<false> | PlaygroundSelect<true>;
     'payload-kv': PayloadKvSelect<false> | PayloadKvSelect<true>;
     users: UsersSelect<false> | UsersSelect<true>;
     'payload-locked-documents': PayloadLockedDocumentsSelect<false> | PayloadLockedDocumentsSelect<true>;
@@ -215,6 +217,68 @@ export interface Media {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "playground".
+ */
+export interface Playground {
+  id: string;
+  title: string;
+  content: {
+    root: {
+      type: string;
+      children: {
+        type: any;
+        version: number;
+        [k: string]: unknown;
+      }[];
+      direction: ('ltr' | 'rtl') | null;
+      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+      indent: number;
+      version: number;
+    };
+    [k: string]: unknown;
+  };
+  layout?:
+    | (
+        | {
+            quoteText: string;
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'quote';
+          }
+        | {
+            alignment?: ('left' | 'right') | null;
+            title?: string | null;
+            richText: {
+              root: {
+                type: string;
+                children: {
+                  type: any;
+                  version: number;
+                  [k: string]: unknown;
+                }[];
+                direction: ('ltr' | 'rtl') | null;
+                format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+                indent: number;
+                version: number;
+              };
+              [k: string]: unknown;
+            };
+            image?: (string | null) | Media;
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'content';
+          }
+      )[]
+    | null;
+  /**
+   * Upload a thumbnail image for the playground item.
+   */
+  thumbnail: string | Media;
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "payload-kv".
  */
 export interface PayloadKv {
@@ -268,6 +332,10 @@ export interface PayloadLockedDocument {
     | ({
         relationTo: 'media';
         value: string | Media;
+      } | null)
+    | ({
+        relationTo: 'playground';
+        value: string | Playground;
       } | null)
     | ({
         relationTo: 'users';
@@ -396,6 +464,38 @@ export interface MediaSelect<T extends boolean = true> {
               filename?: T;
             };
       };
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "playground_select".
+ */
+export interface PlaygroundSelect<T extends boolean = true> {
+  title?: T;
+  content?: T;
+  layout?:
+    | T
+    | {
+        quote?:
+          | T
+          | {
+              quoteText?: T;
+              id?: T;
+              blockName?: T;
+            };
+        content?:
+          | T
+          | {
+              alignment?: T;
+              title?: T;
+              richText?: T;
+              image?: T;
+              id?: T;
+              blockName?: T;
+            };
+      };
+  thumbnail?: T;
+  updatedAt?: T;
+  createdAt?: T;
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema

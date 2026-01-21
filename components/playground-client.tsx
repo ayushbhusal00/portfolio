@@ -1,11 +1,9 @@
 "use client";
 
-import { motion } from "framer-motion";
 import Image from "next/image";
 import Link from "next/link";
 import React, { useEffect, useMemo, useState } from "react";
 import ReactPlayer from "react-player";
-import clsx from "clsx";
 
 import PasswordProtection from "@/components/password-protection";
 import { verifyToken, getToken } from "@/lib/jwt";
@@ -24,71 +22,21 @@ type Section = {
 
 type Project = {
   id: number;
+  slug: string;
   title: string;
+  tagline?: string;
   overview: string;
   heroImage: any;
-  gallery: any[];
+  gallery?: any[];
   sections: Section[];
   duration?: string;
   readTime?: number;
   videoUrl?: string;
   websiteLink?: string;
   thumbnail: any;
-  tagline?: string;
   isPasswordProtected?: boolean;
   url: string;
 };
-
-/* -------------------------------------------------------------------------- */
-/*                            Reading Progress Hook                            */
-/* -------------------------------------------------------------------------- */
-
-function useReadingProgress() {
-  const [progress, setProgress] = useState(0);
-
-  useEffect(() => {
-    const onScroll = () => {
-      const total =
-        document.documentElement.scrollHeight -
-        document.documentElement.clientHeight;
-
-      setProgress((window.scrollY / total) * 100);
-    };
-
-    window.addEventListener("scroll", onScroll);
-    return () => window.removeEventListener("scroll", onScroll);
-  }, []);
-
-  return progress;
-}
-
-/* -------------------------------------------------------------------------- */
-/*                              TOC Scroll Spy                                */
-/* -------------------------------------------------------------------------- */
-
-function useActiveHeading(ids: string[]) {
-  const [activeId, setActiveId] = useState<string | null>(null);
-
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) setActiveId(entry.target.id);
-        });
-      },
-      { rootMargin: "-30% 0px -60% 0px" }
-    );
-
-    ids.forEach((id) => {
-      const el = document.getElementById(id);
-      if (el) observer.observe(el);
-    });
-
-    return () => observer.disconnect();
-  }, [ids]);
-
-  return activeId;
-}
 
 /* -------------------------------------------------------------------------- */
 /*                                Client Page                                 */
@@ -108,42 +56,31 @@ export default function PlaygroundClient({ project }: { project: Project }) {
       }
 
       const token = getToken();
-      if (token && (await verifyToken(token))) {
-        setIsAuthenticated(true);
-      }
-
+      if (token && (await verifyToken(token))) setIsAuthenticated(true);
       setIsCheckingAuth(false);
     };
 
     checkAuth();
   }, [project]);
 
-  const progress = useReadingProgress();
+  /* ---------------- Clean Sections ---------------- */
+  const sections = useMemo(
+    () => project.sections.filter((s) => s.heading || s.content || s.bullets),
+    [project.sections],
+  );
 
-  const toc =
-    project.sections
-      .filter((s) => s.heading)
-      .map((s) => ({
-        title: s.heading!,
-        id: s.heading!.toLowerCase().replace(/\s+/g, "-"),
-      })) ?? [];
+  /* ---------------- TOC ---------------- */
+  const toc = sections
+    .filter((s) => s.heading)
+    .map((s) => ({
+      title: s.heading!,
+      id: s.heading!.toLowerCase().replace(/\s+/g, "-"),
+    }));
 
-  const activeId = useActiveHeading(toc.map((t) => t.id));
-
+  /* ---------------- Related ---------------- */
   const relatedProjects = playgroundProjects
     .filter((p) => p.id !== project.id)
     .slice(0, 3);
-
-  const readingTime = useMemo(() => {
-    const words =
-      project.overview.split(" ").length +
-      project.sections.reduce(
-        (acc, s) => acc + (s.content?.split(" ").length || 0),
-        0
-      );
-
-    return Math.max(3, Math.round(words / 200));
-  }, [project]);
 
   /* ---------------- Password Gate ---------------- */
   if (project.isPasswordProtected && !isAuthenticated) {
@@ -163,121 +100,166 @@ export default function PlaygroundClient({ project }: { project: Project }) {
     );
   }
 
-  /* ---------------- Render ---------------- */
+  /* ------------------------------------------------------------------------ */
+  /*                                  Render                                  */
+  /* ------------------------------------------------------------------------ */
+
   return (
     <>
-      {/* Reading progress */}
-      <div className='fixed top-0 left-0 z-50 h-[2px] w-full'>
-        <div
-          className='h-full bg-zinc-900 transition-all'
-          style={{ width: `${progress}%` }}
-        />
-      </div>
-
-      <main className='mx-auto max-w-[1100px] px-6 py-12'>
-        <div className='grid grid-cols-1 lg:grid-cols-[1fr_240px] gap-16'>
+      <section>
+        <div>
           {/* ================= CONTENT ================= */}
-          <article className='space-y-12'>
+          <article className='mx-auto max-w-3xl py-24 px-6'>
+            {/* Back */}
             <Link href='/playground' className='text-sm text-zinc-500'>
-              ← Back
+              ← Back to playground
             </Link>
 
-            <h1 className='text-[48px] font-semibold tracking-tight'>
-              {project.title}
-            </h1>
+            {/* Header */}
+            <header className='mt-10 space-y-6'>
+              <h1 className='text-4xl md:text-5xl font-semibold tracking-tight leading-tight'>
+                {project.title}
+              </h1>
 
-            <p className='text-lg text-zinc-600 max-w-[680px]'>
-              {project.overview}
-            </p>
+              {project.tagline && (
+                <p className='text-xl text-zinc-500 leading-relaxed'>
+                  {project.tagline}
+                </p>
+              )}
 
-            <div className='text-sm text-zinc-500'>
-              {project.duration} • {project.readTime || readingTime} min read
+              <p className='text-lg text-zinc-600 leading-relaxed'>
+                {project.overview}
+              </p>
+
+              <div className='text-sm text-zinc-500'>
+                <p>Duration · 3 min read</p>
+              </div>
+
+              {project.websiteLink && (
+                <a
+                  href={project.websiteLink}
+                  target='_blank'
+                  rel='noopener noreferrer'
+                  className='inline-flex items-center gap-2 rounded-full border border-zinc-300 px-5 py-2 text-sm font-medium text-zinc-900 hover:bg-zinc-100 transition'
+                >
+                  Visit website
+                  <span>↗</span>
+                </a>
+              )}
+            </header>
+
+            {/* Hero */}
+            <div className='relative mt-16'>
+              <Image
+                src={project.heroImage}
+                alt={project.title}
+                priority
+                className='w-full rounded-2xl object-cover'
+              />
             </div>
 
-            <Image
-              src={project.heroImage}
-              alt={project.title}
-              priority
-              className='rounded-xl'
-            />
+            {/* Sections */}
+            <div className='mt-24 space-y-24'>
+              {sections.map((sec, i) => {
+                const sectionImage = project.gallery?.[i];
 
-            {project.sections.map((sec, i) => (
-              <section key={i} className='space-y-6'>
-                {sec.heading && (
-                  <h2
-                    id={sec.heading.toLowerCase().replace(/\s+/g, "-")}
-                    className='text-2xl font-medium scroll-mt-28'
-                  >
-                    {sec.heading}
-                  </h2>
-                )}
+                return (
+                  <section key={i} className='space-y-10'>
+                    {sec.heading && (
+                      <h2
+                        id={sec.heading.toLowerCase().replace(/\s+/g, "-")}
+                        className='text-2xl md:text-3xl font-semibold tracking-tight scroll-mt-28'
+                      >
+                        {sec.heading}
+                      </h2>
+                    )}
 
-                {sec.content && (
-                  <p className='text-zinc-600 leading-relaxed'>{sec.content}</p>
-                )}
-
-                {sec.videoUrl && (
-                  <ReactPlayer
-                    width='100%'
-                    height='480px'
-                    controls
-                    src={sec.videoUrl}
-                  />
-                )}
-              </section>
-            ))}
-
-            {/* ================= RELATED ================= */}
-            {relatedProjects.length > 0 && (
-              <section className='pt-20 border-t border-zinc-200'>
-                <h2 className='text-xl font-medium'>You may also like</h2>
-
-                <div className='mt-8 grid md:grid-cols-3 gap-8'>
-                  {relatedProjects.map((item) => (
-                    <Link key={item.id} href={item.url} className='group'>
-                      <Image
-                        src={item.thumbnail}
-                        alt={item.title}
-                        className='rounded-xl transition group-hover:scale-[1.03]'
-                      />
-                      <h3 className='mt-4 font-medium'>{item.title}</h3>
-                      <p className='text-sm text-zinc-600 line-clamp-2'>
-                        {item.tagline || item.overview}
+                    {sec.content && (
+                      <p className='text-base text-zinc-700 leading-relaxed'>
+                        {sec.content}
                       </p>
+                    )}
+
+                    {sec.bullets && (
+                      <ul className='list-disc pl-6 space-y-2 text-zinc-700'>
+                        {sec.bullets.map((b, idx) => (
+                          <li key={idx}>{b}</li>
+                        ))}
+                      </ul>
+                    )}
+
+                    {/* Section image */}
+                    {sectionImage && (
+                      <div className='relative'>
+                        <Image
+                          src={sectionImage}
+                          alt={sec.heading || project.title}
+                          className='w-full rounded-2xl object-cover'
+                        />
+                      </div>
+                    )}
+                  </section>
+                );
+              })}
+            </div>
+
+            {/* Video (END ONLY) */}
+            {project.videoUrl && (
+              <div className='mt-32 aspect-video overflow-hidden rounded-2xl'>
+                <ReactPlayer
+                  width='100%'
+                  height='100%'
+                  controls
+                  src={project.videoUrl}
+                />
+              </div>
+            )}
+          </article>
+          {/* ================= RELATED ================= */}
+          {relatedProjects.length > 0 && (
+            <section className='border-t border-zinc-200'>
+              <div className='mx-auto max-w-3xl px-6 py-24 '>
+                <div className='mb-12'>
+                  <h2 className='text-2xl font-semibold tracking-tight'>
+                    Related playgrounds
+                  </h2>
+                  <p className='mt-3 text-zinc-600'>
+                    More experiments and explorations in interaction, motion,
+                    and systems thinking.
+                  </p>
+                </div>
+
+                <div className='grid gap-14 md:grid-cols-3'>
+                  {relatedProjects.map((item) => (
+                    <Link
+                      key={item.id}
+                      href={item.url}
+                      className='group flex flex-col gap-5'
+                    >
+                      <div className='overflow-hidden rounded-2xl'>
+                        <Image
+                          src={item.thumbnail}
+                          alt={item.title}
+                          className='w-full object-cover transition-transform duration-500 group-hover:scale-105'
+                        />
+                      </div>
+
+                      <div className='space-y-1'>
+                        <h3 className='font-medium group-hover:underline'>
+                          {item.title}
+                        </h3>
+                        <p className='text-sm text-zinc-600 line-clamp-2'>
+                          {item.tagline || item.overview}
+                        </p>
+                      </div>
                     </Link>
                   ))}
                 </div>
-              </section>
-            )}
-          </article>
-
-          {/* ================= TOC ================= */}
-          <aside className='hidden lg:block'>
-            <div className='sticky top-28'>
-              <p className='mb-4 text-xs uppercase text-zinc-500'>
-                On this page
-              </p>
-
-              <ul className='space-y-2 text-sm'>
-                {toc.map((item) => (
-                  <li key={item.id}>
-                    <a
-                      href={`#${item.id}`}
-                      className={clsx(
-                        activeId === item.id
-                          ? "text-zinc-900 font-medium"
-                          : "text-zinc-500 hover:text-zinc-900"
-                      )}
-                    >
-                      {item.title}
-                    </a>
-                  </li>
-                ))}
-              </ul>
-            </div>
-          </aside>
+              </div>
+            </section>
+          )}
         </div>
-      </main>
+      </section>
     </>
   );
 }

@@ -11,6 +11,7 @@ import {
   CarouselPrevious,
 } from "@/components/ui/carousel";
 
+import ReactPlayer from "react-player";
 // Images
 import DesignSystem from "@/public/design-system.png";
 import DesignSystemModule from "@/public/Design-System-Module.png";
@@ -19,7 +20,6 @@ import DesignComponent from "@/public/components.png";
 // import ImageGif from "@/public/ImageGif.gif";
 
 // Niural designs
-import Integrations from "@/public/QuickbooksIntegration.png";
 import BankAccount from "@/public/BankAccount.png";
 import Benefits from "@/public/Benefits.png";
 import Timesheets from "@/public/EmployeeDashboard.png";
@@ -95,11 +95,6 @@ const productScreens = [
       "Benefits management interface aligned with payroll and employee records",
   },
   {
-    img: Integrations,
-    caption:
-      "QuickBooks integration enabling seamless data sync with external systems",
-  },
-  {
     img: AccountPayable,
     caption:
       "Accounts payable workflow supporting invoices, approvals, and audit trails",
@@ -118,13 +113,12 @@ const productScreens = [
 export default function NiuralProjectPage() {
   return (
     <>
-      <ScrollProgress />
-
-      <main className='mx-auto max-w-[72rem] bg-[#fafafa] text-neutral-900'>
-        {/* ----------------------------------------
+      <main className='md:mx-16 justify-center flex bg-[#fafafa] text-neutral-900 border-x border-[#e6e8eb]'>
+        <div className=' max-w-3xl py-24 px-6  flex gap-16 flex-col'>
+          {/* ----------------------------------------
             HERO / OVERVIEW
         ---------------------------------------- */}
-        <section className='border-b border-neutral-200 px-6 py-32'>
+
           <div className='mx-auto max-w-3xl space-y-6'>
             <p className='text-xs font-mono uppercase text-neutral-500'>
               Case Study
@@ -164,23 +158,19 @@ export default function NiuralProjectPage() {
             </div>
           </div>
 
-          <div className='mx-auto mt-20 max-w-5xl'>
-            <div className='relative aspect-[16/9] overflow-hidden rounded-2xl border border-[#e6e8eb] bg-white'>
-              <Image
-                src={DesignSystem}
-                alt='Design system overview'
-                fill
-                className='object-cover'
-                priority
-              />
-            </div>
+          <div className='aspect-video overflow-hidden rounded-2xl'>
+            <ReactPlayer
+              width='100%'
+              height='100%'
+              controls
+              src='https://www.youtube.com/watch?v=llYZT0TfKwA'
+            />
           </div>
-        </section>
 
-        {/* ----------------------------------------
+          {/* ----------------------------------------
             PROBLEM
         ---------------------------------------- */}
-        <section className='border-b border-neutral-200 px-6 py-24'>
+
           <div className='mx-auto max-w-3xl space-y-6'>
             <h2 className='text-2xl font-medium'>The Problem</h2>
             <p className='text-neutral-700'>
@@ -195,12 +185,11 @@ export default function NiuralProjectPage() {
               development.
             </p>
           </div>
-        </section>
 
-        {/* ----------------------------------------
+          {/* ----------------------------------------
             SYSTEM & APPROACH
         ---------------------------------------- */}
-        <section className='px-6 pt-24'>
+
           <div className='mx-auto max-w-3xl space-y-10'>
             <h2 className='text-2xl font-medium'>Designing the System</h2>
 
@@ -217,13 +206,12 @@ export default function NiuralProjectPage() {
               <li>• Token-driven design system for fast iteration</li>
             </ul>
           </div>
-        </section>
 
-        {/* ----------------------------------------
+          {/* ----------------------------------------
             SYSTEM SCREENS (CAROUSEL)
         ---------------------------------------- */}
-        <section className='border-b border-neutral-200 px-6 py-24'>
-          <div className='mx-auto max-w-5xl'>
+
+          <div className=''>
             <Carousel>
               <CarouselContent>
                 {systemScreens.map(({ img, caption }, i) => (
@@ -249,12 +237,11 @@ export default function NiuralProjectPage() {
               </div>
             </Carousel>
           </div>
-        </section>
 
-        {/* ----------------------------------------
+          {/* ----------------------------------------
             DECISIONS & TRADEOFFS
         ---------------------------------------- */}
-        <section className='border-b border-neutral-200 px-6 py-24'>
+
           <div className='mx-auto max-w-3xl space-y-12'>
             <h2 className='text-2xl font-medium'>Key Decisions & Tradeoffs</h2>
 
@@ -282,13 +269,12 @@ export default function NiuralProjectPage() {
               </div>
             </div>
           </div>
-        </section>
 
-        {/* ----------------------------------------
+          {/* ----------------------------------------
             PRODUCT SCREENS (CAROUSEL)
         ---------------------------------------- */}
-        <section className='border-b border-neutral-200 px-6 py-24'>
-          <div className='mx-auto max-w-5xl space-y-10'>
+
+          <div className=' space-y-10'>
             <h2 className='mx-auto max-w-3xl text-2xl font-medium'>
               Product Screens
             </h2>
@@ -318,12 +304,11 @@ export default function NiuralProjectPage() {
               </div>
             </Carousel>
           </div>
-        </section>
 
-        {/* ----------------------------------------
+          {/* ----------------------------------------
             IMPACT
         ---------------------------------------- */}
-        <section className='px-6 py-32'>
+
           <div className='mx-auto max-w-3xl space-y-6'>
             <h2 className='text-2xl font-medium'>Impact</h2>
             <p className='text-neutral-700'>
@@ -336,7 +321,7 @@ export default function NiuralProjectPage() {
               regulatory requirements.
             </p>
           </div>
-        </section>
+        </div>
       </main>
     </>
   );

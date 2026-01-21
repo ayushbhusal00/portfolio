@@ -20,8 +20,8 @@ export default function Contact() {
       viewport={{ once: true }}
     >
       <div className='text-center overflow-clip rounded-lg w-full items-center align-middle bg-[repeating-linear-gradient(135deg,rgba(0,0,0,0.08)_0,rgba(0,0,0,0.08)_1px,transparent_1px,transparent_6px)] '>
-        <div className='flex gap-20 items-center text-center bg-[#fafafa] p-5 mx-16  border-x border-t border-[#e6e8eb] '>
-          <div className='w-[50%] h-[50%]'>
+        <div className='flex gap-5 lg:gap-20 items-center text-center bg-[#fafafa] p-5 mx-16  border-x border-t border-[#e6e8eb] '>
+          <div className='w-[50%] h-[50%] md:block hidden'>
             <Image src={PaperPlane} alt='Mail Image' />
           </div>
 
@@ -93,6 +93,7 @@ export default function Contact() {
           </div>
         </div>
       </div>
+
       <div className='bg-[#fafafa]'>
         <p className='text-center text-zinc-500 text-sm py-4 px-16 border-t border-[#e6e8eb]'>
           {" "}

@@ -46,8 +46,8 @@ import PlayroomkitThumbnail from "@/public/playroomkit-thumbnail.png";
 import PlayroomkitDesignSpec from "@/public/playroomkit-designspec.png";
 import PlayroomkitAsset from "@/public/shooter-kit.jpg";
 
-import GalaxyModifierThumbnail from "@/public/galaxymodifier-thumbnail.png";
-import FashionCommerceThumbnail from "@/public/ecommerce-thumbnail.png";
+// import GalaxyModifierThumbnail from "@/public/galaxymodifier-thumbnail.png";
+// import FashionCommerceThumbnail from "@/public/ecommerce-thumbnail.png";
 import WarppThumbnail from "@/public/Warrp-thumbnail.png";
 
 import VirginGoldThumbnail from "@/public/Virgin-gold-thumbnail.png";
@@ -605,100 +605,100 @@ export const playgroundProjects: PlaygroundProject[] = [
     readTime: "3 min read",
   },
 
-  {
-    id: 3,
-    slug: "galaxy-modifier",
-    title: "Galaxy Modifier — Procedural Galaxy Generator",
-    tagline:
-      "A real-time galaxy visualization tool built with vanilla Three.js.",
-    overview:
-      "Galaxy Modifier is a visual experimentation project focused on procedural generation and particle-based rendering in 3D. Built using vanilla Three.js, the tool allows users to tweak parameters from the UI and instantly generate unique galaxy formations, exploring how data-driven inputs affect spatial patterns and motion.",
+  // {
+  //   id: 3,
+  //   slug: "galaxy-modifier",
+  //   title: "Galaxy Modifier — Procedural Galaxy Generator",
+  //   tagline:
+  //     "A real-time galaxy visualization tool built with vanilla Three.js.",
+  //   overview:
+  //     "Galaxy Modifier is a visual experimentation project focused on procedural generation and particle-based rendering in 3D. Built using vanilla Three.js, the tool allows users to tweak parameters from the UI and instantly generate unique galaxy formations, exploring how data-driven inputs affect spatial patterns and motion.",
 
-    date: "July 10, 2025",
-    category: "Game",
+  //   date: "July 10, 2025",
+  //   category: "Game",
 
-    url: "/playground/3",
-    color: "#088236",
+  //   url: "/playground/3",
+  //   color: "#088236",
 
-    thumbnail: GalaxyModifierThumbnail,
-    heroImage: GalaxyModifierThumbnail,
-    gallery: [],
+  //   thumbnail: GalaxyModifierThumbnail,
+  //   heroImage: GalaxyModifierThumbnail,
+  //   gallery: [],
 
-    videoUrl: "",
+  //   videoUrl: "",
 
-    sections: [
-      {
-        heading: "Context",
-        content:
-          "This project was created to explore how complex visual systems—like galaxies—can be represented using simple mathematical models and real-time rendering on the web.",
-      },
-      {
-        heading: "What Was Explored",
-        bullets: [
-          "Procedural galaxy generation using particle systems",
-          "Real-time parameter controls (density, spread, rotation, color)",
-          "UI-driven updates reflected instantly in the 3D viewport",
-          "Hands-on learning of Three.js, shaders, and render loops",
-        ],
-      },
-      {
-        heading: "Outcome",
-        content:
-          "Galaxy Modifier strengthened my understanding of procedural visuals and interactive 3D systems, serving as a foundation for more advanced experiments in WebGL-based data visualization.",
-      },
-    ],
+  //   sections: [
+  //     {
+  //       heading: "Context",
+  //       content:
+  //         "This project was created to explore how complex visual systems—like galaxies—can be represented using simple mathematical models and real-time rendering on the web.",
+  //     },
+  //     {
+  //       heading: "What Was Explored",
+  //       bullets: [
+  //         "Procedural galaxy generation using particle systems",
+  //         "Real-time parameter controls (density, spread, rotation, color)",
+  //         "UI-driven updates reflected instantly in the 3D viewport",
+  //         "Hands-on learning of Three.js, shaders, and render loops",
+  //       ],
+  //     },
+  //     {
+  //       heading: "Outcome",
+  //       content:
+  //         "Galaxy Modifier strengthened my understanding of procedural visuals and interactive 3D systems, serving as a foundation for more advanced experiments in WebGL-based data visualization.",
+  //     },
+  //   ],
 
-    websiteLink:
-      "https://galaxy-modifyer-9agsqkfh3-ayush-bhusals-projects.vercel.app",
-    role: "Developer — Three.js, Visualization",
-    duration: "1 month",
-    readTime: "2 min read",
-  },
-  {
-    id: 4,
-    slug: "ecommerce",
-    title: "Clothing Commerce — Vanilla JavaScript",
-    tagline:
-      "An experimental e-commerce concept built to learn core JavaScript.",
-    overview:
-      "Clothing Commerce is a learning-focused project where I explored building a functional e-commerce experience using Vanilla JavaScript—without frameworks. The experiment centers around allowing UI-driven customization while strengthening my understanding of DOM manipulation, state handling, and interaction logic.",
+  //   websiteLink:
+  //     "https://galaxy-modifyer-9agsqkfh3-ayush-bhusals-projects.vercel.app",
+  //   role: "Developer — Three.js, Visualization",
+  //   duration: "1 month",
+  //   readTime: "2 min read",
+  // },
+  // {
+  //   id: 4,
+  //   slug: "ecommerce",
+  //   title: "Clothing Commerce — Vanilla JavaScript",
+  //   tagline:
+  //     "An experimental e-commerce concept built to learn core JavaScript.",
+  //   overview:
+  //     "Clothing Commerce is a learning-focused project where I explored building a functional e-commerce experience using Vanilla JavaScript—without frameworks. The experiment centers around allowing UI-driven customization while strengthening my understanding of DOM manipulation, state handling, and interaction logic.",
 
-    date: "July 10, 2025",
-    category: "Game",
+  //   date: "July 10, 2025",
+  //   category: "Game",
 
-    url: "/playground/4",
-    color: "#088236",
+  //   url: "/playground/4",
+  //   color: "#088236",
 
-    thumbnail: FashionCommerceThumbnail,
-    heroImage: FashionCommerceThumbnail,
-    gallery: [],
+  //   thumbnail: FashionCommerceThumbnail,
+  //   heroImage: FashionCommerceThumbnail,
+  //   gallery: [],
 
-    videoUrl: "",
+  //   videoUrl: "",
 
-    sections: [
-      {
-        heading: "Context",
-        content:
-          "This project was created as a hands-on exercise to understand how modern e-commerce experiences work at a foundational level—handling UI updates, product data changes, and visual feedback directly through JavaScript.",
-      },
-      {
-        heading: "What Was Explored",
-        bullets: [
-          "UI-based customization that updates product data in real time",
-          "Core e-commerce interactions built without libraries or frameworks",
-          "Deeper understanding of JavaScript fundamentals, events, and state flow",
-        ],
-      },
-      {
-        heading: "Outcome",
-        content:
-          "The project helped solidify my grasp of Vanilla JavaScript while experimenting with visual storytelling and interaction patterns commonly used in modern fashion commerce.",
-      },
-    ],
+  //   sections: [
+  //     {
+  //       heading: "Context",
+  //       content:
+  //         "This project was created as a hands-on exercise to understand how modern e-commerce experiences work at a foundational level—handling UI updates, product data changes, and visual feedback directly through JavaScript.",
+  //     },
+  //     {
+  //       heading: "What Was Explored",
+  //       bullets: [
+  //         "UI-based customization that updates product data in real time",
+  //         "Core e-commerce interactions built without libraries or frameworks",
+  //         "Deeper understanding of JavaScript fundamentals, events, and state flow",
+  //       ],
+  //     },
+  //     {
+  //       heading: "Outcome",
+  //       content:
+  //         "The project helped solidify my grasp of Vanilla JavaScript while experimenting with visual storytelling and interaction patterns commonly used in modern fashion commerce.",
+  //     },
+  //   ],
 
-    websiteLink: "luxury-tarsier-d95917.netlify.app,",
-    role: "Developer",
-    duration: "1 month",
-    readTime: "2 min read",
-  },
+  //   websiteLink: "luxury-tarsier-d95917.netlify.app,",
+  //   role: "Developer",
+  //   duration: "1 month",
+  //   readTime: "2 min read",
+  // },
 ];

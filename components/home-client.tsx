@@ -6,7 +6,8 @@ import Contact from "@/components/contact";
 import OutsideWork from "@/components/outside-work";
 import Header from "@/components/header";
 import Companies from "@/components/companies";
-import DesignProcess from "@/components/design-process";
+// import DesignProcess from "@/components/design-process";
+// import PlaygroundHome from "./playgroundHome";
 
 export default function HomeClient() {
   return (
@@ -16,8 +17,9 @@ export default function HomeClient() {
       <div className='md:mx-16 border-x border-[#e6e8eb]'>
         <Intro />
         <Companies />
-        <DesignProcess />
+        {/* <DesignProcess /> */}
         <Projects />
+        {/* <PlaygroundHome /> */}
         <OutsideWork />
       </div>
 

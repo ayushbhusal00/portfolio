@@ -10,8 +10,7 @@ import PasswordProtection from "@/components/password-protection";
 import { verifyToken, getToken } from "@/lib/jwt";
 import { caseStudies, CaseStudy } from "@/lib/data";
 
-// ================= HOOK =================
-
+// -------- Reading Progress Hook --------
 function useReadingProgress() {
   const [progress, setProgress] = useState(0);
 
@@ -31,19 +30,14 @@ function useReadingProgress() {
   return progress;
 }
 
-// ================= PROPS =================
-
 type Props = {
   project: Omit<CaseStudy, "RenderComponent">;
   children?: ReactNode;
 };
 
-// ================= COMPONENT =================
-
 export default function NiuralClient({ project, children }: Props) {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
   const [isCheckingAuth, setIsCheckingAuth] = useState(true);
-
   const progress = useReadingProgress();
 
   const readingTime = useMemo(() => {
@@ -51,13 +45,11 @@ export default function NiuralClient({ project, children }: Props) {
       project.overview.split(" ").length +
       project.sections.reduce(
         (acc, s) => acc + (s.content?.split(" ").length || 0),
-        0
+        0,
       );
-
     return Math.max(3, Math.round(words / 200));
   }, [project]);
 
-  // -------- Auth --------
   useEffect(() => {
     const checkAuth = async () => {
       if (!project.isPasswordProtected) {
@@ -65,27 +57,21 @@ export default function NiuralClient({ project, children }: Props) {
         setIsCheckingAuth(false);
         return;
       }
-
       const token = getToken();
-      if (token && (await verifyToken(token))) {
-        setIsAuthenticated(true);
-      }
-
+      if (token && (await verifyToken(token))) setIsAuthenticated(true);
       setIsCheckingAuth(false);
     };
-
     checkAuth();
   }, [project]);
 
   if (project.isPasswordProtected && !isAuthenticated) {
     if (isCheckingAuth) {
       return (
-        <div className='min-h-screen flex items-center justify-center'>
-          Loading...
+        <div className='min-h-screen flex items-center justify-center text-sm text-zinc-500'>
+          Loading…
         </div>
       );
     }
-
     return (
       <PasswordProtection
         projectTitle={project.title}
@@ -99,61 +85,152 @@ export default function NiuralClient({ project, children }: Props) {
   return (
     <>
       {/* Reading progress */}
-      <div className='fixed top-0 left-0 z-50 h-[2px] w-full'>
-        <div className='h-full bg-zinc-900' style={{ width: `${progress}%` }} />
+      <div className='fixed top-0 left-0 z-50 h-[2px] w-full bg-transparent'>
+        <div
+          className='h-full bg-zinc-900 transition-width duration-150'
+          style={{ width: `${progress}%` }}
+        />
       </div>
 
-      {/* Custom OR default */}
+      {/* Alternate content slot */}
       {children ? (
         <main>{children}</main>
       ) : (
-        <main className='mx-auto max-w-7xl px-6 py-12'>
-          <article className='space-y-16'>
+        <main className='md:mx-16 border-x border-[#e6e8eb]'>
+          <div className='mx-auto max-w-3xl px-6 py-16 md:py-28'>
+            {/* Title header */}
             <motion.header
-              initial={{ opacity: 0, y: 24 }}
+              initial={{ opacity: 0, y: 16 }}
               animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6 }}
+              className='space-y-8'
             >
-              <h1 className='text-5xl font-semibold'>{project.title}</h1>
-              <p className='mt-4 text-zinc-600'>{project.overview}</p>
-              <p className='mt-2 text-sm text-zinc-500'>
-                {readingTime} min read
+              <h1 className='text-4xl md:text-5xl font-bold leading-tight'>
+                {project.title}
+              </h1>
+              <p className='text-lg text-zinc-600 leading-relaxed'>
+                {project.overview}
               </p>
+              <p className='text-sm text-zinc-400'>{readingTime} min read</p>
             </motion.header>
 
-            <Image src={project.heroImage} alt={project.title} />
-
-            {project.sections.map((s, i) => (
-              <section key={i}>
-                {s.heading && <h2>{s.heading}</h2>}
-                {s.content && <p>{s.content}</p>}
-                {s.bullets && (
-                  <ul>
-                    {s.bullets.map((b) => (
-                      <li key={b}>{b}</li>
-                    ))}
-                  </ul>
-                )}
-              </section>
-            ))}
-
-            {project.videoUrl && (
-              <ReactPlayer controls width='100%' src={project.videoUrl} />
+            {/* Hero image full width */}
+            {project.heroImage && (
+              <div className='relative my-10 w-full'>
+                <Image
+                  src={project.heroImage}
+                  alt={project.title}
+                  className='w-full rounded-2xl object-cover'
+                  priority
+                />
+              </div>
             )}
-          </article>
+
+            {/* Content sections */}
+            <article className='space-y-20'>
+              {project.sections.map((section, index) => {
+                const hasContent =
+                  section.heading || section.content || section.bullets;
+                if (!hasContent) return null;
+
+                const sectionImage = project.gallery?.[index];
+
+                return (
+                  <section key={index} className='space-y-8'>
+                    {section.heading && (
+                      <h2 className='text-2xl md:text-3xl font-semibold leading-tight'>
+                        {section.heading}
+                      </h2>
+                    )}
+
+                    {section.content && (
+                      <p className='text-base text-zinc-700 leading-relaxed'>
+                        {section.content}
+                      </p>
+                    )}
+
+                    {section.bullets && (
+                      <ul className='list-disc pl-5 space-y-2 text-zinc-700'>
+                        {section.bullets.map((b) => (
+                          <li key={b}>{b}</li>
+                        ))}
+                      </ul>
+                    )}
+
+                    {sectionImage && (
+                      <div className='relative w-full'>
+                        <Image
+                          src={sectionImage}
+                          alt={section.heading || project.title}
+                          className='w-full rounded-2xl object-cover'
+                        />
+                      </div>
+                    )}
+                  </section>
+                );
+              })}
+            </article>
+
+            {/* Video full block */}
+            {project.videoUrl && (
+              <div className='my-20 aspect-video w-full overflow-hidden rounded-2xl'>
+                <ReactPlayer
+                  controls
+                  width='100%'
+                  height='100%'
+                  src={project.videoUrl}
+                />
+              </div>
+            )}
+          </div>
         </main>
       )}
 
-      {/* Related */}
+      {/* Related projects */}
       {related.length > 0 && (
-        <section className='border-t py-24 px-6'>
-          <h2>You may also like</h2>
-          <div className='grid md:grid-cols-3 gap-8 mt-8'>
-            {related.map((p) => (
-              <Link key={p.id} href={p.url}>
-                <Image src={p.thumbnail} alt={p.title} />
-                <h3>{p.title}</h3>
-              </Link>
-            ))}
+        <section className='md:mx-16 border-x border-[#e6e8eb]'>
+          <div className='border-t border-zinc-200'>
+            <div className='mx-auto  max-w-3xl  py-24 px-6'>
+              {/* Section intro */}
+              <div className='max-w-2xl mb-16'>
+                <h2 className='text-2xl md:text-3xl font-semibold tracking-tight'>
+                  More case studies
+                </h2>
+              </div>
+
+              {/* List */}
+              <div className='grid gap-16 md:grid-cols-3'>
+                {related.map((p) => (
+                  <Link
+                    key={p.id}
+                    href={p.url}
+                    className='group flex flex-col gap-6'
+                  >
+                    {/* Image */}
+                    <div className='overflow-hidden rounded-2xl'>
+                      <Image
+                        src={p.thumbnail}
+                        alt={p.title}
+                        className='w-full object-cover transition-transform duration-500 ease-out group-hover:scale-105'
+                      />
+                    </div>
+
+                    {/* Meta */}
+                    <div className='space-y-2'>
+                      <h3 className='text-lg font-medium leading-snug group-hover:underline'>
+                        {p.title}
+                      </h3>
+
+                      {p.tagline && (
+                        <p className='text-sm text-zinc-600 leading-relaxed'>
+                          {p.tagline}
+                        </p>
+                      )}
+                    </div>
+                  </Link>
+                ))}
+              </div>
+            </div>
           </div>
         </section>
       )}

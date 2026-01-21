@@ -4,13 +4,14 @@ import { mongooseAdapter } from "@payloadcms/db-mongodb";
 import { buildConfig } from "payload";
 import { Pages } from "./app/(payload)/collections/Pages";
 import { Media } from "./app/(payload)/collections/Media";
+import { Playground } from "./app/(payload)/collections/Playground";
 
 export default buildConfig({
   // If you'd like to use Rich Text, pass your editor here
   editor: lexicalEditor(),
 
   // Define and configure your collections in this array
-  collections: [Pages, Media],
+  collections: [Pages, Media, Playground],
 
   // Your Payload secret - should be a complex and secure string, unguessable
   secret: process.env.PAYLOAD_SECRET || "",
