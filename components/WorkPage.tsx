@@ -71,7 +71,7 @@ const rotations = [
 export default function WorkPage() {
   return (
     <section className='relative min-h-[300vh] w-full bg-linear-to-t from-[#FAF6ED] to-[#fafafa]'>
-      <div className='mx-auto max-w-6xl px-6 pt-32'>
+      <div className='px-6 pt-32'>
         {experiencesData.map((exp, index) => {
           const Icon = exp.icon;
 
