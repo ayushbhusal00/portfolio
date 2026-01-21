@@ -87,10 +87,11 @@ export default function WorkPage() {
               {/* CARD */}
               <div
                 className={`
+                  border border-grey-900
                   relative h-[420px] w-full
                   bg-white
                   rounded-lg
-                  ring-1 ring-neutral-300
+                  
                   shadow-[0_12px_40px_rgba(0,0,0,0.18)]
                   overflow-hidden
                   stamp-edge
