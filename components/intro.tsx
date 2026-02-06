@@ -19,6 +19,7 @@ import Thumbnail6 from "@/public/warpp-trail.png";
 import Thumbnail8 from "@/public/antidote-trail.png";
 import Thumbnail9 from "@/public/hydrolink trail.png";
 import Link from "next/link";
+// import DoorKeysScene from "./DoorKeysScene";
 
 export default function intro() {
   // Convert StaticImageData to URL strings
@@ -38,9 +39,9 @@ export default function intro() {
   return (
     <section
       id='home'
-      className='w-full scroll-mt-[100rem]  sm:py-4 sm:px-2 md:py-28  px-4 py-16 border-b border-[#e6e8eb] relative'
+      className='w-full scroll-mt-[100rem] bg-bg-base relative'
     >
-      <div className='flex flex-col items-center justify-center'>
+      <div className='flex flex-col items-center  sm:py-32 sm:px-2 md:py-40  px-4 py-16 justify-center'>
         <div className='relative'>
           <motion.div
             initial={{ opacity: 0, scale: 0 }}
@@ -54,7 +55,7 @@ export default function intro() {
               height='240'
               quality='95'
               priority={true}
-              className='h-24 w-24 rounded-full object-cover border-[0.25rem] border-white shadow-xl'
+              className='h-24 w-24 rounded-full object-cover border-[0.25rem] border-border-base shadow-xl'
             />
           </motion.div>
           <motion.span
@@ -80,14 +81,14 @@ export default function intro() {
           }}
         >
           <motion.h1
-            className='mb-5 mt-4 px-4 text-[2rem] md:mx-6  font-bold text-center !leading-[1.5] text-[#18181b]'
+            className='py-2 text-[2rem] font-bold text-center !leading-[1.5] text-text-base'
             initial={{ opacity: 0, y: 100 }}
             animate={{ opacity: 1, y: 0 }}
           >
             Web/Product Designer based in Kathmandu, Nepal
           </motion.h1>
           <motion.p
-            className='mb-5 mt-4 px-4 text-[0.9rem] font-medium text-center text-[#52525b]'
+            className='py-2 text-[0.9rem] font-medium text-center text-text-subtle'
             initial={{ opacity: 0, y: 100 }}
             animate={{ opacity: 1, y: 0 }}
           >
@@ -96,7 +97,7 @@ export default function intro() {
           </motion.p>
         </motion.div>
         <motion.div
-          className='flex w-full md:max-w-[38.75rem] sm:flex-row sm:w-full  gap-4 items-center justify-center px-4 text-sm font-medium relative z-10 pointer-events-auto'
+          className='flex w-full md:max-w-[38.75rem] sm:flex-row sm:w-full gap-4 items-start justify-start py-4 text-sm font-medium relative z-10 pointer-events-auto'
           initial={{ opacity: 0, y: 100 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{
@@ -104,25 +105,21 @@ export default function intro() {
           }}
         >
           <Link
-            className='w-full md:w-[50%] justify-center group text-center bg-gradient-to-tr dark:from-purple-500 dark:to-violet-500 dark:bg-gradient-to-tr from-orange-500 to-amber-500 text-white px-3 py-4 rounded-[6px] outline-none focus:scale-110 hover:bg-gray-950 active:scale-105 transition shadow-[0_1px_2px_0_rgba(0,0,0,0.12),0_0_0_1px_rgba(0,0,0,0.08)]'
+            className='w-full md:w-[50%] justify-center group text-center bg-gradient-to-tr dark:from-purple-500 dark:to-violet-500 dark:bg-gradient-to-tr from-orange-500 to-amber-500 text-text-base dark:text-text:base px-3 py-4 rounded-[6px] outline-none focus:scale-110 hover:bg-bg-base active:scale-105 transition shadow-[0_1px_2px_0_rgba(0,0,0,0.12),0_0_0_1px_rgba(0,0,0,0.08)]'
             href='/#contact'
           >
             Say Hello{" "}
           </Link>
 
           <Link
-            className=' sm:flex dark:bg-white/10 p-4 items-center gap-2 cursor-pointer borderBlack outline-none focus:scale-[1.15] hover:bg-gray-100 dark:hover:bg-white/20 active:scale-105 transition dark:text-white/50 rounded-[6px] pointer-events-auto relative z-20
-  bg-white
-  shadow-[0_1px_2px_0_rgba(0,0,0,0.12),0_0_0_1px_rgba(0,0,0,0.08)]'
+            className=' sm:flex p-4 items-center gap-2 cursor-pointer borderBlack outline-none focus:scale-[1.15] hover:bg-bg-base active:scale-105 transition rounded-[6px] pointer-events-auto relative z-20 bg-bg-base shadow-[0_1px_2px_0_rgba(0,0,0,0.12),0_0_0_1px_rgba(0,0,0,0.08)] text-text-subtle'
             href='https://www.linkedin.com/in/ayush-bhusal-331143119/'
             target='blank'
           >
             <BsLinkedin />
           </Link>
           <Link
-            className=' dark:bg-white/10 p-4 sm:flex items-center gap-2 cursor-pointer borderBlack outline-none focus:scale-[1.15] hover:bg-gray-100 dark:hover:bg-white/20 active:scale-105 transition dark:text-white/50 rounded-[6px] pointer-events-auto relative z-20
-  bg-white
-  shadow-[0_1px_2px_0_rgba(0,0,0,0.12),0_0_0_1px_rgba(0,0,0,0.08)]'
+            className=' p-4 sm:flex items-center gap-2 cursor-pointer borderBlack outline-none focus:scale-[1.15] hover:bg-bg-base active:scale-105 transition rounded-[6px] pointer-events-auto relative z-20 bg-bg-base shadow-[0_1px_2px_0_rgba(0,0,0,0.12),0_0_0_1px_rgba(0,0,0,0,0.08)] text-text-subtle'
             href='https://github.com/ayushbhusal00'
             target='blank'
           >
@@ -130,6 +127,10 @@ export default function intro() {
           </Link>
         </motion.div>
       </div>
+      {/* <div className='w-[1px] h-[100%] min-h-[500px] bg-border-base'></div> */}
+      {/* <div className='w-full h-[100%]'>
+        <DoorKeysScene />
+      </div> */}
       <div className='hidden md:block absolute inset-0  w-svw h-full pointer-events-none'>
         <ImageTrail variant={9} items={imageUrls as string[]} />
       </div>

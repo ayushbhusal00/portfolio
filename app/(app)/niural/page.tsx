@@ -113,7 +113,7 @@ const productScreens = [
 export default function NiuralProjectPage() {
   return (
     <>
-      <main className='md:mx-16 justify-center flex bg-[#fafafa] text-neutral-900 border-x border-[#e6e8eb]'>
+      <main className='md:mx-16 justify-center flex bg-[#fafafa] dark:bg-[#16171d] text-neutral-900 border-x border-[#e6e8eb]'>
         <div className=' max-w-3xl py-24 px-6  flex gap-16 flex-col'>
           {/* ----------------------------------------
             HERO / OVERVIEW

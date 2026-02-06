@@ -23,11 +23,11 @@ const GridComponent = () => {
 
     if (rowDiff <= 1 && colDiff <= 1) {
       if (index === hoverIndex) {
-        return "bg-gray-950 bg-opacity-[0.25] border-opacity-50"; // Center box highlight (25% opacity)
+        return "bg-bg-base bg-opacity-[0.25] border-opacity-50"; // Center box highlight (25% opacity)
       } else if (rowDiff === 0 || colDiff === 0) {
-        return "bg-gray-950 bg-opacity-[0.12] border-opacity-30"; // Cross (+) highlight (12% opacity)
+        return "bg-bg-base bg-opacity-[0.12] border-opacity-30"; // Cross (+) highlight (12% opacity)
       } else {
-        return "bg-gray-950 bg-opacity-[0.05] border-opacity-15"; // Corner highlight (5% opacity)
+        return "bg-bg-base bg-opacity-[0.05] border-opacity-15"; // Corner highlight (5% opacity)
       }
     }
 
@@ -65,10 +65,10 @@ const GridComponent = () => {
             key={index}
             className={clsx(
               `relative w-full h-full border ${
-                theme === "light" ? "border-gray-200" : "border-gray-700"
+                theme === "light" ? "border-border-base" : "border-border-base"
               } border-opacity-10 transition-colors duration-300`,
               getHighlightClass(index),
-              getBorderClass(index) // Apply conditional borders
+              getBorderClass(index), // Apply conditional borders
             )}
             onMouseEnter={() => setHoverIndex(index)}
             onMouseLeave={() => setHoverIndex(null)}

@@ -28,7 +28,7 @@ const ProjectHeader = () => {
   return (
     <header className='absolute top-0 z-[999] w-full flex justify-center '>
       <motion.div
-        className='w-full flex items-center px-4 py-4 md:py-2 border-b border-[#e4e4e7] dark:border-gray-700 bg-white dark:bg-gray-900 bg-opacity-80 dark:bg-opacity-75 shadow-lg shadow-black/[0.03] backdrop-blur-[0.5rem]'
+        className='w-full flex items-center px-4 py-4 md:py-2 border-b border-border-base bg-bg-base bg-opacity-80 shadow-lg shadow-black/[0.03] backdrop-blur-[0.5rem]'
         initial={{ y: 100, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
         transition={{ type: "spring", stiffness: 100 }}

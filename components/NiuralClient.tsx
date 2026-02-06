@@ -67,7 +67,7 @@ export default function NiuralClient({ project, children }: Props) {
   if (project.isPasswordProtected && !isAuthenticated) {
     if (isCheckingAuth) {
       return (
-        <div className='min-h-screen flex items-center justify-center text-sm text-zinc-500'>
+        <div className='min-h-screen flex items-center justify-center text-sm text-text-subtle'>
           Loading…
         </div>
       );
@@ -83,11 +83,11 @@ export default function NiuralClient({ project, children }: Props) {
   const related = caseStudies.filter((p) => p.id !== project.id).slice(0, 3);
 
   return (
-    <>
+    <section className='bg-bg-base'>
       {/* Reading progress */}
-      <div className='fixed top-0 left-0 z-50 h-[2px] w-full bg-transparent'>
+      <div className='fixed top-0 left-0 z-50 h-[2px] w-full bg-bg-base'>
         <div
-          className='h-full bg-zinc-900 transition-width duration-150'
+          className='h-full bg-bg-base transition-width duration-150'
           style={{ width: `${progress}%` }}
         />
       </div>
@@ -96,7 +96,7 @@ export default function NiuralClient({ project, children }: Props) {
       {children ? (
         <main>{children}</main>
       ) : (
-        <main className='md:mx-16 border-x border-[#e6e8eb]'>
+        <main className='md:mx-16 border-x border-border-base'>
           <div className='mx-auto max-w-3xl px-6 py-16 md:py-28'>
             {/* Title header */}
             <motion.header
@@ -105,13 +105,13 @@ export default function NiuralClient({ project, children }: Props) {
               transition={{ duration: 0.6 }}
               className='space-y-8'
             >
-              <h1 className='text-4xl md:text-5xl font-bold leading-tight'>
+              <h1 className='text-4xl text-text-base md:text-5xl font-bold leading-tight'>
                 {project.title}
               </h1>
-              <p className='text-lg text-zinc-600 leading-relaxed'>
+              <p className='text-lg text-text-subtle leading-relaxed'>
                 {project.overview}
               </p>
-              <p className='text-sm text-zinc-400'>{readingTime} min read</p>
+              <p className='text-sm text-text-subtle'>{readingTime} min read</p>
             </motion.header>
 
             {/* Hero image full width */}
@@ -138,19 +138,19 @@ export default function NiuralClient({ project, children }: Props) {
                 return (
                   <section key={index} className='space-y-8'>
                     {section.heading && (
-                      <h2 className='text-2xl md:text-3xl font-semibold leading-tight'>
+                      <h2 className='text-2xl md:text-3xl text-text-base font-semibold leading-tight'>
                         {section.heading}
                       </h2>
                     )}
 
                     {section.content && (
-                      <p className='text-base text-zinc-700 leading-relaxed'>
+                      <p className='text-base text-text-subtle leading-relaxed'>
                         {section.content}
                       </p>
                     )}
 
                     {section.bullets && (
-                      <ul className='list-disc pl-5 space-y-2 text-zinc-700'>
+                      <ul className='list-disc pl-5 space-y-2 text-text-subtle'>
                         {section.bullets.map((b) => (
                           <li key={b}>{b}</li>
                         ))}
@@ -188,12 +188,12 @@ export default function NiuralClient({ project, children }: Props) {
 
       {/* Related projects */}
       {related.length > 0 && (
-        <section className='md:mx-16 border-x border-[#e6e8eb]'>
-          <div className='border-t border-zinc-200'>
+        <section className='md:mx-16 border-x border-border-base'>
+          <div className='border-t border-border-base'>
             <div className='mx-auto  max-w-3xl  py-24 px-6'>
               {/* Section intro */}
               <div className='max-w-2xl mb-16'>
-                <h2 className='text-2xl md:text-3xl font-semibold tracking-tight'>
+                <h2 className='text-2xl text-text-base md:text-3xl font-semibold tracking-tight'>
                   More case studies
                 </h2>
               </div>
@@ -217,12 +217,12 @@ export default function NiuralClient({ project, children }: Props) {
 
                     {/* Meta */}
                     <div className='space-y-2'>
-                      <h3 className='text-lg font-medium leading-snug group-hover:underline'>
+                      <h3 className='text-lg font-medium text-text-subtle leading-snug group-hover:underline'>
                         {p.title}
                       </h3>
 
                       {p.tagline && (
-                        <p className='text-sm text-zinc-600 leading-relaxed'>
+                        <p className='text-sm text-text-subtle leading-relaxed'>
                           {p.tagline}
                         </p>
                       )}
@@ -234,6 +234,6 @@ export default function NiuralClient({ project, children }: Props) {
           </div>
         </section>
       )}
-    </>
+    </section>
   );
 }

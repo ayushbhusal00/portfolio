@@ -86,8 +86,8 @@ export default function PlaygroundClient({ project }: { project: Project }) {
   if (project.isPasswordProtected && !isAuthenticated) {
     if (isCheckingAuth) {
       return (
-        <div className='min-h-screen flex items-center justify-center'>
-          <p className='text-zinc-500'>Loading…</p>
+        <div className='min-h-screen flex items-center justify-center bg-bg-base'>
+          <p className='text-text-subtle'>Loading…</p>
         </div>
       );
     }
@@ -105,161 +105,162 @@ export default function PlaygroundClient({ project }: { project: Project }) {
   /* ------------------------------------------------------------------------ */
 
   return (
-    <>
-      <section>
-        <div>
-          {/* ================= CONTENT ================= */}
-          <article className='mx-auto max-w-3xl py-24 px-6'>
-            {/* Back */}
-            <Link href='/playground' className='text-sm text-zinc-500'>
-              ← Back to playground
-            </Link>
+    <section className='md:mx-16 border-x border-border-base bg-bg-base'>
+      <div>
+        {/* ================= CONTENT ================= */}
+        <article className='mx-auto max-w-3xl py-24 px-6'>
+          {/* Back */}
+          <Link
+            href='/playground'
+            className='text-sm text-text-subtle hover:underline'
+          >
+            ← Back to playground
+          </Link>
 
-            {/* Header */}
-            <header className='mt-10 space-y-6'>
-              <h1 className='text-4xl md:text-5xl font-semibold tracking-tight leading-tight'>
-                {project.title}
-              </h1>
+          {/* Header */}
+          <header className='mt-10 space-y-6'>
+            <h1 className='text-4xl text-text-base md:text-5xl font-semibold tracking-tight leading-tight'>
+              {project.title}
+            </h1>
 
-              {project.tagline && (
-                <p className='text-xl text-zinc-500 leading-relaxed'>
-                  {project.tagline}
-                </p>
-              )}
-
-              <p className='text-lg text-zinc-600 leading-relaxed'>
-                {project.overview}
+            {project.tagline && (
+              <p className='text-xl text-text-subtle leading-relaxed'>
+                {project.tagline}
               </p>
+            )}
 
-              <div className='text-sm text-zinc-500'>
-                <p>Duration · 3 min read</p>
-              </div>
+            <p className='text-lg text-text-subtle leading-relaxed'>
+              {project.overview}
+            </p>
 
-              {project.websiteLink && (
-                <a
-                  href={project.websiteLink}
-                  target='_blank'
-                  rel='noopener noreferrer'
-                  className='inline-flex items-center gap-2 rounded-full border border-zinc-300 px-5 py-2 text-sm font-medium text-zinc-900 hover:bg-zinc-100 transition'
-                >
-                  Visit website
-                  <span>↗</span>
-                </a>
-              )}
-            </header>
+            <div className='text-sm text-text-subtle'>
+              <p>Duration · 3 min read</p>
+            </div>
 
-            {/* Hero */}
-            <div className='relative mt-16'>
-              <Image
-                src={project.heroImage}
-                alt={project.title}
-                priority
-                className='w-full rounded-2xl object-cover'
+            {project.websiteLink && (
+              <a
+                href={project.websiteLink}
+                target='_blank'
+                rel='noopener noreferrer'
+                className='inline-flex items-center gap-2 rounded-full border border-border-base px-5 py-2 text-sm font-medium text-text-base hover:bg-bg-base transition'
+              >
+                Visit website
+                <span>↗</span>
+              </a>
+            )}
+          </header>
+
+          {/* Hero */}
+          <div className='relative mt-16'>
+            <Image
+              src={project.heroImage}
+              alt={project.title}
+              priority
+              className='w-full rounded-2xl object-cover'
+            />
+          </div>
+
+          {/* Sections */}
+          <div className='mt-24 space-y-24'>
+            {sections.map((sec, i) => {
+              const sectionImage = project.gallery?.[i];
+
+              return (
+                <section key={i} className='space-y-10'>
+                  {sec.heading && (
+                    <h2
+                      id={sec.heading.toLowerCase().replace(/\s+/g, "-")}
+                      className='text-2xl text-text-base md:text-3xl font-semibold tracking-tight scroll-mt-28'
+                    >
+                      {sec.heading}
+                    </h2>
+                  )}
+
+                  {sec.content && (
+                    <p className='text-base text-text-subtle leading-relaxed'>
+                      {sec.content}
+                    </p>
+                  )}
+
+                  {sec.bullets && (
+                    <ul className='list-disc pl-6 space-y-2 text-text-subtle'>
+                      {sec.bullets.map((b, idx) => (
+                        <li key={idx}>{b}</li>
+                      ))}
+                    </ul>
+                  )}
+
+                  {/* Section image */}
+                  {sectionImage && (
+                    <div className='relative'>
+                      <Image
+                        src={sectionImage}
+                        alt={sec.heading || project.title}
+                        className='w-full rounded-2xl object-cover'
+                      />
+                    </div>
+                  )}
+                </section>
+              );
+            })}
+          </div>
+
+          {/* Video (END ONLY) */}
+          {project.videoUrl && (
+            <div className='mt-32 aspect-video overflow-hidden rounded-2xl'>
+              <ReactPlayer
+                width='100%'
+                height='100%'
+                controls
+                src={project.videoUrl}
               />
             </div>
-
-            {/* Sections */}
-            <div className='mt-24 space-y-24'>
-              {sections.map((sec, i) => {
-                const sectionImage = project.gallery?.[i];
-
-                return (
-                  <section key={i} className='space-y-10'>
-                    {sec.heading && (
-                      <h2
-                        id={sec.heading.toLowerCase().replace(/\s+/g, "-")}
-                        className='text-2xl md:text-3xl font-semibold tracking-tight scroll-mt-28'
-                      >
-                        {sec.heading}
-                      </h2>
-                    )}
-
-                    {sec.content && (
-                      <p className='text-base text-zinc-700 leading-relaxed'>
-                        {sec.content}
-                      </p>
-                    )}
-
-                    {sec.bullets && (
-                      <ul className='list-disc pl-6 space-y-2 text-zinc-700'>
-                        {sec.bullets.map((b, idx) => (
-                          <li key={idx}>{b}</li>
-                        ))}
-                      </ul>
-                    )}
-
-                    {/* Section image */}
-                    {sectionImage && (
-                      <div className='relative'>
-                        <Image
-                          src={sectionImage}
-                          alt={sec.heading || project.title}
-                          className='w-full rounded-2xl object-cover'
-                        />
-                      </div>
-                    )}
-                  </section>
-                );
-              })}
-            </div>
-
-            {/* Video (END ONLY) */}
-            {project.videoUrl && (
-              <div className='mt-32 aspect-video overflow-hidden rounded-2xl'>
-                <ReactPlayer
-                  width='100%'
-                  height='100%'
-                  controls
-                  src={project.videoUrl}
-                />
-              </div>
-            )}
-          </article>
-          {/* ================= RELATED ================= */}
-          {relatedProjects.length > 0 && (
-            <section className='border-t border-zinc-200'>
-              <div className='mx-auto max-w-3xl px-6 py-24 '>
-                <div className='mb-12'>
-                  <h2 className='text-2xl font-semibold tracking-tight'>
-                    Related playgrounds
-                  </h2>
-                  <p className='mt-3 text-zinc-600'>
-                    More experiments and explorations in interaction, motion,
-                    and systems thinking.
-                  </p>
-                </div>
-
-                <div className='grid gap-14 md:grid-cols-3'>
-                  {relatedProjects.map((item) => (
-                    <Link
-                      key={item.id}
-                      href={item.url}
-                      className='group flex flex-col gap-5'
-                    >
-                      <div className='overflow-hidden rounded-2xl'>
-                        <Image
-                          src={item.thumbnail}
-                          alt={item.title}
-                          className='w-full object-cover transition-transform duration-500 group-hover:scale-105'
-                        />
-                      </div>
-
-                      <div className='space-y-1'>
-                        <h3 className='font-medium group-hover:underline'>
-                          {item.title}
-                        </h3>
-                        <p className='text-sm text-zinc-600 line-clamp-2'>
-                          {item.tagline || item.overview}
-                        </p>
-                      </div>
-                    </Link>
-                  ))}
-                </div>
-              </div>
-            </section>
           )}
-        </div>
-      </section>
-    </>
+        </article>
+        {/* ================= RELATED ================= */}
+        {relatedProjects.length > 0 && (
+          <section className='border-t border-border-base'>
+            <div className='mx-auto max-w-3xl px-6 py-24 '>
+              <div className='mb-12'>
+                <h2 className='text-2xl font-semibold tracking-tight text-text-base'>
+                  Related playgrounds
+                </h2>
+                <p className='mt-3 text-text-subtle leading-relaxed'>
+                  More experiments and explorations in interaction, motion, and
+                  systems thinking.
+                </p>
+              </div>
+
+              <div className='grid gap-14 md:grid-cols-3'>
+                {relatedProjects.map((item) => (
+                  <Link
+                    key={item.id}
+                    href={item.url}
+                    className='group flex flex-col gap-5'
+                  >
+                    <div className='overflow-hidden rounded-2xl'>
+                      <Image
+                        src={item.thumbnail}
+                        alt={item.title}
+                        className='w-full object-cover transition-transform duration-500 group-hover:scale-105'
+                      />
+                    </div>
+
+                    <div className='space-y-1'>
+                      <h3 className='font-medium group-hover:underline text-text-base'>
+                        {item.title}
+                      </h3>
+                      <p className='text-sm text-text-subtle line-clamp-2 leading-relaxed'>
+                        {item.tagline || item.overview}
+                      </p>
+                    </div>
+                  </Link>
+                ))}
+              </div>
+            </div>
+          </section>
+        )}
+      </div>
+    </section>
   );
 }

@@ -70,7 +70,7 @@ const rotations = [
 
 export default function WorkPage() {
   return (
-    <section className='relative min-h-[350vh] w-full bg-linear-to-t from-[#FAF6ED] to-[#fafafa]'>
+    <section className='relative min-h-[350vh] w-full bg-bg-base'>
       <div className='px-6 pt-32'>
         {experiencesData.map((exp, index) => {
           const Icon = exp.icon;
@@ -89,7 +89,7 @@ export default function WorkPage() {
                 className={`
                   border border-grey-900
                   relative h-[420px] w-full
-                  bg-white
+                  bg-bg-base
                   rounded-lg
                   
                   shadow-[0_12px_40px_rgba(0,0,0,0.18)]

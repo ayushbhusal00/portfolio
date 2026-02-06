@@ -69,7 +69,7 @@ export default function PasswordProtection({
 
   if (checkingToken) {
     return (
-      <div className='min-h-screen flex items-center justify-center px-6 bg-zinc-50 dark:bg-zinc-900'>
+      <div className='min-h-screen flex items-center justify-center px-6 bg-bg-base'>
         <div className='text-center'>
           <p className='text-zinc-600 dark:text-zinc-400'>Checking access...</p>
         </div>
@@ -78,30 +78,26 @@ export default function PasswordProtection({
   }
 
   return (
-    <div className='min-h-screen flex items-center justify-center px-6 bg-zinc-50 dark:bg-zinc-900'>
+    <div className='min-h-screen flex items-center justify-center px-6 bg-bg-base'>
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.4 }}
-        className='max-w-md w-full space-y-8 bg-white dark:bg-zinc-800 p-8 rounded-xl shadow-lg'
+        className='max-w-md w-full space-y-8 bg-bg-base p-8 rounded-xl shadow-lg'
       >
         <div className='text-center'>
-          <h1 className='text-2xl font-semibold text-zinc-900 dark:text-zinc-100 mb-2'>
+          <h1 className='text-2xl font-semibold text-zinc-900 mb-2'>
             Protected Project
           </h1>
-          <p className='text-zinc-600 dark:text-zinc-400'>
-            This case study is password protected
-          </p>
-          <p className='text-sm text-zinc-500 dark:text-zinc-500 mt-1'>
-            {projectTitle}
-          </p>
+          <p className='text-zinc-600'>This case study is password protected</p>
+          <p className='text-sm text-zinc-500 mt-1'>{projectTitle}</p>
         </div>
 
         <form onSubmit={handleSubmit} className='space-y-6'>
           <div>
             <label
               htmlFor='password'
-              className='block text-sm font-medium text-zinc-700 dark:text-zinc-300 mb-2'
+              className='block text-sm font-medium text-zinc-700 mb-2'
             >
               Password
             </label>
@@ -110,7 +106,7 @@ export default function PasswordProtection({
               type='password'
               value={password}
               onChange={(e) => setPassword(e.target.value)}
-              className='w-full px-4 py-2 border border-zinc-300 dark:border-zinc-600 rounded-lg focus:ring-2 focus:ring-zinc-500 focus:border-transparent bg-white dark:bg-zinc-700 text-zinc-900 dark:text-zinc-100'
+              className='w-full px-4 py-2 border border-border-base rounded-lg focus:ring-2 focus:ring-zinc-500 focus:border-transparent bg-bg-base text-zinc-900'
               placeholder='Enter password'
               required
               autoFocus
@@ -121,16 +117,16 @@ export default function PasswordProtection({
             <motion.div
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
-              className='p-3 bg-red-50 dark:bg-red-900/20 border border-red-200 dark:border-red-800 rounded-lg'
+              className='p-3 bg-red-50 border border-red-200 rounded-lg'
             >
-              <p className='text-sm text-red-600 dark:text-red-400'>{error}</p>
+              <p className='text-sm text-red-600'>{error}</p>
             </motion.div>
           )}
 
           <button
             type='submit'
             disabled={isLoading}
-            className='w-full py-2 px-4 bg-zinc-900 dark:bg-zinc-100 text-white dark:text-zinc-900 rounded-lg font-medium hover:bg-zinc-800 dark:hover:bg-zinc-200 transition-colors disabled:opacity-50 disabled:cursor-not-allowed'
+            className='w-full py-2 px-4 bg-zinc-900 text-white rounded-lg font-medium hover:bg-zinc-800 transition-colors disabled:opacity-50 disabled:cursor-not-allowed'
           >
             {isLoading ? "Verifying..." : "Access Project"}
           </button>
@@ -143,8 +139,8 @@ export default function PasswordProtection({
         </div>
 
         <a
-          className=' sm:flex dark:bg-white/10 p-4 items-center gap-2 cursor-pointer borderBlack outline-none focus:scale-[1.15] hover:bg-gray-100 dark:hover:bg-white/20 active:scale-105 transition dark:text-white/50 rounded-[6px] pointer-events-auto relative z-20
-  bg-white
+          className=' sm:flex p-4 items-center gap-2 cursor-pointer borderBlack outline-none focus:scale-[1.15] hover:bg-bg-base active:scale-105 transition rounded-[6px] pointer-events-auto relative z-20
+  bg-bg-base
   shadow-[0_1px_2px_0_rgba(0,0,0,0.12),0_0_0_1px_rgba(0,0,0,0.08)] justify-center font-medium'
           href='https://www.linkedin.com/in/ayush-bhusal-331143119/'
           target='blank'

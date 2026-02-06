@@ -12,14 +12,14 @@ export default async function PlaygroundPage({
 
   if (!project) {
     return (
-      <div className='min-h-screen flex items-center justify-center text-zinc-600'>
+      <div className='min-h-screen flex items-center justify-center text-text-subtle'>
         Not Found
       </div>
     );
   }
 
   return (
-    <main className='md:mx-16 border-x border-[#e6e8eb]'>
+    <main className='bg-bg-base'>
       <PlaygroundClient
         project={{
           ...project,

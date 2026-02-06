@@ -21,7 +21,7 @@ export default function Modal({ id }: ModalProps) {
   useEffect(() => {
     const handleScroll = () => {
       const offsets = sectionRefs.current.map((ref) =>
-        ref ? ref.getBoundingClientRect().top : 999999
+        ref ? ref.getBoundingClientRect().top : 999999,
       );
       const visibleIndex = offsets.findIndex((offset) => offset >= 0);
       if (visibleIndex !== -1) setActiveSectionIndex(visibleIndex);
@@ -51,14 +51,14 @@ export default function Modal({ id }: ModalProps) {
       <div className='fixed inset-0 bg-black/50' onClick={toggleModalState} />
 
       <motion.div
-        className='relative bg-white rounded-lg shadow-xl w-full h-[100vh] overflow-hidden'
+        className='relative bg-bg-base rounded-lg shadow-xl w-full h-[100vh] overflow-hidden'
         initial='hidden'
         animate='visible'
         exit='exit'
         variants={modalVariants}
       >
         {/* Header */}
-        <div className='flex justify-between items-center border-b p-5'>
+        <div className='flex justify-between items-center border-b border-border-base p-5'>
           <button
             type='button'
             className='text-gray-500 hover:text-black'
@@ -75,7 +75,7 @@ export default function Modal({ id }: ModalProps) {
 
         <div className='flex w-full h-full'>
           {/* Sidebar */}
-          <div className='sticky top-0 w-1/4 p-5 border-r bg-gray-50 h-full'>
+          <div className='sticky top-0 w-1/4 p-5 border-r border-border-base bg-bg-base h-full'>
             <ul className='space-y-4 text-gray-700'>
               <li className='font-bold'>{caseStudy.title}</li>
 

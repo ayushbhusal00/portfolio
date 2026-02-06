@@ -8,7 +8,7 @@ import LostImage from "@/public/404.svg";
 export const dynamic = "force-dynamic";
 export default function Home() {
   return (
-    <main className='flex flex-col items-center relative  bg-[#fafafa]'>
+    <main className='flex flex-col items-center relative  bg-[#fafafa] dark:bg-[#16171d]'>
       <Header />
       {/* CENTERED 404 SECTION */}
       <div className='w-full border-x border-[#e6e8eb] max-w-7xl py-48 flex-1 flex items-center justify-center text-center px-6'>

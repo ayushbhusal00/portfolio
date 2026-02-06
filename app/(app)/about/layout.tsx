@@ -15,7 +15,7 @@ export default function RootLayout({
       animate={{ opacity: 1 }}
       transition={{ duration: 0.4, ease: "easeOut" }}
       className='
-        w-full max-w-content mx-auto bg-[#fafafa]
+        w-full max-w-content mx-auto bg-[#fafafa] dark:bg-[#16171d]
        
       '
     >

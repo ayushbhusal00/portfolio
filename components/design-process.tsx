@@ -12,7 +12,7 @@ export default function DesignProcess() {
   return (
     <motion.section
       id='playground-hero'
-      className='w-full border-b text-center border-[#e6e8eb] flex flex-col px-4 py-16 gap-10 '
+      className='w-full border-b text-center border-border-base flex flex-col px-4 py-16 gap-10 '
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       transition={{ duration: 0.4 }}
@@ -90,7 +90,7 @@ export default function DesignProcess() {
           },
         ].map((obj, i) => {
           return (
-            <div key={i} className='border-[#e6e8eb]'>
+            <div key={i} className='border-border-base'>
               <Image
                 src={obj.img}
                 alt={obj.caption}

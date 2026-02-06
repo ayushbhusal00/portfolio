@@ -8,8 +8,10 @@ import clsx from "clsx";
 import dynamic from "next/dynamic";
 import AyushLogoDark from "@/public/Ayush-Logo-Dark.json";
 import AyushLogoLight from "@/public/Ayush-Logo-Light.json";
-import { useTheme } from "@/context/theme-context";
+
 import StaggeredMenu from "@/components/StaggeredMenu";
+import Switch from "@/components/switch";
+import { useTheme } from "@/context/theme-context";
 
 const Header = () => {
   const Lottie = dynamic(() => import("@lottielab/lottie-player/react"), {
@@ -47,7 +49,7 @@ const Header = () => {
   return (
     <header className='sticky top-0 z-[999] w-full flex justify-center '>
       <motion.div
-        className='w-full  px-4 md:px-24 flex items-center py-4 md:py-2 border-b  border-[#e4e4e7] dark:border-gray-700 bg-[#fafafa] dark:bg-gray-900 bg-opacity-80 dark:bg-opacity-75 shadow-lg shadow-black/[0.03] backdrop-blur-[0.5rem]'
+        className='w-full px-4 md:px-24 flex items-center py-4 md:py-2 border-b border-border-base bg-bg-base bg-opacity-80 shadow-lg shadow-black/[0.03] backdrop-blur-[0.5rem]'
         initial={{ y: -100, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
       >
@@ -56,7 +58,7 @@ const Header = () => {
           <Link
             className={clsx(
               `flex items-center justify-center hover:text-gray-750 dark:hover:text-gray-300 transition 
-              text-gray-750 dark:text-white `
+              text-gray-750 dark:text-white `,
             )}
             href={"/"}
           >
@@ -78,10 +80,7 @@ const Header = () => {
               >
                 <Link
                   className={clsx(
-                    `flex items-center justify-center px-3 py-2 text-gray-500 hover:text-gray-950 dark:hover:text-gray-300 transition
-                     
-                    
-                    `
+                    `flex items-center justify-center px-3 py-2 text-text-subtle hover:text-text-base transition`,
                   )}
                   href={link.hash}
                 >
@@ -116,6 +115,10 @@ const Header = () => {
             />
           </div>
         </nav>
+        {/* Dark/Light Mode Toggle Switch */}
+        <div className='ml-4 flex gap-4'>
+          <Switch />
+        </div>
       </motion.div>
     </header>
   );

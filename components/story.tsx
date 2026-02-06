@@ -11,7 +11,7 @@ import SectionHeading from "./section-heading";
 export default function Story() {
   return (
     <motion.section
-      className='w-full min-h-[10vh] md:min-h-[50vh] flex flex-col items-center justify-center leading-8 scroll-mt-[28] border-b border-[#e6e8eb]'
+      className='w-full min-h-[10vh] md:min-h-[50vh] flex flex-col items-center justify-center leading-8 scroll-mt-[28] border-b border-border-base'
       id='story'
     >
       <div className='w-full   flex flex-col sm:flex-row items-center text-left'>
@@ -47,7 +47,7 @@ export default function Story() {
             />
           </motion.div>
         </div>
-        <div className='w-70 sm:w-[60%] gap-4 p-12 py-28 sm:py-32  text-gray-700 dark:text-gray-400'>
+        <div className='w-70 sm:w-[60%] gap-4 p-12 py-28 sm:py-32 text-text-subtle'>
           <SectionHeading>My Story</SectionHeading>
           <motion.p
             initial={{ opacity: 0 }}

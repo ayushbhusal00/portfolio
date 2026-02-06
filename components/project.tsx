@@ -53,10 +53,10 @@ export default function Project({
       className={clsx(
         "w-full group cursor-pointer",
         "sticky top-[140px]",
-        "border-t border-black/10 dark:border-white/10",
-        "bg-[#fafafa] dark:bg-gray-900",
+        "border-t border-border-base",
+        "bg-bg-base",
         "overflow-hidden",
-        "transition-all duration-300"
+        "transition-all duration-300 py-[8rem]",
       )}
     >
       <div className='flex flex-col md:flex-row '>
@@ -69,13 +69,13 @@ export default function Project({
             quality={90}
             className={clsx(
               "w-[430px] h-[260px] md:h-[320px] rounded-xl shadow-2xl object-cover object-center transition-transform duration-500 group-hover:scale-[1.04] shadow-elevation-card-rest",
-              isPasswordProtected && !hasAccess && "blur-sm"
+              isPasswordProtected && !hasAccess && "blur-sm",
             )}
           />
           {/* Password Protected Badge */}
           {isPasswordProtected && !hasAccess && (
             <div className='absolute bottom-6 right-6 z-20'>
-              <span className='inline-flex items-center px-2.5 py-1 rounded-full text-xs font-medium bg-white/90 backdrop-blur-sm text-zinc-700 border border-zinc-200 shadow-sm'>
+              <span className='inline-flex items-center px-2.5 py-1 rounded-full text-xs font-medium bg-bg-base backdrop-blur-sm text-text-subtle border border-border-base  shadow-sm'>
                 Password Protected
               </span>
             </div>
@@ -83,24 +83,24 @@ export default function Project({
         </div>
 
         {/* Content */}
-        <div className='flex flex-col text-start justify-center md:w-[45%]  p-6 md:p-6 '>
+        <div className='flex flex-col text-start justify-center md:w-[45%] p-6 md:p-6 '>
           {/* Optional tag */}
-          <span className='mb-3 inline-block w-fit rounded-full bg-black/5 dark:bg-white/10 px-3 py-1 text-xs font-medium text-gray-600 dark:text-white/70'>
+          <span className='mb-3 inline-block w-fit rounded-full bg-bg-base px-3 py-1 text-xs font-medium text-gray-600 dark:text-white/70'>
             Case Study
           </span>
 
-          <h3 className='text-2xl md:text-3xl font-semibold tracking-tight'>
+          <h3 className='text-2xl md:text-3xl text-text-base font-semibold tracking-tight'>
             {title}
           </h3>
 
-          <p className='mt-3 text-sm md:text-base leading-relaxed text-gray-600 dark:text-white/60'>
+          <p className='mt-3 text-sm md:text-base  leading-relaxed text-text-subtle'>
             {description}
           </p>
 
           {/* CTA */}
           <div className='mt-6 flex items-center gap-2 text-sm font-medium'>
-            <span className='text-black dark:text-white'>View project</span>
-            <span className='transition-transform duration-300 group-hover:translate-x-1'>
+            <span className='text-text-base'>View project</span>
+            <span className='transition-transform duration-300 group-hover:translate-x-1 text-text-base'>
               →
             </span>
           </div>

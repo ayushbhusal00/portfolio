@@ -22,7 +22,7 @@ export default function HeroSection({
     <motion.section
       id='playground-hero'
       className={clsx(
-        "w-full border-b border-[#e6e8eb] flex flex-col md:flex-row px-8 md:px-16 gap-10 py-32"
+        "w-full border-b border-border-base flex flex-col md:flex-row px-8 md:px-16 gap-10 py-32",
       )}
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
@@ -46,7 +46,7 @@ export default function HeroSection({
       <div className='mx-auto max-w-6xl'>
         {/* Kicker */}
         <motion.span
-          className='mb-4 inline-block rounded-full border border-zinc-200 bg-zinc-50 px-4 py-1 text-sm font-medium text-zinc-600'
+          className='mb-4 inline-block rounded-full border border-border-base bg-bg-base px-4 py-1 text-sm font-medium text-text-subtle'
           initial={{ y: 8, opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
           transition={{ delay: 0.05 }}
@@ -56,7 +56,7 @@ export default function HeroSection({
 
         {/* Main heading */}
         <motion.h1
-          className='mt-4 max-w-4xl text-4xl font-medium leading-tight tracking-tight text-zinc-900 sm:text-5xl'
+          className='mt-4 max-w-4xl text-4xl font-medium leading-tight tracking-tight text-text-base sm:text-5xl'
           initial={{ y: 12, opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
           transition={{ delay: 0.1 }}
@@ -66,7 +66,7 @@ export default function HeroSection({
 
         {/* Description */}
         <motion.p
-          className='mt-6 max-w-3xl text-lg leading-relaxed text-zinc-600'
+          className='mt-6 max-w-3xl text-lg leading-relaxed text-text-subtle'
           initial={{ y: 12, opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
           transition={{ delay: 0.15 }}
@@ -76,7 +76,7 @@ export default function HeroSection({
 
         {/* Optional meta line */}
         <motion.p
-          className='mt-4 text-sm text-zinc-500'
+          className='mt-4 text-sm text-text-subtle'
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ delay: 0.2 }}

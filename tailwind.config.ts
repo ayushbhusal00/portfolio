@@ -21,8 +21,15 @@ const config: Config = {
           "linear-gradient(to bottom right, #fde68a, #ef4444)",
       },
       colors: {
+        // Custom text color tokens
+        "text-base": "var(--text-base)",
+        "text-subtle": "var(--text-subtle, #fafafa70)",
         background: "hsl(var(--background))",
         foreground: "hsl(var(--foreground))",
+        // Custom base and border tokens
+        "bg-base": "var(--bg-base)",
+        "bg-subtle": "var(--bg-subtle)",
+        "border-base": "var(--border-base)",
         lime: {
           "200": "#d9f99d",
           "500": "#84cc16",
