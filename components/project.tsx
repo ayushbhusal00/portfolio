@@ -52,7 +52,7 @@ export default function Project({
       transition={{ duration: 0.3, ease: "easeOut" }}
       className={clsx(
         "w-full group cursor-pointer",
-        "sticky top-[140px]",
+        "lg:sticky top-[140px]",
         "border-t border-border-base",
         "bg-bg-base",
         "overflow-hidden",
@@ -68,7 +68,7 @@ export default function Project({
             alt={title}
             quality={90}
             className={clsx(
-              "w-[430px] h-[260px] md:h-[320px] rounded-xl shadow-2xl object-cover object-center transition-transform duration-500 group-hover:scale-[1.04] shadow-elevation-card-rest",
+              "md:w-full aspect-video md:h-[320px] rounded-xl shadow-2xl object-cover object-center transition-transform duration-500 group-hover:scale-[1.04] shadow-elevation-card-rest",
               isPasswordProtected && !hasAccess && "blur-sm",
             )}
           />

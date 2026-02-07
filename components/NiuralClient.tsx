@@ -39,6 +39,7 @@ export default function NiuralClient({ project, children }: Props) {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
   const [isCheckingAuth, setIsCheckingAuth] = useState(true);
   const progress = useReadingProgress();
+  console.log("Project data in NiuralClient:", project);
 
   const readingTime = useMemo(() => {
     const words =
@@ -131,9 +132,20 @@ export default function NiuralClient({ project, children }: Props) {
               {project.sections.map((section, index) => {
                 const hasContent =
                   section.heading || section.content || section.bullets;
-                if (!hasContent) return null;
 
                 const sectionImage = project.gallery?.[index];
+                if (!hasContent && !sectionImage) return null;
+                if (!hasContent && sectionImage) {
+                  return (
+                    <div key={index} className='relative w-full'>
+                      <Image
+                        src={sectionImage}
+                        alt={section.heading || project.title}
+                        className='w-full rounded-2xl object-cover'
+                      />
+                    </div>
+                  );
+                }
 
                 return (
                   <section key={index} className='space-y-8'>

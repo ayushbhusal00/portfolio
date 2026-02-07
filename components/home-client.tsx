@@ -59,7 +59,7 @@ export default function HomeClient() {
       >
         <Link href={"/playground"} className='group w-full'>
           <p className='text-text-base font-mono text-left w-full flex items-center text-sm font-medium shadow-sm gap-2 uppercase'>
-            Announcing my new game, browse playground
+            New items I am working on, browse playground
             {arrow()}
           </p>
         </Link>

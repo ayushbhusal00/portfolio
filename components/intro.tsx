@@ -97,7 +97,7 @@ export default function intro() {
           </motion.p>
         </motion.div>
         <motion.div
-          className='flex w-full md:max-w-[38.75rem] sm:flex-row sm:w-full gap-4 items-start justify-start py-4 text-sm font-medium relative z-10 pointer-events-auto'
+          className='flex w-full md:max-w-[38.75rem] sm:flex-row sm:w-full gap-4 items-center justify-center py-4 text-sm font-medium relative z-10 pointer-events-auto'
           initial={{ opacity: 0, y: 100 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{
@@ -105,21 +105,21 @@ export default function intro() {
           }}
         >
           <Link
-            className='w-full md:w-[50%] justify-center group text-center bg-gradient-to-tr dark:from-purple-500 dark:to-violet-500 dark:bg-gradient-to-tr from-orange-500 to-amber-500 text-text-base dark:text-text:base px-3 py-4 rounded-[6px] outline-none focus:scale-110 hover:bg-bg-base active:scale-105 transition shadow-[0_1px_2px_0_rgba(0,0,0,0.12),0_0_0_1px_rgba(0,0,0,0.08)]'
+            className='w-full md:w-[50%] justify-center group text-center bg-gradient-to-tr dark:from-purple-500 dark:to-violet-500 dark:bg-gradient-to-tr from-orange-500 to-amber-500 text-white dark:text-text-base dark:text-text:base px-3 py-4 rounded-[6px] outline-none focus:scale-110 hover:bg-bg-base active:scale-105 transition shadow-[0_1px_2px_0_rgba(0,0,0,0.12),0_0_0_1px_rgba(0,0,0,0.08)]'
             href='/#contact'
           >
             Say Hello{" "}
           </Link>
 
           <Link
-            className=' sm:flex p-4 items-center gap-2 cursor-pointer borderBlack outline-none focus:scale-[1.15] hover:bg-bg-base active:scale-105 transition rounded-[6px] pointer-events-auto relative z-20 bg-bg-base shadow-[0_1px_2px_0_rgba(0,0,0,0.12),0_0_0_1px_rgba(0,0,0,0.08)] text-text-subtle'
+            className='sm:flex p-4 items-center gap-2 cursor-pointer borderBlack outline-none focus:scale-[1.15] hover:bg-bg-base active:scale-105 transition rounded-[6px] pointer-events-auto relative z-20 bg-bg-base shadow-[0_1px_2px_0_rgba(0,0,0,0.12),0_0_0_1px_rgba(0,0,0,0.08)] text-text-subtle'
             href='https://www.linkedin.com/in/ayush-bhusal-331143119/'
             target='blank'
           >
             <BsLinkedin />
           </Link>
           <Link
-            className=' p-4 sm:flex items-center gap-2 cursor-pointer borderBlack outline-none focus:scale-[1.15] hover:bg-bg-base active:scale-105 transition rounded-[6px] pointer-events-auto relative z-20 bg-bg-base shadow-[0_1px_2px_0_rgba(0,0,0,0.12),0_0_0_1px_rgba(0,0,0,0,0.08)] text-text-subtle'
+            className='sm:flex p-4 items-center gap-2 cursor-pointer borderBlack outline-none focus:scale-[1.15] hover:bg-bg-base active:scale-105 transition rounded-[6px] pointer-events-auto relative z-20 bg-bg-base shadow-[0_1px_2px_0_rgba(0,0,0,0.12),0_0_0_1px_rgba(0,0,0,0.08)] text-text-subtle'
             href='https://github.com/ayushbhusal00'
             target='blank'
           >

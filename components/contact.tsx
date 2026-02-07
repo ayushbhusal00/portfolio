@@ -8,7 +8,7 @@ import { sendEmail } from "@/actions/sendEmail";
 import SubmitBtn from "./submit-btn";
 import toast from "react-hot-toast";
 
-import PaperPlane from "@/public/sendMail.png";
+import PaperPlane from "@/public/plane.png";
 import Image from "next/image";
 export default function Contact() {
   return (
@@ -19,8 +19,8 @@ export default function Contact() {
       transition={{ duration: 1 }}
       viewport={{ once: true }}
     >
-      <div className='text-center overflow-clip w-full items-center align-middle bg-[repeating-linear-gradient(135deg,var(--border-base)_0,var(--border-base)_1px,transparent_1px,transparent_6px)] bg-bg-base '>
-        <div className='flex gap-5 lg:gap-20 items-center text-center bg-bg-base p-5 md:mx-16  border-x border-t border-border-base '>
+      <div className='text-center overflow-clip w-full max-w-7xl items-center align-middle bg-[repeating-linear-gradient(135deg,var(--border-base)_0,var(--border-base)_1px,transparent_1px,transparent_6px)] bg-bg-base '>
+        <div className='flex gap-5 lg:gap-20  items-center text-center bg-bg-base p-5 md:mx-16  border-x border-t border-border-base '>
           <div className='w-[50%] h-[50%] md:block hidden'>
             <Image src={PaperPlane} alt='Mail Image' />
           </div>
@@ -37,7 +37,7 @@ export default function Contact() {
               </p>
             </div>
             <form
-              className='mt-10 flex flex-col dark:text-black'
+              className='mt-10 flex flex-col '
               action={async (formData) => {
                 const { error } = await sendEmail(formData);
 
@@ -95,7 +95,7 @@ export default function Contact() {
       </div>
 
       <div className='bg-bg-base'>
-        <p className='text-center text-zinc-500 text-sm py-4 px-16 border-t border-border-base'>
+        <p className='text-center text-text-subtle text-sm py-4 px-16 border-t border-border-base'>
           {" "}
           This is a custom-made website created using tools like NextJs, React,
           Tailwind, Typescript, ReSend by{" "}
