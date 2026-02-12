@@ -10,21 +10,19 @@ type Props = {
 
 export default function PageTransition({ children }: Props) {
   const pathname = usePathname();
-  const [isTransitioning, setIsTransitioning] = useState(false);
   const [displayedPath, setDisplayedPath] = useState(pathname);
 
-  useEffect(() => {
-    if (!pathname) return;
+  const isTransitioning = pathname !== displayedPath;
 
-    setIsTransitioning(true);
+  useEffect(() => {
+    if (!pathname || pathname === displayedPath) return;
 
     const timeout = setTimeout(() => {
       setDisplayedPath(pathname);
-      setIsTransitioning(false);
     }, 350);
 
     return () => clearTimeout(timeout);
-  }, [pathname]);
+  }, [pathname, displayedPath]);
 
   return (
     <>
@@ -44,14 +42,14 @@ export default function PageTransition({ children }: Props) {
       <AnimatePresence>
         {isTransitioning && (
           <motion.div
-            className='fixed inset-0 z-40 flex items-center justify-center bg-white/60 dark:bg-gray-950/60 backdrop-blur-sm pointer-events-none'
+            className='fixed inset-0 z-40 flex items-center justify-center bg-bg-base/60 backdrop-blur-sm pointer-events-none'
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             transition={{ duration: 0.25 }}
           >
-            <div className='flex flex-col items-center gap-3 text-gray-700 dark:text-gray-200'>
-              <span className='h-8 w-8 rounded-full border-2 border-gray-300 border-t-gray-700 dark:border-gray-700 dark:border-t-white animate-spin' />
+            <div className='flex flex-col items-center gap-3 text-text-subtle'>
+              <span className='h-8 w-8 rounded-full border-1 border-border-base border-t-border-subtle animate-spin' />
               <p className='text-sm font-medium tracking-tight'>
                 Navigating to the next page…
               </p>

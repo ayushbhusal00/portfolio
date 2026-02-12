@@ -9,9 +9,9 @@ type Params = {
 export default async function PlaygroundPage({
   params,
 }: {
-  params: Params;
+  params: Promise<Params>;
 }) {
-  const { id } = params;
+  const { id } = await params;
 
   const payload = await getPayload({ config: configPromise });
 
