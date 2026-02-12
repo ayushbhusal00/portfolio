@@ -222,6 +222,27 @@ export interface Media {
 export interface Playground {
   id: string;
   title: string;
+  /**
+   * URL-safe identifier, e.g. `gun-fight` (used in /playground/[slug]).
+   */
+  slug: string;
+  /**
+   * Upload a thumbnail image for the playground item.
+   */
+  thumbnail?: (string | null) | Media;
+  tagline?: string | null;
+  overview?: string | null;
+  date?: string | null;
+  category?: ('Game' | 'Motion' | '3d Animation') | null;
+  /**
+   * Optional custom URL. Defaults to `/playground/[slug]` if left empty.
+   */
+  url?: string | null;
+  color?: string | null;
+  role?: string | null;
+  duration?: string | null;
+  readTime?: number | null;
+  isPasswordProtected?: boolean | null;
   content: {
     root: {
       type: string;
@@ -270,10 +291,28 @@ export interface Playground {
           }
       )[]
     | null;
-  /**
-   * Upload a thumbnail image for the playground item.
-   */
-  thumbnail: string | Media;
+  gallery?:
+    | {
+        image: string | Media;
+        id?: string | null;
+      }[]
+    | null;
+  videoUrl?: string | null;
+  websiteLink?: string | null;
+  sections?:
+    | {
+        heading?: string | null;
+        content?: string | null;
+        videoUrl?: string | null;
+        bullets?:
+          | {
+              item?: string | null;
+              id?: string | null;
+            }[]
+          | null;
+        id?: string | null;
+      }[]
+    | null;
   updatedAt: string;
   createdAt: string;
 }
@@ -471,6 +510,18 @@ export interface MediaSelect<T extends boolean = true> {
  */
 export interface PlaygroundSelect<T extends boolean = true> {
   title?: T;
+  slug?: T;
+  thumbnail?: T;
+  tagline?: T;
+  overview?: T;
+  date?: T;
+  category?: T;
+  url?: T;
+  color?: T;
+  role?: T;
+  duration?: T;
+  readTime?: T;
+  isPasswordProtected?: T;
   content?: T;
   layout?:
     | T
@@ -493,7 +544,28 @@ export interface PlaygroundSelect<T extends boolean = true> {
               blockName?: T;
             };
       };
-  thumbnail?: T;
+  gallery?:
+    | T
+    | {
+        image?: T;
+        id?: T;
+      };
+  videoUrl?: T;
+  websiteLink?: T;
+  sections?:
+    | T
+    | {
+        heading?: T;
+        content?: T;
+        videoUrl?: T;
+        bullets?:
+          | T
+          | {
+              item?: T;
+              id?: T;
+            };
+        id?: T;
+      };
   updatedAt?: T;
   createdAt?: T;
 }

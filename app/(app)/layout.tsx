@@ -1,7 +1,7 @@
 // import type { Metadata } from "next";
 import localFont from "next/font/local";
 import "./globals.css";
-
+import { SpeedInsights } from "@vercel/speed-insights/next";
 import ClientProviders from "@/components/ClientProviders";
 // import MicrosoftClarity from "@/components/MicrosoftClarity";
 
@@ -49,6 +49,7 @@ export default function RootLayout({
         {/* <MicrosoftClarity /> */}
 
         {/* App Providers */}
+        <SpeedInsights />
         <ClientProviders>{children}</ClientProviders>
 
         {/* Vercel Analytics */}

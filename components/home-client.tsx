@@ -59,7 +59,7 @@ export default function HomeClient() {
       >
         <Link href={"/playground"} className='group w-full'>
           <p className='text-text-base font-mono text-left w-full flex items-center text-sm font-medium shadow-sm gap-2 uppercase'>
-            New items I am working on, browse playground
+            Projects and experiments, browse playground
             {arrow()}
           </p>
         </Link>
@@ -67,7 +67,7 @@ export default function HomeClient() {
 
       <Header />
 
-      <div className='bg-bg-base w-full max-w-7xl'>
+      <div className='bg-bg-base w-full'>
         <div className='md:mx-16 border-x border-border-base'>
           <Intro />
 

@@ -7,7 +7,6 @@ import ReactPlayer from "react-player";
 
 import PasswordProtection from "@/components/password-protection";
 import { verifyToken, getToken } from "@/lib/jwt";
-import { playgroundProjects } from "@/lib/data";
 
 /* -------------------------------------------------------------------------- */
 /*                                   Types                                    */
@@ -21,7 +20,6 @@ type Section = {
 };
 
 type Project = {
-  id: number;
   slug: string;
   title: string;
   tagline?: string;
@@ -33,16 +31,31 @@ type Project = {
   readTime?: number;
   videoUrl?: string;
   websiteLink?: string;
-  thumbnail: any;
+  thumbnail?: any;
   isPasswordProtected?: boolean;
   url: string;
+};
+
+type RelatedProject = {
+  slug: string;
+  title: string;
+  tagline?: string | null;
+  overview: string;
+  url: string;
+  thumbnail?: any;
 };
 
 /* -------------------------------------------------------------------------- */
 /*                                Client Page                                 */
 /* -------------------------------------------------------------------------- */
 
-export default function PlaygroundClient({ project }: { project: Project }) {
+export default function PlaygroundClient({
+  project,
+  relatedProjects,
+}: {
+  project: Project;
+  relatedProjects: RelatedProject[];
+}) {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
   const [isCheckingAuth, setIsCheckingAuth] = useState(true);
 
@@ -76,11 +89,6 @@ export default function PlaygroundClient({ project }: { project: Project }) {
       title: s.heading!,
       id: s.heading!.toLowerCase().replace(/\s+/g, "-"),
     }));
-
-  /* ---------------- Related ---------------- */
-  const relatedProjects = playgroundProjects
-    .filter((p) => p.id !== project.id)
-    .slice(0, 3);
 
   /* ---------------- Password Gate ---------------- */
   if (project.isPasswordProtected && !isAuthenticated) {
@@ -156,6 +164,8 @@ export default function PlaygroundClient({ project }: { project: Project }) {
               src={project.heroImage}
               alt={project.title}
               priority
+              width={1600}
+              height={900}
               className='w-full rounded-2xl object-cover'
             />
           </div>
@@ -196,6 +206,8 @@ export default function PlaygroundClient({ project }: { project: Project }) {
                       <Image
                         src={sectionImage}
                         alt={sec.heading || project.title}
+                        width={1600}
+                        height={900}
                         className='w-full rounded-2xl object-cover'
                       />
                     </div>
@@ -232,9 +244,9 @@ export default function PlaygroundClient({ project }: { project: Project }) {
               </div>
 
               <div className='grid gap-14 md:grid-cols-3'>
-                {relatedProjects.map((item) => (
+                {relatedProjects.map((item, idx) => (
                   <Link
-                    key={item.id}
+                    key={item.url || idx}
                     href={item.url}
                     className='group flex flex-col gap-5'
                   >
@@ -242,6 +254,8 @@ export default function PlaygroundClient({ project }: { project: Project }) {
                       <Image
                         src={item.thumbnail}
                         alt={item.title}
+                        width={800}
+                        height={600}
                         className='w-full object-cover transition-transform duration-500 group-hover:scale-105'
                       />
                     </div>

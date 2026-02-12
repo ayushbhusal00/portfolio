@@ -2,6 +2,7 @@
 import ThemeContextProvider from "@/context/theme-context";
 import ActiveSectionContextProvider from "@/context/active-section";
 import { Toaster } from "react-hot-toast";
+import PageTransition from "./PageTransition";
 
 export default function ClientProviders({
   children,
@@ -11,7 +12,7 @@ export default function ClientProviders({
   return (
     <ThemeContextProvider>
       <ActiveSectionContextProvider>
-        {children}
+        <PageTransition>{children}</PageTransition>
         <Toaster position='top-right' />
       </ActiveSectionContextProvider>
     </ThemeContextProvider>

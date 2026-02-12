@@ -231,14 +231,14 @@ export default function NiuralProjectPage() {
               <CarouselContent>
                 {systemScreens.map(({ img, caption }, i) => (
                   <CarouselItem key={i}>
-                    <div className='relative aspect-[16/9] overflow-hidden rounded-2xl border border-[#e6e8eb] bg-white'>
+                    <div className='relative aspect-[16/9] overflow-hidden rounded-2xl border border-border-base bg-bg-base'>
                       <Image
                         src={img}
                         alt={caption}
                         fill
                         className='object-cover'
                       />
-                      <p className='absolute bottom-3 left-3 rounded bg-white/90 px-2 py-1 text-xs font-mono text-text-subtle'>
+                      <p className='absolute bottom-3 left-3 rounded bg-bg-base px-2 py-1 text-xs font-mono text-text-subtle'>
                         {caption}
                       </p>
                     </div>
@@ -262,7 +262,7 @@ export default function NiuralProjectPage() {
 
             <div className='space-y-8'>
               <div>
-                <p className='text-xs font-mono uppercase text-neutral-500'>
+                <p className='text-xs font-mono uppercase text-text-subtle'>
                   Why a unified design system
                 </p>
                 <p className='mt-2 text-text-subtle'>
@@ -273,7 +273,7 @@ export default function NiuralProjectPage() {
               </div>
 
               <div>
-                <p className='text-xs font-mono uppercase text-neutral-500'>
+                <p className='text-xs font-mono uppercase text-text-subtle'>
                   Tradeoff: flexibility vs consistency
                 </p>
                 <p className='mt-2 text-text-subtle'>
@@ -297,10 +297,10 @@ export default function NiuralProjectPage() {
             {productScreens.map(({ img, caption }, i) => (
               <div
                 key={i}
-                className='relative aspect-[16/9] overflow-hidden rounded-2xl border border-[#e6e8eb] bg-white'
+                className='relative aspect-[16/9] overflow-hidden rounded-2xl border border-border-base bg-bg-base'
               >
                 <Image src={img} alt={caption} fill className='object-cover' />
-                <p className='absolute bottom-3 left-3 rounded bg-white/90 px-2 py-1 text-xs font-mono text-neutral-600'>
+                <p className='absolute bottom-3 left-3 rounded bg-bg-base px-2 py-1 text-xs font-mono text-text-subtle'>
                   {caption}
                 </p>
               </div>

@@ -19,7 +19,7 @@ export default function Contact() {
       transition={{ duration: 1 }}
       viewport={{ once: true }}
     >
-      <div className='text-center overflow-clip w-full max-w-7xl items-center align-middle bg-[repeating-linear-gradient(135deg,var(--border-base)_0,var(--border-base)_1px,transparent_1px,transparent_6px)] bg-bg-base '>
+      <div className='text-center overflow-clip w-full items-center align-middle bg-[repeating-linear-gradient(135deg,var(--border-base)_0,var(--border-base)_1px,transparent_1px,transparent_6px)] bg-bg-base '>
         <div className='flex gap-5 lg:gap-20  items-center text-center bg-bg-base p-5 md:mx-16  border-x border-t border-border-base '>
           <div className='w-[50%] h-[50%] md:block hidden'>
             <Image src={PaperPlane} alt='Mail Image' />
