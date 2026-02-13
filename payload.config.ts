@@ -5,24 +5,23 @@ import { buildConfig } from "payload";
 import { Pages } from "./app/(payload)/collections/Pages";
 import { Media } from "./app/(payload)/collections/Media";
 import { Playground } from "./app/(payload)/collections/Playground";
+import { vercelBlobStorage } from "@payloadcms/storage-vercel-blob";
 
 export default buildConfig({
-  // If you'd like to use Rich Text, pass your editor here
   editor: lexicalEditor(),
-
-  // Define and configure your collections in this array
   collections: [Pages, Media, Playground],
-
-  // Your Payload secret - should be a complex and secure string, unguessable
+  plugins: [
+    vercelBlobStorage({
+      enabled: true,
+      collections: {
+        media: true,
+      },
+      token: process.env.BLOB_READ_WRITE_TOKEN,
+    }),
+  ],
   secret: process.env.PAYLOAD_SECRET || "",
-  // Whichever Database Adapter you're using should go here
-  // Mongoose is shown as an example, but you can also use Postgres
   db: mongooseAdapter({
     url: process.env.DATABASE_URI || "",
   }),
-  // If you want to resize images, crop, set focal point, etc.
-  // make sure to install it and pass it to the config.
-  // This is optional - if you don't need to do these things,
-  // you don't need it!
   sharp,
 });

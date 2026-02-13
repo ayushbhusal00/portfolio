@@ -12,6 +12,10 @@ const nextConfig = {
         protocol: 'https',
         hostname: 'framerusercontent.com',
       },
+      {
+      protocol: "https",
+      hostname: "ayushbhusal.com.np",
+    },
     ],
   },
 
