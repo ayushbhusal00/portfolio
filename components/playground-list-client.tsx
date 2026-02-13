@@ -46,7 +46,7 @@ export default function PlaygroundListClient({ items }: Props) {
 
   return (
     <main className='flex flex-col items-center relative bg-bg-base'>
-      <section className='mx-auto max-w-7xl border-x border-border-base '>
+      <section className='md:mx-16 border-x border-border-base '>
         <HeroSection
           image={PlaygroundImage}
           tag='Playground'
@@ -105,4 +105,3 @@ export default function PlaygroundListClient({ items }: Props) {
     </main>
   );
 }
-

@@ -21,7 +21,7 @@ export default function ProjectsPage() {
 
   return (
     <main className='bg-bg-base'>
-      <section className='mx-auto max-w-7xl border-x border-border-base'>
+      <section className='md:mx-16 border-x border-border-base'>
         <HeroSection
           image={ProjectsInProd}
           tag={"Projects"}
