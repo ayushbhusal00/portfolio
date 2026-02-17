@@ -13,6 +13,11 @@ html.dark{
 
 }
 
+h1.h2,h3,h4.h5.h6{
+    @apply text-foreground;
+    font-family: 'Instrument Serif', serif;
+}
+
 .borderBlack {
     @apply border border-white;
 }

@@ -51,7 +51,7 @@ export default function PlaygroundListClient({ items }: Props) {
           image={PlaygroundImage}
           tag='Playground'
           title='Exploring ideas beyond production work'
-          subtitle='A space to experiment with concepts, motion, and emerging tech. Unlike my projects, this is where I learn, iterate, and push ideas forward without constraints.'
+          subtitle='I loose sleep to design sprints and my silly little sidequests. Design is my passion and I make time to code cool little tools or experiments.'
           category='Concepts · Motion · UI Systems · Frontend Experiments · Learning'
         />
 

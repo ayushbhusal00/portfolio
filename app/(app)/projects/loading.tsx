@@ -1,10 +1,37 @@
-export default function Loading() {
+import WorkItemSkeleton from "@/components/work-item-skeleton";
+import HeroSection from "@/components/hero-section";
+import ProjectsInProd from "@/public/projects-in-prod.png";
+
+export default function ProjectsLoading() {
   return (
-    <section className='min-h-[60vh] w-full flex items-center justify-center'>
-      <div className='flex flex-col items-center gap-3 text-gray-600 dark:text-gray-300'>
-        <span className='h-8 w-8 rounded-full border-2 border-gray-300 border-t-gray-600 dark:border-gray-700 dark:border-t-white animate-spin' />
-        <p className='text-sm'>Loading projects…</p>
-      </div>
-    </section>
+    <main className='bg-bg-base'>
+      <section className='md:mx-16 border-x border-border-base'>
+        <HeroSection
+          image={ProjectsInProd}
+          tag='Projects'
+          title='Featured and Selected works'
+          subtitle='Selected work from my journey designing and building thoughtful, scalable, and user-driven digital experiences.'
+          category='UX · UI Systems · Motion · Frontend · Brand Identity'
+        />
+        <header className='px-16 py-8 w-full flex justify-between'>
+          <div className='h-8 w-28 rounded bg-bg-subtle animate-pulse' />
+          <div className='flex gap-2'>
+            {[1, 2, 3, 4].map((i) => (
+              <div
+                key={i}
+                className='h-8 w-20 rounded-full bg-bg-subtle animate-pulse'
+              />
+            ))}
+          </div>
+        </header>
+        <div className='w-full divide-y divide-border-base'>
+          <div className='grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 border-y border-border-base'>
+            {Array.from({ length: 6 }).map((_, i) => (
+              <WorkItemSkeleton key={i} />
+            ))}
+          </div>
+        </div>
+      </section>
+    </main>
   );
 }

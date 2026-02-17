@@ -23,7 +23,7 @@ export default function WorkItem({
   isPasswordProtected,
   href,
 }: Props) {
-  const [hasAccess, setHasAccess] = useState(true);
+  const [hasAccess, setHasAccess] = useState(() => !isPasswordProtected);
 
   useEffect(() => {
     const checkAccess = async () => {
@@ -63,6 +63,10 @@ export default function WorkItem({
           src={imageUrl}
           alt={title}
           fill
+          loading='lazy'
+          quality={80}
+          sizes='(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw'
+          unoptimized={imageUrl?.includes?.("/api/media/") ?? false}
           className={`
             object-cover
             transition-all duration-300
@@ -73,7 +77,7 @@ export default function WorkItem({
         />
         {/* Password Protected Badge */}
         {isPasswordProtected && !hasAccess && (
-          <div className='absolute bottom-2 right-2 z-10'>
+          <div className='absolute top-2 left-2 z-10'>
             <span className='inline-flex items-center px-2.5 py-1 rounded-full text-xs font-medium bg-bg-base/90 backdrop-blur-sm text-zinc-700 border border-border-base shadow-sm'>
               Password Protected
             </span>

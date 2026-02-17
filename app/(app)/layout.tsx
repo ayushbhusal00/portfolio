@@ -1,23 +1,39 @@
-// import type { Metadata } from "next";
 import localFont from "next/font/local";
 import "./globals.css";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import ClientProviders from "@/components/ClientProviders";
-// import MicrosoftClarity from "@/components/MicrosoftClarity";
-
 import { Analytics } from "@vercel/analytics/react";
 import Script from "next/script";
 
-const manropeGX = localFont({
-  src: "./fonts/ManropeGX.woff2",
-  variable: "--font-manrope",
-  weight: "200 500 700 900",
+/* JetBrains Mono Variable */
+const jetbrainsMono = localFont({
+  src: "./fonts/JetBrainsMono-VariableFont_wght.ttf",
+  variable: "--font-jetbrains",
+  weight: "100 800",
+});
+/* Libre Baskerville Variable */
+const libreBaskerville = localFont({
+  src: "./fonts/LibreBaskerville-Italic-VariableFont_wght.ttf",
+  variable: "--font-libre-baskerville",
+  weight: "200 900",
 });
 
-// export const metadata: Metadata = {
-//   title: "Ayush | Personal Portfolio",
-//   description: "Ayush is a Web Designer with over 5 years of experience.",
-// };
+/* Instrument Serif */
+const instrumentSerif = localFont({
+  src: [
+    {
+      path: "./fonts/InstrumentSerif-Regular.ttf",
+      weight: "400",
+      style: "normal",
+    },
+    {
+      path: "./fonts/InstrumentSerif-Italic.ttf",
+      weight: "400",
+      style: "italic",
+    },
+  ],
+  variable: "--font-instrument",
+});
 
 export default function RootLayout({
   children,
@@ -25,34 +41,29 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang='en' className='scroll-smooth'>
+    <html
+      lang='en'
+      className={`scroll-smooth ${libreBaskerville.variable} ${instrumentSerif.variable}`}
+    >
       <head>
         <link rel='icon' type='image/x-icon' href='/emoji.svg' />
+
         <Script
           type='text/javascript'
           id='microsoft-clarity'
           strategy='afterInteractive'
         >
           {`(function(c,l,a,r,i,t,y){
-        c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
-        t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
-        y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
-    })(window, document, "clarity", "script", "v0mbtxb1ye");`}
+            c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+            t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+            y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+          })(window, document, "clarity", "script", "v0mbtxb1ye");`}
         </Script>
       </head>
 
-      <body
-        className={`${manropeGX.variable} antialiased bg-white dark:bg-gray-900 text-gray-950 dark:text-gray-50 dark:text-opacity-90 relative`}
-        style={{ fontFamily: "var(--font-manrope), sans-serif" }}
-      >
-        {/* Microsoft Clarity (Client Only) */}
-        {/* <MicrosoftClarity /> */}
-
-        {/* App Providers */}
+      <body className='antialiased bg-white dark:bg-gray-900 text-gray-950 dark:text-gray-50 dark:text-opacity-90 relative'>
         <SpeedInsights />
         <ClientProviders>{children}</ClientProviders>
-
-        {/* Vercel Analytics */}
         <Analytics />
       </body>
     </html>

@@ -70,6 +70,7 @@ export interface Config {
     pages: Page;
     media: Media;
     playground: Playground;
+    project: Project;
     'payload-kv': PayloadKv;
     users: User;
     'payload-locked-documents': PayloadLockedDocument;
@@ -81,6 +82,7 @@ export interface Config {
     pages: PagesSelect<false> | PagesSelect<true>;
     media: MediaSelect<false> | MediaSelect<true>;
     playground: PlaygroundSelect<false> | PlaygroundSelect<true>;
+    project: ProjectSelect<false> | ProjectSelect<true>;
     'payload-kv': PayloadKvSelect<false> | PayloadKvSelect<true>;
     users: UsersSelect<false> | UsersSelect<true>;
     'payload-locked-documents': PayloadLockedDocumentsSelect<false> | PayloadLockedDocumentsSelect<true>;
@@ -316,6 +318,58 @@ export interface Playground {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "project".
+ */
+export interface Project {
+  id: string;
+  title: string;
+  /**
+   * Used in the URL (auto-generated from title if empty)
+   */
+  slug: string;
+  tagline?: string | null;
+  overview?: string | null;
+  date?: string | null;
+  readTime?: string | null;
+  category?: ('Case study' | 'Product' | 'Ecosystem' | 'User story') | null;
+  url?: string | null;
+  color?: string | null;
+  /**
+   * Upload a thumbnail image for the project.
+   */
+  thumbnail?: (string | null) | Media;
+  /**
+   * Upload a hero image for the project.
+   */
+  heroImage?: (string | null) | Media;
+  gallery?:
+    | {
+        image: string | Media;
+        id?: string | null;
+      }[]
+    | null;
+  role?: string | null;
+  duration?: string | null;
+  videoUrl?: string | null;
+  isPasswordProtected?: boolean | null;
+  sections?:
+    | {
+        heading?: string | null;
+        content?: string | null;
+        bullets?:
+          | {
+              item?: string | null;
+              id?: string | null;
+            }[]
+          | null;
+        id?: string | null;
+      }[]
+    | null;
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "payload-kv".
  */
 export interface PayloadKv {
@@ -374,6 +428,10 @@ export interface PayloadLockedDocument {
     | ({
         relationTo: 'playground';
         value: string | Playground;
+      } | null)
+    | ({
+        relationTo: 'project';
+        value: string | Project;
       } | null)
     | ({
         relationTo: 'users';
@@ -557,6 +615,48 @@ export interface PlaygroundSelect<T extends boolean = true> {
         heading?: T;
         content?: T;
         videoUrl?: T;
+        bullets?:
+          | T
+          | {
+              item?: T;
+              id?: T;
+            };
+        id?: T;
+      };
+  updatedAt?: T;
+  createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "project_select".
+ */
+export interface ProjectSelect<T extends boolean = true> {
+  title?: T;
+  slug?: T;
+  tagline?: T;
+  overview?: T;
+  date?: T;
+  readTime?: T;
+  category?: T;
+  url?: T;
+  color?: T;
+  thumbnail?: T;
+  heroImage?: T;
+  gallery?:
+    | T
+    | {
+        image?: T;
+        id?: T;
+      };
+  role?: T;
+  duration?: T;
+  videoUrl?: T;
+  isPasswordProtected?: T;
+  sections?:
+    | T
+    | {
+        heading?: T;
+        content?: T;
         bullets?:
           | T
           | {

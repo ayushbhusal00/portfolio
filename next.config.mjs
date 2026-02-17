@@ -3,6 +3,8 @@ import { withPayload } from '@payloadcms/next/withPayload';
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   images: {
+    formats: ['image/avif', 'image/webp'],
+    qualities: [75, 80, 90, 95],
     remotePatterns: [
       {
         protocol: 'https',
@@ -13,9 +15,9 @@ const nextConfig = {
         hostname: 'framerusercontent.com',
       },
       {
-      protocol: "https",
-      hostname: "ayushbhusal.com.np",
-    },
+        protocol: 'https',
+        hostname: 'ayushbhusal.com.np',
+      },
     ],
   },
 

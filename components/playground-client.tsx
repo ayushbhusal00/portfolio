@@ -159,14 +159,18 @@ export default function PlaygroundClient({
           </header>
 
           {/* Hero */}
-          <div className='relative mt-16'>
+          <div className='relative mt-16 aspect-video w-full overflow-hidden rounded-2xl'>
             <Image
               src={project.heroImage}
               alt={project.title}
               priority
-              width={1600}
-              height={900}
-              className='w-full rounded-2xl object-cover'
+              fill
+              sizes='(max-width: 768px) 100vw, 768px'
+              unoptimized={
+                typeof project.heroImage === "string" &&
+                project.heroImage.includes("/api/media/")
+              }
+              className='object-cover'
             />
           </div>
 
@@ -202,13 +206,17 @@ export default function PlaygroundClient({
 
                   {/* Section image */}
                   {sectionImage && (
-                    <div className='relative'>
+                    <div className='relative aspect-video w-full overflow-hidden rounded-2xl'>
                       <Image
                         src={sectionImage}
                         alt={sec.heading || project.title}
-                        width={1600}
-                        height={900}
-                        className='w-full rounded-2xl object-cover'
+                        fill
+                        sizes='(max-width: 768px) 100vw, 768px'
+                        unoptimized={
+                          typeof sectionImage === "string" &&
+                          sectionImage.includes("/api/media/")
+                        }
+                        className='object-cover'
                       />
                     </div>
                   )}
@@ -230,19 +238,23 @@ export default function PlaygroundClient({
           )}
         </article>
         {/* ================= RELATED ================= */}
-        {relatedProjects.length > 0 && (
-          <section className='border-t border-border-base'>
-            <div className='mx-auto max-w-3xl px-6 py-24 '>
-              <div className='mb-12'>
-                <h2 className='text-2xl font-semibold tracking-tight text-text-base'>
-                  Related playgrounds
-                </h2>
-                <p className='mt-3 text-text-subtle leading-relaxed'>
-                  More experiments and explorations in interaction, motion, and
-                  systems thinking.
-                </p>
-              </div>
+        <section className='border-t border-border-base'>
+          <div className='mx-auto max-w-3xl px-6 py-24 '>
+            <div className='mb-12'>
+              <h2 className='text-2xl font-semibold tracking-tight text-text-base'>
+                Related playgrounds
+              </h2>
+              <p className='mt-3 text-text-subtle leading-relaxed'>
+                More experiments and explorations in interaction, motion, and
+                systems thinking.
+              </p>
+            </div>
 
+            {relatedProjects.length === 0 ? (
+              <div className='py-12 text-text-subtle'>
+                No playgrounds found.
+              </div>
+            ) : (
               <div className='grid gap-14 md:grid-cols-3'>
                 {relatedProjects.map((item, idx) => (
                   <Link
@@ -250,13 +262,17 @@ export default function PlaygroundClient({
                     href={item.url}
                     className='group flex flex-col gap-5'
                   >
-                    <div className='overflow-hidden rounded-2xl'>
+                    <div className='relative aspect-[4/3] overflow-hidden rounded-2xl'>
                       <Image
                         src={item.thumbnail}
                         alt={item.title}
-                        width={800}
-                        height={600}
-                        className='w-full object-cover transition-transform duration-500 group-hover:scale-105'
+                        fill
+                        sizes='(max-width: 768px) 100vw, 33vw'
+                        unoptimized={
+                          typeof item.thumbnail === "string" &&
+                          item.thumbnail.includes("/api/media/")
+                        }
+                        className='object-cover transition-transform duration-500 group-hover:scale-105'
                       />
                     </div>
 
@@ -271,9 +287,9 @@ export default function PlaygroundClient({
                   </Link>
                 ))}
               </div>
-            </div>
-          </section>
-        )}
+            )}
+          </div>
+        </section>
       </div>
     </section>
   );

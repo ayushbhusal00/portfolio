@@ -1,7 +1,10 @@
 "use client";
 
 import Image from "next/image";
+import React, { useEffect, useState } from "react";
 import { motion } from "framer-motion";
+import Link from "next/link";
+import ReactPlayer from "react-player";
 
 import {
   Carousel,
@@ -11,15 +14,19 @@ import {
   CarouselPrevious,
 } from "@/components/ui/carousel";
 
-import ReactPlayer from "react-player";
-// Images
+import PasswordProtection from "@/components/password-protection";
+import { caseStudies } from "@/lib/data";
+import { getToken, verifyToken } from "@/lib/jwt";
+
+/* ----------------------------------------
+   Images
+---------------------------------------- */
+
 import DesignSystem from "@/public/design-system.png";
 import DesignSystemModule from "@/public/Design-System-Module.png";
 import DesignPattern from "@/public/patterns.png";
 import DesignComponent from "@/public/components.png";
-// import ImageGif from "@/public/ImageGif.gif";
 
-// Niural designs
 import BankAccount from "@/public/BankAccount.png";
 import Benefits from "@/public/Benefits.png";
 import Timesheets from "@/public/EmployeeDashboard.png";
@@ -28,26 +35,7 @@ import LogIn from "@/public/LogIn.png";
 import Payroll from "@/public/Payroll.png";
 
 /* ----------------------------------------
-   Helpers
----------------------------------------- */
-
-function ScrollProgress() {
-  return (
-    <motion.div
-      className='fixed left-0 top-0 z-50 h-[2px] w-full origin-left bg-bg-base'
-      initial={{ scaleX: 0 }}
-      animate={{ scaleX: 1 }}
-      transition={{ ease: "linear", duration: 0.6 }}
-    />
-  );
-}
-
-/* ----------------------------------------
    Data
----------------------------------------- */
-
-/* ----------------------------------------
-   Caption Maps
 ---------------------------------------- */
 
 const systemScreens = [
@@ -112,80 +100,194 @@ const heroVideoUrls = [
 ];
 
 /* ----------------------------------------
-   Page
+   Related Projects Component
 ---------------------------------------- */
 
-export default function NiuralProjectPage() {
+function RelatedProjectsSection({ related }: { related: any[] }) {
+  const [accessMap, setAccessMap] = React.useState<{ [id: string]: boolean }>(
+    {},
+  );
+
+  useEffect(() => {
+    let isMounted = true;
+
+    async function checkAccess() {
+      const results: { [id: string]: boolean } = {};
+
+      for (const p of related) {
+        const isNiural =
+          p.slug === "niural-global-payroll" || String(p.id) === "0";
+
+        if (!isNiural) {
+          results[p.id] = true;
+        } else {
+          const token = getToken();
+          results[p.id] = token ? await verifyToken(token) : false;
+        }
+      }
+
+      if (isMounted) setAccessMap(results);
+    }
+
+    checkAccess();
+    return () => {
+      isMounted = false;
+    };
+  }, [related]);
+
   return (
-    <>
-      <main className='md:mx-16 justify-center flex bg-bg-base text-text-base border-x border-border-base'>
-        <div className=' max-w-3xl py-24 px-6  flex gap-16 flex-col'>
-          {/* ----------------------------------------
-            HERO / OVERVIEW
-        ---------------------------------------- */}
+    <section className='md:mx-16 border-x border-border-base'>
+      <div className='border-t border-border-base'>
+        <div className='mx-auto max-w-3xl py-24 px-6'>
+          <h2 className='text-2xl font-semibold mb-12'>More Case Studies</h2>
 
-          <div className='mx-auto max-w-3xl space-y-6'>
-            <p className='text-xs font-mono uppercase text-text-subtle'>
-              Case Study
-            </p>
-            <h1 className='text-4xl font-medium leading-tight'>
-              Designing a scalable payroll & finance platform for global teams
-            </h1>
-            <p className='text-lg text-text-subtle'>
-              Niural helps distributed companies manage payroll, payments,
-              benefits, and compliance in a single platform. I led product
-              design across core workflows and the design system.
-            </p>
+          <div className='grid gap-16 md:grid-cols-3'>
+            {related.map((p) => {
+              const thumbSrc =
+                typeof p.thumbnail === "string"
+                  ? p.thumbnail
+                  : (p.thumbnail?.url ?? p.thumbnail?.src);
 
-            <div className='grid grid-cols-2 gap-6 pt-8 text-sm text-text-subtle'>
-              <p>
-                <span className='block font-medium text-text-base'>Role</span>
-                Product Designer
-              </p>
-              <p>
-                <span className='block font-medium text-text-base'>
-                  Timeline
-                </span>
-                2022 — Present
-              </p>
-              <p>
-                <span className='block font-medium text-text-base'>
-                  Platform
-                </span>
-                Web (Enterprise)
-              </p>
-              <p>
-                <span className='block font-medium text-text-base'>Focus</span>
-                Payroll, Payments, Design System
-              </p>
-            </div>
+              const isProtected =
+                p.slug === "niural-global-payroll" || String(p.id) === "0";
+
+              const hasAccess = accessMap[p.id];
+
+              return (
+                <Link
+                  key={p.id}
+                  href={`/projects/${p.id}`}
+                  className='group flex flex-col gap-6'
+                >
+                  <div className='relative aspect-[4/3] overflow-hidden rounded-2xl'>
+                    <Image
+                      src={thumbSrc}
+                      alt={p.title}
+                      fill
+                      className={`object-cover transition-transform duration-500 group-hover:scale-105 ${
+                        isProtected && !hasAccess ? "blur-sm" : ""
+                      }`}
+                    />
+
+                    {isProtected && !hasAccess && (
+                      <span className='absolute top-2 left-2 px-2 py-1 text-xs text-white rounded-full bg-white/90 border'>
+                        Password Protected
+                      </span>
+                    )}
+                  </div>
+
+                  <div>
+                    <h3
+                      className='text-lg font-medium text-text-base leading-snug group-hover:underline'
+                      style={{
+                        fontFamily: "Libre Baskerville Variable, serif",
+                        fontWeight: 600,
+                        fontStyle: "italic",
+                      }}
+                    >
+                      {p.title}
+                    </h3>
+                    {p.tagline && (
+                      <p className='text-sm text-text-subtle leading-relaxed'>
+                        {p.tagline}
+                      </p>
+                    )}
+                  </div>
+                </Link>
+              );
+            })}
           </div>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+/* ----------------------------------------
+   Main Page
+---------------------------------------- */
+
+export default function NiuralPage() {
+  const [isAuthenticated, setIsAuthenticated] = useState(false);
+  const [isCheckingAuth, setIsCheckingAuth] = useState(true);
+  const [related, setRelated] = useState<any[]>([]);
+
+  const moreCaseStudies = caseStudies.filter(
+    (cs) => cs.slug !== "niural-global-payroll",
+  );
+
+  useEffect(() => {
+    async function checkAuth() {
+      const token = getToken();
+      if (token && (await verifyToken(token))) {
+        setIsAuthenticated(true);
+      }
+      setIsCheckingAuth(false);
+    }
+    checkAuth();
+  }, []);
+
+  useEffect(() => {
+    async function fetchRelated() {
+      try {
+        const res = await fetch(
+          "/api/project?limit=3&sort=-createdAt&where[slug][not_equals]=niural-global-payroll",
+        );
+        const data = await res.json();
+
+        if (Array.isArray(data.docs)) {
+          setRelated(data.docs);
+        }
+      } catch {}
+    }
+
+    fetchRelated();
+  }, []);
+
+  if (!isAuthenticated) {
+    if (isCheckingAuth) {
+      return (
+        <div className='min-h-screen flex items-center justify-center text-sm text-text-subtle'>
+          Loading…
+        </div>
+      );
+    }
+
+    return (
+      <PasswordProtection
+        projectTitle='Niural — Designing a Power Platform'
+        onAuthenticated={() => setIsAuthenticated(true)}
+      />
+    );
+  }
+
+  return (
+    <section className='bg-bg-base'>
+      <main className='md:mx-16 flex justify-center border-x border-border-base'>
+        <div className='max-w-3xl py-24 px-6 flex flex-col gap-16'>
+          {/* HERO VIDEO */}
           <Carousel>
             <CarouselContent>
               {heroVideoUrls.map((video, index) => (
                 <CarouselItem key={index}>
-                  <div
-                    key={index}
-                    className='aspect-video overflow-hidden rounded-2xl'
-                  >
+                  <div className='aspect-video overflow-hidden rounded-2xl'>
                     <ReactPlayer
                       width='100%'
                       height='100%'
                       controls
                       src={video.url}
+                      className='rounded-2xl overflow-hidden shadow-elevation-card-rest'
                     />
                   </div>
                 </CarouselItem>
               ))}
             </CarouselContent>
+
             <CarouselNext />
             <CarouselPrevious />
           </Carousel>
 
-          {/* ----------------------------------------
-            PROBLEM
-        ---------------------------------------- */}
-
+          {/* PROBLEM */}
           <div className='mx-auto max-w-3xl space-y-6'>
             <h2 className='text-2xl font-medium'>The Problem</h2>
             <p className='text-text-subtle'>
@@ -201,19 +303,14 @@ export default function NiuralProjectPage() {
             </p>
           </div>
 
-          {/* ----------------------------------------
-            SYSTEM & APPROACH
-        ---------------------------------------- */}
-
+          {/* SYSTEM & APPROACH */}
           <div className='mx-auto max-w-3xl space-y-10'>
             <h2 className='text-2xl font-medium'>Designing the System</h2>
-
             <p className='text-text-subtle'>
               I focused on building a shared foundation across products:
               reusable patterns, consistent data structures, and predictable
               interaction models — optimized for enterprise workflows.
             </p>
-
             <ul className='space-y-4 text-text-subtle'>
               <li>• Unified layout and navigation patterns</li>
               <li>• Standardized tables, forms, and empty states</li>
@@ -222,11 +319,8 @@ export default function NiuralProjectPage() {
             </ul>
           </div>
 
-          {/* ----------------------------------------
-            SYSTEM SCREENS (CAROUSEL)
-        ---------------------------------------- */}
-
-          <div className=''>
+          {/* SYSTEM SCREENS */}
+          <div>
             <Carousel>
               <CarouselContent>
                 {systemScreens.map(({ img, caption }, i) => (
@@ -253,10 +347,7 @@ export default function NiuralProjectPage() {
             </Carousel>
           </div>
 
-          {/* ----------------------------------------
-            DECISIONS & TRADEOFFS
-        ---------------------------------------- */}
-
+          {/* DECISIONS & TRADEOFFS */}
           <div className='mx-auto max-w-3xl space-y-12'>
             <h2 className='text-2xl font-medium'>Key Decisions & Tradeoffs</h2>
 
@@ -285,15 +376,11 @@ export default function NiuralProjectPage() {
             </div>
           </div>
 
-          {/* ----------------------------------------
-            PRODUCT SCREENS (CAROUSEL)
-        ---------------------------------------- */}
-
-          <div className=' space-y-10'>
+          {/* PRODUCT SCREENS */}
+          <div className='space-y-10'>
             <h2 className='mx-auto max-w-3xl text-2xl font-medium'>
               Product Screens
             </h2>
-
             {productScreens.map(({ img, caption }, i) => (
               <div
                 key={i}
@@ -307,10 +394,7 @@ export default function NiuralProjectPage() {
             ))}
           </div>
 
-          {/* ----------------------------------------
-            IMPACT
-        ---------------------------------------- */}
-
+          {/* IMPACT */}
           <div className='mx-auto max-w-3xl space-y-6'>
             <h2 className='text-2xl font-medium'>Impact</h2>
             <p className='text-text-subtle'>
@@ -323,8 +407,45 @@ export default function NiuralProjectPage() {
               regulatory requirements.
             </p>
           </div>
+
+          {/* MORE CASE STUDIES */}
+          {moreCaseStudies.length > 0 && (
+            <div className='mt-24'>
+              <h2 className='text-2xl font-semibold mb-6'>More Case Studies</h2>
+              <div className='grid gap-8'>
+                {moreCaseStudies.map((cs) => (
+                  <Link
+                    key={cs.slug}
+                    href={cs.url}
+                    className='block p-6 rounded-lg border border-border-base bg-bg-base hover:bg-bg-subtle transition'
+                  >
+                    <div className='flex items-center gap-4'>
+                      <Image
+                        src={
+                          typeof cs.thumbnail === "string"
+                            ? cs.thumbnail
+                            : cs.thumbnail?.src
+                        }
+                        alt={cs.title}
+                        width={80}
+                        height={80}
+                        className='w-20 h-20 object-cover rounded-md border'
+                      />
+                      <div>
+                        <h3 className='text-lg font-bold mb-1'>{cs.title}</h3>
+                        <p className='text-sm text-text-subtle'>{cs.tagline}</p>
+                      </div>
+                    </div>
+                  </Link>
+                ))}
+              </div>
+            </div>
+          )}
         </div>
       </main>
-    </>
+
+      {/* RELATED PROJECTS */}
+      {related.length > 0 && <RelatedProjectsSection related={related} />}
+    </section>
   );
 }

@@ -1,16 +1,25 @@
 "use client";
 
+import dynamic from "next/dynamic";
 import Intro from "@/components/intro";
-import Projects from "@/components/projects";
-import Contact from "@/components/contact";
-import OutsideWork from "@/components/outside-work";
 import Header from "@/components/header";
-import Companies from "@/components/companies";
-// import DesignProcess from "@/components/design-process";
-// import PlaygroundHome from "./playgroundHome";
-
 import Shilouette from "@/public/shilouette.png";
 import Link from "next/link";
+
+const Projects = dynamic(() => import("@/components/projects"), {
+  loading: () => (
+    <section className='scroll-mt-28 w-full max-w-[920px] mx-auto text-start flex flex-col justify-center'>
+      <p className='text-text-subtle text-sm px-6'>SELECTED PROJECTS ↓</p>
+      <div className='py-12 flex justify-center'>
+        <span className='h-6 w-6 rounded-full border-2 border-border-base border-t-text-subtle animate-spin' />
+      </div>
+    </section>
+  ),
+});
+
+const OutsideWork = dynamic(() => import("@/components/outside-work"));
+
+const Contact = dynamic(() => import("@/components/contact"));
 
 const arrow = () => {
   return (
@@ -70,23 +79,7 @@ export default function HomeClient() {
       <div className='bg-bg-base w-full'>
         <div className='md:mx-16 border-x border-border-base'>
           <Intro />
-
-          <section
-            data-v-00d99581=''
-            className='border-t px-10 py-6 md:py-8 flex flex-col justify-center gap-5 nickel-container'
-          >
-            <h6
-              data-v-00d99581=''
-              className='text-center text-text-subtle md:text-start '
-            >
-              Trusted by the world&apos;s best software teams
-            </h6>
-          </section>
-          <Companies />
-
-          {/* <DesignProcess /> */}
           <Projects />
-          {/* <PlaygroundHome /> */}
           <OutsideWork />
         </div>
       </div>

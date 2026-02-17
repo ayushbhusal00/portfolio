@@ -1,75 +1,121 @@
+"use client";
+
 import React from "react";
 import Image from "next/image";
-import Friends1 from "@/public/friends1.png";
-import Gym from "@/public/gym.png";
-import PassionToCook from "@/public/passion-to-cook.png";
-
+import { motion } from "framer-motion";
+import dynamic from "next/dynamic";
 import NotWorking from "@/public/when-i-am-not-working.svg";
 
-import Gaming from "@/public/gaming.png";
-import Rendering from "@/public/rendering.png";
-import Animation from "@/public/animation.png";
-import Link from "next/link";
+const ReactPlayer = dynamic(() => import("react-player"), { ssr: false });
 
 export default function OutsideWork() {
   return (
-    <section className='flex justify-center items-center px-8 py-16 lg:px-40 xl:px-60 text-center leading-8 scroll-mt-28 border-t border-border-base bg-bg-base'>
-      <div className='relative py-[6rem] flex flex-col sm:flex-row items-center text-left gap-[6rem] sm:gap-[2rem] md:my-20'>
+    <motion.section
+      className='flex justify-center items-center text-center leading-8 scroll-mt-28 border-t border-border-base bg-bg-base'
+      initial={{ opacity: 0 }}
+      whileInView={{ opacity: 1 }}
+      viewport={{ once: true, margin: "-80px" }}
+      transition={{ duration: 0.5 }}
+    >
+      <div className='relative py-[6rem] flex flex-col w-full max-w-[920px] mx-auto sm:flex-row items-center text-left gap-[6rem] sm:gap-[2rem] md:my-20'>
         <Image
           className='absolute top-0 left-0'
           src={NotWorking}
           alt='Text Explaining When I am Not Working'
+          loading='lazy'
         />
 
-        <div className='relative w-full min-h-[5rem] sm:w-[60%] h-auto flex flex-row items-center justify-center'>
-          {/* First Image Card */}
-          <div className='absolute -rotate-2 left-0 sm:-left-[1rem] w-[10rem] transform transition-transform duration-500 hover:scale-110 hover:-rotate-6 hover:translate-y-[-10px]'>
-            <Link href='/playground/2'>
-              <Image
-                src={Gaming}
-                alt='Gaming Work'
-                className='rounded-lg shadow-lg'
+        <motion.div
+          className='flex flex-col gap-6'
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-40px" }}
+          transition={{ duration: 0.4 }}
+        >
+          <div className='grid grid-cols-2 gap-5 col-span-2'>
+            {/* Video 1 */}
+            <div className='shadow-elevation-card-rest rounded-lg overflow-hidden aspect-video'>
+              <ReactPlayer
+                width='100%'
+                height='100%'
+                controls={false}
+                src='/bottle2.mp4'
+                playing
+                loop
+                muted
               />
-            </Link>
-          </div>
+            </div>
 
-          {/* Second Image Card */}
-          <div className='absolute w-[10rem] transform transition-transform duration-500 hover:scale-110 hover:rotate-6 hover:translate-y-[-10px]'>
-            <Link href='/playground/1'>
+            {/* GIF */}
+            <div className='shadow-elevation-card-rest rounded-lg overflow-hidden aspect-video relative'>
               <Image
-                src={Rendering}
-                alt='3D Rendering Work'
-                className='rounded-lg shadow-lg'
+                src='/bottle-simulation-3.gif'
+                alt='Bottle Simulation'
+                fill
+                sizes='(max-width: 768px) 50vw, 33vw'
+                style={{ objectFit: "cover" }}
               />
-            </Link>
-          </div>
+            </div>
 
-          {/* Third Image Card */}
-          <div className='absolute rotate-2 right-0 sm:-right-[0.5rem] w-[10rem] transform transition-transform duration-500 hover:scale-110 hover:rotate-6 hover:translate-y-[-10px]'>
-            <Link href='/playground/0'>
+            {/* Image */}
+            <div className='shadow-elevation-card-rest rounded-lg overflow-hidden aspect-video relative'>
               <Image
-                src={Animation}
-                alt='3d Animation Work'
-                className='rounded-lg shadow-lg'
+                src='/virgin-gold-animation-render.png'
+                alt='Virgin Gold Animation Render'
+                fill
+                sizes='(max-width: 768px) 50vw, 33vw'
+                style={{ objectFit: "cover" }}
               />
-            </Link>
+            </div>
+
+            {/* Video 2 */}
+            <div className='shadow-elevation-card-rest rounded-lg overflow-hidden aspect-video'>
+              <ReactPlayer
+                width='100%'
+                height='100%'
+                controls={false}
+                src='/dialogue-practice.mp4'
+                playing
+                loop
+                muted
+              />
+            </div>
+
+            {/* Image */}
+            <div className='shadow-elevation-card-rest rounded-lg overflow-hidden aspect-video relative'>
+              <Image
+                src='/antidote-preview.png'
+                alt='Antidote Preview'
+                fill
+                sizes='(max-width: 768px) 50vw, 33vw'
+                style={{ objectFit: "cover" }}
+              />
+            </div>
+
+            {/* Image */}
+            <div className='shadow-elevation-card-rest rounded-lg overflow-hidden aspect-video relative'>
+              <Image
+                src='/highlander-animation-render.png'
+                alt='Highlander Animation Render'
+                fill
+                sizes='(max-width: 768px) 50vw, 33vw'
+                style={{ objectFit: "cover" }}
+              />
+            </div>
+
+            {/* Image */}
+            <div className='shadow-elevation-card-rest rounded-lg overflow-hidden aspect-video relative'>
+              <Image
+                src='/playroomkit-thumbnail.png'
+                alt='Playroom Kit Thumbnail'
+                fill
+                sizes='(max-width: 768px) 50vw, 33vw'
+                style={{ objectFit: "cover" }}
+              />
+            </div>
           </div>
-        </div>
-        <div className='sm:w-[50%]'>
-          {/* <p>
-            As much as I enjoy my work, I also enjoy living life to the fullest.
-            I am currently learning music, cooking, art and ways to stay
-            healthy. I also enjoy spending my time with friends whenever I am
-            not learning to code or design.
-          </p> */}
-          <p className='text-text-subtle'>
-            As much as I enjoy my work, I also enjoy coding applications where I
-            can focus beyond pixel. I keep experimenting with new technologies
-            and frameworks to enhance my skills. Currently I am exploring AI
-            Designs, 3D rendering, and Mobile Development.
-          </p>
-        </div>
+        </motion.div>
       </div>
-    </section>
+    </motion.section>
   );
 }

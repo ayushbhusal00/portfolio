@@ -29,7 +29,7 @@ import LifeCorpusMarketing from "@/public/Lifecorpus-marketing.png";
 
 /* ---------------- NIURAL IMPORTS ---------------- */
 
-import NiuralThumbnail from "@/public/niural-thumbnail.png";
+import NiuralThumbnail from "@/public/niural-ai-thumbnail.png";
 import DesignSystem from "@/public/design-system.png";
 // import Integrations from "@/public/QuickbooksIntegration.png";
 // import Benefits from "@/public/Benefits.png";
@@ -204,7 +204,7 @@ export const caseStudies: CaseStudy[] = [
     readTime: "5 min read",
     category: "Product",
 
-    url: "/projects/0",
+    url: "/niural",
     color: "#088236",
     isPasswordProtected: true,
 
@@ -238,147 +238,7 @@ export const caseStudies: CaseStudy[] = [
       },
     ],
   },
-  {
-    id: 1,
-    slug: "lifecorpus-healthcare-trust",
-    title: "LifeCorpus SA: A Modern UI Revamp for Healthcare Support",
-    videoUrl: "https://vimeo.com/1149309422?controls=0&background=1",
 
-    tagline:
-      "Designing clarity, confidence, and scalability in a sensitive healthcare ecosystem.",
-
-    overview:
-      "LifeCorpus SA is a healthcare support platform focused on providing accessible services, education, and NDIS-related assistance to people across Southern Australia.",
-
-    date: "Dec 10, 2025",
-    readTime: "3 min read",
-    category: "Ecosystem",
-
-    url: "/projects/1",
-    color: "#0F766E",
-
-    thumbnail: LifeCorpusThumbnail,
-    heroImage: LifeCorpusThumbnail,
-
-    gallery: [
-      LifeCorpusCareer,
-      LifeCorpusDesignReq,
-      LifeCorpusColors,
-      LifeCorpusColors,
-      LifeCorpusMarketing,
-    ],
-
-    role: "Product Designer — UX, UI, Information Architecture",
-    duration: "4 months",
-
-    sections: [
-      {
-        // No heading
-        content:
-          "This project takes a new approach to healthcare support in Southern Australia. Healthcare has long been a field with limited design inspiration, often relying on outdated patterns that fail to engage or guide users effectively. LifeCorpus set out to modernise their website experience—moving away from legacy layouts toward a contemporary system that could support marketing campaigns, educational blogs around NDIS services, and direct user assistance. The platform also needed to enable users to create support tickets, submit digital forms, and book services seamlessly.",
-      },
-      {
-        heading: "Building for Scale & Content Growth",
-        content:
-          "To create a platform that could scale with the LifeCorpus team, content management was a key consideration. The team needed the flexibility to publish blogs, manage careers, and launch marketing pages without increasing development overhead. Payload CMS was selected due to its open-source nature and developer-friendly architecture. By leveraging Payload’s pre-designed admin interface, we significantly reduced the need to design complex backend experiences. This allowed the design process to focus on front-facing patterns, layouts, and components—keeping the CMS structure intentionally constrained while still offering enough variation for content creators to experiment and build visually engaging pages.",
-      },
-      {
-        heading: "Design System & Component Strategy",
-        content:
-          "A structured design system was established early in the process. Typography, color palettes, components, spacing tokens, and layout rules were defined during the design phase. Wireframes were first translated into reusable patterns, which later evolved into a full suite of production-ready pages. This systematic approach ensured visual consistency, faster handoff to development, and a scalable foundation that could grow with future features and content needs.",
-      },
-      {},
-      {
-        heading: "Design Strategy",
-        bullets: [
-          "Clear information hierarchy to support diverse user needs",
-          "Accessible interaction patterns aligned with healthcare usability standards",
-          "Visual cues that reinforce trust, security, and professionalism",
-          "Flexible layouts designed for CMS-driven content",
-          "Consistent components to maintain brand integrity across pages",
-        ],
-      },
-    ],
-  },
-  {
-    id: 2,
-    slug: "weplay-community-sports",
-    title: "WePlay: Redesigning Community Sports Booking at Scale",
-
-    tagline:
-      "Redesigning the booking experience to support discovery, engagement, and repeat play.",
-
-    overview:
-      "WePlay is a community sports booking platform that helps players discover venues, organise games, and connect with other players. While the product showed early traction as a booking tool, it struggled to retain users beyond their first session due to limited discovery, social interaction, and engagement loops.",
-
-    date: "Dec 10, 2025",
-    readTime: "3 min read",
-    category: "Case study",
-
-    url: "/projects/2",
-    color: "#AF2E4F",
-
-    thumbnail: WePlay,
-    heroImage: WeplayHeroSection,
-
-    gallery: [
-      WePlay,
-      WePlayDesignRequirement,
-      WeplayUserResearch,
-      WePlayBranding,
-      WePlayDesign1,
-      WePlayDesign2,
-      WePlayDesign3,
-      WePlayDesign4,
-      WePlayDesign5,
-    ],
-
-    role: "Product Designer — UX Research, Web Design, UI Design, Prototyping",
-    duration: "3 months",
-    videoUrl: "https://vimeo.com/1149309393",
-
-    sections: [
-      {
-        heading: "Project Background",
-        content:
-          "WePlay launched as a functional sports venue booking platform focused on helping users reserve courts and facilities. While the core booking functionality worked, the experience felt transactional and isolated. Users completed a single booking and rarely returned, as the platform lacked mechanisms for discovery, social interaction, and long-term engagement.",
-      },
-      {
-        heading: "Problem Statement",
-        content:
-          "As WePlay began addressing multiple product challenges, it became clear that the existing system was not built to scale. The platform had evolved without a defined design or technical framework, leading to slow progress and fragmented decision-making across design, frontend, and backend. The product was originally architected solely for bookings, with little consideration for future needs such as messaging, notifications, chat, single sign-on, or community features. To enable sustainable growth, WePlay needed a clear architectural foundation—one that aligned design, engineering, and product strategy. This required defining a scalable process, documenting requirements, and establishing a system of tokens, components, patterns, and shared assets to support both current and future features. Ultimately, the core challenge was transforming WePlay from a single-purpose booking tool into a flexible, community-driven platform that supports discovery, engagement, and repeat play.",
-      },
-      {
-        heading: "Design Goals",
-        content:
-          "The primary goal was to reposition WePlay from a utility-driven booking tool into a community-centric sports platform. This required simplifying the booking flow, surfacing relevant venues and sports, and introducing features that encouraged users to connect, organise games, and return regularly.",
-      },
-      {
-        heading: "Design & Implementation",
-        bullets: [
-          "Streamlining the booking workflow to reduce friction and drop-offs",
-          "Enhancing venue and sport discovery through structured browsing and filtering",
-          "Introducing social mechanics such as open games and player invitations",
-          "Designing engagement loops that encourage repeat bookings",
-          "Establishing a scalable UI system for future features and sports",
-        ],
-        content:
-          "The redesigned experience focused on clarity, speed, and social context. Map-based discovery improved venue visibility, while open game listings allowed players to join existing matches instead of booking alone. Invitations and shared game details made it easier for users to organise games with friends, transforming the platform into a shared experience rather than a solo task.",
-      },
-      {},
-      {},
-      {},
-      {},
-      {},
-      {},
-      {},
-      {
-        heading: "Outcome & Impact",
-        content:
-          "The redesign repositioned WePlay as a scalable community sports ecosystem. Users could discover venues more easily, organise games faster, and engage with the platform beyond a single booking. The product foundation now supports future growth into leagues, events, and broader community-driven features.",
-      },
-    ],
-  },
   // {
   //   id: 3,
   //   slug: "vesper-design-system",

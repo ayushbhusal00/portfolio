@@ -6,10 +6,11 @@ import { Pages } from "./app/(payload)/collections/Pages";
 import { Media } from "./app/(payload)/collections/Media";
 import { Playground } from "./app/(payload)/collections/Playground";
 import { vercelBlobStorage } from "@payloadcms/storage-vercel-blob";
+import { Project } from "./app/(payload)/collections/Project";
 
 export default buildConfig({
   editor: lexicalEditor(),
-  collections: [Pages, Media, Playground],
+  collections: [Pages, Media, Playground, Project],
   plugins: [
     vercelBlobStorage({
       enabled: true,
