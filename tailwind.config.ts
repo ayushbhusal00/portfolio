@@ -12,14 +12,6 @@ const config: Config = {
   ],
   theme: {
     extend: {
-      backgroundImage: {
-        "from-lime-to-emerald":
-          "linear-gradient(to bottom right, #bef264, #10b981)",
-        "from-red-to-rose":
-          "linear-gradient(to bottom right, #fecaca, #f43f5e)",
-        "from-amber-to-red":
-          "linear-gradient(to bottom right, #fde68a, #ef4444)",
-      },
       colors: {
         // Custom text color tokens
         "text-base": "var(--text-base)",
@@ -30,72 +22,10 @@ const config: Config = {
         "bg-base": "var(--bg-base)",
         "bg-subtle": "var(--bg-subtle)",
         "border-base": "var(--border-base)",
-        lime: {
-          "200": "#d9f99d",
-          "500": "#84cc16",
-        },
-        purple: {
-          "200": "#e9d5ff",
-          "500": "#a855f7",
-        },
-        blue: {
-          "200": "#bfdbfe",
-          "500": "#3b82f6",
-        },
-        rose: {
-          "200": "#fecdd3",
-          "500": "#f43f5e",
-        },
-        red: {
-          "200": "#fecaca",
-          "500": "#ef4444",
-        },
-        amber: {
-          "200": "#fef3c7",
-          "500": "#f59e0b",
-        },
-        emerald: {
-          "200": "#10b981",
-          "500": "#10b981",
-        },
-        card: {
-          DEFAULT: "hsl(var(--card))",
-          foreground: "hsl(var(--card-foreground))",
-        },
-        popover: {
-          DEFAULT: "hsl(var(--popover))",
-          foreground: "hsl(var(--popover-foreground))",
-        },
-        primary: {
-          DEFAULT: "hsl(var(--primary))",
-          foreground: "hsl(var(--primary-foreground))",
-        },
-        secondary: {
-          DEFAULT: "hsl(var(--secondary))",
-          foreground: "hsl(var(--secondary-foreground))",
-        },
-        muted: {
-          DEFAULT: "hsl(var(--muted))",
-          foreground: "hsl(var(--muted-foreground))",
-        },
-        accent: {
-          DEFAULT: "hsl(var(--accent))",
-          foreground: "hsl(var(--accent-foreground))",
-        },
-        destructive: {
-          DEFAULT: "hsl(var(--destructive))",
-          foreground: "hsl(var(--destructive-foreground))",
-        },
+
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",
         ring: "hsl(var(--ring))",
-        chart: {
-          "1": "hsl(var(--chart-1))",
-          "2": "hsl(var(--chart-2))",
-          "3": "hsl(var(--chart-3))",
-          "4": "hsl(var(--chart-4))",
-          "5": "hsl(var(--chart-5))",
-        },
       },
       borderRadius: {
         lg: "var(--radius)",

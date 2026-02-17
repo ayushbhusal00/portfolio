@@ -71,7 +71,9 @@ export default function PasswordProtection({
     return (
       <div className='min-h-screen flex items-center justify-center px-6 bg-bg-base'>
         <div className='text-center'>
-          <p className='text-zinc-600 dark:text-zinc-400'>Checking access...</p>
+          <p className='text-text-subtle dark:text-zinc-400'>
+            Checking access...
+          </p>
         </div>
       </div>
     );
@@ -86,18 +88,20 @@ export default function PasswordProtection({
         className='max-w-md w-full space-y-8 bg-bg-base p-8 rounded-xl shadow-lg'
       >
         <div className='text-center'>
-          <h1 className='text-2xl font-semibold text-zinc-900 mb-2'>
+          <h1 className='text-2xl font-semibold text-text-base mb-2'>
             Protected Project
           </h1>
-          <p className='text-zinc-600'>This case study is password protected</p>
-          <p className='text-sm text-zinc-500 mt-1'>{projectTitle}</p>
+          <p className='text-text-subtle'>
+            This case study is password protected
+          </p>
+          <p className='text-sm text-text-subtle mt-1'>{projectTitle}</p>
         </div>
 
         <form onSubmit={handleSubmit} className='space-y-6'>
           <div>
             <label
               htmlFor='password'
-              className='block text-sm font-medium text-zinc-700 mb-2'
+              className='block text-sm font-medium text-text-subtle mb-2'
             >
               Password
             </label>
@@ -106,7 +110,7 @@ export default function PasswordProtection({
               type='password'
               value={password}
               onChange={(e) => setPassword(e.target.value)}
-              className='w-full px-4 py-2 border border-border-base rounded-lg focus:ring-2 focus:ring-zinc-500 focus:border-transparent bg-bg-base text-zinc-900'
+              className='w-full px-4 py-2 border border-border-base rounded-lg focus:ring-2 focus:ring-zinc-500 focus:border-transparent bg-bg-base text-text-base'
               placeholder='Enter password'
               required
               autoFocus
@@ -140,7 +144,7 @@ export default function PasswordProtection({
 
         <a
           className=' sm:flex p-4 items-center gap-2 cursor-pointer borderBlack outline-none focus:scale-[1.15] hover:bg-bg-base active:scale-105 transition rounded-[6px] pointer-events-auto relative z-20
-  bg-bg-base
+  bg-bg-base text-text-base border border-border-base
   shadow-[0_1px_2px_0_rgba(0,0,0,0.12),0_0_0_1px_rgba(0,0,0,0.08)] justify-center font-medium'
           href='https://www.linkedin.com/in/ayush-bhusal-331143119/'
           target='blank'

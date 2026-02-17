@@ -58,7 +58,7 @@ export default function Intro() {
       id='home'
       className='w-full scroll-mt-[100rem] max-w-[920px] mx-auto bg-bg-base relative'
     >
-      <div className='flex flex-row-reverse items-center sm:py-32 sm:px-2 md:py-40 px-4 py-16 justify-between gap-10 mx-auto'>
+      <div className='flex flex-col md:flex-row-reverse items-center sm:py-32 sm:px-2 md:py-40 px-4 py-16 justify-between gap-10 mx-auto'>
         {/* Portrait */}
         <motion.div
           className='relative'
@@ -74,7 +74,7 @@ export default function Intro() {
             quality={90}
             priority
             placeholder='blur'
-            className='h-[30rem] w-[30rem] rounded-full object-cover border-[0.25rem] border-border-base shadow-xl'
+            className='h-[10rem] w-[10rem] md:h-[30rem] md:w-[30rem] rounded-full object-cover border-[0.25rem] border-border-base shadow-xl'
           />
         </motion.div>
 
@@ -140,7 +140,7 @@ export default function Intro() {
               href='https://www.linkedin.com/in/ayush-bhusal-331143119/'
               target='_blank'
               rel='noopener noreferrer'
-              className='p-4 rounded-[6px] bg-bg-base shadow-[0_1px_2px_rgba(0,0,0,0.12),0_0_0_1px_rgba(0,0,0,0.08)] hover:bg-bg-subtle transition text-text-subtle'
+              className='p-4 rounded-[6px] bg-bg-base border border-border-base shadow-elevation-card-rest hover:bg-bg-subtle transition text-text-subtle'
             >
               <BsLinkedin />
             </Link>
@@ -150,7 +150,7 @@ export default function Intro() {
               href='https://github.com/ayushbhusal00'
               target='_blank'
               rel='noopener noreferrer'
-              className='p-4 rounded-[6px] bg-bg-base shadow-[0_1px_2px_rgba(0,0,0,0.12),0_0_0_1px_rgba(0,0,0,0.08)] hover:bg-bg-subtle transition text-text-subtle'
+              className='p-4 rounded-[6px] bg-bg-base border border-border-base shadow-elevation-card-rest hover:bg-bg-subtle transition text-text-subtle'
             >
               <FaGithubSquare />
             </Link>

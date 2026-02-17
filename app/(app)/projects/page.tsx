@@ -62,11 +62,11 @@ export default function ProjectsPage() {
         />
         {/* Header - only show when data is loaded */}
         {!loading && (
-          <header className='px-16 py-8 w-full flex justify-between'>
+          <header className='px-6 md:px-16 py-8 w-full flex justify-between'>
             <h1 className='text-[28px] font-semibold tracking-tight text-text-base'>
               Projects
             </h1>
-            <div className='flex gap-2 items-center overflow-x-auto hide-scrollbars py-[1px] w-screen md:w-auto px-0 md:py-0 md:overflow-visible'>
+            <div className='gap-2 hidden md:flex items-center overflow-x-auto hide-scrollbars py-[1px] w-screen md:w-auto px-0 md:py-0 md:overflow-visible'>
               {categories.map((category) => {
                 const isActive = activeCategory === category;
                 return (

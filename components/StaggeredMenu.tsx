@@ -86,7 +86,7 @@ export const StaggeredMenu: React.FC<StaggeredMenuProps> = ({
       let preLayers: HTMLElement[] = [];
       if (preContainer) {
         preLayers = Array.from(
-          preContainer.querySelectorAll<HTMLElement>(".sm-prelayer")
+          preContainer.querySelectorAll<HTMLElement>(".sm-prelayer"),
         );
       }
       preLayerElsRef.current = preLayers;
@@ -116,16 +116,16 @@ export const StaggeredMenu: React.FC<StaggeredMenuProps> = ({
     itemEntranceTweenRef.current?.kill();
 
     const itemEls = Array.from(
-      panel.querySelectorAll<HTMLElement>(".sm-panel-itemLabel")
+      panel.querySelectorAll<HTMLElement>(".sm-panel-itemLabel"),
     );
     const numberEls = Array.from(
       panel.querySelectorAll<HTMLElement>(
-        ".sm-panel-list[data-numbering] .sm-panel-item"
-      )
+        ".sm-panel-list[data-numbering] .sm-panel-item",
+      ),
     );
     const socialTitle = panel.querySelector<HTMLElement>(".sm-socials-title");
     const socialLinks = Array.from(
-      panel.querySelectorAll<HTMLElement>(".sm-socials-link")
+      panel.querySelectorAll<HTMLElement>(".sm-socials-link"),
     );
 
     const layerStates = layers.map((el) => ({
@@ -154,7 +154,7 @@ export const StaggeredMenu: React.FC<StaggeredMenuProps> = ({
         ls.el,
         { xPercent: ls.start },
         { xPercent: 0, duration: 0.5, ease: "power4.out" },
-        i * 0.07
+        i * 0.07,
       );
     });
     const lastTime = layerStates.length ? (layerStates.length - 1) * 0.07 : 0;
@@ -164,7 +164,7 @@ export const StaggeredMenu: React.FC<StaggeredMenuProps> = ({
       panel,
       { xPercent: panelStart },
       { xPercent: 0, duration: panelDuration, ease: "power4.out" },
-      panelInsertTime
+      panelInsertTime,
     );
 
     if (itemEls.length) {
@@ -179,7 +179,7 @@ export const StaggeredMenu: React.FC<StaggeredMenuProps> = ({
           ease: "power4.out",
           stagger: { each: 0.1, from: "start" },
         },
-        itemsStart
+        itemsStart,
       );
       if (numberEls.length) {
         tl.to(
@@ -190,7 +190,7 @@ export const StaggeredMenu: React.FC<StaggeredMenuProps> = ({
             "--sm-num-opacity": 1,
             stagger: { each: 0.08, from: "start" },
           },
-          itemsStart + 0.1
+          itemsStart + 0.1,
         );
       }
     }
@@ -205,7 +205,7 @@ export const StaggeredMenu: React.FC<StaggeredMenuProps> = ({
             duration: 0.5,
             ease: "power2.out",
           },
-          socialsStart
+          socialsStart,
         );
       }
       if (socialLinks.length) {
@@ -221,7 +221,7 @@ export const StaggeredMenu: React.FC<StaggeredMenuProps> = ({
               gsap.set(socialLinks, { clearProps: "opacity" });
             },
           },
-          socialsStart + 0.04
+          socialsStart + 0.04,
         );
       }
     }
@@ -263,15 +263,15 @@ export const StaggeredMenu: React.FC<StaggeredMenuProps> = ({
       overwrite: "auto",
       onComplete: () => {
         const itemEls = Array.from(
-          panel.querySelectorAll<HTMLElement>(".sm-panel-itemLabel")
+          panel.querySelectorAll<HTMLElement>(".sm-panel-itemLabel"),
         );
         if (itemEls.length) {
           gsap.set(itemEls, { yPercent: 140, rotate: 10 });
         }
         const numberEls = Array.from(
           panel.querySelectorAll<HTMLElement>(
-            ".sm-panel-list[data-numbering] .sm-panel-item"
-          )
+            ".sm-panel-list[data-numbering] .sm-panel-item",
+          ),
         );
         if (numberEls.length) {
           gsap.set(numberEls, { "--sm-num-opacity": 0 });
@@ -279,7 +279,7 @@ export const StaggeredMenu: React.FC<StaggeredMenuProps> = ({
         const socialTitle =
           panel.querySelector<HTMLElement>(".sm-socials-title");
         const socialLinks = Array.from(
-          panel.querySelectorAll<HTMLElement>(".sm-socials-link")
+          panel.querySelectorAll<HTMLElement>(".sm-socials-link"),
         );
         if (socialTitle) gsap.set(socialTitle, { opacity: 0 });
         if (socialLinks.length) gsap.set(socialLinks, { y: 25, opacity: 0 });
@@ -326,7 +326,7 @@ export const StaggeredMenu: React.FC<StaggeredMenuProps> = ({
         gsap.set(btn, { color: menuButtonColor });
       }
     },
-    [openMenuButtonColor, menuButtonColor, changeMenuColorOnOpen]
+    [openMenuButtonColor, menuButtonColor, changeMenuColorOnOpen],
   );
 
   React.useEffect(() => {

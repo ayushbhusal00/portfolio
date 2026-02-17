@@ -65,7 +65,7 @@ export default function Project({
         {/* Image */}
         <div className='relative md:block shrink-0 p-4 md:p-6 origin-right'>
           <div className='absolute inset-0 z-10 hidden md:block ' />
-          <div className='relative aspect-3/4 md:h-[500px] w-full overflow-hidden rounded-xl shadow-2xl shadow-elevation-card-rest'>
+          <div className='relative aspect-3/4 h-[500px] w-full overflow-hidden rounded-xl shadow-2xl shadow-elevation-card-rest'>
             <Image
               src={imageUrl}
               alt={title}

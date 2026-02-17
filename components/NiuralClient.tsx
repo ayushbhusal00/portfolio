@@ -82,7 +82,13 @@ function RelatedProjectCard({ project: p }: { project: RelatedProject }) {
       </div>
 
       <div className='space-y-2'>
-        <h3 className='text-lg font-medium text-text-subtle leading-snug group-hover:underline'>
+        <h3
+          className='text-xl font-semibold text-text-base group-hover:underline'
+          style={{
+            fontFamily: "Instryment Sans, serif",
+            fontStyle: "italic",
+          }}
+        >
           {p.title}
         </h3>
 
@@ -283,7 +289,7 @@ export default function NiuralClient({
                 return (
                   <section key={index} className='space-y-8'>
                     {section.heading && (
-                      <h2 className='text-2xl md:text-3xl font-semibold'>
+                      <h2 className='text-2xl text-text-base md:text-3xl font-semibold'>
                         {section.heading}
                       </h2>
                     )}
@@ -327,7 +333,7 @@ export default function NiuralClient({
         <section className='md:mx-16 border-x border-border-base'>
           <div className='border-t border-border-base'>
             <div className='mx-auto max-w-3xl py-24 px-6'>
-              <h2 className='text-2xl md:text-3xl font-semibold mb-16'>
+              <h2 className='text-2xl md:text-3xl font-semibold mb-16 text-text-base'>
                 More case studies
               </h2>
 

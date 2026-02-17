@@ -71,8 +71,8 @@ h1.h2,h3,h4.h5.h6{
     }
   .dark {
         --background:224 71.4% 4.1%;
-        --bg-base: #16171d;
-        --bg-subtle: #14121a;
+        --bg-base: #14121a;
+        --bg-subtle: #16171d;
         --text-base:#fafafa;
         --text-subtle:#fafafa95;
         --border-base: #3b3440;

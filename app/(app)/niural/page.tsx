@@ -139,7 +139,9 @@ function RelatedProjectsSection({ related }: { related: any[] }) {
     <section className='md:mx-16 border-x border-border-base'>
       <div className='border-t border-border-base'>
         <div className='mx-auto max-w-3xl py-24 px-6'>
-          <h2 className='text-2xl font-semibold mb-12'>More Case Studies</h2>
+          <h2 className='text-2xl font-semibold mb-12 text-text-base'>
+            More Case Studies
+          </h2>
 
           <div className='grid gap-16 md:grid-cols-3'>
             {related.map((p) => {
@@ -178,10 +180,9 @@ function RelatedProjectsSection({ related }: { related: any[] }) {
 
                   <div>
                     <h3
-                      className='text-lg font-medium text-text-base leading-snug group-hover:underline'
+                      className='text-xl text-text-base font-medium leading-snug group-hover:underline'
                       style={{
-                        fontFamily: "Libre Baskerville Variable, serif",
-                        fontWeight: 600,
+                        fontFamily: "Instryment Sans, serif",
                         fontStyle: "italic",
                       }}
                     >
@@ -265,6 +266,26 @@ export default function NiuralPage() {
     <section className='bg-bg-base'>
       <main className='md:mx-16 flex justify-center border-x border-border-base'>
         <div className='max-w-3xl py-24 px-6 flex flex-col gap-16'>
+          <motion.header
+            initial={{ opacity: 0, y: 16 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+            className='space-y-8'
+          >
+            <h1 className='text-4xl text-text-base md:text-5xl font-bold'>
+              Niural — Designing a Power Platform
+            </h1>
+
+            <p className='text-lg text-text-subtle'>
+              Niural is a global workforce management tool for enterprise
+              payroll, compliance, and vendor payments. I led the design of a
+              unified system across their core products, enabling faster
+              iteration and global scalability while reducing complexity for
+              users.
+            </p>
+
+            <p className='text-sm text-text-subtle'>4 min read</p>
+          </motion.header>
           {/* HERO VIDEO */}
           <Carousel>
             <CarouselContent>
@@ -289,7 +310,7 @@ export default function NiuralPage() {
 
           {/* PROBLEM */}
           <div className='mx-auto max-w-3xl space-y-6'>
-            <h2 className='text-2xl font-medium'>The Problem</h2>
+            <h2 className='text-2xl text-text-base font-medium'>The Problem</h2>
             <p className='text-text-subtle'>
               Niural’s product surface expanded rapidly as new financial
               workflows were introduced. Payroll, contractor payments, and
@@ -305,7 +326,9 @@ export default function NiuralPage() {
 
           {/* SYSTEM & APPROACH */}
           <div className='mx-auto max-w-3xl space-y-10'>
-            <h2 className='text-2xl font-medium'>Designing the System</h2>
+            <h2 className='text-2xl text-text-base font-medium'>
+              Designing the System
+            </h2>
             <p className='text-text-subtle'>
               I focused on building a shared foundation across products:
               reusable patterns, consistent data structures, and predictable
@@ -349,7 +372,9 @@ export default function NiuralPage() {
 
           {/* DECISIONS & TRADEOFFS */}
           <div className='mx-auto max-w-3xl space-y-12'>
-            <h2 className='text-2xl font-medium'>Key Decisions & Tradeoffs</h2>
+            <h2 className='text-2xl text-text-base  font-medium'>
+              Key Decisions & Tradeoffs
+            </h2>
 
             <div className='space-y-8'>
               <div>
@@ -378,7 +403,7 @@ export default function NiuralPage() {
 
           {/* PRODUCT SCREENS */}
           <div className='space-y-10'>
-            <h2 className='mx-auto max-w-3xl text-2xl font-medium'>
+            <h2 className='mx-auto max-w-3xl text-text-base  text-2xl font-medium'>
               Product Screens
             </h2>
             {productScreens.map(({ img, caption }, i) => (
@@ -396,7 +421,7 @@ export default function NiuralPage() {
 
           {/* IMPACT */}
           <div className='mx-auto max-w-3xl space-y-6'>
-            <h2 className='text-2xl font-medium'>Impact</h2>
+            <h2 className='text-2xl text-text-base  font-medium'>Impact</h2>
             <p className='text-text-subtle'>
               The system improved consistency across products, reduced design
               debt, and enabled faster feature delivery. Teams scaled globally

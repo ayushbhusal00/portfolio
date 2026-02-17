@@ -87,7 +87,13 @@ export default function WorkItem({
 
       {/* Content */}
       <div className='flex flex-col gap-1'>
-        <h3 className='text-[15px] font-medium leading-5 text-text-base'>
+        <h3
+          className='text-2xl font-semibold text-text-base'
+          style={{
+            fontFamily: "Instryment Sans, serif",
+            fontStyle: "italic",
+          }}
+        >
           {title}
         </h3>
 
