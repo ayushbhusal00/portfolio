@@ -72,7 +72,7 @@ export default function Projects() {
 
       <div className='w-full mx-auto flex flex-col items-center justify-center'>
         {loading ? (
-          <div className='grid w-full grid-cols-1 gap-8 md:grid-cols-2'>
+          <div className='grid w-full grid-cols-1 gap-8'>
             {Array.from({ length: 2 }).map((_, i) => (
               <ProjectCardSkeleton key={i} />
             ))}
@@ -88,29 +88,30 @@ export default function Projects() {
             viewport={{ once: true, margin: "-30px" }}
           >
             {projects.map((project, index) => {
-            const imageUrl =
-              typeof project.thumbnail === "string"
-                ? project.thumbnail
-                : project.thumbnail?.url ??
-                  (project.thumbnail as { src?: string })?.src ??
-                  "/placeholder.png";
-            const href =
-              project.slug === "niural-global-payroll"
-                ? "/niural"
-                : project.url ?? `/projects/${project.id}`;
-            return (
-              <motion.div key={project.id} variants={itemVariants}>
-                <Project
-                  index={index}
-                  title={project.title}
-                  description={project.overview || project.tagline || ""}
-                  imageUrl={imageUrl}
-                  isPasswordProtected={project.isPasswordProtected}
-                  href={href}
-                />
-              </motion.div>
-            );
-          })}
+              const imageUrl =
+                typeof project.thumbnail === "string"
+                  ? project.thumbnail
+                  : (project.thumbnail?.url ??
+                    (project.thumbnail as { src?: string })?.src ??
+                    "/placeholder.png");
+
+              const href =
+                project.slug === "niural-global-payroll"
+                  ? "/niural"
+                  : `/projects/${project.id}`;
+              return (
+                <motion.div key={project.id} variants={itemVariants}>
+                  <Project
+                    index={index}
+                    title={project.title}
+                    description={project.overview || project.tagline || ""}
+                    imageUrl={imageUrl}
+                    isPasswordProtected={project.isPasswordProtected}
+                    href={href}
+                  />
+                </motion.div>
+              );
+            })}
           </motion.div>
         )}
       </div>

@@ -93,36 +93,34 @@ export default function ProjectsPage() {
         {/* Grid */}
         <div className='w-full divide-y divide-border-base'>
           <div className='grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 border-y border-border-base'>
-            {loading ? (
-              Array.from({ length: SKELETON_COUNT }).map((_, i) => (
-                <WorkItemSkeleton key={i} />
-              ))
-            ) : (
-              filteredProjects.map((project, idx) => {
-              const imageUrl =
-                typeof project.thumbnail === "string"
-                  ? project.thumbnail
-                  : project.thumbnail?.url ??
-                    (project.thumbnail as { src?: string })?.src ??
-                    "/placeholder.png";
-              const href =
-                project.slug === "niural-global-payroll"
-                  ? "/niural"
-                  : project.url ?? `/projects/${project.id}`;
-              return (
-                <WorkItem
-                  key={project.id}
-                  index={idx}
-                  title={project.title}
-                  description={project.tagline}
-                  category={project.category}
-                  imageUrl={imageUrl}
-                  isPasswordProtected={project.isPasswordProtected}
-                  href={href}
-                />
-              );
-            })
-            )}
+            {loading
+              ? Array.from({ length: SKELETON_COUNT }).map((_, i) => (
+                  <WorkItemSkeleton key={i} />
+                ))
+              : filteredProjects.map((project, idx) => {
+                  const imageUrl =
+                    typeof project.thumbnail === "string"
+                      ? project.thumbnail
+                      : (project.thumbnail?.url ??
+                        (project.thumbnail as { src?: string })?.src ??
+                        "/placeholder.png");
+                  const href =
+                    project.slug === "niural-global-payroll"
+                      ? "/niural"
+                      : `/projects/${project.id}`;
+                  return (
+                    <WorkItem
+                      key={project.id}
+                      index={idx}
+                      title={project.title}
+                      description={project.tagline}
+                      category={project.category}
+                      imageUrl={imageUrl}
+                      isPasswordProtected={project.isPasswordProtected}
+                      href={href}
+                    />
+                  );
+                })}
           </div>
         </div>
       </section>

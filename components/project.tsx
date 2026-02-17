@@ -46,6 +46,7 @@ export default function Project({
     checkAccess();
   }, [isPasswordProtected]);
 
+  console.log("href", href);
   return (
     <motion.section
       ref={ref}

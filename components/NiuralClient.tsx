@@ -33,9 +33,7 @@ function RelatedProjectCard({ project: p }: { project: RelatedProject }) {
   const isNiural = p.slug === "niural-global-payroll" || String(p.id) === "0";
 
   const href =
-    p.slug === "niural-global-payroll"
-      ? "/niural"
-      : (p.url ?? `/projects/${p.id}`);
+    p.slug === "niural-global-payroll" ? "/niural" : `/projects/${p.id}`;
 
   const token = typeof window !== "undefined" ? getToken() : null;
 
