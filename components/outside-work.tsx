@@ -62,7 +62,7 @@ export default function OutsideWork() {
 
         {/* Grid */}
         <motion.div
-          className='w-full grid grid-cols-3 gap-5 px-4'
+          className='w-full grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 px-4'
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
