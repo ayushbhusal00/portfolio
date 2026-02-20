@@ -39,7 +39,7 @@ function RelatedProjectCard({ project: p }: { project: RelatedProject }) {
 
   /* ✅ derive initial state */
   const [tokenValid, setTokenValid] = useState<boolean | null>(
-    isNiural ? (token ? null : false) : true,
+    isNiural ? (token ? null : false) : true
   );
 
   useEffect(() => {
@@ -138,7 +138,7 @@ export default function NiuralClient({
 
   /* ✅ derive initial auth state */
   const [tokenValid, setTokenValid] = useState<boolean | null>(
-    project.isPasswordProtected ? (token ? null : false) : true,
+    project.isPasswordProtected ? (token ? null : false) : true
   );
 
   useEffect(() => {
@@ -168,7 +168,7 @@ export default function NiuralClient({
       try {
         const res = await fetch(
           "/api/project?limit=3&sort=-createdAt&where[slug][not_equals]=" +
-            encodeURIComponent(project.slug),
+            encodeURIComponent(project.slug)
         );
 
         const data = await res.json();
@@ -186,7 +186,7 @@ export default function NiuralClient({
                 typeof item.thumbnail === "object"
                   ? item.thumbnail
                   : (item.thumbnail ?? undefined),
-            })),
+            }))
           );
         }
       } catch {}
@@ -202,7 +202,7 @@ export default function NiuralClient({
       project.overview.split(" ").length +
       project.sections.reduce(
         (acc, s) => acc + (s.content?.split(" ").length || 0),
-        0,
+        0
       );
 
     return Math.max(3, Math.round(words / 200));
@@ -228,7 +228,9 @@ export default function NiuralClient({
   }
 
   /* ---------------- Render ---------------- */
-
+  {
+    console.log(project);
+  }
   return (
     <section className='bg-bg-base'>
       <div className='fixed top-0 left-0 z-50 h-[2px] w-full bg-bg-base'>
@@ -298,6 +300,14 @@ export default function NiuralClient({
                       <p className='text-base text-text-subtle'>
                         {section.content}
                       </p>
+                    )}
+
+                    {section.bullets && section.bullets.length > 0 && (
+                      <ul className='list-disc pl-6 text-base text-text-subtle space-y-2'>
+                        {section.bullets.map((bullet, idx) => (
+                          <li key={idx}>{bullet || bullet}</li>
+                        ))}
+                      </ul>
                     )}
 
                     {sectionImgSrc && (
