@@ -244,97 +244,103 @@ export default function NiuralClient({
         <main>{children}</main>
       ) : (
         <main className='md:mx-16 border-x border-border-base'>
-          <div className='mx-auto max-w-3xl px-6 py-16 md:py-28'>
-            <motion.header
-              initial={{ opacity: 0, y: 16 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6 }}
-              className='space-y-8'
-            >
-              <h1 className='text-4xl text-text-base md:text-5xl font-bold'>
-                {project.title}
-              </h1>
+          <div className=''>
+            <div className=' mx-auto max-w-6xl'>
+              {project.videoUrl && (
+                <div className='mt-2 mb-4 aspect-video w-full overflow-hidden rounded-2xl'>
+                  <ReactPlayer
+                    controls
+                    autoPlay
+                    width='100%'
+                    height='100%'
+                    src={project.videoUrl}
+                  />
+                </div>
+              )}
+            </div>
+            <div className='py-16 md:py-28 mx-auto max-w-3xl'>
+              <motion.header
+                initial={{ opacity: 0, y: 16 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6 }}
+                className='space-y-8'
+              >
+                <h1 className='text-4xl text-text-base md:text-5xl font-semibold'>
+                  {project.title}
+                </h1>
 
-              <p className='text-lg text-text-subtle'>{project.overview}</p>
+                <p className='text-lg text-text-subtle'>{project.overview}</p>
 
-              <p className='text-sm text-text-subtle'>{readingTime} min read</p>
-            </motion.header>
+                <p className='text-sm text-text-subtle'>
+                  {readingTime} min read
+                </p>
+              </motion.header>
 
-            {(project.heroImage || (project as any).thumbnail?.url) && (
-              <div className='relative my-10 aspect-video w-full overflow-hidden rounded-2xl'>
-                <Image
-                  src={
-                    typeof project.heroImage === "string"
-                      ? project.heroImage
-                      : ((project.heroImage as any)?.url ??
-                        (project as any).thumbnail?.url)
-                  }
-                  alt={project.title}
-                  fill
-                  className='object-cover'
-                  priority
-                />
-              </div>
-            )}
+              {(project.heroImage || (project as any).thumbnail?.url) && (
+                <div className='relative my-10 aspect-video w-full overflow-hidden rounded-2xl'>
+                  <Image
+                    src={
+                      typeof project.heroImage === "string"
+                        ? project.heroImage
+                        : ((project.heroImage as any)?.url ??
+                          (project as any).thumbnail?.url)
+                    }
+                    alt={project.title}
+                    fill
+                    className='object-cover'
+                    priority
+                  />
+                </div>
+              )}
 
-            <article className='space-y-20'>
-              {project.sections.map((section, index) => {
-                const sectionImage = project.gallery?.[index];
-                const sectionImgSrc =
-                  typeof sectionImage === "string"
-                    ? sectionImage
-                    : (sectionImage as any)?.url;
+              <article className='space-y-20'>
+                {project.sections.map((section, index) => {
+                  const sectionImage = project.gallery?.[index];
+                  const sectionImgSrc =
+                    typeof sectionImage === "string"
+                      ? sectionImage
+                      : (sectionImage as any)?.url;
 
-                if (!section.heading && !section.content && !sectionImgSrc)
-                  return null;
+                  if (!section.heading && !section.content && !sectionImgSrc)
+                    return null;
 
-                return (
-                  <section key={index} className='space-y-8'>
-                    {section.heading && (
-                      <h2 className='text-2xl text-text-base md:text-3xl font-semibold'>
-                        {section.heading}
-                      </h2>
-                    )}
+                  return (
+                    <section key={index} className='space-y-8'>
+                      {section.heading && (
+                        <h2 className='text-2xl text-text-base md:text-3xl font-semibold'>
+                          {section.heading}
+                        </h2>
+                      )}
 
-                    {section.content && (
-                      <p className='text-base text-text-subtle'>
-                        {section.content}
-                      </p>
-                    )}
+                      {section.content && (
+                        <p className='text-base text-text-subtle'>
+                          {section.content}
+                        </p>
+                      )}
 
-                    {section.bullets && section.bullets.length > 0 && (
-                      <ul className='list-disc pl-6 text-base text-text-subtle space-y-2'>
-                        {section.bullets.map((bullet, idx) => (
-                          <li key={idx}>{bullet || bullet}</li>
-                        ))}
-                      </ul>
-                    )}
+                      {section.bullets && section.bullets.length > 0 && (
+                        <ul className='list-disc pl-6 text-base text-text-subtle space-y-2'>
+                          {section.bullets.map((bullet, idx) => (
+                            <li key={idx}>{bullet || bullet}</li>
+                          ))}
+                        </ul>
+                      )}
 
-                    {sectionImgSrc && (
-                      <div className='relative aspect-video w-full overflow-hidden rounded-2xl'>
-                        <Image
-                          src={sectionImgSrc}
-                          alt={section.heading || project.title}
-                          fill
-                          className='object-cover'
-                        />
-                      </div>
-                    )}
-                  </section>
-                );
-              })}
-            </article>
-
-            {project.videoUrl && (
-              <div className='my-20 aspect-video w-full overflow-hidden rounded-2xl'>
-                <ReactPlayer
-                  controls
-                  width='100%'
-                  height='100%'
-                  src={project.videoUrl}
-                />
-              </div>
-            )}
+                      {sectionImgSrc && (
+                        <div className='relative aspect-video w-full overflow-hidden rounded-2xl'>
+                          <Image
+                            src={sectionImgSrc}
+                            alt={section.heading || project.title}
+                            fill
+                            className='object-cover'
+                          />
+                        </div>
+                      )}
+                    </section>
+                  );
+                })}
+              </article>
+            </div>
           </div>
         </main>
       )}

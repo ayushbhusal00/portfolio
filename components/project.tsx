@@ -54,18 +54,40 @@ export default function Project({
       whileHover={{ y: -4 }}
       transition={{ duration: 0.3, ease: "easeOut" }}
       className={clsx(
-        "w-full group cursor-pointer",
-        "m-2 hover:bg-bg-subtle rounded-xl",
+        "w-full group cursor-pointer border-t border-border-base",
+        "hover:bg-bg-subtle",
         "bg-bg-base",
         "overflow-hidden",
-        "transition-all duration-300 py-6rem",
+        "transition-all duration-300 py-16"
       )}
     >
-      <div className='flex flex-col md:flex-col pb-[5rem]'>
+      <div className='max-w-[1536px] mx-auto flex gap-5'>
+        {/* Content */}
+        <div className='flex flex-col text-start justify-center p-6 md:p-6 w-full'>
+          {/* Optional tag
+          <span className='mb-3 inline-block w-fit rounded-full bg-bg-base px-3 py-1 text-xs font-medium text-text-subtle border border-border-base  shadow-sm'>
+            Case Study
+          </span> */}
+
+          <h2 className='text-[2rem] font-semibold !leading-snug text-text-base '>
+            {title}
+          </h2>
+
+          <p className='mt-3 text-sm md:text-base leading-relaxed text-text-subtle h-full'>
+            {description}
+          </p>
+
+          {/* CTA */}
+          <div className='w-fit mt-6 flex items-center gap-2 text-sm font-medium rounded-full bg-bg-base px-3 py-1 text-text-subtle border border-border-base shadow-sm'>
+            <span className='text-text-base'>View project</span>
+            <span className='inline-flex items-center justify-center whitespace-nowrap text-sm font-medium ring-offset-background focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 group rounded-full border hover:text-white hover:bg-[radial-gradient(at_50%_75%,theme(colors.blue.300),theme(colors.blue.500),theme(colors.blue.400))] hover:shadow-[0px_2px_2px_-1px_rgba(0,0,0,0.25),0px_4px_8px_1px_rgba(10,10,10,0.15)_inset,0px_-2px_2px_0px_rgba(10,10,10,0.15)_inset] hover:border-blue-700 active:scale-95 cursor-pointer relative size-8 transition-all duration-200 text-white bg-[radial-gradient(at_50%_75%,theme(colors.blue.300),theme(colors.blue.500),theme(colors.blue.400))] border-blue-700 shadow-[0px_2px_2px_-1px_rgba(0,0,0,0.25),0px_4px_8px_1px_rgba(10,10,10,0.15)_inset,0px_-2px_2px_0px_rgba(10,10,10,0.15)_inset] md:text-stone-500 md:bg-[radial-gradient(at_50%_75%,theme(colors.stone.100),theme(colors.stone.200),theme(colors.stone.300))] md:border-stone-400 md:shadow-[0px_2px_2px_-1px_rgba(0,0,0,0.25),0px_4px_8px_1px_rgba(10,10,10,0.15)_inset,0px_-2px_2px_0px_rgba(10,10,10,0.15)_inset] md:group-hover:text-white md:group-hover:bg-[radial-gradient(at_50%_75%,theme(colors.blue.300),theme(colors.blue.500),theme(colors.blue.400))] md:group-hover:border-blue-700 md:group-hover:shadow-[0px_2px_2px_-1px_rgba(0,0,0,0.25),0px_4px_8px_1px_rgba(10,10,10,0.15)_inset,0px_-2px_2px_0px_rgba(10,10,10,0.15)_inset]'>
+              →
+            </span>
+          </div>
+        </div>
         {/* Image */}
         <div className='relative md:block shrink-0 p-4 md:p-6 origin-right'>
-          <div className='absolute inset-0 z-10 hidden md:block ' />
-          <div className='relative aspect-3/4 h-[500px] w-full overflow-hidden rounded-xl shadow-2xl shadow-elevation-card-rest'>
+          <div className='relative aspect-video w-[40vw] h-[30vh] overflow-hidden rounded-xl shadow-2xl shadow-elevation-card-rest'>
             <Image
               src={imageUrl}
               alt={title}
@@ -78,7 +100,7 @@ export default function Project({
               }
               className={clsx(
                 "object-cover object-center transition-transform duration-500 group-hover:scale-[1.04]",
-                isPasswordProtected && !hasAccess && "blur-sm",
+                isPasswordProtected && !hasAccess && "blur-sm"
               )}
             />
             {/* Password Protected Badge */}
@@ -89,36 +111,6 @@ export default function Project({
                 </span>
               </div>
             )}
-          </div>
-        </div>
-
-        {/* Content */}
-        <div className='flex flex-col text-start justify-center p-6 md:p-6 '>
-          {/* Optional tag */}
-          <span className='mb-3 inline-block w-fit rounded-full bg-bg-base px-3 py-1 text-xs font-medium text-text-subtle border border-border-base  shadow-sm'>
-            Case Study
-          </span>
-
-          <h3
-            className='text-2xl md:text-3xl text-text-base font-semibold tracking-tight'
-            style={{
-              fontFamily: "Instryment Sans, serif",
-              fontStyle: "italic",
-            }}
-          >
-            {title}
-          </h3>
-
-          <p className='mt-3 text-sm md:text-base leading-relaxed text-text-subtle'>
-            {description}
-          </p>
-
-          {/* CTA */}
-          <div className='mt-6 flex items-center gap-2 text-sm font-medium'>
-            <span className='text-text-base'>View project</span>
-            <span className='inline-flex items-center justify-center whitespace-nowrap text-sm font-medium ring-offset-background focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 group rounded-full border hover:text-white hover:bg-[radial-gradient(at_50%_75%,theme(colors.blue.300),theme(colors.blue.500),theme(colors.blue.400))] hover:shadow-[0px_2px_2px_-1px_rgba(0,0,0,0.25),0px_4px_8px_1px_rgba(10,10,10,0.15)_inset,0px_-2px_2px_0px_rgba(10,10,10,0.15)_inset] hover:border-blue-700 active:scale-95 cursor-pointer relative size-8 transition-all duration-200 text-white bg-[radial-gradient(at_50%_75%,theme(colors.blue.300),theme(colors.blue.500),theme(colors.blue.400))] border-blue-700 shadow-[0px_2px_2px_-1px_rgba(0,0,0,0.25),0px_4px_8px_1px_rgba(10,10,10,0.15)_inset,0px_-2px_2px_0px_rgba(10,10,10,0.15)_inset] md:text-stone-500 md:bg-[radial-gradient(at_50%_75%,theme(colors.stone.100),theme(colors.stone.200),theme(colors.stone.300))] md:border-stone-400 md:shadow-[0px_2px_2px_-1px_rgba(0,0,0,0.25),0px_4px_8px_1px_rgba(10,10,10,0.15)_inset,0px_-2px_2px_0px_rgba(10,10,10,0.15)_inset] md:group-hover:text-white md:group-hover:bg-[radial-gradient(at_50%_75%,theme(colors.blue.300),theme(colors.blue.500),theme(colors.blue.400))] md:group-hover:border-blue-700 md:group-hover:shadow-[0px_2px_2px_-1px_rgba(0,0,0,0.25),0px_4px_8px_1px_rgba(10,10,10,0.15)_inset,0px_-2px_2px_0px_rgba(10,10,10,0.15)_inset]'>
-              →
-            </span>
           </div>
         </div>
       </div>

@@ -5,6 +5,10 @@ import { motion } from "framer-motion";
 import Project from "./project";
 import ProjectCardSkeleton from "./project-card-skeleton";
 import { caseStudies } from "@/lib/data";
+import FeaturedProject from "./featured-project";
+import dynamic from "next/dynamic";
+
+const ReactPlayer = dynamic(() => import("react-player"), { ssr: false });
 
 const containerVariants = {
   hidden: { opacity: 0 },
@@ -23,7 +27,7 @@ const itemVariants = {
   },
 };
 
-export default function Projects() {
+export default function FeaturedProjects() {
   const [projects, setProjects] = useState<any[]>([]);
   const [loading, setLoading] = useState(true);
 
@@ -54,22 +58,12 @@ export default function Projects() {
   return (
     <motion.section
       id='projects'
-      className='scroll-mt-28 w-full text-start flex flex-col justify-center'
+      className='scroll-mt-28 w-full max-w-[1536px] mx-auto text-start flex flex-col justify-center'
       initial={{ opacity: 0 }}
       whileInView={{ opacity: 1 }}
       viewport={{ once: true, margin: "-50px" }}
       transition={{ duration: 0.4 }}
     >
-      <motion.p
-        className='max-w-[1536px] mx-auto w-full p-7 text-[2rem] font-semibold !leading-snug text-text-base uppercase'
-        initial={{ opacity: 0, y: 10 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true }}
-        transition={{ duration: 0.3 }}
-      >
-        SELECTED PROJECTS ↓
-      </motion.p>
-
       <div className='w-full mx-auto flex flex-col items-center justify-center'>
         {loading ? (
           <div className='grid w-full grid-cols-1 gap-8'>
@@ -81,7 +75,7 @@ export default function Projects() {
           <div className='py-12 text-text-subtle'>No projects found.</div>
         ) : (
           <motion.div
-            className='w-full flex flex-col'
+            className='w-full hidden md:grid grid-cols-1 lg:grid-cols-3 md:grid-cols-2 gap-4'
             variants={containerVariants}
             initial='hidden'
             whileInView='visible'
@@ -101,7 +95,7 @@ export default function Projects() {
                   : `/projects/${project.id}`;
               return (
                 <motion.div key={project.id} variants={itemVariants}>
-                  <Project
+                  <FeaturedProject
                     index={index}
                     title={project.title}
                     description={project.overview || project.tagline || ""}
@@ -114,6 +108,23 @@ export default function Projects() {
             })}
           </motion.div>
         )}
+      </div>
+      <div className='aspect-video overflow-hidden rounded-2xl p-6 w-full max-w-[1536px] mx-auto'>
+        <ReactPlayer
+          width='100%'
+          height='100%'
+          controls
+          autoPlay
+          className='rounded-2xl overflow-hidden shadow-elevation-card-rest'
+          src={"https://vimeo.com/1183236358?share=copy&fl=sv&fe=ci"}
+        />
+      </div>
+      {/* Hover Overlay */}
+      <div className='pointer-events-none absolute inset-0 flex items-center justify-center bg-black/40 opacity-0 transition-opacity duration-300 group-hover:opacity-100'>
+        {/* Tooltip / CTA */}
+        <div className='pointer-events-auto rounded-full bg-white/90 px-4 py-2 text-sm font-medium text-black shadow-lg backdrop-blur'>
+          ▶ Play Showreel
+        </div>
       </div>
     </motion.section>
   );

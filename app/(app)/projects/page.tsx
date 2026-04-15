@@ -23,17 +23,17 @@ export default function ProjectsPage() {
         const data = await res.json();
         // Find niural case study
         const niural = caseStudies.find(
-          (cs) => cs.slug === "niural-global-payroll",
+          (cs) => cs.slug === "niural-global-payroll"
         );
         // Remove any niural from payload (by slug or id if present)
         const filtered = (data.docs || []).filter(
-          (p: any) => p.slug !== "niural-global-payroll" && p.slug !== "niural",
+          (p: any) => p.slug !== "niural-global-payroll" && p.slug !== "niural"
         );
         // Append niural case study as a project
         const projectsWithNiural = niural ? [niural, ...filtered] : filtered;
         setProjects(projectsWithNiural);
         const cats = Array.from(
-          new Set(projectsWithNiural.map((p: any) => p.category)),
+          new Set(projectsWithNiural.map((p: any) => p.category))
         ).filter(Boolean);
         setCategories(["All", ...cats.map(String)]);
       } finally {
@@ -122,6 +122,7 @@ export default function ProjectsPage() {
                   );
                 })}
           </div>
+          <div></div>
         </div>
       </section>
     </main>

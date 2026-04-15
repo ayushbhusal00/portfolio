@@ -5,7 +5,7 @@ export default function ProjectCardSkeleton() {
     <div
       className='
         w-full
-        m-2 rounded-xl
+        rounded-xl
         bg-bg-base
         overflow-hidden py-6rem
       '

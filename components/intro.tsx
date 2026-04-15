@@ -56,11 +56,11 @@ export default function Intro() {
   return (
     <motion.section
       id='home'
-      className='w-full scroll-mt-[100rem] max-w-[920px] mx-auto bg-bg-base relative'
+      className='w-full scroll-mt-[100rem] max-w-[1536px] mx-auto bg-bg-base relative'
     >
-      <div className='flex flex-col md:flex-row-reverse items-center sm:py-32 sm:px-2 md:py-40 px-4 py-16 justify-between gap-10 mx-auto'>
+      <div className='flex flex-col items-start sm:py-16 sm:px-2 md:py-20 px-4 py-8 justify-between gap-10'>
         {/* Portrait */}
-        <motion.div
+        {/* <motion.div
           className='relative'
           initial={{ opacity: 0, scale: 0.9 }}
           animate={{ opacity: 1, scale: 1 }}
@@ -76,7 +76,7 @@ export default function Intro() {
             placeholder='blur'
             className='h-[10rem] w-[10rem] md:h-[30rem] md:w-[30rem] rounded-full object-cover border-[0.25rem] border-border-base shadow-xl'
           />
-        </motion.div>
+        </motion.div> */}
 
         {/* Text Content */}
         <motion.div
@@ -94,29 +94,25 @@ export default function Intro() {
 
           <motion.h1
             variants={itemVariants}
-            className='py-2 text-[2.5rem] font-bold !leading-snug text-text-base'
-            style={{
-              fontFamily: "Libre Baskerville Variable, serif",
-              fontStyle: "italic",
-            }}
+            className='py-2 text-[2rem] font-semibold !leading-snug text-text-base uppercase'
           >
             Product Designer & Engineer
           </motion.h1>
 
           <motion.p
             variants={itemVariants}
-            className='py-2 text-[0.9rem] text-text-subtle max-w-[38.75rem] mb-5'
+            className='py-2 text-[1.15rem] text-text-subtle max-w-[38.75rem] mb-5'
           >
             I design interfaces, experiences, and brand identities that make a
             difference. Blending product thinking and technical execution.
           </motion.p>
 
-          {/* Buttons */}
+          {/* Buttons
           <motion.div
             variants={itemVariants}
             className='flex gap-4 items-start py-4 text-sm font-medium relative z-10'
           >
-            {/* Say Hello Button */}
+            
             <Link
               href='/#contact'
               className='relative group inline-block transition-transform duration-300 ease-out hover:scale-105'
@@ -135,7 +131,7 @@ export default function Intro() {
               </span>
             </Link>
 
-            {/* LinkedIn */}
+            
             <Link
               href='https://www.linkedin.com/in/ayush-bhusal-331143119/'
               target='_blank'
@@ -145,7 +141,7 @@ export default function Intro() {
               <BsLinkedin />
             </Link>
 
-            {/* Github */}
+            
             <Link
               href='https://github.com/ayushbhusal00'
               target='_blank'
@@ -154,12 +150,12 @@ export default function Intro() {
             >
               <FaGithubSquare />
             </Link>
-          </motion.div>
+          </motion.div> */}
         </motion.div>
       </div>
-      <div className='hidden md:block absolute inset-0 w-svw h-full pointer-events-none'>
+      {/* <div className='hidden md:block absolute inset-0 w-svw h-full pointer-events-none'>
         <ImageTrail items={imageUrls as string[]} />
-      </div>
+      </div> */}
     </motion.section>
   );
 }

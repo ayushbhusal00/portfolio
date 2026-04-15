@@ -43,7 +43,7 @@ export default function OutsideWork() {
       viewport={{ once: true, margin: "-80px" }}
       transition={{ duration: 0.5 }}
     >
-      <div className='relative py-[6rem] flex flex-col w-full max-w-[920px] mx-auto items-center text-left gap-8 md:my-20'>
+      <div className='relative py-[6rem] flex flex-col w-full max-w-[1536px] mx-auto items-center text-left gap-8 md:my-20'>
         {/* Header */}
         <div className='w-full flex justify-between items-start px-4'>
           <Image

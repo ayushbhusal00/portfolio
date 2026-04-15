@@ -5,10 +5,11 @@ import Intro from "@/components/intro";
 import Header from "@/components/header";
 import Shilouette from "@/public/shilouette.png";
 import Link from "next/link";
+import FeaturedProjects from "./featured-projects";
 
 const Projects = dynamic(() => import("@/components/projects"), {
   loading: () => (
-    <section className='scroll-mt-28 w-full max-w-[920px] mx-auto text-start flex flex-col justify-center'>
+    <section className='scroll-mt-28 w-full max-w-[1536px] mx-auto text-start flex flex-col justify-center'>
       <p className='text-text-subtle text-sm px-6'>SELECTED PROJECTS ↓</p>
       <div className='py-12 flex justify-center'>
         <span className='h-6 w-6 rounded-full border-2 border-border-base border-t-text-subtle animate-spin' />
@@ -79,6 +80,7 @@ export default function HomeClient() {
       <div className='bg-bg-base w-full'>
         <div className='md:mx-16 border-x border-border-base'>
           <Intro />
+          <FeaturedProjects />
           <Projects />
           <OutsideWork />
         </div>

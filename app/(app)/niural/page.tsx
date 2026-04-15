@@ -105,7 +105,7 @@ const heroVideoUrls = [
 
 function RelatedProjectsSection({ related }: { related: any[] }) {
   const [accessMap, setAccessMap] = React.useState<{ [id: string]: boolean }>(
-    {},
+    {}
   );
 
   useEffect(() => {
@@ -214,7 +214,7 @@ export default function NiuralPage() {
   const [related, setRelated] = useState<any[]>([]);
 
   const moreCaseStudies = caseStudies.filter(
-    (cs) => cs.slug !== "niural-global-payroll",
+    (cs) => cs.slug !== "niural-global-payroll"
   );
 
   useEffect(() => {
@@ -232,7 +232,7 @@ export default function NiuralPage() {
     async function fetchRelated() {
       try {
         const res = await fetch(
-          "/api/project?limit=3&sort=-createdAt&where[slug][not_equals]=niural-global-payroll",
+          "/api/project?limit=3&sort=-createdAt&where[slug][not_equals]=niural-global-payroll"
         );
         const data = await res.json();
 
@@ -264,8 +264,29 @@ export default function NiuralPage() {
 
   return (
     <section className='bg-bg-base'>
-      <main className='md:mx-16 flex justify-center border-x border-border-base'>
-        <div className='max-w-3xl py-24 px-6 flex flex-col gap-16'>
+      <main className='md:mx-16 flex flex-col justify-center border-x border-border-base'>
+        {/* HERO VIDEO */}
+        <Carousel className='pt-2 pb-4 mx-20'>
+          <CarouselContent>
+            {heroVideoUrls.map((video, index) => (
+              <CarouselItem key={index}>
+                <div className='aspect-video overflow-hidden rounded-2xl'>
+                  <ReactPlayer
+                    width='100%'
+                    height='100%'
+                    controls
+                    src={video.url}
+                    className='rounded-2xl overflow-hidden shadow-elevation-card-rest'
+                  />
+                </div>
+              </CarouselItem>
+            ))}
+          </CarouselContent>
+
+          <CarouselNext />
+          <CarouselPrevious />
+        </Carousel>
+        <div className='w-full mx-auto max-w-3xl py-24 px-6 flex flex-col gap-16'>
           <motion.header
             initial={{ opacity: 0, y: 16 }}
             animate={{ opacity: 1, y: 0 }}
@@ -286,27 +307,6 @@ export default function NiuralPage() {
 
             <p className='text-sm text-text-subtle'>4 min read</p>
           </motion.header>
-          {/* HERO VIDEO */}
-          <Carousel>
-            <CarouselContent>
-              {heroVideoUrls.map((video, index) => (
-                <CarouselItem key={index}>
-                  <div className='aspect-video overflow-hidden rounded-2xl'>
-                    <ReactPlayer
-                      width='100%'
-                      height='100%'
-                      controls
-                      src={video.url}
-                      className='rounded-2xl overflow-hidden shadow-elevation-card-rest'
-                    />
-                  </div>
-                </CarouselItem>
-              ))}
-            </CarouselContent>
-
-            <CarouselNext />
-            <CarouselPrevious />
-          </Carousel>
 
           {/* PROBLEM */}
           <div className='mx-auto max-w-3xl space-y-6'>
