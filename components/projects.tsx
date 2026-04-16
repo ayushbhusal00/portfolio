@@ -5,6 +5,7 @@ import { motion } from "framer-motion";
 import Project from "./project";
 import { caseStudies } from "@/lib/data";
 import FeaturedCardSkeleton from "./featured-card-skeleton";
+import ProjectCardSkeleton from "./project-card-skeleton";
 
 const containerVariants = {
   hidden: { opacity: 0 },
@@ -74,7 +75,7 @@ export default function Projects() {
         {loading ? (
           <div className='grid w-full grid-cols-1 gap-8'>
             {Array.from({ length: 2 }).map((_, i) => (
-              <FeaturedCardSkeleton key={i} />
+              <ProjectCardSkeleton key={i} />
             ))}
           </div>
         ) : projects.length === 0 ? (

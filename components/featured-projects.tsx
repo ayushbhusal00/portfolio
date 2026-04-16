@@ -7,6 +7,9 @@ import ProjectCardSkeleton from "./project-card-skeleton";
 import { caseStudies } from "@/lib/data";
 import FeaturedProject from "./featured-project";
 import dynamic from "next/dynamic";
+import FeaturedCardSkeleton from "./featured-card-skeleton";
+
+import { InfoIcon } from "lucide-react";
 
 const ReactPlayer = dynamic(() => import("react-player"), { ssr: false });
 
@@ -64,11 +67,11 @@ export default function FeaturedProjects() {
       viewport={{ once: true, margin: "-50px" }}
       transition={{ duration: 0.4 }}
     >
-      <div className='w-full mx-auto flex flex-col items-center justify-center'>
+      <div className='w-full mx-auto items-center justify-center'>
         {loading ? (
-          <div className='grid w-full grid-cols-1 gap-8'>
-            {Array.from({ length: 2 }).map((_, i) => (
-              <ProjectCardSkeleton key={i} />
+          <div className='hidden md:grid w-full md:grid-cols-2 lg:grid-cols-3 gap-8'>
+            {Array.from({ length: 3 }).map((_, i) => (
+              <FeaturedCardSkeleton key={i} />
             ))}
           </div>
         ) : projects.length === 0 ? (
@@ -117,7 +120,14 @@ export default function FeaturedProjects() {
           autoPlay
           className='rounded-2xl overflow-hidden shadow-elevation-card-rest'
           src={"https://vimeo.com/1183236358?share=copy&fl=sv&fe=ci"}
+          loop
         />
+      </div>
+      <div className='mx-6 px-2 py-2 bg-bg-subtle rounded-full flex gap-2 justify-center items-center'>
+        <InfoIcon size={18} className='text-text-base' />
+        <p className='text-text-base'>
+          Stay tuned! Showreel is getting updates soon.
+        </p>
       </div>
       {/* Hover Overlay */}
       <div className='pointer-events-none absolute inset-0 flex items-center justify-center bg-black/40 opacity-0 transition-opacity duration-300 group-hover:opacity-100'>

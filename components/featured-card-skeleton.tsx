@@ -2,8 +2,8 @@
 
 export default function FeaturedCardSkeleton() {
   return (
-    <div className='w-full'>
-      <section className='w-full rounded-xl bg-bg-base overflow-hidden py-6rem px-6'>
+    <div className='w-full '>
+      <section className='w-full  rounded-xl bg-bg-base overflow-hidden py-6rem px-6'>
         <div className='flex py-5 gap-4 items-center'>
           {/* Thumbnail */}
           <div className='relative shrink-0'>
