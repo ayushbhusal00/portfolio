@@ -4,7 +4,6 @@ import React, { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import Project from "./project";
 import { caseStudies } from "@/lib/data";
-import FeaturedCardSkeleton from "./featured-card-skeleton";
 import ProjectCardSkeleton from "./project-card-skeleton";
 
 const containerVariants = {
@@ -36,11 +35,11 @@ export default function Projects() {
         const data = await res.json();
         // Find niural case study
         const niural = caseStudies.find(
-          (cs) => cs.slug === "niural-global-payroll"
+          (cs) => cs.slug === "niural-global-payroll",
         );
         // Remove any niural from payload (by slug or id if present)
         const filtered = (data.docs || []).filter(
-          (p: any) => p.slug !== "niural-global-payroll" && p.slug !== "niural"
+          (p: any) => p.slug !== "niural-global-payroll" && p.slug !== "niural",
         );
         // Append niural case study as a project
         const projectsWithNiural = niural ? [niural, ...filtered] : filtered;
@@ -61,7 +60,7 @@ export default function Projects() {
       viewport={{ once: true, margin: "-50px" }}
       transition={{ duration: 0.4 }}
     >
-      <motion.p
+      {/* <motion.p
         className='max-w-[1536px] mx-auto w-full p-7 text-[2rem] font-semibold !leading-snug text-text-base uppercase'
         initial={{ opacity: 0, y: 10 }}
         whileInView={{ opacity: 1, y: 0 }}
@@ -69,7 +68,7 @@ export default function Projects() {
         transition={{ duration: 0.3 }}
       >
         SELECTED PROJECTS ↓
-      </motion.p>
+      </motion.p> */}
 
       <div className='w-full mx-auto flex flex-col items-center justify-center'>
         {loading ? (

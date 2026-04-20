@@ -1,142 +1,83 @@
 "use client";
 
-import { FaReact } from "react-icons/fa";
-import { LuGraduationCap } from "react-icons/lu";
-import { CgWorkAlt } from "react-icons/cg";
-import Image from "next/image";
+import React from "react";
+import { motion } from "framer-motion";
 
-// Images
-import GradientBlue from "@/public/gradient-background.jpg";
-import NiuralExperience from "@/public/niural-experience.png";
-import IdaExperience from "@/public/ida-experience.png";
-import VesperExperience from "@/public/vesper-experiences.png";
-import PrimeExperience from "@/public/prime-experience.png";
-import OhoExperience from "@/public/oho-experience.png";
-
-export const experiencesData = [
+const experiences = [
   {
-    title: "Senior Product Designer",
-    location: "Niural Inc.",
+    company: "Angelswing.io",
+    role: "Senior Product Designer",
+    period: "2024 — Present",
     description:
-      "Designed and launched user-centric payroll & payments experiences, built scalable systems, and led design foundations through Series A.",
-    icon: FaReact,
-    date: "Nov 2022 – Present",
-    rightImage: NiuralExperience,
+      "Leading the redesign of digital twin platforms and optimizing complex data workflows.",
+    location: "Remote / Seoul",
   },
   {
-    title: "Web Designer",
-    location: "Infinity Digital Agency",
+    company: "Freelance",
+    role: "UX Engineer",
+    period: "2022 — 2024",
     description:
-      "Designed conversion-focused web interfaces and scalable design systems.",
-    icon: FaReact,
-    date: "Oct 2021 – Mar 2022",
-    rightImage: IdaExperience,
+      "Designed and developed brand identities and high-fidelity prototypes for global startups.",
+    location: "Kathmandu",
   },
   {
-    title: "Web Designer",
-    location: "The Vesper House",
+    company: "Daraz (Alibaba Group)",
+    role: "E-commerce Specialist",
+    period: "2021 — 2022",
     description:
-      "Built a WordPress e-commerce platform and boosted sales by 70%.",
-    icon: LuGraduationCap,
-    date: "Jul 2020 – Apr 2021",
-    rightImage: VesperExperience,
+      "Streamlined product listings and improved merchant experience through design-thinking.",
+    location: "Kathmandu",
   },
-  {
-    title: "Multimedia Designer",
-    location: "Prime International",
-    description:
-      "Created responsive websites, 3D mockups, and multimedia assets.",
-    icon: FaReact,
-    date: "Apr 2019 – Jan 2020",
-    rightImage: PrimeExperience,
-  },
-  {
-    title: "Associate Web Designer",
-    location: "OHO Digital Ventures",
-    description: "Designed UX flows, frontend UI, and branding materials.",
-    icon: CgWorkAlt,
-    date: "Apr 2018 – Jan 2019",
-    rightImage: OhoExperience,
-  },
-] as const;
-
-const rotations = [
-  "rotate-[3deg]",
-  "rotate-[1deg]",
-  "rotate-[-2deg]",
-  "rotate-[-4deg]",
-  "rotate-[2deg]",
 ];
 
 export default function WorkPage() {
   return (
-    <section className='relative min-h-[350vh] w-full bg-bg-base'>
-      <div className='px-6 pt-32'>
-        {experiencesData.map((exp, index) => {
-          const Icon = exp.icon;
+    <div className='bg-bg-base'>
+      {experiences.map((exp, idx) => (
+        <motion.div
+          key={idx}
+          className='group border-b border-border-base last:border-0 relative overflow-hidden transition-colors hover:bg-bg-subtle'
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ delay: idx * 0.1 }}
+        >
+          <div className='grid grid-cols-1 md:grid-cols-12 items-start p-8 md:p-16 gap-8'>
+            {/* Year Column */}
+            <div className='md:col-span-2'>
+              <span className='text-sm font-mono text-text-subtle'>
+                {exp.period}
+              </span>
+            </div>
 
-          return (
-            <div
-              key={index}
-              className='sticky'
-              style={{
-                top: `${6 + index * 2}rem`,
-                zIndex: 10 + index * 10,
-              }}
-            >
-              {/* CARD */}
-              <div
-                className={`
-                  border border-grey-900
-                  relative h-[420px] w-full
-                  bg-bg-base
-                  rounded-lg
-                  
-                  shadow-[0_12px_40px_rgba(0,0,0,0.18)]
-                  overflow-hidden
-                  stamp-edge
-                  ${rotations[index % rotations.length]}
-                  mb-32
-                `}
-              >
-                {/* CONTENT */}
-                <div className='relative z-10 flex flex-col md:flex-row h-full'>
-                  {/* LEFT */}
-                  <div className='w-full md:w-[40%] p-8 flex flex-col justify-between'>
-                    <span className='text-xs font-mono opacity-60'>
-                      {String(index + 1).padStart(2, "0")} / {exp.location}
-                    </span>
+            {/* Role & Company Column */}
+            <div className='md:col-span-5'>
+              <h3 className='text-2xl md:text-4xl font-semibold tracking-tight text-text-base'>
+                {exp.company}
+              </h3>
+              <p className='text-lg md:text-xl text-text-subtle mt-2 italic font-serif'>
+                {exp.role}
+              </p>
+            </div>
 
-                    <div className='space-y-3'>
-                      <h2 className='font-serif text-[30px] leading-[1.3]'>
-                        {exp.title}
-                      </h2>
-                      <p className='text-xs opacity-80 leading-snug'>
-                        {exp.description}
-                      </p>
-                      <span className='text-[11px] uppercase tracking-wide opacity-50'>
-                        {exp.date}
-                      </span>
-                    </div>
-
-                    {Icon && <Icon className='text-xl opacity-30 self-end' />}
-                  </div>
-
-                  {/* RIGHT */}
-                  <div className='relative w-full md:w-[60%] sm:min-h-[320px] md:h-auto bg-gradient-to-br from-neutral-100 to-neutral-200'>
-                    <Image
-                      src={exp.rightImage ?? GradientBlue}
-                      alt={exp.title}
-                      fill
-                      className='object-cover'
-                    />
-                  </div>
-                </div>
+            {/* Description Column */}
+            <div className='md:col-span-5'>
+              <p className='text-base md:text-lg text-text-subtle leading-relaxed max-w-md'>
+                {exp.description}
+              </p>
+              <div className='mt-6 flex items-center gap-2'>
+                <div className='w-1.5 h-1.5 rounded-full bg-blue-500' />
+                <span className='text-[10px] font-mono uppercase tracking-widest text-text-subtle'>
+                  {exp.location}
+                </span>
               </div>
             </div>
-          );
-        })}
-      </div>
-    </section>
+          </div>
+
+          {/* Significa-style hover line */}
+          <div className='absolute bottom-0 left-0 h-[2px] w-0 bg-text-base transition-all duration-500 group-hover:w-full' />
+        </motion.div>
+      ))}
+    </div>
   );
 }

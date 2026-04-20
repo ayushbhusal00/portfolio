@@ -6,82 +6,75 @@ import Header from "@/components/header";
 import Shilouette from "@/public/shilouette.png";
 import Link from "next/link";
 import FeaturedProjects from "./featured-projects";
+import { motion } from "framer-motion";
+import Achievements from "./achievements";
 
 const Projects = dynamic(() => import("@/components/projects"), {
-  loading: () => (
-    <section className='scroll-mt-28 w-full max-w-[1536px] mx-auto text-start flex flex-col justify-center'>
-      <p className='text-text-subtle text-sm px-6'>SELECTED PROJECTS ↓</p>
-      <div className='py-12 flex justify-center'>
-        <span className='h-6 w-6 rounded-full border-2 border-border-base border-t-text-subtle animate-spin' />
-      </div>
-    </section>
-  ),
+  loading: () => <div className='h-96 w-full animate-pulse bg-bg-subtle' />,
 });
 
 const OutsideWork = dynamic(() => import("@/components/outside-work"));
-
 const Contact = dynamic(() => import("@/components/contact"));
-
-const arrow = () => {
-  return (
-    <svg
-      className='shrink-0 transition-transform duration-200 group-hover:translate-x-1'
-      width='20'
-      height='20'
-      viewBox='0 0 20 20'
-      fill='none'
-      xmlns='http://www.w3.org/2000/svg'
-      aria-hidden='true'
-    >
-      <rect width='20' height='20' rx='4' fill='#08060D'></rect>
-      <rect
-        x='0.5'
-        y='0.5'
-        width='19'
-        height='19'
-        rx='3.5'
-        stroke='white'
-        strokeOpacity='0.15'
-      ></rect>
-      <path
-        d='M10 6L14 10L10 14'
-        stroke='white'
-        strokeWidth='1.2'
-        strokeLinejoin='round'
-      ></path>
-      <path
-        d='M14 10L6 10'
-        stroke='white'
-        strokeWidth='1.2'
-        strokeLinejoin='round'
-      ></path>
-    </svg>
-  );
-};
 
 export default function HomeClient() {
   return (
-    <main className='flex flex-col items-center relative bg-bg-base'>
-      {/* Top silhouette strip with background image */}
-      <div
-        className='relative w-full h-12 overflow-hidden bg-no-repeat bg-cover bg-top flex items-center justify-start px-4 md:px-16'
-        style={{ backgroundImage: `url(${Shilouette.src})` }}
+    <main className='flex flex-col relative bg-bg-base font-sans'>
+      {/* 00. PLAYGROUND BANNER - Refined typography
+      <Link
+        href={"/playground"}
+        className='group relative block w-full overflow-hidden bg-bg-base border-b border-border-base'
       >
-        <Link href={"/playground"} className='group w-full'>
-          <p className='text-text-base font-mono text-left w-full flex items-center text-sm font-medium shadow-sm gap-2 uppercase'>
+        <div
+          className='absolute inset-0 opacity-10 group-hover:opacity-20 transition-opacity'
+          style={{
+            backgroundImage: `url(${Shilouette.src})`,
+            backgroundSize: "cover",
+          }}
+        />
+        <div className='md:mx-16 border-x border-border-base px-6 py-3 flex items-center justify-between'>
+          <p className='text-[10px] font-mono uppercase tracking-[0.2em] text-text-base flex items-center gap-4'>
+            <span className='inline-block w-2 h-2 rounded-full bg-blue-500 animate-pulse' />
             Projects and experiments, browse playground
-            {arrow()}
           </p>
-        </Link>
-      </div>
+          <span className='text-sm font-mono opacity-40 group-hover:translate-x-1 transition-transform'>
+            →
+          </span>
+        </div>
+      </Link> */}
 
       <Header />
 
       <div className='bg-bg-base w-full'>
         <div className='md:mx-16 border-x border-border-base'>
           <Intro />
+          {/* Section Divider */}
+          {/* <div className='border-y border-border-base px-6 py-4'>
+            <p className='text-[10px] font-mono uppercase tracking-[0.3em] text-text-subtle'>
+              01. Selected Cases
+            </p>
+          </div> */}
           <FeaturedProjects />
+          <div className='border-y border-border-base px-6 py-4'>
+            <p className='text-[10px] font-mono uppercase tracking-[0.3em] text-text-subtle'>
+              02. Selected Work
+            </p>
+          </div>
           <Projects />
+          {/* <section className='border-t border-border-base bg-bg-subtle/30'>
+            <motion.div
+              className='py-24 px-6 text-center'
+              initial={{ opacity: 0 }}
+              whileInView={{ opacity: 1 }}
+            >
+              <h2 className='text-4xl md:text-6xl font-bold tracking-tighter text-text-base uppercase'>
+                Bored? <br />{" "}
+                <span className='text-text-subtle italic font-serif lowercase'>
+                  Get me images ↓
+                </span>
+              </h2>
+            </motion.div>
+          </section> */}
+          <Achievements /> {/* Add it here */}
           <OutsideWork />
         </div>
       </div>

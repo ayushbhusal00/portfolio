@@ -2,6 +2,7 @@
 
 import { motion, useMotionValue, useTransform } from "framer-motion";
 import { useRef } from "react";
+import Image from "next/image";
 
 const cards = [
   {
@@ -97,7 +98,13 @@ function Card({ item }: any) {
       transition={{ type: "spring", stiffness: 120, damping: 14 }}
     >
       {item.type === "image" ? (
-        <img src={item.src} className='h-full w-full object-cover' alt='' />
+        <Image
+          src={item.src}
+          width={280}
+          height={420}
+          className='h-full w-full object-cover'
+          alt=''
+        />
       ) : (
         <div className='h-full rounded-xs bg-neutral-100 p-6 flex flex-col justify-between'>
           <div>

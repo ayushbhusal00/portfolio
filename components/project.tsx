@@ -1,10 +1,8 @@
 "use client";
 import clsx from "clsx";
 import { motion } from "framer-motion";
-import Image, { StaticImageData } from "next/image";
-import { useRef, useEffect, useState } from "react";
+import Image, { type StaticImageData } from "next/image";
 import { useRouter } from "next/navigation";
-import { getToken, verifyToken } from "@/lib/jwt";
 
 type ProjectProps = {
   index: number;
@@ -23,95 +21,56 @@ export default function Project({
   isPasswordProtected,
   href,
 }: ProjectProps) {
-  const ref = useRef<HTMLElement>(null);
   const router = useRouter();
-  const [hasAccess, setHasAccess] = useState(() => !isPasswordProtected);
 
-  useEffect(() => {
-    const checkAccess = async () => {
-      if (!isPasswordProtected) {
-        setHasAccess(true);
-        return;
-      }
-
-      const token = getToken();
-      if (token) {
-        const isValid = await verifyToken(token);
-        setHasAccess(isValid);
-      } else {
-        setHasAccess(false);
-      }
-    };
-
-    checkAccess();
-  }, [isPasswordProtected]);
-
-  console.log("href", href);
   return (
     <motion.section
-      ref={ref}
       onClick={() => router.push(href ?? `/projects/${index}`)}
-      whileHover={{ y: -4 }}
-      transition={{ duration: 0.3, ease: "easeOut" }}
-      className={clsx(
-        "w-full group cursor-pointer border-t border-border-base",
-        "hover:bg-bg-subtle",
-        "bg-bg-base",
-        "overflow-hidden",
-        "transition-all duration-300 py-16"
-      )}
+      className='group cursor-pointer border-b border-border-base bg-bg-base hover:bg-bg-subtle transition-colors duration-500 overflow-hidden'
     >
-      <div className='max-w-[1536px] mx-auto flex gap-5'>
-        {/* Content */}
-        <div className='flex flex-col text-start justify-center p-6 md:p-6 w-full'>
-          {/* Optional tag
-          <span className='mb-3 inline-block w-fit rounded-full bg-bg-base px-3 py-1 text-xs font-medium text-text-subtle border border-border-base  shadow-sm'>
-            Case Study
-          </span> */}
+      <div className='grid grid-cols-1 md:grid-cols-12 items-center'>
+        {/* Number Label */}
+        <div className='hidden md:flex md:col-span-1 border-r border-border-base self-stretch items-center justify-center'>
+          <span className='text-[10px] font-mono text-text-subtle opacity-40 group-hover:opacity-100 transition-opacity'>
+            0{index + 1}
+          </span>
+        </div>
 
-          <h2 className='text-[2rem] font-semibold !leading-snug text-text-base '>
+        {/* Text Content */}
+        <div className='md:col-span-6 p-8 md:p-12'>
+          <h2 className='text-3xl md:text-4xl font-semibold tracking-tight text-text-base mb-4 italic font-serif'>
             {title}
           </h2>
-
-          <p className='mt-3 text-sm md:text-base leading-relaxed text-text-subtle h-full'>
+          <p className='text-text-subtle text-base max-w-sm leading-relaxed mb-8'>
             {description}
           </p>
 
-          {/* CTA */}
-          <div className='w-fit mt-6 flex items-center gap-2 text-sm font-medium rounded-full bg-bg-base px-3 py-1 text-text-subtle border border-border-base shadow-sm'>
-            <span className='text-text-base'>View project</span>
-            <span className='inline-flex items-center justify-center whitespace-nowrap text-sm font-medium ring-offset-background focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 group rounded-full border hover:text-white hover:bg-[radial-gradient(at_50%_75%,theme(colors.blue.300),theme(colors.blue.500),theme(colors.blue.400))] hover:shadow-[0px_2px_2px_-1px_rgba(0,0,0,0.25),0px_4px_8px_1px_rgba(10,10,10,0.15)_inset,0px_-2px_2px_0px_rgba(10,10,10,0.15)_inset] hover:border-blue-700 active:scale-95 cursor-pointer relative size-8 transition-all duration-200 text-white bg-[radial-gradient(at_50%_75%,theme(colors.blue.300),theme(colors.blue.500),theme(colors.blue.400))] border-blue-700 shadow-[0px_2px_2px_-1px_rgba(0,0,0,0.25),0px_4px_8px_1px_rgba(10,10,10,0.15)_inset,0px_-2px_2px_0px_rgba(10,10,10,0.15)_inset] md:text-stone-500 md:bg-[radial-gradient(at_50%_75%,theme(colors.stone.100),theme(colors.stone.200),theme(colors.stone.300))] md:border-stone-400 md:shadow-[0px_2px_2px_-1px_rgba(0,0,0,0.25),0px_4px_8px_1px_rgba(10,10,10,0.15)_inset,0px_-2px_2px_0px_rgba(10,10,10,0.15)_inset] md:group-hover:text-white md:group-hover:bg-[radial-gradient(at_50%_75%,theme(colors.blue.300),theme(colors.blue.500),theme(colors.blue.400))] md:group-hover:border-blue-700 md:group-hover:shadow-[0px_2px_2px_-1px_rgba(0,0,0,0.25),0px_4px_8px_1px_rgba(10,10,10,0.15)_inset,0px_-2px_2px_0px_rgba(10,10,10,0.15)_inset]'>
-              →
+          <div className='flex items-center gap-3'>
+            <span className='text-[10px] font-mono uppercase tracking-widest text-text-base'>
+              View Case Study
             </span>
+            <div className='h-[1px] w-12 bg-border-base group-hover:w-20 transition-all duration-500' />
           </div>
         </div>
-        {/* Image */}
-        <div className='relative md:block shrink-0 p-4 md:p-6 origin-right'>
-          <div className='relative aspect-video w-[40vw] h-[30vh] overflow-hidden rounded-xl shadow-2xl shadow-elevation-card-rest'>
-            <Image
-              src={imageUrl}
-              alt={title}
-              fill
-              loading='lazy'
-              quality={80}
-              sizes='(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw'
-              unoptimized={
-                typeof imageUrl === "string" && imageUrl.includes("/api/media/")
-              }
-              className={clsx(
-                "object-cover object-center transition-transform duration-500 group-hover:scale-[1.04]",
-                isPasswordProtected && !hasAccess && "blur-sm"
-              )}
-            />
-            {/* Password Protected Badge */}
-            {isPasswordProtected && !hasAccess && (
-              <div className='absolute top-2 left-2 z-20'>
-                <span className='inline-flex items-center px-2.5 py-1 rounded-full text-xs font-medium bg-bg-base/90 backdrop-blur-sm text-text-subtle border border-border-base shadow-sm'>
-                  Password Protected
-                </span>
-              </div>
+
+        {/* Image - Full bleed in its column */}
+        <div className='md:col-span-5 relative aspect-video overflow-hidden bg-bg-subtle'>
+          <Image
+            src={imageUrl}
+            alt={title}
+            fill
+            className={clsx(
+              "object-cover transition-transform duration-700 ease-in-out group-hover:scale-105",
+              isPasswordProtected && "blur-sm",
             )}
-          </div>
+          />
+          {isPasswordProtected && (
+            <div className='absolute top-4 left-4'>
+              <span className='px-2 py-1 rounded-full text-[9px] uppercase font-mono bg-white/80 border border-border-base'>
+                Protected
+              </span>
+            </div>
+          )}
         </div>
       </div>
     </motion.section>

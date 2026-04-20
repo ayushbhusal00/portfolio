@@ -17,12 +17,10 @@ export default function Contact() {
   const handleSubmit = (formData: FormData) => {
     startTransition(async () => {
       const { error } = await sendEmail(formData);
-
       if (error) {
         toast.error(error);
         return;
       }
-
       toast.success("Email sent successfully!");
       formRef.current?.reset();
     });
@@ -30,111 +28,116 @@ export default function Contact() {
 
   return (
     <motion.section
-      className='w-full bg-bg-subtle'
+      className='w-full bg-bg-base border-t border-border-base mt-20'
       id='contact'
       initial={{ opacity: 0 }}
       whileInView={{ opacity: 1 }}
       transition={{ duration: 1 }}
       viewport={{ once: true }}
     >
-      {/* Full width background wrapper */}
-      <div className='w-full px-4 md:px-10 py-4'>
-        {/* Center container */}
-        <div className='max-w-[1100px] mx-auto'>
-          <div className='relative isolate group rounded-lg overflow-hidden w-full'>
-            {/* Moving Silhouette Layer */}
-            <div
-              className='
-            absolute inset-0 z-0
-            opacity-0 group-hover:opacity-100
-            transition-opacity duration-300
-            animate-moveBg
-          '
-              style={{
-                backgroundImage: `url(${Shilouette.src})`,
-                backgroundSize: "150% 150%",
-                backgroundPosition: "45% 45%",
-              }}
-            />
+      <div className='md:mx-16 border-x border-border-base'>
+        <div className='max-w-5xl mx-auto px-6 py-24 md:py-32'>
+          {/* --- CONTACT HEADER --- */}
+          <div className='mb-20'>
+            <h2 className='text-5xl md:text-8xl font-bold tracking-tighter text-text-base mb-8'>
+              Let&apos;s work <br /> together.
+            </h2>
+            <p className='text-xl text-text-subtle max-w-xl leading-relaxed'>
+              Have a project in mind or just want to say hi? Reach out via the
+              form below or email me directly at{" "}
+              <a
+                className='text-text-base font-medium underline underline-offset-4 hover:opacity-70 transition-opacity'
+                href='mailto:ayushbhusal00@gmail.com'
+              >
+                ayushbhusal00@gmail.com
+              </a>
+            </p>
+          </div>
 
-            {/* Surface Layer */}
-            <div
-              className='
-          absolute inset-[2px]
-          rounded-lg
-          bg-bg-base
-          border border-border-base
-          transition-colors duration-200
-          group-hover:border-transparent
-          z-[1]
-        '
-            />
-
-            {/* Content */}
-            <div
-              className='
-          relative z-[2]
-          flex gap-5 lg:gap-20 items-center
-          p-6 sm:px-8 sm:py-10
-        '
-            >
-              <div className='w-1/2 hidden md:block'>
+          <div className='grid grid-cols-1 md:grid-cols-12 gap-16 items-start'>
+            {/* --- VISUAL ELEMENT --- */}
+            <div className='hidden md:block md:col-span-5 sticky top-32'>
+              <div className='relative group overflow-hidden rounded-3xl aspect-square bg-bg-subtle border border-border-base'>
                 <Image
                   src={PaperPlane}
                   alt='Mail Illustration'
-                  loading='lazy'
-                  placeholder='blur'
+                  className='p-12 group-hover:scale-110 transition-transform duration-700 ease-out'
+                />
+                {/* Subtle Moving Silhouette Background */}
+                <div
+                  className='absolute inset-0 z-0 opacity-20 mix-blend-multiply animate-moveBg pointer-events-none'
+                  style={{
+                    backgroundImage: `url(${Shilouette.src})`,
+                    backgroundSize: "200%",
+                  }}
                 />
               </div>
+            </div>
 
-              <div className='text-left w-full text-text-base'>
-                <SectionHeading>Say Hello</SectionHeading>
-
-                <p className='text-sm -mt-6 text-text-subtle'>
-                  Have a project in mind? Please contact me directly at{" "}
-                  <a
-                    className='underline'
-                    href='mailto:ayushbhusal00@gmail.com'
-                  >
-                    ayushbhusal00@gmail.com
-                  </a>
-                </p>
-
-                <form
-                  ref={formRef}
-                  className='mt-10 flex flex-col'
-                  action={handleSubmit}
-                >
+            {/* --- FORM --- */}
+            <div className='md:col-span-7'>
+              <form
+                ref={formRef}
+                className='flex flex-col gap-8'
+                action={handleSubmit}
+              >
+                <div className='space-y-2'>
+                  <label className='text-[10px] font-mono uppercase tracking-widest text-text-subtle'>
+                    Email Address
+                  </label>
                   <input
                     type='email'
                     name='senderEmail'
-                    placeholder='Your email'
+                    placeholder='your@email.com'
+                    required
                     disabled={isPending}
-                    className='h-10 rounded-md bg-bg-subtle px-3 text-sm border border-border-base'
+                    className='w-full bg-transparent border-b border-border-base py-4 text-lg focus:border-text-base outline-none transition-colors'
                   />
+                </div>
 
+                <div className='space-y-2'>
+                  <label className='text-[10px] font-mono uppercase tracking-widest text-text-subtle'>
+                    Message
+                  </label>
                   <textarea
                     name='message'
-                    placeholder='Your message'
+                    placeholder='Tell me about your project...'
+                    required
                     disabled={isPending}
-                    className='h-32 my-3 p-3 rounded-md bg-bg-subtle text-sm border border-border-base'
+                    className='w-full bg-transparent border-b border-border-base py-4 text-lg h-32 focus:border-text-base outline-none transition-colors resize-none'
                   />
+                </div>
 
+                <div className='pt-4'>
                   <SubmitBtn disabled={isPending} />
-                </form>
-              </div>
+                </div>
+              </form>
             </div>
           </div>
         </div>
-      </div>
 
-      {/* Footer */}
-      <div className=''>
-        <p className='text-center text-text-subtle text-sm pb-4 px-6 md:px-16'>
-          This is a custom-made website created using tools like NextJs, React,
-          Tailwind, Typescript, and Resend by{" "}
-          <span className='font-semibold text-text-base'>Ayush Bhusal</span>
-        </p>
+        {/* --- FINAL FOOTER STRIP --- */}
+        <footer className='border-t border-border-base py-12 px-6'>
+          <div className='max-w-5xl mx-auto flex flex-col md:flex-row justify-between items-center gap-8'>
+            <div className='flex flex-col items-center md:items-start gap-2'>
+              <p className='text-[10px] font-mono uppercase tracking-widest text-text-subtle'>
+                Built By
+              </p>
+              <p className='text-sm font-medium text-text-base italic font-serif'>
+                Ayush Bhusal — 2026
+              </p>
+            </div>
+
+            <div className='flex flex-col items-center md:items-end gap-2'>
+              <p className='text-[10px] font-mono uppercase tracking-widest text-text-subtle'>
+                Stack
+              </p>
+              <p className='text-sm text-text-subtle text-center md:text-right'>
+                Next.js / React / Tailwind / Resend
+              </p>
+            </div>
+          </div>
+        </footer>
       </div>
     </motion.section>
   );

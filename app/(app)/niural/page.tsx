@@ -18,15 +18,11 @@ import PasswordProtection from "@/components/password-protection";
 import { caseStudies } from "@/lib/data";
 import { getToken, verifyToken } from "@/lib/jwt";
 
-/* ----------------------------------------
-   Images
----------------------------------------- */
-
+/* --- Assets and Data remain the same as your provided code --- */
 import DesignSystem from "@/public/design-system.png";
 import DesignSystemModule from "@/public/Design-System-Module.png";
 import DesignPattern from "@/public/patterns.png";
 import DesignComponent from "@/public/components.png";
-
 import BankAccount from "@/public/BankAccount.png";
 import Benefits from "@/public/Benefits.png";
 import Timesheets from "@/public/EmployeeDashboard.png";
@@ -34,64 +30,23 @@ import AccountPayable from "@/public/InvoiceDetail.png";
 import LogIn from "@/public/LogIn.png";
 import Payroll from "@/public/Payroll.png";
 
-/* ----------------------------------------
-   Data
----------------------------------------- */
-
 const systemScreens = [
-  {
-    img: DesignSystem,
-    caption:
-      "Design system overview defining tokens, layout primitives, and core components",
-  },
+  { img: DesignSystem, caption: "Design system tokens and primitives" },
   {
     img: DesignSystemModule,
-    caption:
-      "Modular system architecture supporting payroll, payments, and benefits products",
+    caption: "Modular architecture for global payroll",
   },
-  {
-    img: DesignPattern,
-    caption:
-      "Standardized interaction patterns for tables, forms, and financial workflows",
-  },
-  {
-    img: DesignComponent,
-    caption:
-      "Reusable components optimized for dense enterprise data and accessibility",
-  },
+  { img: DesignPattern, caption: "Standardized interaction patterns" },
+  { img: DesignComponent, caption: "Reusable enterprise components" },
 ];
 
 const productScreens = [
-  {
-    img: LogIn,
-    caption:
-      "Secure login and authentication flow designed for enterprise compliance",
-  },
-  {
-    img: Timesheets,
-    caption:
-      "Employee dashboard balancing visibility, approvals, and time tracking",
-  },
-  {
-    img: BankAccount,
-    caption:
-      "Bank account setup flow designed to reduce errors in sensitive financial data",
-  },
-  {
-    img: Benefits,
-    caption:
-      "Benefits management interface aligned with payroll and employee records",
-  },
-  {
-    img: AccountPayable,
-    caption:
-      "Accounts payable workflow supporting invoices, approvals, and audit trails",
-  },
-  {
-    img: Payroll,
-    caption:
-      "Payroll execution view providing clarity into status, totals, and exceptions",
-  },
+  { img: LogIn, caption: "Secure Authentication Flow" },
+  { img: Timesheets, caption: "Employee Dashboard" },
+  { img: BankAccount, caption: "Financial Data Entry" },
+  { img: Benefits, caption: "Benefits Management" },
+  { img: AccountPayable, caption: "Accounts Payable Workflow" },
+  { img: Payroll, caption: "Payroll Execution View" },
 ];
 
 const heroVideoUrls = [
@@ -99,161 +54,20 @@ const heroVideoUrls = [
   { url: "https://www.youtube.com/watch?v=He7jMtTn1kw" },
 ];
 
-/* ----------------------------------------
-   Related Projects Component
----------------------------------------- */
-
-function RelatedProjectsSection({ related }: { related: any[] }) {
-  const [accessMap, setAccessMap] = React.useState<{ [id: string]: boolean }>(
-    {}
-  );
-
-  useEffect(() => {
-    let isMounted = true;
-
-    async function checkAccess() {
-      const results: { [id: string]: boolean } = {};
-
-      for (const p of related) {
-        const isNiural =
-          p.slug === "niural-global-payroll" || String(p.id) === "0";
-
-        if (!isNiural) {
-          results[p.id] = true;
-        } else {
-          const token = getToken();
-          results[p.id] = token ? await verifyToken(token) : false;
-        }
-      }
-
-      if (isMounted) setAccessMap(results);
-    }
-
-    checkAccess();
-    return () => {
-      isMounted = false;
-    };
-  }, [related]);
-
-  return (
-    <section className='md:mx-16 border-x border-border-base'>
-      <div className='border-t border-border-base'>
-        <div className='mx-auto max-w-3xl py-24 px-6'>
-          <h2 className='text-2xl font-semibold mb-12 text-text-base'>
-            More Case Studies
-          </h2>
-
-          <div className='grid gap-16 md:grid-cols-3'>
-            {related.map((p) => {
-              const thumbSrc =
-                typeof p.thumbnail === "string"
-                  ? p.thumbnail
-                  : (p.thumbnail?.url ?? p.thumbnail?.src);
-
-              const isProtected =
-                p.slug === "niural-global-payroll" || String(p.id) === "0";
-
-              const hasAccess = accessMap[p.id];
-
-              return (
-                <Link
-                  key={p.id}
-                  href={`/projects/${p.id}`}
-                  className='group flex flex-col gap-6'
-                >
-                  <div className='relative aspect-[4/3] overflow-hidden rounded-2xl'>
-                    <Image
-                      src={thumbSrc}
-                      alt={p.title}
-                      fill
-                      className={`object-cover transition-transform duration-500 group-hover:scale-105 ${
-                        isProtected && !hasAccess ? "blur-sm" : ""
-                      }`}
-                    />
-
-                    {isProtected && !hasAccess && (
-                      <span className='absolute top-2 left-2 px-2 py-1 text-xs text-white rounded-full bg-white/90 border'>
-                        Password Protected
-                      </span>
-                    )}
-                  </div>
-
-                  <div>
-                    <h3
-                      className='text-xl text-text-base font-medium leading-snug group-hover:underline'
-                      style={{
-                        fontFamily: "Instryment Sans, serif",
-                        fontStyle: "italic",
-                      }}
-                    >
-                      {p.title}
-                    </h3>
-                    {p.tagline && (
-                      <p className='text-sm text-text-subtle leading-relaxed'>
-                        {p.tagline}
-                      </p>
-                    )}
-                  </div>
-                </Link>
-              );
-            })}
-          </div>
-        </div>
-      </div>
-    </section>
-  );
-}
-
-/* ----------------------------------------
-   Main Page
----------------------------------------- */
-
 export default function NiuralPage() {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
   const [isCheckingAuth, setIsCheckingAuth] = useState(true);
-  const [related, setRelated] = useState<any[]>([]);
-
-  const moreCaseStudies = caseStudies.filter(
-    (cs) => cs.slug !== "niural-global-payroll"
-  );
 
   useEffect(() => {
     async function checkAuth() {
       const token = getToken();
-      if (token && (await verifyToken(token))) {
-        setIsAuthenticated(true);
-      }
+      if (token && (await verifyToken(token))) setIsAuthenticated(true);
       setIsCheckingAuth(false);
     }
     checkAuth();
   }, []);
 
-  useEffect(() => {
-    async function fetchRelated() {
-      try {
-        const res = await fetch(
-          "/api/project?limit=3&sort=-createdAt&where[slug][not_equals]=niural-global-payroll"
-        );
-        const data = await res.json();
-
-        if (Array.isArray(data.docs)) {
-          setRelated(data.docs);
-        }
-      } catch {}
-    }
-
-    fetchRelated();
-  }, []);
-
-  if (!isAuthenticated) {
-    if (isCheckingAuth) {
-      return (
-        <div className='min-h-screen flex items-center justify-center text-sm text-text-subtle'>
-          Loading…
-        </div>
-      );
-    }
-
+  if (!isAuthenticated && !isCheckingAuth) {
     return (
       <PasswordProtection
         projectTitle='Niural — Designing a Power Platform'
@@ -263,214 +77,242 @@ export default function NiuralPage() {
   }
 
   return (
-    <section className='bg-bg-base'>
+    <section className='bg-bg-base font-sans'>
       <main className='md:mx-16 flex flex-col justify-center border-x border-border-base'>
-        {/* HERO VIDEO */}
-        <Carousel className='pt-2 pb-4 mx-20'>
-          <CarouselContent>
-            {heroVideoUrls.map((video, index) => (
-              <CarouselItem key={index}>
-                <div className='aspect-video overflow-hidden rounded-2xl'>
-                  <ReactPlayer
-                    width='100%'
-                    height='100%'
-                    controls
-                    src={video.url}
-                    className='rounded-2xl overflow-hidden shadow-elevation-card-rest'
-                  />
-                </div>
-              </CarouselItem>
-            ))}
-          </CarouselContent>
-
-          <CarouselNext />
-          <CarouselPrevious />
-        </Carousel>
-        <div className='w-full mx-auto max-w-3xl py-24 px-6 flex flex-col gap-16'>
-          <motion.header
-            initial={{ opacity: 0, y: 16 }}
+        {/* --- 1. HERO SECTION (Mishmash Style) --- */}
+        <div className='px-6 md:px-20 pt-16 pb-12'>
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-            className='space-y-8'
+            className='max-w-5xl'
           >
-            <h1 className='text-4xl text-text-base md:text-5xl font-bold'>
-              Niural — Designing a Power Platform
+            <h1 className='text-5xl md:text-7xl font-bold tracking-tight text-text-base mb-8'>
+              Niural.
             </h1>
-
-            <p className='text-lg text-text-subtle'>
-              Niural is a global workforce management tool for enterprise
-              payroll, compliance, and vendor payments. I led the design of a
-              unified system across their core products, enabling faster
-              iteration and global scalability while reducing complexity for
-              users.
+            <p className='text-2xl md:text-3xl text-text-base leading-tight max-w-3xl'>
+              Designing a unified Power Platform for global workforce management
+              and enterprise payroll.
             </p>
+          </motion.div>
+        </div>
 
-            <p className='text-sm text-text-subtle'>4 min read</p>
-          </motion.header>
-
-          {/* PROBLEM */}
-          <div className='mx-auto max-w-3xl space-y-6'>
-            <h2 className='text-2xl text-text-base font-medium'>The Problem</h2>
-            <p className='text-text-subtle'>
-              Niural’s product surface expanded rapidly as new financial
-              workflows were introduced. Payroll, contractor payments, and
-              benefits shared similar concepts but evolved independently,
-              creating inconsistencies and cognitive load.
+        {/* --- 2. IMPACT STATS GRID --- */}
+        <div className='grid grid-cols-2 md:grid-cols-4 border-y border-border-base'>
+          <div className='p-8 border-r border-border-base'>
+            <p className='text-xs font-mono uppercase text-text-subtle mb-2'>
+              Role
             </p>
-            <p className='text-text-subtle'>
-              The challenge was to simplify complex financial operations while
-              enabling teams to scale globally — without slowing down product
-              development.
-            </p>
+            <p className='text-lg font-medium'>Lead Product Designer</p>
           </div>
+          <div className='p-8 border-r border-border-base'>
+            <p className='text-xs font-mono uppercase text-text-subtle mb-2'>
+              Deliverables
+            </p>
+            <p className='text-lg font-medium'>Design System, Web App</p>
+          </div>
+          <div className='p-8 border-r border-border-base'>
+            <p className='text-xs font-mono uppercase text-text-subtle mb-2'>
+              Read Time
+            </p>
+            <p className='text-lg font-medium'>4 min read</p>
+          </div>
+          <div className='p-8'>
+            <p className='text-xs font-mono uppercase text-text-subtle mb-2'>
+              Timeline
+            </p>
+            <p className='text-lg font-medium'>2023 — 2024</p>
+          </div>
+        </div>
 
-          {/* SYSTEM & APPROACH */}
-          <div className='mx-auto max-w-3xl space-y-10'>
-            <h2 className='text-2xl text-text-base font-medium'>
-              Designing the System
+        {/* --- 3. SHOWCASE VIDEO --- */}
+        <div className='p-4 md:p-8 bg-bg-subtle'>
+          <Carousel className='w-full max-w-5xl mx-auto'>
+            <CarouselContent>
+              {heroVideoUrls.map((video, index) => (
+                <CarouselItem key={index}>
+                  <div className='aspect-video overflow-hidden rounded-2xl shadow-2xl'>
+                    <ReactPlayer
+                      width='100%'
+                      height='100%'
+                      controls
+                      src={video.url}
+                    />
+                  </div>
+                </CarouselItem>
+              ))}
+            </CarouselContent>
+            <CarouselNext className='right-4' />
+            <CarouselPrevious className='left-4' />
+          </Carousel>
+        </div>
+
+        {/* --- 4. CONTEXT / CHAPTER 1: THE CHALLENGE --- */}
+        <div className='w-full mx-auto max-w-3xl py-24 px-6 space-y-8'>
+          <h2 className='text-xs font-mono uppercase tracking-widest text-text-subtle'>
+            01. The Mission
+          </h2>
+          <h3 className='text-3xl md:text-4xl font-semibold text-text-base leading-tight'>
+            New goals, new challenges. Rethinking the e-commerce of workforce
+            management.
+          </h3>
+          <p className='text-lg text-text-subtle leading-relaxed'>
+            Niural is a global workforce management tool for enterprise payroll,
+            compliance, and vendor payments. As the product surface expanded
+            rapidly, payroll, contractor payments, and benefits began to evolve
+            independently, creating inconsistencies and increasing cognitive
+            load for users.
+          </p>
+          <p className='text-lg text-text-subtle leading-relaxed'>
+            The objective was crystal clear: simplify complex financial
+            operations while enabling global scalability without slowing down
+            the rapid pace of product development.
+          </p>
+        </div>
+
+        {/* --- 5. CHAPTER 2: DESIGN & SYSTEM (The "Design" Pillar) --- */}
+        <div className='border-t border-border-base'>
+          <div className='w-full mx-auto max-w-3xl py-24 px-6 space-y-12'>
+            <h2 className='text-xs font-mono uppercase tracking-widest text-text-subtle'>
+              02. Design
             </h2>
-            <p className='text-text-subtle'>
-              I focused on building a shared foundation across products:
-              reusable patterns, consistent data structures, and predictable
-              interaction models — optimized for enterprise workflows.
+            <h3 className='text-3xl md:text-4xl font-semibold text-text-base'>
+              Defining standards that support global growth.
+            </h3>
+            <p className='text-lg text-text-subtle'>
+              I focused on building a shared foundation: reusable patterns,
+              consistent data structures, and predictable interaction models
+              optimized for dense enterprise workflows.
             </p>
-            <ul className='space-y-4 text-text-subtle'>
-              <li>• Unified layout and navigation patterns</li>
-              <li>• Standardized tables, forms, and empty states</li>
-              <li>• Clear hierarchy for dense financial data</li>
-              <li>• Token-driven design system for fast iteration</li>
-            </ul>
-          </div>
 
-          {/* SYSTEM SCREENS */}
-          <div>
-            <Carousel>
+            <div className='grid grid-cols-1 md:grid-cols-2 gap-8 py-8'>
+              <div>
+                <p className='font-bold text-text-base mb-2'>
+                  Unified Navigation
+                </p>
+                <p className='text-text-subtle text-sm'>
+                  Consistent layout patterns across disparate financial tools.
+                </p>
+              </div>
+              <div>
+                <p className='font-bold text-text-base mb-2'>Data Density</p>
+                <p className='text-text-subtle text-sm'>
+                  Clear hierarchy optimized for tables, forms, and audit trails.
+                </p>
+              </div>
+            </div>
+
+            <Carousel className='w-full'>
               <CarouselContent>
                 {systemScreens.map(({ img, caption }, i) => (
                   <CarouselItem key={i}>
-                    <div className='relative aspect-[16/9] overflow-hidden rounded-2xl border border-border-base bg-bg-base'>
+                    <div className='relative aspect-[16/10] overflow-hidden rounded-xl border border-border-base bg-white shadow-sm'>
                       <Image
                         src={img}
                         alt={caption}
                         fill
-                        className='object-cover'
+                        className='object-cover p-4'
                       />
-                      <p className='absolute bottom-3 left-3 rounded bg-bg-base px-2 py-1 text-xs font-mono text-text-subtle'>
+                      <div className='absolute bottom-4 left-4 bg-white/90 backdrop-blur px-3 py-1 rounded text-[10px] font-mono border border-border-base'>
                         {caption}
-                      </p>
+                      </div>
                     </div>
                   </CarouselItem>
                 ))}
               </CarouselContent>
-
-              <div className='mt-6 flex justify-center gap-4'>
-                <CarouselPrevious />
-                <CarouselNext />
+              <div className='mt-8 flex justify-start gap-2'>
+                <CarouselPrevious className='static translate-y-0' />
+                <CarouselNext className='static translate-y-0' />
               </div>
             </Carousel>
           </div>
+        </div>
 
-          {/* DECISIONS & TRADEOFFS */}
-          <div className='mx-auto max-w-3xl space-y-12'>
-            <h2 className='text-2xl text-text-base  font-medium'>
-              Key Decisions & Tradeoffs
+        {/* --- 6. CHAPTER 3: OPERATIONAL (The "Tradeoffs" Pillar) --- */}
+        <div className='bg-text-base text-bg-base py-24'>
+          <div className='w-full mx-auto max-w-3xl px-6 space-y-12'>
+            <h2 className='text-xs font-mono uppercase tracking-widest opacity-60'>
+              03. Operational
             </h2>
+            <h3 className='text-3xl md:text-4xl font-semibold'>
+              Strategic Tradeoffs: Efficiency vs. Flexibility.
+            </h3>
 
-            <div className='space-y-8'>
+            <div className='space-y-12'>
               <div>
-                <p className='text-xs font-mono uppercase text-text-subtle'>
-                  Why a unified design system
+                <p className='text-xs font-mono uppercase opacity-50 mb-4'>
+                  The Engineering Impact
                 </p>
-                <p className='mt-2 text-text-subtle'>
-                  Multiple teams were shipping features in parallel. A shared
-                  system reduced duplication, improved accessibility, and
-                  allowed engineers to move faster with confidence.
+                <p className='text-xl opacity-90'>
+                  By implementing a token-driven system, we reduced duplication
+                  and allowed engineers to ship parallel features with 100%
+                  confidence in visual consistency.
                 </p>
               </div>
-
-              <div>
-                <p className='text-xs font-mono uppercase text-text-subtle'>
-                  Tradeoff: flexibility vs consistency
+              <div className='border-l-2 border-bg-subtle/20 pl-6'>
+                <p className='text-xs font-mono uppercase opacity-50 mb-4'>
+                  The Tradeoff
                 </p>
-                <p className='mt-2 text-text-subtle'>
-                  Early constraints limited visual freedom but ensured clarity
-                  and predictability. Flexibility was reintroduced once core
-                  patterns stabilized.
+                <p className='text-xl opacity-90'>
+                  We initially sacrificed visual freedom to stabilize core
+                  patterns. Once the foundation was bulletproof, we reintroduced
+                  flexibility for product-specific nuances.
                 </p>
               </div>
             </div>
           </div>
+        </div>
 
-          {/* PRODUCT SCREENS */}
-          <div className='space-y-10'>
-            <h2 className='mx-auto max-w-3xl text-text-base  text-2xl font-medium'>
-              Product Screens
+        {/* --- 7. PRODUCT GALLERY --- */}
+        <div className='py-24 space-y-20'>
+          <div className='mx-auto max-w-3xl px-6'>
+            <h2 className='text-xs font-mono uppercase tracking-widest text-text-subtle mb-8'>
+              04. Interface
             </h2>
+            <h3 className='text-3xl md:text-4xl font-semibold text-text-base'>
+              The end-to-end experience.
+            </h3>
+          </div>
+
+          <div className='px-4 md:px-20 grid grid-cols-1 gap-12'>
             {productScreens.map(({ img, caption }, i) => (
-              <div
-                key={i}
-                className='relative aspect-[16/9] overflow-hidden rounded-2xl border border-border-base bg-bg-base'
-              >
-                <Image src={img} alt={caption} fill className='object-cover' />
-                <p className='absolute bottom-3 left-3 rounded bg-bg-base px-2 py-1 text-xs font-mono text-text-subtle'>
-                  {caption}
+              <div key={i} className='space-y-4'>
+                <div className='relative aspect-[16/9] overflow-hidden rounded-3xl border border-border-base bg-bg-base'>
+                  <Image
+                    src={img}
+                    alt={caption}
+                    fill
+                    className='object-cover'
+                  />
+                </div>
+                <p className='text-sm font-mono text-text-subtle text-center uppercase tracking-tighter'>
+                  — {caption}
                 </p>
               </div>
             ))}
           </div>
+        </div>
 
-          {/* IMPACT */}
-          <div className='mx-auto max-w-3xl space-y-6'>
-            <h2 className='text-2xl text-text-base  font-medium'>Impact</h2>
-            <p className='text-text-subtle'>
-              The system improved consistency across products, reduced design
-              debt, and enabled faster feature delivery. Teams scaled globally
-              while maintaining clarity in complex financial flows.
+        {/* --- 8. FINAL IMPACT --- */}
+        <div className='w-full mx-auto max-w-3xl py-24 px-6 border-t border-border-base'>
+          <h2 className='text-xs font-mono uppercase tracking-widest text-text-subtle mb-8'>
+            05. Outcome
+          </h2>
+          <div className='space-y-6'>
+            <p className='text-2xl text-text-base leading-snug'>
+              The system successfully reduced design debt and halved iteration
+              time for new features. Teams are now empowered to scale into new
+              regulatory markets while maintaining total clarity in complex
+              financial flows.
             </p>
-            <p className='text-text-subtle'>
-              This foundation continues to support new products, markets, and
-              regulatory requirements.
-            </p>
+            <Link
+              href='/'
+              className='inline-block font-bold border-b-2 border-text-base pb-1 mt-8 hover:opacity-70 transition-opacity'
+            >
+              Let&apos;s work together
+            </Link>
           </div>
-
-          {/* MORE CASE STUDIES */}
-          {moreCaseStudies.length > 0 && (
-            <div className='mt-24'>
-              <h2 className='text-2xl font-semibold mb-6'>More Case Studies</h2>
-              <div className='grid gap-8'>
-                {moreCaseStudies.map((cs) => (
-                  <Link
-                    key={cs.slug}
-                    href={cs.url}
-                    className='block p-6 rounded-lg border border-border-base bg-bg-base hover:bg-bg-subtle transition'
-                  >
-                    <div className='flex items-center gap-4'>
-                      <Image
-                        src={
-                          typeof cs.thumbnail === "string"
-                            ? cs.thumbnail
-                            : cs.thumbnail?.src
-                        }
-                        alt={cs.title}
-                        width={80}
-                        height={80}
-                        className='w-20 h-20 object-cover rounded-md border'
-                      />
-                      <div>
-                        <h3 className='text-lg font-bold mb-1'>{cs.title}</h3>
-                        <p className='text-sm text-text-subtle'>{cs.tagline}</p>
-                      </div>
-                    </div>
-                  </Link>
-                ))}
-              </div>
-            </div>
-          )}
         </div>
       </main>
-
-      {/* RELATED PROJECTS */}
-      {related.length > 0 && <RelatedProjectsSection related={related} />}
     </section>
   );
 }

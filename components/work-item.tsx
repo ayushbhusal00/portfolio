@@ -78,7 +78,7 @@ export default function WorkItem({
         {/* Password Protected Badge */}
         {isPasswordProtected && !hasAccess && (
           <div className='absolute top-2 left-2 z-10'>
-            <span className='inline-flex items-center px-2.5 py-1 rounded-full text-xs font-medium bg-bg-base/90 backdrop-blur-sm text-zinc-700 border border-border-base shadow-sm'>
+            <span className='inline-flex items-center px-2.5 py-1 rounded-full text-xs font-medium bg-bg-base/50 backdrop-blur-sm text-text-base border border-border-base shadow-sm'>
               Password Protected
             </span>
           </div>
