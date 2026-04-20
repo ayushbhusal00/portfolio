@@ -116,45 +116,50 @@ export const links = [
 
 export const experiencesData = [
   {
-    title: "Senior Product Designer",
+    company: "Niural Inc.",
+    role: "Senior Product Designer",
+    period: "Nov 2022 - present | +3 years",
     location: "Niural Inc.",
     description:
       "Designed and launched user-centric web interfaces for Niural App and Landing Page, integrated Web3 and fiat payments, maintained a design system, optimized performance, integrated Zendesk, and conducted user testing to improve UX and engagement.",
     icon: React.createElement(FaReact),
-    date: "Nov 2022 - present | +3 years",
     rightImage: NiuralExperience,
   },
   {
-    title: "Web Designer",
+    company: "Infinity Digital Agency",
+    role: "Web Designer",
+    period: "Oct 2021 – Mar 2022 | 6 months",
     location: "Infinity Digital Agency",
     description:
       "Developed user-centered web interfaces with strategic design elements, delivered feature plans for clients like LifeCorpus and Antidote, and implemented a scalable design system using Storybook for consistency across projects.",
     icon: React.createElement(FaReact),
-    date: "Oct 2021 – Mar 2022 | 6 months",
   },
   {
-    title: "Web Designer",
+    company: "The Vesper House Pvt. Ltd.",
+    role: "Web Designer",
+    period: "Jul 2020 - Apr 2021 | 10 months",
     location: "The Vesper House Pvt. Ltd.",
     description:
       "Designed a WordPress e-commerce platform for Vesper Fine Wine, integrated payment APIs, optimized with analytics tools, improved database queries, and boosted sales by 70% and engagement by 25%.",
     icon: React.createElement(LuGraduationCap),
-    date: "Jul 2020 - Apr 2021 | 10 months",
   },
   {
-    title: "Multimedia Designer",
+    company: "Prime International Pvt. Ltd.",
+    role: "Multimedia Designer",
+    period: "Apr 2019 – Jan 2020 | 10 months",
     location: "Prime International Pvt. Ltd.",
     description:
       "Developed a responsive portfolio website using PHP, HTML, CSS, created detailed product mockups with 3DS MAX, contributed to key design decisions, and designed multimedia assets to enhance product design and brand identity.",
     icon: React.createElement(FaReact),
-    date: "Apr 2019 – Jan 2020 | 10 months",
   },
   {
-    title: "Associate Web Designer",
+    company: "OHO Digital Ventures Pvt. Ltd.",
+    role: "Associate Web Designer",
+    period: "Apr 2018 – Jan 2019 | 10 months",
     location: "OHO Digital Ventures Pvt. Ltd.",
     description:
       "Designed web assets, illustrations, UX flows, frontend code, led 2 web design projects, contributed to user research, and created branding/video assets for promotions.",
     icon: React.createElement(CgWorkAlt),
-    date: "Apr 2018 – Jan 2019 | 10 months",
   },
 ] as const;
 export type CaseStudySection = {

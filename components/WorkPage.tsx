@@ -5,28 +5,44 @@ import { motion } from "framer-motion";
 
 const experiences = [
   {
-    company: "Angelswing.io",
+    company: "Niural Inc.",
     role: "Senior Product Designer",
-    period: "2024 — Present",
+    period: "Nov 2022 - present | +3 years",
     description:
-      "Leading the redesign of digital twin platforms and optimizing complex data workflows.",
-    location: "Remote / Seoul",
+      "Designed and launched user-centric web interfaces for Niural App and Landing Page, integrated Web3 and fiat payments, maintained a design system, optimized performance, integrated Zendesk, and conducted user testing to improve UX and engagement.",
+    location: "Niural Inc.",
   },
   {
-    company: "Freelance",
-    role: "UX Engineer",
-    period: "2022 — 2024",
+    company: "Infinity Digital Agency",
+    role: "Web Designer",
+    period: "Oct 2021 – Mar 2022 | 6 months",
     description:
-      "Designed and developed brand identities and high-fidelity prototypes for global startups.",
-    location: "Kathmandu",
+      "Developed user-centered web interfaces with strategic design elements, delivered feature plans for clients like LifeCorpus and Antidote, and implemented a scalable design system using Storybook for consistency across projects.",
+    location: "Infinity Digital Agency",
   },
   {
-    company: "Daraz (Alibaba Group)",
-    role: "E-commerce Specialist",
-    period: "2021 — 2022",
+    company: "The Vesper House Pvt. Ltd.",
+    role: "Web Designer",
+    period: "Jul 2020 - Apr 2021 | 10 months",
     description:
-      "Streamlined product listings and improved merchant experience through design-thinking.",
-    location: "Kathmandu",
+      "Designed a WordPress e-commerce platform for Vesper Fine Wine, integrated payment APIs, optimized with analytics tools, improved database queries, and boosted sales by 70% and engagement by 25%.",
+    location: "The Vesper House Pvt. Ltd.",
+  },
+  {
+    company: "Prime International Pvt. Ltd.",
+    role: "Multimedia Designer",
+    period: "Apr 2019 – Jan 2020 | 10 months",
+    description:
+      "Developed a responsive portfolio website using PHP, HTML, CSS, created detailed product mockups with 3DS MAX, contributed to key design decisions, and designed multimedia assets to enhance product design and brand identity.",
+    location: "Prime International Pvt. Ltd.",
+  },
+  {
+    company: "OHO Digital Ventures Pvt. Ltd.",
+    role: "Associate Web Designer",
+    period: "Apr 2018 – Jan 2019 | 10 months",
+    description:
+      "Designed web assets, illustrations, UX flows, frontend code, led 2 web design projects, contributed to user research, and created branding/video assets for promotions.",
+    location: "OHO Digital Ventures Pvt. Ltd.",
   },
 ];
 
